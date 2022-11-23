@@ -24,7 +24,9 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <ChakraProvider theme={theme}>
         <GlobalContext.Provider value={global.attributes}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </GlobalContext.Provider>
       </ChakraProvider>
     </>
