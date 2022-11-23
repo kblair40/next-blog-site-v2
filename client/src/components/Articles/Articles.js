@@ -2,6 +2,8 @@ import React from "react";
 import Card from "./Card";
 
 const Articles = ({ articles }) => {
+  return null;
+
   const leftArticlesCount = Math.ceil(articles?.length / 5);
   let leftArticles, rightArticles;
 
