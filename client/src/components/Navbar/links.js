@@ -5,11 +5,11 @@ export const navLinks = [
   },
   {
     label: "Talk Money, Honey",
-    to: "/money",
+    to: "/posts/money",
   },
   {
     label: "Life",
-    to: "/life",
+    to: "/posts/life",
   },
   {
     label: "About",

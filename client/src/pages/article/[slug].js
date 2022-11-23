@@ -1,11 +1,12 @@
 import React, { Fragment } from "react";
-import Moment from "react-moment";
 import ReactMarkdown from "react-markdown";
+import { Heading, Text, Flex } from "@chakra-ui/react";
+import dayjs from "dayjs";
 
 import Seo from "src/components/Seo";
 
-import { fetchAPI } from "../../lib/api";
-import { getStrapiMedia } from "../../lib/media";
+import { fetchAPI } from "src/utils/api";
+import { getStrapiMedia } from "src/utils/media";
 
 const Article = ({ article, categories }) => {
   const imageUrl = getStrapiMedia(article.attributes.image);
@@ -20,51 +21,35 @@ const Article = ({ article, categories }) => {
   return (
     <Fragment>
       <Seo seo={seo} />
-      <div
-        id="banner"
-        className="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding uk-margin"
-        data-src={imageUrl}
-        data-srcset={imageUrl}
-        data-uk-img
-      >
-        <h1>{article.attributes.title}</h1>
-      </div>
-      <div className="uk-section">
-        <div className="uk-container uk-container-small">
+      <Flex mt="72px" w="100%" justify="center">
+        <Flex
+          direction="column"
+          w="100%"
+          maxW={{ base: "360px", sm: "460px", md: "730px" }}
+          p={{ base: "12px", sm: "24px", md: "40px", lg: "60px" }}
+          border="1px solid black"
+        >
+          <Flex
+            mb="2rem"
+            w="100%"
+            display="inline-flex"
+            fontSize="sm"
+            align="center"
+          >
+            <Text display="inline">
+              {dayjs(article.attributes.published_at).format("MMM DD")}
+            </Text>
+            <Text mx="8px" display="inline" fontSize="6px">
+              &bull;
+            </Text>
+            <Text display="inline">{`${article.attributes.minutes_to_read} min read`}</Text>
+          </Flex>
+
+          <Heading mb="2rem">{article.attributes.title}</Heading>
+
           <ReactMarkdown children={article.attributes.content} />
-          <hr className="uk-divider-small" />
-          <div className="uk-grid-small uk-flex-left" data-uk-grid="true">
-            <div>
-              {article.attributes.author.data.attributes.picture && (
-                <img
-                  src={getStrapiMedia(
-                    article.attributes.author.data.attributes.picture
-                  )}
-                  alt={
-                    article.attributes.author.data.attributes.picture.data
-                      .attributes.alternativeText
-                  }
-                  style={{
-                    position: "static",
-                    borderRadius: "20%",
-                    height: 60,
-                  }}
-                />
-              )}
-            </div>
-            <div className="uk-width-expand">
-              <p className="uk-margin-remove-bottom">
-                By {article.attributes.author.data.attributes.name}
-              </p>
-              <p className="uk-text-meta uk-margin-remove-top">
-                <Moment format="MMM Do YYYY">
-                  {article.attributes.published_at}
-                </Moment>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </Fragment>
   );
 };
