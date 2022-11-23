@@ -35,8 +35,10 @@ export async function getStaticProps() {
     fetchAPI("/homepage", {
       populate: {
         seo: { populate: "*" },
-        featured_post: { populate: "*" },
-        // featured_post: { populate: { FeaturedPost: { populate: "image" } } },
+        // featured_post: { populate: "*" },
+        featured_post: {
+          populate: { article: { populate: "image" } },
+        },
       },
     }),
   ]);
