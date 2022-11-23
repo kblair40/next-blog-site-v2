@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import ReactMarkdown from "react-markdown";
-import { Heading, Text, Flex } from "@chakra-ui/react";
+import { Heading, Text, Flex, Divider } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
+import { TwitterIcon, FacebookIcon } from "src/utils/icons";
 import Seo from "src/components/Seo";
-
 import { fetchAPI } from "src/utils/api";
 import { getStrapiMedia } from "src/utils/media";
 
@@ -48,6 +48,8 @@ const Article = ({ article, categories }) => {
           <Heading mb="2rem">{article.attributes.title}</Heading>
 
           <ReactMarkdown children={article.attributes.content} />
+
+          <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
         </Flex>
       </Flex>
     </Fragment>
