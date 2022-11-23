@@ -22,7 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
           href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>
-      <ChakraProvider theme={theme}>
+      <ChakraProvider theme={theme} resetCSS={true}>
         <GlobalContext.Provider value={global.attributes}>
           <Layout>
             <Component {...pageProps} />
