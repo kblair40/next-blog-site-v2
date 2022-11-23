@@ -13,7 +13,9 @@ const HomePage = ({ articles, categories, homepage }) => {
   return (
     <Box minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
       <SEO seo={homepage?.attributes.seo} />
-      {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
+      <Box mt="90px">
+        {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
+      </Box>
       {/* <div className="uk-section">
         <div className="uk-container uk-container-large">
           <Articles articles={articles} />

@@ -15,19 +15,24 @@ const Navbar = ({ categories }) => {
   console.log("NAVBAR CATEGORIES:", categories);
   const router = useRouter();
   return (
-    <Box>
-      <TextLogo />
-
-      <Box w="100%" display={{ base: "none", md: "block" }}>
-        <Flex justify="space-evenly" h="50px">
-          {navLinks.map((linkObj, i) => {
-            return <NavLink linkObj={linkObj} key={i} />;
-          })}
-          <NavLink>
-            <SocialLinks />
-          </NavLink>
-        </Flex>
-      </Box>
+    <Box
+      // border="1px solid red"
+      w="100%"
+      display={{ base: "none", md: "block" }}
+      h="50px"
+    >
+      <Flex
+        justify="space-evenly"
+        h="100%"
+        //
+      >
+        {navLinks.map((linkObj, i) => {
+          return <NavLink linkObj={linkObj} key={i} />;
+        })}
+        <NavLink>
+          <SocialLinks />
+        </NavLink>
+      </Flex>
     </Box>
   );
 };

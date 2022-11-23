@@ -75,7 +75,6 @@ const FeaturedPost = ({ featuredPost }) => {
               transition="color 0.3s"
             >
               {featuredPost.attributes.title}
-              {/* {featuredPost?.title || ""} */}
             </Text>
 
             <Text
