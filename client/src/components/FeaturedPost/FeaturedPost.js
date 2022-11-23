@@ -10,7 +10,13 @@ const FeaturedPost = ({ featuredPost }) => {
   return (
     <React.Fragment>
       <Box
-        width={{ base: "340px", sm: "420px", md: "700px", lg: "900px" }}
+        width={{
+          base: "calc(100vw - 32px)",
+          sm: "calc(100vw - 64px)",
+          md: "700px",
+          lg: "900px",
+        }}
+        // width={{ base: "340px", sm: "420px", md: "700px", lg: "900px" }}
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
@@ -43,7 +49,12 @@ const FeaturedPost = ({ featuredPost }) => {
       </Box>
 
       <Flex
-        width={{ base: "340px", sm: "420px", md: "700px", lg: "900px" }}
+        width={{
+          base: "calc(100vw - 32px)",
+          sm: "calc(100vw - 64px)",
+          md: "700px",
+          lg: "900px",
+        }}
         direction="column"
         p="28px 24px 25px"
         border="1px solid black"

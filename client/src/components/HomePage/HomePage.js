@@ -36,8 +36,8 @@ const SubscribeSection = () => {
       borderTop="1px solid black"
       borderBottom="1px solid black"
       width={{
-        base: "340px",
-        sm: "calc(100% - 68px)",
+        base: "calc(100vw - 32px)",
+        sm: "calc(100vw - 64px)",
         md: "700px",
         lg: "900px",
       }}
