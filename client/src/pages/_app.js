@@ -1,19 +1,12 @@
-// import '../styles/globals.css'
-
-// function MyApp({ Component, pageProps }) {
-//   return <Component {...pageProps} />
-// }
-
-// export default MyApp
-
+import { createContext } from "react";
 import App from "next/app";
 import Head from "next/head";
-import "../assets/css/style.css";
-import { createContext } from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { fetchAPI } from "src/utils/api";
 import theme from "src/utils/theme";
 import { getStrapiMedia } from "src/utils/media";
-import { ChakraProvider } from "@chakra-ui/react";
+import "../assets/css/style.css";
+import Layout from "src/components/Layout";
 
 // Store Strapi Global object in context
 export const GlobalContext = createContext({});
