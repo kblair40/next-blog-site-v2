@@ -5,7 +5,7 @@ import Image from "src/components/Image";
 
 const Card = ({ article }) => {
   return (
-    <Link href={`/article/${article.attributes.slug}`}>
+    <Link href={`/article/${article.attributes.slug}`} legacyBehavior>
       <a className="uk-link-reset">
         <div className="uk-card uk-card-muted">
           <div className="uk-card-media-top">
