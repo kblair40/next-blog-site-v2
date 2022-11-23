@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_sections_featured_posts",
+  "info": {
+    "displayName": "FeaturedPost",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    }
+  }
+}

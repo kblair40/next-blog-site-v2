@@ -37,7 +37,7 @@
     "image": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -54,6 +54,9 @@
     "featured": {
       "type": "boolean",
       "default": false
+    },
+    "minutes_to_read": {
+      "type": "integer"
     }
   }
 }

@@ -22,7 +22,6 @@ const Home = ({ articles, categories, homepage }) => {
         articles={articles}
         categories={categories}
         homepage={homepage}
-        //
       />
     </Box>
   );
@@ -31,22 +30,16 @@ const Home = ({ articles, categories, homepage }) => {
 export async function getStaticProps() {
   // Run API calls in parallel
   const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI("/articles", { populate: ["image", "category", "createdAt"] }),
-    // fetchAPI("/articles", { populate: ["image", "category"] }),
+    fetchAPI("/articles", { populate: ["image", "category"] }),
     fetchAPI("/categories", { populate: "*" }),
     fetchAPI("/homepage", {
       populate: {
-        hero: "*",
         seo: { populate: "*" },
+        featured_post: { populate: "*" },
+        // featured_post: { populate: { FeaturedPost: { populate: "image" } } },
       },
     }),
   ]);
-
-  // console.log("\nFETCH RESPONSES:", {
-  //   articles: articlesRes.data,
-  //   categories: categoriesRes.data,
-  //   homepage: homepageRes.data,
-  // });
 
   return {
     props: {

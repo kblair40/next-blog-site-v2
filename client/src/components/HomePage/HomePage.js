@@ -1,19 +1,24 @@
 import React from "react";
 import { Flex, Heading, Input, Button, Box } from "@chakra-ui/react";
-import Articles from "src/components/Articles";
+// import Articles from "src/components/Articles";
 import SEO from "src/components/SEO";
-// import FeaturedPost from "components/FeaturedPost";
+import FeaturedPost from "src/components/FeaturedPost";
 
 const HomePage = ({ articles, categories, homepage }) => {
+  let featuredPost;
+  if (homepage && homepage.attributes?.featured_post) {
+    featuredPost = homepage.attributes.featured_post.article.data;
+    console.log("FEATURED POST:", featuredPost);
+  }
   return (
-    <Box minH="100vh" maxW="100vw" overflowX="hidden">
+    <Box minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
       <SEO seo={homepage?.attributes.seo} />
-      <div className="uk-section">
+      {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
+      {/* <div className="uk-section">
         <div className="uk-container uk-container-large">
-          <h1>{homepage?.attributes.hero.title}</h1>
           <Articles articles={articles} />
         </div>
-      </div>
+      </div> */}
     </Box>
   );
 };
