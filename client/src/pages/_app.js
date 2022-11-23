@@ -2,6 +2,7 @@ import { createContext } from "react";
 import App from "next/app";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
+
 import { fetchAPI } from "src/utils/api";
 import theme from "src/utils/theme";
 import { getStrapiMedia } from "src/utils/media";
