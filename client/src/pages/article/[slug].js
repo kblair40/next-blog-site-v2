@@ -9,8 +9,11 @@ import {
   Tooltip,
   Box,
   IconButton,
+  useClipboard,
+  useToast,
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
+import { useRouter } from "next/router";
 
 import { TwitterIcon, FacebookIcon, CopyIcon } from "src/utils/icons";
 import Seo from "src/components/Seo";
@@ -109,6 +112,37 @@ const ShareLinks = () => {
     _active: { bg: "gray.100" },
   };
 
+  const router = useRouter();
+  console.log("\n\nROUTER:", router.asPath, "\n\n");
+
+  const { onCopy } = useClipboard(
+    "https://www.moneyandotherthings.com" + router.asPath
+  );
+  const toast = useToast();
+
+  const handleClickCopy = () => {
+    onCopy();
+    toast({
+      duration: 2000,
+      render: () => (
+        <Flex w="100%" justify="center">
+          <Flex
+            maxW="max-content"
+            justify="center"
+            align="center"
+            p="8px 1rem"
+            bg="gray.100"
+            rounded="md"
+          >
+            <Text fontSize="xl" fontWeight="600">
+              Copied!
+            </Text>
+          </Flex>
+        </Flex>
+      ),
+    });
+  };
+
   return (
     <HStack spacing="1.5rem">
       <Tooltip label="Share to Facebook">
@@ -129,6 +163,7 @@ const ShareLinks = () => {
         <IconButton
           {...iconButtonProps}
           icon={<CopyIcon boxSize={boxSize} />}
+          onClick={handleClickCopy}
         />
       </Tooltip>
     </HStack>
