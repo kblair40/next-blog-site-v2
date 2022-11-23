@@ -5,10 +5,7 @@ import { Text, Flex, Box } from "@chakra-ui/react";
 
 import { getStrapiMedia } from "src/utils/media";
 import Image from "next/image";
-// import Image from "src/components/Image";
-{
-  /* <Link href={`/article/${article.attributes.slug}`} legacyBehavior> */
-}
+
 const Card = ({ article }) => {
   return (
     <React.Fragment>
