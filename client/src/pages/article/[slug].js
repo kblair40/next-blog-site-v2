@@ -131,10 +131,10 @@ const ShareLinks = () => {
             justify="center"
             align="center"
             p="8px 1rem"
-            bg="gray.100"
+            bg="brand.lightgreen"
             rounded="md"
           >
-            <Text fontSize="xl" fontWeight="600">
+            <Text fontSize="xl" fontWeight="600" color="white">
               Copied!
             </Text>
           </Flex>
