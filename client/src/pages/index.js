@@ -2,8 +2,9 @@ import Head from "next/head";
 import { Box } from "@chakra-ui/react";
 
 import HomePage from "src/components/HomePage";
+import { fetchAPI } from "src/utils/api";
 
-export default function Home() {
+const Home = ({ articles, categories, homepage }) => {
   return (
     <Box>
       <Head>
@@ -12,7 +13,37 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomePage />
+      <HomePage
+        articles={articles}
+        categories={categories}
+        homepage={homepage}
+        //
+      />
     </Box>
   );
+};
+
+export async function getStaticProps() {
+  // Run API calls in parallel
+  const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
+    fetchAPI("/articles", { populate: ["image", "category"] }),
+    fetchAPI("/categories", { populate: "*" }),
+    fetchAPI("/homepage", {
+      populate: {
+        hero: "*",
+        seo: { populate: "*" },
+      },
+    }),
+  ]);
+
+  return {
+    props: {
+      articles: articlesRes.data,
+      categories: categoriesRes.data,
+      homepage: homepageRes.data,
+    },
+    revalidate: 1,
+  };
 }
+
+export default Home;

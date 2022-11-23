@@ -1,14 +1,19 @@
 import React from "react";
 import { Flex, Heading, Input, Button, Box } from "@chakra-ui/react";
+import Articles from "src/components/Articles";
+import SEO from "src/components/SEO";
 // import FeaturedPost from "components/FeaturedPost";
 
-const HomePage = () => {
+const HomePage = ({ articles, categories, homepage }) => {
   return (
     <Box minH="100vh" maxW="100vw" overflowX="hidden">
-      <Flex pt="80px" pb="2rem" direction="column" align="center" w="100%">
-        {/* <FeaturedPost /> */}
-        <SubscribeSection />
-      </Flex>
+      <SEO seo={homepage?.attributes.seo} />
+      <div className="uk-section">
+        <div className="uk-container uk-container-large">
+          <h1>{homepage?.attributes.hero.title}</h1>
+          <Articles articles={articles} />
+        </div>
+      </div>
     </Box>
   );
 };
@@ -78,3 +83,10 @@ const SubscribeSection = () => {
     </Flex>
   );
 };
+
+{
+  /* <Flex pt="80px" pb="2rem" direction="column" align="center" w="100%">
+  <FeaturedPost />
+  <SubscribeSection />
+</Flex> */
+}
