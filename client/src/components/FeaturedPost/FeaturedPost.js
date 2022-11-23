@@ -72,11 +72,10 @@ const FeaturedPost = ({ featuredPost }) => {
             {featuredPost.attributes.minutes_to_read
               ? `${featuredPost.attributes.minutes_to_read} min`
               : null}
-            {/* {featuredPost.attributes.minutes_to_read || "&nbsp;"} */}
           </Text>
         </Box>
 
-        <Link href={featuredPost ? `/post/${featuredPost.id}` : "#"}>
+        <Link href={featuredPost ? `/article/${featuredPost.slug}` : "#"}>
           <Flex direction="column" role="group" cursor="pointer">
             <Text
               fontWeight="700"
