@@ -11,11 +11,13 @@ const HomePage = ({ articles, categories, homepage }) => {
     console.log("FEATURED POST:", featuredPost);
   }
   return (
-    <Box minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
+    <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
       <SEO seo={homepage?.attributes.seo} />
-      <Box mt="90px">
+      <Flex direction="column" align="center" mt="90px">
         {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
-      </Box>
+        <SubscribeSection />
+      </Flex>
+
       {/* <div className="uk-section">
         <div className="uk-container uk-container-large">
           <Articles articles={articles} />
@@ -52,6 +54,7 @@ const SubscribeSection = () => {
         flex={{ md: 1 }}
         fontWeight="800"
         mb={{ base: "1.5rem", md: 0 }}
+        mr={{ md: "1rem" }}
       >
         Never Miss a New Post.
       </Heading>
