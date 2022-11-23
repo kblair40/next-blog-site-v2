@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -12,12 +12,17 @@ import {
   Stack,
   Button,
   Divider,
+  Text,
 } from "@chakra-ui/react";
-// import Link from "next/link";
+import Link from "next/link";
 
+import { navLinks } from "../links";
 import { SocialLinks } from "../Navbar";
 
-const MobileNav = ({ isOpen, onClose }) => {
+const MobileNav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDrawer = () => setIsOpen((prev) => !prev);
+
   return (
     <React.Fragment>
       <Flex
@@ -53,11 +58,11 @@ const MobileNav = ({ isOpen, onClose }) => {
           justify="center"
           align="center"
         >
-          <HamburgerButton />
+          <HamburgerButton onClick={toggleDrawer} />
         </Flex>
       </Flex>
 
-      <NavDrawer isOpen={isOpen} onClose={onClose} />
+      <NavDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </React.Fragment>
   );
 };
@@ -70,21 +75,30 @@ const NavDrawer = ({ isOpen, onClose }) => {
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Create your account</DrawerHeader>
 
         <DrawerBody>
-          Drawer Body
-          {/* <Input placeholder="Type here..." /> */}
+          <Stack
+            spacing="1.5rem"
+            h="100%"
+            w="100%"
+            align="center"
+            justifyContent="center"
+          >
+            {navLinks.map((link, i) => {
+              return <MobileLink key={i} link={link} />;
+            })}
+          </Stack>
         </DrawerBody>
-
-        <DrawerFooter>
-          <Button variant="outline" mr={3} onClick={onClose}>
-            Cancel
-          </Button>
-          <Button colorScheme="blue">Save</Button>
-        </DrawerFooter>
       </DrawerContent>
     </Drawer>
+  );
+};
+
+const MobileLink = ({ link }) => {
+  return (
+    <Link href={link.to || "#"}>
+      <Text fontSize="17px">{link.label}</Text>
+    </Link>
   );
 };
 
