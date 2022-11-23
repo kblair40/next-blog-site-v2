@@ -16,7 +16,7 @@ const Posts = ({ articles, categories }) => {
   return (
     <Fragment>
       <Flex justify="center">
-        <Stack mt="3rem" spacing="1.5rem">
+        <Stack mt="2rem" spacing="1.5rem">
           {articles && articles.length
             ? articles.map((article, i) => {
                 return <Card article={article} key={i} />;
