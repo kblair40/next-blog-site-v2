@@ -5,6 +5,11 @@ import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
 
 const Home = ({ articles, categories, homepage }) => {
+  console.log("\nFETCH RESPONSES:", {
+    articles,
+    categories,
+    homepage,
+  });
   return (
     <Box>
       <Head>
@@ -26,7 +31,8 @@ const Home = ({ articles, categories, homepage }) => {
 export async function getStaticProps() {
   // Run API calls in parallel
   const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI("/articles", { populate: ["image", "category"] }),
+    fetchAPI("/articles", { populate: ["image", "category", "createdAt"] }),
+    // fetchAPI("/articles", { populate: ["image", "category"] }),
     fetchAPI("/categories", { populate: "*" }),
     fetchAPI("/homepage", {
       populate: {
@@ -35,6 +41,12 @@ export async function getStaticProps() {
       },
     }),
   ]);
+
+  // console.log("\nFETCH RESPONSES:", {
+  //   articles: articlesRes.data,
+  //   categories: categoriesRes.data,
+  //   homepage: homepageRes.data,
+  // });
 
   return {
     props: {
