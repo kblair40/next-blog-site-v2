@@ -1,18 +1,18 @@
 import React from "react";
 import { Box, Flex, Text, Heading, Center, HStack } from "@chakra-ui/react";
 import Link from "next/link";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import {
   FacebookIcon,
   TwitterIcon,
   PinterestIcon,
   InstagramIcon,
-} from "utils/icons";
+} from "src/utils/icons";
 import { navLinks } from "./links";
 
 const Navbar = () => {
-  // const router = useRouter();
+  const router = useRouter();
   return (
     <Box>
       <TextLogo />
