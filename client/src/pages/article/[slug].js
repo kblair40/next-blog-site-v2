@@ -1,9 +1,18 @@
 import React, { Fragment } from "react";
 import ReactMarkdown from "react-markdown";
-import { Heading, Text, Flex, Divider } from "@chakra-ui/react";
+import {
+  Heading,
+  Text,
+  Flex,
+  Divider,
+  HStack,
+  Tooltip,
+  Box,
+  IconButton,
+} from "@chakra-ui/react";
 import dayjs from "dayjs";
 
-import { TwitterIcon, FacebookIcon } from "src/utils/icons";
+import { TwitterIcon, FacebookIcon, CopyIcon } from "src/utils/icons";
 import Seo from "src/components/Seo";
 import { fetchAPI } from "src/utils/api";
 import { getStrapiMedia } from "src/utils/media";
@@ -50,6 +59,10 @@ const Article = ({ article, categories }) => {
           <ReactMarkdown children={article.attributes.content} />
 
           <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
+
+          <Box w="100%" mt="1rem">
+            <ShareLinks />
+          </Box>
         </Flex>
       </Flex>
     </Fragment>
@@ -85,3 +98,39 @@ export async function getStaticProps({ params }) {
 }
 
 export default Article;
+
+const ShareLinks = () => {
+  const boxSize = "16px";
+  const iconButtonProps = {
+    size: "sm",
+    rounded: "full",
+    bg: "white",
+    _hover: { bg: "gray.50" },
+    _active: { bg: "gray.100" },
+  };
+
+  return (
+    <HStack spacing="1.5rem">
+      <Tooltip label="Share to Facebook">
+        <IconButton
+          {...iconButtonProps}
+          icon={<FacebookIcon boxSize={boxSize} />}
+        />
+      </Tooltip>
+
+      <Tooltip label="Share to Twitter">
+        <IconButton
+          {...iconButtonProps}
+          icon={<TwitterIcon boxSize={boxSize} />}
+        />
+      </Tooltip>
+
+      <Tooltip label="Copy link to this post">
+        <IconButton
+          {...iconButtonProps}
+          icon={<CopyIcon boxSize={boxSize} />}
+        />
+      </Tooltip>
+    </HStack>
+  );
+};
