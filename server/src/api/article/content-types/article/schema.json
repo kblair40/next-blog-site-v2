@@ -50,6 +50,10 @@
     },
     "preview_text": {
       "type": "text"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

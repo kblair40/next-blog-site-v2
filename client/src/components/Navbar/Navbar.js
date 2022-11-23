@@ -11,7 +11,8 @@ import {
 } from "src/utils/icons";
 import { navLinks } from "./links";
 
-const Navbar = () => {
+const Navbar = ({ categories }) => {
+  console.log("NAVBAR CATEGORIES:", categories);
   const router = useRouter();
   return (
     <Box>
