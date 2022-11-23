@@ -5,26 +5,11 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          {/* eslint-disable-next-line */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
           <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Staatliches"
-          />
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/uikit@3.10.1/dist/css/uikit.min.css"
-          />
-          <script
-            async
-            src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"
-          />
-          <script
-            async
-            src="https://cdn.jsdelivr.net/npm/uikit@3.10.1/dist/js/uikit-icons.min.js"
-          />
-          <script
-            async
-            src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js"
           />
         </Head>
         <body>
