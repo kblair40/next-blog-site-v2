@@ -14,15 +14,17 @@ const SmallLogo = () => {
     <Flex
       align="center"
       direction="column"
-      pt="60px"
+      pt="72px"
       mb={{ base: "28px", md: "58px" }}
+      borderBottom="1px solid #303030"
+      pb="1rem"
     >
       <Heading
         maxW="90vw"
         color="brand.darkgreen"
         fontFamily="Playfair Display"
         textAlign="center"
-        fontSize={{ base: "36px", sm: "48px", md: "64px", lg: "72px" }}
+        fontSize={{ base: "36px", sm: "42px" }}
         lineHeight="normal"
         mb="10px"
         fontWeight="800"
