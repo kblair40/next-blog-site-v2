@@ -3,6 +3,7 @@ import { Flex, Heading, Input, Button, Box } from "@chakra-ui/react";
 // import Articles from "src/components/Articles";
 import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
+import ContactForm from "src/components/Forms/ContactForm";
 
 const HomePage = ({ articles, categories, homepage }) => {
   let featuredPost;
@@ -13,10 +14,12 @@ const HomePage = ({ articles, categories, homepage }) => {
   return (
     <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
       <SEO seo={homepage?.attributes.seo} />
-      <Flex direction="column" align="center" mt="90px">
+      <Flex direction="column" align="center" mt="90px" mb="2rem">
         {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
         <SubscribeSection />
       </Flex>
+
+      <ContactForm />
 
       {/* <div className="uk-section">
         <div className="uk-container uk-container-large">
