@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -25,7 +23,7 @@ const MobileNav = () => {
   const toggleDrawer = () => setIsOpen((prev) => !prev);
 
   const { asPath } = useRouter();
-  console.log("ROUTER:", asPath);
+  // console.log("ROUTER:", asPath);
 
   useEffect(() => {
     // close drawer when current path changes.
@@ -80,12 +78,17 @@ export default MobileNav;
 
 const NavDrawer = ({ isOpen, onClose }) => {
   return (
-    <Drawer isOpen={isOpen} onClose={onClose} placement="right">
+    <Drawer
+      size={{ base: "full", sm: "xs" }}
+      isOpen={isOpen}
+      onClose={onClose}
+      placement="right"
+    >
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
 
-        <DrawerBody>
+        <DrawerBody px="2rem">
           <Stack
             spacing="1.5rem"
             h="100%"
@@ -104,10 +107,25 @@ const NavDrawer = ({ isOpen, onClose }) => {
 };
 
 const MobileLink = ({ link }) => {
+  const { asPath } = useRouter();
+
+  const to = link.to;
+  const isActive = to === asPath;
+
   return (
-    <Link href={link.to || "#"}>
-      <Text fontSize="17px">{link.label}</Text>
-    </Link>
+    <Box w="100%" role="group">
+      <Link href={link.to || "#"}>
+        <Text
+          textAlign={"center"}
+          color={isActive ? "brand.lightgreen" : "text.body"}
+          fontSize="17px"
+          transition="color 0.3s"
+          _groupHover={{ color: "brand.lightgreen" }}
+        >
+          {link.label}
+        </Text>
+      </Link>
+    </Box>
   );
 };
 
