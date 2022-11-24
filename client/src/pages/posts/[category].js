@@ -1,24 +1,32 @@
 import React, { Fragment } from "react";
-import { Flex, Stack } from "@chakra-ui/react";
+import { Flex, Stack, Text } from "@chakra-ui/react";
 
 // import Seo from "src/components/Seo";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Articles/Card";
 
 const Posts = ({ articles, category }) => {
-  const seo = {
-    // metaTitle: article.attributes.title,
-    // metaDescription: article.attributes.description,
-    // shareImage: article.attributes.image,
-    // article: true,
-  };
-
-  console.log("ARTICLES/CATEGORIES:", { articles, category });
+  // const seo = {
+  //   metaTitle: article.attributes.title,
+  //   metaDescription: article.attributes.description,
+  //   shareImage: article.attributes.image,
+  //   article: true,
+  // };
+  // console.log("ARTICLES/CATEGORIES:", { articles, category });
 
   return (
     <Fragment>
       <Flex justify="center">
         <Stack mt="2rem" spacing="1.5rem">
+          {/* <Text
+            mt="-1rem"
+            alignSelf="start"
+            textTransform="capitalize"
+            fontSize="3xl"
+            fontWeight="600"
+          >
+            {category}
+          </Text> */}
           {articles && articles.length
             ? articles.map((article, i) => {
                 return <Card article={article} key={i} />;
