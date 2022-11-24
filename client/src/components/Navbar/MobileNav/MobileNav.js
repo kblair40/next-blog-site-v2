@@ -51,7 +51,7 @@ const MobileNav = () => {
           justify="center"
           align="center"
         >
-          <SocialLinks spacing="1rem" iconBoxSize="22px" />
+          <SocialLinks spacing="1rem" iconBoxSize="26px" />
         </Flex>
 
         <Box my="-8px" h="56px">
@@ -131,8 +131,8 @@ const MobileLink = ({ link }) => {
 
 const HamburgerButton = ({ onClick }) => {
   return (
-    <Button variant="unstyled" onClick={onClick} w="40px">
-      <Stack p="4px 8px" spacing="4px">
+    <Button variant="unstyled" onClick={onClick} w="32px">
+      <Stack p="4px 6px" spacing="6px">
         <Box h="2px" bg="text.body" w="100%" />
         <Box h="2px" bg="text.body" w="100%" />
         <Box h="2px" bg="text.body" w="100%" />
