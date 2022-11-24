@@ -1,8 +1,18 @@
 import React from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
-import { Text, Flex, Box } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Box,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from "@chakra-ui/react";
 
+import { MoreVerticalIcon } from "src/utils/icons";
 import { getStrapiMedia } from "src/utils/media";
 import Image from "next/image";
 
@@ -16,7 +26,26 @@ const Card = ({ article }) => {
       w={{ base: "90vw", sm: "90vw", md: "622px" }}
       h={{ base: "200px", sm: "240px", md: "231px" }}
       border="1px solid #303030"
+      position="relative"
     >
+      <Menu>
+        <MenuButton
+          position="absolute"
+          top="1rem"
+          right="1rem"
+          as={IconButton}
+          variant="ghost"
+          rounded="full"
+          _hover={{ bg: "gray.50" }}
+          _active={{ bg: "gray.50" }}
+          size="sm"
+          icon={<MoreVerticalIcon boxSize="18px" />}
+        />
+        <MenuList py={0}>
+          <MenuItem>Share Post</MenuItem>
+        </MenuList>
+      </Menu>
+
       <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative">
         {article && article.attributes && article.attributes.image ? (
           <Image
