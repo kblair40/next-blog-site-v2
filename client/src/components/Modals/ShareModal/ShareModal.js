@@ -24,14 +24,19 @@ const ShareModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="sm" isCentered>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      size={{ base: "xs", sm: "xs" }}
+      isCentered
+    >
       <ModalOverlay />
       <ModalContent rounded="lg">
         <ModalCloseButton />
         <ModalHeader fontWeight="600">Share</ModalHeader>
 
         <ModalBody pb="2rem">
-          <Stack direction="row" spacing="2rem" justify="center">
+          <Stack direction="row" justify="space-between">
             <EmailShareButton>
               <IconButton
                 rounded="full"
