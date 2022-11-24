@@ -32,7 +32,8 @@ const ContactForm = () => {
       </Heading>
 
       <Stack
-        align={{ base: "start" }}
+        w="100%"
+        align={{ base: "center" }}
         spacing="1rem"
         direction={{ base: "column" }}
       >
@@ -43,6 +44,7 @@ const ContactForm = () => {
           placeholder="Name"
           pl=".5rem"
           focusBorderColor="gray.300"
+          maxW="500px"
         />
 
         <Input
@@ -52,6 +54,7 @@ const ContactForm = () => {
           placeholder="Email"
           pl=".5rem"
           focusBorderColor="gray.300"
+          maxW="500px"
         />
 
         <Textarea
@@ -63,6 +66,7 @@ const ContactForm = () => {
           pl=".5rem"
           rows={4}
           focusBorderColor="gray.300"
+          maxW="500px"
         />
 
         <Flex w="100%" justify="center">
