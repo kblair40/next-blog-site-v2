@@ -72,12 +72,12 @@ const ContactForm = () => {
         <Flex w="100%" justify="center">
           <Button
             w="100%"
-            shadow="sm"
-            bg="brand.lightgreen"
+            shadow="md"
+            bg="white"
             size="lg"
-            color="white"
-            _hover={{ bg: "brand.darkgreen" }}
-            _active={{ bg: "brand.darkgreen" }}
+            color="black"
+            _hover={{ bg: "brand.darkgreen", color: "white" }}
+            _active={{ bg: "brand.darkgreen", color: "white" }}
             maxW="500px"
             borderRadius="2px"
             onClick={handleSubmit}
