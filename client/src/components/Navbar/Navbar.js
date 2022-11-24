@@ -12,7 +12,7 @@ import {
 import { navLinks } from "./links";
 
 const Navbar = ({ categories }) => {
-  console.log("NAVBAR CATEGORIES:", categories);
+  // console.log("NAVBAR CATEGORIES:", categories);
   const router = useRouter();
   return (
     <Box

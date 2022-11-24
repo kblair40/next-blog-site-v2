@@ -47,8 +47,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getStaticPaths(args) {
-  // console.log("STATIC PATH ARGS:", args);
+export async function getStaticPaths() {
   // let articlesRes;
   // try {
   //   articlesRes = await fetchAPI("/articles", {
