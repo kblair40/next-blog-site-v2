@@ -6,10 +6,10 @@ import {
   Text,
   Flex,
   Stack,
-  Divider,
   Button,
 } from "@chakra-ui/react";
 
+import BookRecommendation from "src/components/BookRecommendation";
 import Card from "src/components/Articles/Card";
 
 const AdditionalPosts = () => {
@@ -21,7 +21,7 @@ const AdditionalPosts = () => {
       gap={4}
       mb="2rem"
     >
-      <GridItem pb="1rem">
+      <GridItem pb="1rem" pt="1rem">
         <Text mb="2rem" fontSize="2xl" letterSpacing={"5px"}>
           TRAIN OF THOUGHT
         </Text>
@@ -44,8 +44,10 @@ const AdditionalPosts = () => {
           </Flex>
         </Stack>
       </GridItem>
-      <GridItem bg="black">{/* Divider */}</GridItem>
-      <GridItem>Right Content</GridItem>
+      <GridItem bg="black" />
+      <GridItem pt="1rem">
+        <BookRecommendation />
+      </GridItem>
     </Grid>
   );
 };
