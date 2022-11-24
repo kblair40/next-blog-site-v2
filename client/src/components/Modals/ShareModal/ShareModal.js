@@ -9,16 +9,24 @@ import {
   Flex,
   Stack,
   Button,
+  IconButton,
 } from "@chakra-ui/react";
 import {
   EmailShareButton,
   FacebookShareButton,
   TwitterShareButton,
+  TwitterIcon,
+  FacebookIcon,
+  EmailIcon,
 } from "react-share";
 
 // const ShareModal = ({ isOpen, onClose }) => {
 const ShareModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleShareWindowClose = () => {
+    console.log("SHARE WINDOW CLOSED");
+  };
 
   return (
     <Fragment>
@@ -39,15 +47,27 @@ const ShareModal = () => {
           <ModalHeader>Share</ModalHeader>
 
           <ModalBody>
-            <Stack direction="row">
+            <Stack direction="row" justify="space-evenly">
               <EmailShareButton>
-                <Button>Email</Button>
+                <IconButton
+                  rounded="full"
+                  size="sm"
+                  icon={<EmailIcon size={42} round={true} />}
+                />
               </EmailShareButton>
-              <FacebookShareButton>
-                <Button>FB</Button>
+              <FacebookShareButton onShareWindowClose={handleShareWindowClose}>
+                <IconButton
+                  rounded="full"
+                  size="sm"
+                  icon={<FacebookIcon size={42} round={true} />}
+                />
               </FacebookShareButton>
-              <TwitterShareButton>
-                <Button>Twitter</Button>
+              <TwitterShareButton onShareWindowClose={handleShareWindowClose}>
+                <IconButton
+                  rounded="full"
+                  size="sm"
+                  icon={<TwitterIcon size={42} round={true} />}
+                />
               </TwitterShareButton>
             </Stack>
           </ModalBody>
