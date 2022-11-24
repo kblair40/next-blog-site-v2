@@ -16,7 +16,8 @@ const AdditionalPosts = () => {
   return (
     <Grid
       // border="1px solid #303030"
-      templateColumns={{ md: "1fr 1px 1fr" }}
+      templateColumns={{ base: "1fr", md: "1fr 1px 1fr" }}
+      templateRows={{ base: "auto 1px auto", md: "auto" }}
       gap={4}
       mb="2rem"
     >
