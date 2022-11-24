@@ -44,14 +44,21 @@ const ShareModal = ({ isOpen, onClose }) => {
                 icon={<EmailIcon size={54} round={true} />}
               />
             </EmailShareButton>
-            <FacebookShareButton onShareWindowClose={handleShareWindowClose}>
+            <FacebookShareButton
+              url="https://www.moneyandotherthings.com/"
+              onShareWindowClose={handleShareWindowClose}
+            >
               <IconButton
                 rounded="full"
                 size="sm"
                 icon={<FacebookIcon size={54} round={true} />}
               />
             </FacebookShareButton>
-            <TwitterShareButton onShareWindowClose={handleShareWindowClose}>
+
+            <TwitterShareButton
+              url="https://www.moneyandotherthings.com/"
+              onShareWindowClose={handleShareWindowClose}
+            >
               <IconButton
                 rounded="full"
                 size="sm"
