@@ -40,9 +40,15 @@ const ShareModal = () => {
 
           <ModalBody>
             <Stack direction="row">
-              <EmailShareButton />
-              <FacebookShareButton />
-              <TwitterShareButton />
+              <EmailShareButton>
+                <Button>Email</Button>
+              </EmailShareButton>
+              <FacebookShareButton>
+                <Button>FB</Button>
+              </FacebookShareButton>
+              <TwitterShareButton>
+                <Button>Twitter</Button>
+              </TwitterShareButton>
             </Stack>
           </ModalBody>
         </ModalContent>
