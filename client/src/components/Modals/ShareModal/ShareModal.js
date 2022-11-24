@@ -24,33 +24,33 @@ const ShareModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} size="sm" isCentered>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent rounded="lg">
         <ModalCloseButton />
-        <ModalHeader>Share</ModalHeader>
+        <ModalHeader fontWeight="600">Share</ModalHeader>
 
-        <ModalBody>
-          <Stack direction="row" justify="space-evenly">
+        <ModalBody pb="2rem">
+          <Stack direction="row" spacing="2rem" justify="center">
             <EmailShareButton>
               <IconButton
                 rounded="full"
                 size="sm"
-                icon={<EmailIcon size={42} round={true} />}
+                icon={<EmailIcon size={54} round={true} />}
               />
             </EmailShareButton>
             <FacebookShareButton onShareWindowClose={handleShareWindowClose}>
               <IconButton
                 rounded="full"
                 size="sm"
-                icon={<FacebookIcon size={42} round={true} />}
+                icon={<FacebookIcon size={54} round={true} />}
               />
             </FacebookShareButton>
             <TwitterShareButton onShareWindowClose={handleShareWindowClose}>
               <IconButton
                 rounded="full"
                 size="sm"
-                icon={<TwitterIcon size={42} round={true} />}
+                icon={<TwitterIcon size={54} round={true} />}
               />
             </TwitterShareButton>
           </Stack>
