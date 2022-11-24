@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -15,6 +15,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { navLinks } from "../links";
 import { SocialLinks } from "../Navbar";
@@ -22,6 +23,14 @@ import { SocialLinks } from "../Navbar";
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => setIsOpen((prev) => !prev);
+
+  const { asPath } = useRouter();
+  console.log("ROUTER:", asPath);
+
+  useEffect(() => {
+    // close drawer when current path changes.
+    setIsOpen(false);
+  }, [asPath]);
 
   return (
     <React.Fragment>
