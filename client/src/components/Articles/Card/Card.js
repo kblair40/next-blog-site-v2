@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import {
@@ -12,6 +12,7 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 
+import ShareModal from "src/components/Modals/ShareModal";
 import { MoreVerticalIcon } from "src/utils/icons";
 import { getStrapiMedia } from "src/utils/media";
 import Image from "next/image";
@@ -20,6 +21,8 @@ import Image from "next/image";
 // 622 x 231
 
 const Card = ({ article }) => {
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+
   return (
     <Flex
       maxW={{ base: "90vw" }}
@@ -28,6 +31,11 @@ const Card = ({ article }) => {
       border="1px solid #303030"
       position="relative"
     >
+      <ShareModal
+        isOpen={shareModalOpen}
+        onClose={() => setShareModalOpen(false)}
+      />
+
       <Menu>
         <MenuButton
           position="absolute"
@@ -42,7 +50,9 @@ const Card = ({ article }) => {
           icon={<MoreVerticalIcon boxSize="18px" />}
         />
         <MenuList py={0}>
-          <MenuItem>Share Post</MenuItem>
+          <MenuItem onClick={() => setShareModalOpen(true)}>
+            Share Post
+          </MenuItem>
         </MenuList>
       </Menu>
 
