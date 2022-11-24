@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Heading, Input, Button, Box } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, Box, Divider } from "@chakra-ui/react";
 // import Articles from "src/components/Articles";
 import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
@@ -23,6 +23,8 @@ const HomePage = ({ articles, categories, homepage }) => {
       {/* TRAIN OF THOUGHT */}
 
       <AdditionalPosts />
+
+      <Divider borderColor="#303030" mb="2rem" />
 
       <ContactForm />
     </Box>
