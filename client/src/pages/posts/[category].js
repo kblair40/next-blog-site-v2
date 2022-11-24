@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { Flex, Stack } from "@chakra-ui/react";
 
-import Seo from "src/components/Seo";
+// import Seo from "src/components/Seo";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Articles/Card";
 
-const Posts = ({ articles, categories }) => {
+const Posts = ({ articles, category }) => {
   const seo = {
     // metaTitle: article.attributes.title,
     // metaDescription: article.attributes.description,
@@ -13,68 +13,48 @@ const Posts = ({ articles, categories }) => {
     // article: true,
   };
 
-  console.log("ARTICLES/CATEGORIES:", { articles, categories });
+  console.log("ARTICLES/CATEGORIES:", { articles, category });
 
-  return null;
-  // return (
-  //   <Fragment>
-  //     <Flex justify="center">
-  //       <Stack mt="2rem" spacing="1.5rem">
-  //         {articles && articles.length
-  //           ? articles.map((article, i) => {
-  //               return <Card article={article} key={i} />;
-  //             })
-  //           : null}
-  //       </Stack>
-  //     </Flex>
-  //   </Fragment>
-  // );
+  return (
+    <Fragment>
+      <Flex justify="center">
+        <Stack mt="2rem" spacing="1.5rem">
+          {articles && articles.length
+            ? articles.map((article, i) => {
+                return <Card article={article} key={i} />;
+              })
+            : null}
+        </Stack>
+      </Flex>
+    </Fragment>
+  );
 };
 
 export async function getStaticProps({ params }) {
   console.log("PARAMS:", params);
   const category = params.category;
   console.log("CATEGORY:", category);
-  const articlesRes = await fetchAPI("/articles", {
-    populate: "*",
-  });
+  // const articlesRes = await fetchAPI("/articles", {
+  //   populate: "*",
+  // });
   const categoriesRes = await fetchAPI("/categories", {
     filters: {
       name: category,
     },
-    populate: "*",
-    // populate: {
-    //   articles: {
-    //     where: {
-    //       name: { $eq: category },
-    //     },
-    //   },
-    // },
+    populate: {
+      articles: { populate: "image" },
+    },
   });
 
-  console.log("n\nARTICLES RES:", articlesRes);
-  console.log("n\nCATEGORIES RES:", categoriesRes);
+  // console.log("n\nARTICLES RES:", articlesRes.data);
+  console.log("n\nCATEGORIES RES:", categoriesRes.data);
+  let articles = categoriesRes.data[0].attributes.articles.data;
 
   return {
-    props: { articles: articlesRes.data, categories: categoriesRes },
+    props: { articles, category },
     revalidate: 1,
   };
 }
-
-// export async function getStaticProps({ params }) {
-//   console.log("PARAMS:", params);
-//   const articlesRes = await fetchAPI("/articles", {
-//     populate: "*",
-//   });
-//   const categoriesRes = await fetchAPI("/categories");
-
-//   console.log("n\nARTICLES RES:", articlesRes);
-
-//   return {
-//     props: { articles: articlesRes.data, categories: categoriesRes },
-//     revalidate: 1,
-//   };
-// }
 
 export async function getStaticPaths() {
   // let articlesRes;

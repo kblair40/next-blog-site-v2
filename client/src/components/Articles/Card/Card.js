@@ -18,12 +18,14 @@ const Card = ({ article }) => {
       border="1px solid #303030"
     >
       <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative">
-        <Image
-          alt="post image"
-          src={getStrapiMedia(article.attributes.image)}
-          objectFit="cover"
-          fill
-        />
+        {article && article.attributes && article.attributes.image ? (
+          <Image
+            alt="post image"
+            src={getStrapiMedia(article.attributes.image)}
+            objectFit="cover"
+            fill
+          />
+        ) : null}
       </Box>
 
       <Flex
