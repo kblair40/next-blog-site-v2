@@ -1,24 +1,53 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import {
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Flex,
+  Stack,
+  Button,
 } from "@chakra-ui/react";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  TwitterShareButton,
+} from "react-share";
 
+// const ShareModal = ({ isOpen, onClose }) => {
 const ShareModal = () => {
-  return (
-    <Modal isOpen={isOpen}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Share</ModalHeader>
+  const [isOpen, setIsOpen] = useState(false);
 
-        <ModalBody>ShareModalShareModalShareModalShareModal</ModalBody>
-      </ModalContent>
-    </Modal>
+  return (
+    <Fragment>
+      <Button
+        onClick={() => setIsOpen(true)}
+        position="fixed"
+        bottom="1rem"
+        right="1rem"
+        size="sm"
+      >
+        modal
+      </Button>
+
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalHeader>Share</ModalHeader>
+
+          <ModalBody>
+            <Stack direction="row">
+              <EmailShareButton />
+              <FacebookShareButton />
+              <TwitterShareButton />
+            </Stack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </Fragment>
   );
 };
 

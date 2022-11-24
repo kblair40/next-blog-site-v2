@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
 
+import ShareModal from "src/components/Modals/ShareModal";
 import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
 
@@ -23,6 +24,7 @@ const Home = ({ articles, categories, homepage }) => {
         categories={categories}
         homepage={homepage}
       />
+      <ShareModal />
     </Box>
   );
 };
