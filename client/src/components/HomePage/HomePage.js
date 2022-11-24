@@ -4,6 +4,7 @@ import { Flex, Heading, Input, Button, Box } from "@chakra-ui/react";
 import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
 import ContactForm from "src/components/Forms/ContactForm";
+import AdditionalPosts from "./AdditionalPosts";
 
 const HomePage = ({ articles, categories, homepage }) => {
   let featuredPost;
@@ -19,13 +20,11 @@ const HomePage = ({ articles, categories, homepage }) => {
         <SubscribeSection />
       </Flex>
 
-      <ContactForm />
+      {/* TRAIN OF THOUGHT */}
 
-      {/* <div className="uk-section">
-        <div className="uk-container uk-container-large">
-          <Articles articles={articles} />
-        </div>
-      </div> */}
+      <AdditionalPosts />
+
+      <ContactForm />
     </Box>
   );
 };
