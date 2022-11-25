@@ -18,8 +18,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi",
-    "heroku-pre-build": "cd server"
+    "strapi": "strapi"
   },
   "author": {
     "name": "A Strapi developer"
@@ -32,5 +31,6 @@
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "packageManager": "yarn@3.3.0"
 }
