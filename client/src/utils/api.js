@@ -1,5 +1,8 @@
 import qs from "qs";
 
+const token = process.env.NEXT_PUBLIC_API_TOKEN || "";
+console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
+
 /**
  * Get full Strapi URL from path
  * @param {string} path Path of the URL
@@ -19,11 +22,18 @@ export function getStrapiURL(path = "") {
  * @returns Parsed API call response
  */
 export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
+  let headers = {
+    "Content-Type": "application/json",
+  };
+  if (token) {
+    headers["Authorization"] = `bearer ${token}`;
+  }
   // Merge default and user options
   const mergedOptions = {
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers,
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
     ...options,
   };
 
@@ -39,6 +49,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
 
   // Trigger API call
   const response = await fetch(requestUrl, mergedOptions);
+  console.log("\n\nAPI RESPONSE:", response, "\n\n");
 
   // Handle response
   if (!response.ok) {

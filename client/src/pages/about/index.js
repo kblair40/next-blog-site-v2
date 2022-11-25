@@ -1,7 +1,10 @@
 import React from "react";
 import { Text, Box, Flex, Heading } from "@chakra-ui/react";
 
-const AboutPage = () => {
+import { fetchAPI } from "src/utils/api";
+
+const AboutPage = ({ about }) => {
+  console.log("ABOUT PROP:", about);
   return (
     <Flex
       px={{ base: "1rem", sm: "1.5rem", md: "2rem" }}
@@ -41,3 +44,31 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
+export async function getStaticProps() {
+  try {
+    // const about = await fetchAPI("/about");
+    // const about = await fetchAPI("/about", {
+    //   populate: ["image", "description"],
+    // });
+    const about = await fetchAPI("/about", {
+      populate: {
+        about_content: {
+          populate: {
+            about_content: "*",
+          },
+        },
+      },
+    });
+    console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
+
+    return {
+      props: { about: about.data },
+    };
+  } catch (e) {
+    console.log("ABOUT ERROR:", e);
+    return {
+      props: {},
+    };
+  }
+}
