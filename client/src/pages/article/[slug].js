@@ -16,7 +16,7 @@ import dayjs from "dayjs";
 import { useRouter } from "next/router";
 
 import { TwitterIcon, FacebookIcon, CopyIcon } from "src/utils/icons";
-import Seo from "src/components/Seo";
+import Seo from "src/components/SEO";
 import { fetchAPI } from "src/utils/api";
 import { getStrapiMedia } from "src/utils/media";
 
