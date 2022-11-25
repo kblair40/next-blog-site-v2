@@ -1,7 +1,7 @@
 import qs from "qs";
 
 const token = process.env.NEXT_PUBLIC_API_TOKEN || "";
-console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
+// console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
 
 /**
  * Get full Strapi URL from path
@@ -44,15 +44,19 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`;
 
-  // Trigger API call
-  const response = await fetch(requestUrl, mergedOptions);
-  // console.log("\n\nAPI RESPONSE:", response, "\n\n");
+  try {
+    // Trigger API call
+    const response = await fetch(requestUrl, mergedOptions);
+    // console.log("\n\nAPI RESPONSE:", response, "\n\n");
 
-  // Handle response
-  if (!response.ok) {
-    console.error(response.statusText);
-    throw new Error(`An error occured please try again`);
+    // Handle response
+    if (!response.ok) {
+      console.error(response.statusText);
+      throw new Error(`An error occured please try again`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    console.log("\n\nFETCH FAILED:", e, "\n\n");
   }
-  const data = await response.json();
-  return data;
 }
