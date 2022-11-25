@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, Box, Flex, Heading } from "@chakra-ui/react";
+import Image from "next/image";
 
 import { fetchAPI } from "src/utils/api";
 
@@ -47,20 +48,12 @@ export default AboutPage;
 
 export async function getStaticProps() {
   try {
-    // const about = await fetchAPI("/about");
-    // const about = await fetchAPI("/about", {
-    //   populate: ["image", "description"],
-    // });
     const about = await fetchAPI("/about", {
       populate: {
-        about_content: {
-          populate: {
-            about_content: "*",
-          },
-        },
+        about_content: { populate: ["image"] },
       },
     });
-    console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
+    // console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
 
     return {
       props: { about: about.data },
