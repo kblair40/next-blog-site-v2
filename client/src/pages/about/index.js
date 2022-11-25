@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, Box, Flex, Heading } from "@chakra-ui/react";
+import { Text, Box, Flex, Heading, Divider } from "@chakra-ui/react";
 import Image from "next/image";
 
+import ContactForm from "src/components/Forms/ContactForm";
 import { getStrapiMedia } from "src/utils/media";
 import { fetchAPI } from "src/utils/api";
 
@@ -37,6 +38,10 @@ const AboutPage = ({ about }) => {
           <Text>{about.description}</Text>
         </Flex>
       </Box>
+
+      <Divider my="3rem" borderColor="text.body" />
+
+      <ContactForm />
     </Flex>
   );
 };
