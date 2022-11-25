@@ -15,6 +15,7 @@ const AboutPage = ({ about }) => {
       w="100%"
       mt="2rem"
       pb="2rem"
+      minW="332px"
     >
       <Box w="100%" border="1px solid #303030" position="relative">
         <Box
