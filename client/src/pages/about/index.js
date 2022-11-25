@@ -2,10 +2,10 @@ import React from "react";
 import { Text, Box, Flex, Heading } from "@chakra-ui/react";
 import Image from "next/image";
 
+import { getStrapiMedia } from "src/utils/media";
 import { fetchAPI } from "src/utils/api";
 
 const AboutPage = ({ about }) => {
-  console.log("ABOUT PROP:", about);
   return (
     <Flex
       px={{ base: "1rem", sm: "1.5rem", md: "2rem" }}
@@ -15,16 +15,18 @@ const AboutPage = ({ about }) => {
       mt="2rem"
       pb="2rem"
     >
-      <Box w="100%" border="1px solid #303030">
+      <Box w="100%" border="1px solid #303030" position="relative">
         <Box
           w="100%"
-          // border="1px solid #303030"
+          position="relative"
           h={{ base: "280px", sm: "380px", md: "480px" }}
-          display="flex"
-          justifyContent={"center"}
-          alignItems="center"
         >
-          Image Here
+          <Image
+            alt="about image"
+            src={getStrapiMedia(about.image)}
+            objectFit="cover"
+            fill
+          />
         </Box>
 
         <Flex w="100%" direction="column" px="32px" pb="50px">
@@ -32,12 +34,7 @@ const AboutPage = ({ about }) => {
             Hey! So Glad You're Here.
           </Heading>
 
-          <Text>
-            I'm Erin, a twenty something on a mission to help women understand
-            and take control of their finances. I'm currently pursuing my CFP
-            (Certified Financial Planner) designation and am excited to share
-            lessons learned along the way.
-          </Text>
+          <Text>{about.description}</Text>
         </Flex>
       </Box>
     </Flex>
@@ -56,7 +53,7 @@ export async function getStaticProps() {
     // console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
 
     return {
-      props: { about: about.data },
+      props: { about: about.data.attributes.about_content },
     };
   } catch (e) {
     console.log("ABOUT ERROR:", e);
