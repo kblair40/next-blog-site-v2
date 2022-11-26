@@ -26,7 +26,8 @@ const Card = ({ article }) => {
   return (
     <Flex
       maxW={{ base: "90vw" }}
-      w={{ base: "90vw", sm: "90vw", md: "622px" }}
+      // w={{ base: "90vw", sm: "90vw", md: "622px" }}
+      w={{ base: "90vw", sm: "90vw", md: "100%" }}
       h={{ base: "200px", sm: "240px", md: "231px" }}
       border="1px solid #303030"
       position="relative"
