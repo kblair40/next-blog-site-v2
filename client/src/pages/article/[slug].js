@@ -66,7 +66,7 @@ const Article = ({ article }) => {
           <Box
             sx={{
               ".markdown": {
-                whiteSpace: "pre-wrap",
+                // whiteSpace: "pre-wrap",
                 "& a": {
                   color: "brand.lightgreen",
                 },
