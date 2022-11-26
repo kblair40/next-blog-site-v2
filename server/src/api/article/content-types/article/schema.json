@@ -28,14 +28,6 @@
       "targetField": "title",
       "required": true
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
@@ -47,6 +39,9 @@
     },
     "minutes_to_read": {
       "type": "integer"
+    },
+    "image_url": {
+      "type": "string"
     }
   }
 }

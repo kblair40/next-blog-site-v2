@@ -8,7 +8,7 @@ import "../assets/css/style.css";
 import Layout from "src/components/Layout";
 
 const MyApp = ({ Component, pageProps }) => {
-  const { global } = pageProps;
+  // const { global } = pageProps;
 
   return (
     <>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 
-import { getStrapiMedia } from "src/utils/media";
+// import { getStrapiMedia } from "src/utils/media";
 
 const FeaturedPost = ({ featuredPost }) => {
   return (
@@ -20,12 +20,12 @@ const FeaturedPost = ({ featuredPost }) => {
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
-        <Image
+        {/* <Image
           alt="post image"
           src={getStrapiMedia(featuredPost.attributes.image)}
           objectFit="cover"
           fill
-        />
+        /> */}
 
         <Center
           px={{ base: "1.5rem", md: "2rem" }}

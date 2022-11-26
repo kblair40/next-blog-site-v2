@@ -1,20 +1,12 @@
 import NextImage from "next/image";
+import { Box } from "@chakra-ui/react";
 
 import { getStrapiMedia } from "src/utils/media";
 
 const Image = ({ image }) => {
   const { alternativeText, width, height } = image.data.attributes;
 
-  return (
-    <NextImage
-      layout="responsive"
-      width={width}
-      height={height}
-      objectFit="contain"
-      src={getStrapiMedia(image)}
-      alt={alternativeText || ""}
-    />
-  );
+  return <Box />;
 };
 
 export default Image;

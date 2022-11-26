@@ -3,7 +3,7 @@ import { Text, Box, Flex, Heading, Divider } from "@chakra-ui/react";
 import Image from "next/image";
 
 import ContactForm from "src/components/Forms/ContactForm";
-import { getStrapiMedia } from "src/utils/media";
+// import { getStrapiMedia } from "src/utils/media";
 import { fetchAPI } from "src/utils/api";
 
 const AboutPage = ({ about }) => {
@@ -23,12 +23,12 @@ const AboutPage = ({ about }) => {
           position="relative"
           h={{ base: "280px", sm: "380px", md: "480px" }}
         >
-          <Image
+          {/* <Image
             alt="about image"
             src={getStrapiMedia(about.image)}
             objectFit="cover"
             fill
-          />
+          /> */}
         </Box>
 
         <Flex w="100%" direction="column" px="32px" pb="50px">

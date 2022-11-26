@@ -14,7 +14,7 @@ import {
 
 import ShareModal from "src/components/Modals/ShareModal";
 import { MoreVerticalIcon } from "src/utils/icons";
-import { getStrapiMedia } from "src/utils/media";
+// import { getStrapiMedia } from "src/utils/media";
 import Image from "next/image";
 
 // w = height * 0.371382634
@@ -58,13 +58,14 @@ const Card = ({ article }) => {
 
       <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative">
         {article && article.attributes && article.attributes.image ? (
-          <Image
-            alt="post image"
-            src={getStrapiMedia(article.attributes.image)}
-            objectFit="cover"
-            fill
-          />
-        ) : null}
+          <Box />
+        ) : // <Image
+        //   alt="post image"
+        //   src={getStrapiMedia(article.attributes.image)}
+        //   objectFit="cover"
+        //   fill
+        // />
+        null}
       </Box>
 
       <Flex
