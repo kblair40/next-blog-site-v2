@@ -18,12 +18,6 @@
       "type": "uid",
       "required": true
     },
-    "articles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::article.article",
-      "mappedBy": "category"
-    },
     "name": {
       "type": "enumeration",
       "enum": [
