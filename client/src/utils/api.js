@@ -47,7 +47,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   try {
     // Trigger API call
     const response = await fetch(requestUrl, mergedOptions);
-    // console.log("\n\nAPI RESPONSE:", response, "\n\n");
+    console.log("\n\nAPI RESPONSE:", response, "\n\n");
 
     // Handle response
     if (!response.ok) {
