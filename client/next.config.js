@@ -3,8 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: "default",
-    hostname: "localhost",
-    domains: ["localhost"],
+    // hostname: "localhost",
+    hostname: "money-and-other-things.herokuapp.com",
+    // domains: ["localhost"],
+    domains: ["money-and-other-things.herokuapp.com"],
   },
 };
 
