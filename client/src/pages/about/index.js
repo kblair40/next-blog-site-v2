@@ -23,12 +23,12 @@ const AboutPage = ({ about }) => {
           position="relative"
           h={{ base: "280px", sm: "380px", md: "480px" }}
         >
-          {/* <Image
+          <Image
             alt="about image"
-            src={getStrapiMedia(about.image)}
+            src={about.image_url}
             objectFit="cover"
             fill
-          /> */}
+          />
         </Box>
 
         <Flex w="100%" direction="column" px="32px" pb="50px">
