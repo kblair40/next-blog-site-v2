@@ -47,12 +47,6 @@
     },
     "minutes_to_read": {
       "type": "integer"
-    },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category",
-      "inversedBy": "article"
     }
   }
 }

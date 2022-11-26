@@ -26,11 +26,10 @@
       ],
       "required": true
     },
-    "article": {
+    "articles": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::article.article",
-      "inversedBy": "category"
+      "relation": "oneToMany",
+      "target": "api::article.article"
     }
   }
 }
