@@ -19,11 +19,11 @@ const Home = ({ articles, categories, homepage }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomePage
+      {/* <HomePage
         articles={articles}
         categories={categories}
         homepage={homepage}
-      />
+      /> */}
       <ShareModal />
     </Box>
   );
@@ -46,11 +46,12 @@ export async function getStaticProps() {
   ]);
 
   return {
-    props: {
-      articles: articlesRes.data,
-      categories: categoriesRes.data,
-      homepage: homepageRes.data,
-    },
+    props: {},
+    // props: {
+    //   articles: articlesRes.data,
+    //   categories: categoriesRes.data,
+    //   homepage: homepageRes.data,
+    // },
     revalidate: 1,
   };
 }
