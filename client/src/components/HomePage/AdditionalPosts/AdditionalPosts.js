@@ -69,21 +69,10 @@ const DUMMY_ARTICLE = {
     minutes_to_read: 5,
     preview_text:
       "preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text preview text",
-    title: "Testing Life",
-    slug: "testing-life",
-    image: {
-      data: {
-        attributes: {
-          url: "/uploads/combining_finances_30e318c630.webp",
-          size: 198.85,
-          width: 3628,
-          height: 2419,
-          ext: ".jpg",
-          alternativeText: "a-bug-is-becoming-a-meme-on-the-internet",
-        },
-        id: 7,
-      },
-    },
+    title: "Test Post",
+    slug: "test-post",
+    image_url:
+      "https://res.cloudinary.com/erinsblog/image/upload/v1669501841/luke-mckeown-nlyWZtWTzCo-unsplash_tulqa1.jpg",
   },
   id: 8,
 };

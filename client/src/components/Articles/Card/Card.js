@@ -57,15 +57,14 @@ const Card = ({ article }) => {
       </Menu>
 
       <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative">
-        {article && article.attributes && article.attributes.image ? (
-          <Box />
-        ) : // <Image
-        //   alt="post image"
-        //   src={getStrapiMedia(article.attributes.image)}
-        //   objectFit="cover"
-        //   fill
-        // />
-        null}
+        {article && article.attributes && article.attributes.image_url ? (
+          <Image
+            alt="post image"
+            src={article.attributes.image_url}
+            objectFit="cover"
+            fill
+          />
+        ) : null}
       </Box>
 
       <Flex
