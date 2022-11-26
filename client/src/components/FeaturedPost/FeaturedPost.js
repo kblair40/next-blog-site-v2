@@ -20,12 +20,12 @@ const FeaturedPost = ({ featuredPost }) => {
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
-        {/* <Image
+        <Image
           alt="post image"
-          src={getStrapiMedia(featuredPost.attributes.image)}
+          src={featuredPost.attributes.image_url}
           objectFit="cover"
           fill
-        /> */}
+        />
 
         <Center
           px={{ base: "1.5rem", md: "2rem" }}
