@@ -28,5 +28,8 @@
     "react-share": "^4.4.1",
     "react-tabs": "^5.1.0",
     "use-debounce": "^8.0.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0"
   }
 }
