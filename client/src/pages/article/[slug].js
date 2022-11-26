@@ -18,10 +18,9 @@ import { useRouter } from "next/router";
 import { TwitterIcon, FacebookIcon, CopyIcon } from "src/utils/icons";
 import Seo from "src/components/SEO";
 import { fetchAPI } from "src/utils/api";
-import { getStrapiMedia } from "src/utils/media";
 
-const Article = ({ article, categories }) => {
-  const imageUrl = getStrapiMedia(article.attributes.image);
+const Article = ({ article }) => {
+  // TODO: ADD SCRIPT THAT RUNS WHEN CONTENT CHANGES AND ADDS target=_blank TO ALL ANCHOR ELEMENTS
 
   const seo = {
     metaTitle: article.attributes.title,
@@ -33,11 +32,16 @@ const Article = ({ article, categories }) => {
   return (
     <Fragment>
       <Seo seo={seo} />
-      <Flex mt="72px" w="100%" justify="center">
+      <Flex
+        mt="72px"
+        w="100%"
+        justify="center"
+        px={{ base: "1rem", sm: "2rem", md: "4rem" }}
+      >
         <Flex
           direction="column"
           w="100%"
-          maxW={{ base: "360px", sm: "460px", md: "730px" }}
+          maxW={{ lg: "1000px" }}
           p={{ base: "12px", sm: "24px", md: "40px", lg: "60px" }}
           border="1px solid black"
         >
@@ -59,7 +63,20 @@ const Article = ({ article, categories }) => {
 
           <Heading mb="2rem">{article.attributes.title}</Heading>
 
-          <ReactMarkdown children={article.attributes.content} />
+          <Box
+            sx={{
+              ".markdown": {
+                whiteSpace: "pre-wrap",
+                "& a": {
+                  color: "brand.lightgreen",
+                },
+              },
+            }}
+          >
+            <ReactMarkdown className="markdown">
+              {article.attributes.content}
+            </ReactMarkdown>
+          </Box>
 
           <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
 

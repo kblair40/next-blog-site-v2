@@ -67,7 +67,7 @@ const DUMMY_ARTICLE = {
     image: {
       data: {
         attributes: {
-          url: "/uploads/a_bug_is_becoming_a_meme_on_the_internet_1b70b42b12.jpg",
+          url: "/uploads/combining_finances_30e318c630.webp",
           size: 198.85,
           width: 3628,
           height: 2419,
