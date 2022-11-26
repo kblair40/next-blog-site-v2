@@ -56,7 +56,7 @@ export async function getStaticProps() {
         about_content: { populate: ["image"] },
       },
     });
-    // console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
+    console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
 
     return {
       props: { about: about.data.attributes.about_content },

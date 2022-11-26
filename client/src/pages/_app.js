@@ -1,16 +1,11 @@
-import { createContext } from "react";
 import App from "next/app";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import { fetchAPI } from "src/utils/api";
 import theme from "src/utils/theme";
-import { getStrapiMedia } from "src/utils/media";
 import "../assets/css/style.css";
 import Layout from "src/components/Layout";
-
-// Store Strapi Global object in context
-export const GlobalContext = createContext({});
 
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps;
@@ -18,18 +13,15 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <link
+        {/* <link
           rel="shortcut icon"
           href={getStrapiMedia(global.attributes.favicon)}
-        />
+        /> */}
       </Head>
       <ChakraProvider theme={theme} resetCSS={true}>
-        <GlobalContext.Provider value={global.attributes}>
-          {/* <GlobalContext.Provider> */}
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </GlobalContext.Provider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ChakraProvider>
     </>
   );
@@ -54,7 +46,7 @@ MyApp.getInitialProps = async (ctx) => {
   console.log("GLOBAL RES:", globalRes);
   // Pass the data to our page via props
   // return appProps;
-  return { ...appProps, pageProps: { global: globalRes.data } };
+  return { ...appProps };
 };
 
 export default MyApp;
