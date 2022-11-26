@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  GridItem,
-  Text,
-  Flex,
-  Stack,
-  Button,
-  Box,
-  Divider,
-} from "@chakra-ui/react";
+import { Text, Flex, Stack, Button, Box } from "@chakra-ui/react";
 
 import BookRecommendation from "src/components/BookRecommendation";
 import Card from "src/components/Articles/Card";
@@ -16,7 +7,6 @@ import Card from "src/components/Articles/Card";
 const AdditionalPosts = () => {
   return (
     <Flex
-      // border="1px solid black"
       direction={{ base: "column", md: "row" }}
       mb="2rem"
       justify="space-between"
@@ -59,12 +49,9 @@ const AdditionalPosts = () => {
 
       <Box
         w="min-content"
-        // w="100%"
         pt="1rem"
-        maxW="320px"
-        minW="240px"
-        // border="1px solid green"
-        //
+        maxW={{ md: "320px" }}
+        minW={{ md: "240px" }}
       >
         <BookRecommendation />
       </Box>
@@ -100,39 +87,3 @@ const DUMMY_ARTICLE = {
   },
   id: 8,
 };
-
-// <Grid
-//   // templateColumns={{ base: "1fr", md: "1fr 1px 1fr" }}
-//   templateColumns={{ base: "1fr", md: "1fr 1px minmax(200px, 300px)" }}
-//   templateRows={{ base: "auto 1px auto", md: "auto" }}
-//   gap={4}
-//   mb="2rem"
-// >
-//   <GridItem pb="1rem" pt="1rem">
-//     <Text mb="2rem" fontSize="2xl" letterSpacing={"5px"}>
-//       TRAIN OF THOUGHT
-//     </Text>
-
-//     <Stack spacing="1.5rem">
-//       <Card article={DUMMY_ARTICLE} />
-//       <Card article={DUMMY_ARTICLE} />
-//       <Flex justify="center">
-//         <Button
-//           w="100%"
-//           maxW="200px"
-//           color="white"
-//           bg="brand.lightgreen"
-//           _hover={{ bg: "brand.darkgreen" }}
-//           _active={{ bg: "brand.darkgreen" }}
-//           borderRadius="2px"
-//         >
-//           More Posts
-//         </Button>
-//       </Flex>
-//     </Stack>
-//   </GridItem>
-//   <GridItem bg="black" />
-//   <GridItem pt="1rem">
-//     <BookRecommendation />
-//   </GridItem>
-// </Grid>
