@@ -25,6 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <ChakraProvider theme={theme} resetCSS={true}>
         <GlobalContext.Provider value={global.attributes}>
+          {/* <GlobalContext.Provider> */}
           <Layout>
             <Component {...pageProps} />
           </Layout>
@@ -50,7 +51,9 @@ MyApp.getInitialProps = async (ctx) => {
       },
     },
   });
+  console.log("GLOBAL RES:", globalRes);
   // Pass the data to our page via props
+  // return appProps;
   return { ...appProps, pageProps: { global: globalRes.data } };
 };
 
