@@ -12,12 +12,12 @@ const AdditionalPosts = () => {
       justify="space-between"
     >
       <Flex justify="center" flex={{ md: 1 }} py="1rem">
-        <Box w="100%" maxW="700px">
+        <Box w="100%" maxW={{ md: "700px" }}>
           <Text mb="2rem" fontSize="2xl" letterSpacing={"5px"}>
             TRAIN OF THOUGHT
           </Text>
 
-          <Stack spacing="1.5rem">
+          <Stack spacing="1.5rem" align="center">
             <Card article={DUMMY_ARTICLE} />
             <Card article={DUMMY_ARTICLE} />
             <Flex justify="center">
@@ -48,7 +48,7 @@ const AdditionalPosts = () => {
       </Flex>
 
       <Box
-        w="min-content"
+        w={{ base: "100%", md: "min-content" }}
         pt="1rem"
         maxW={{ md: "320px" }}
         minW={{ md: "240px" }}
