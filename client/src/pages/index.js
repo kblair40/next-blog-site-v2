@@ -5,12 +5,9 @@ import ShareModal from "src/components/Modals/ShareModal";
 import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
 
-const Home = ({ articles, categories, homepage }) => {
-  console.log("\nFETCH RESPONSES:", {
-    articles,
-    categories,
-    homepage,
-  });
+const Home = ({ homepage }) => {
+  console.log("\nFETCH RESPONSES:", { homepage });
+
   return (
     <Box>
       <Head>
@@ -19,11 +16,11 @@ const Home = ({ articles, categories, homepage }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <HomePage
-        articles={articles}
-        categories={categories}
+      <HomePage
+        // articles={articles}
+        // categories={categories}
         homepage={homepage}
-      /> */}
+      />
       <ShareModal />
     </Box>
   );
@@ -31,27 +28,40 @@ const Home = ({ articles, categories, homepage }) => {
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI("/articles", { populate: ["image", "category"] }),
-    fetchAPI("/categories", { populate: "*" }),
-    fetchAPI("/homepage", {
-      populate: {
-        seo: { populate: "*" },
-        // featured_post: { populate: "*" },
-        featured_post: {
-          populate: { article: { populate: "image" } },
-        },
+  const homepageRes = await fetchAPI("/homepage", {
+    populate: {
+      featured_post: {
+        populate: { article: "*" },
+        // populate: { article: { populate: "image" } },
       },
-    }),
-  ]);
+    },
+  });
+
+  // Backup
+  // const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
+  //   fetchAPI("/articles", { populate: ["image", "category"] }),
+  //   fetchAPI("/categories", { populate: "*" }),
+  //   fetchAPI("/homepage", {
+  //     populate: {
+  //       seo: { populate: "*" },
+  //       featured_post: {
+  //         populate: { article: { populate: "image" } },
+  //       },
+  //     },
+  //   }),
+  // ]);
 
   return {
-    props: {},
     // props: {
-    //   articles: articlesRes.data,
-    //   categories: categoriesRes.data,
-    //   homepage: homepageRes.data,
+    //   articles: articlesRes,
+    //   categories: categoriesRes,
+    //   homepage: homepageRes,
     // },
+    props: {
+      // articles: articlesRes.data,
+      // categories: categoriesRes.data,
+      homepage: homepageRes.data,
+    },
     revalidate: 1,
   };
 }
