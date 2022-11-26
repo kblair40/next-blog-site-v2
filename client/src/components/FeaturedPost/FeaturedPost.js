@@ -75,7 +75,9 @@ const FeaturedPost = ({ featuredPost }) => {
           </Text>
         </Box>
 
-        <Link href={featuredPost ? `/article/${featuredPost.slug}` : "#"}>
+        <Link
+          href={featuredPost ? `/article/${featuredPost.attributes.slug}` : "#"}
+        >
           <Flex direction="column" role="group" cursor="pointer">
             <Text
               fontWeight="700"
