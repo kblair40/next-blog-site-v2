@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  GridItem,
-  Box,
-  Text,
-  Flex,
-  Stack,
-  Button,
-} from "@chakra-ui/react";
+import { Grid, GridItem, Text, Flex, Stack, Button } from "@chakra-ui/react";
 
 import BookRecommendation from "src/components/BookRecommendation";
 import Card from "src/components/Articles/Card";
@@ -15,7 +7,6 @@ import Card from "src/components/Articles/Card";
 const AdditionalPosts = () => {
   return (
     <Grid
-      // border="1px solid #303030"
       templateColumns={{ base: "1fr", md: "1fr 1px 1fr" }}
       templateRows={{ base: "auto 1px auto", md: "auto" }}
       gap={4}
