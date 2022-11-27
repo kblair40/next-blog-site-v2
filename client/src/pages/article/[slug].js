@@ -70,6 +70,9 @@ const Article = ({ article }) => {
                 "& a": {
                   color: "brand.lightgreen",
                 },
+                // "& img": {
+                //   float: "right",
+                // },
               },
             }}
           >
