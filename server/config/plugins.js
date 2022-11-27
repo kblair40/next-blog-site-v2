@@ -27,6 +27,7 @@ module.exports = () => {
           // if you need markdown support and output set: removePlugins: [''],
           // default is
           // removePlugins: ['Markdown'],
+          removePlugins: [""],
 
           // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html
           toolbar: {
