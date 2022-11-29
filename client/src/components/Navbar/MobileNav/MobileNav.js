@@ -42,8 +42,9 @@ const MobileNav = () => {
         borderBottom="1px solid"
         borderColor="text.body"
         py=".5rem"
+        justify="flex-end"
       >
-        <Flex
+        {/* <Flex
           position="relative"
           flex={1}
           w="100%"
@@ -52,11 +53,11 @@ const MobileNav = () => {
           align="center"
         >
           <SocialLinks spacing="1rem" iconBoxSize="26px" />
-        </Flex>
+        </Flex> */}
 
-        <Box my="-8px" h="56px">
+        {/* <Box my="-8px" h="56px">
           <Divider orientation="vertical" borderColor="text.body" />
-        </Box>
+        </Box> */}
 
         <Flex
           w="100%"
