@@ -13,8 +13,8 @@ import {
 import { navLinks } from "./links";
 
 const Navbar = () => {
-  const gaEventTracker = useAnalyticsEventTracker("Contact us");
   const { asPath } = useRouter();
+
   return (
     <Box w="100%" display={{ base: "none", md: "block" }} h="50px">
       <Flex justify="space-evenly" h="100%">
@@ -48,7 +48,11 @@ const NavLink = ({ linkObj, children, isActive }) => {
       border="1px solid #424242"
       borderRight="none"
     >
-      <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
+      <Link
+        href={linkObj ? linkObj.to : "#"}
+        legacyBehavior
+        onClick={() => console.log("clicked")}
+      >
         <Center
           h="100%"
           fontSize="14px"

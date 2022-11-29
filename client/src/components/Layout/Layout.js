@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import ReactGA from "react-ga";
 
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
 import TextLogo from "src/components/TextLogo";
+import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const layout = ({ children, categories }) => {
+  const { asPath } = useRouter();
+  const logEvent = useAnalyticsEventTracker();
+
+  useEffect(() => {
+    console.log("PAGE CHANGE:", asPath);
+    ReactGA.pageview(asPath);
+  }, [asPath]);
+
   return (
     <Flex
       overflowX="hidden"
