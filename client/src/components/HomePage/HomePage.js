@@ -76,6 +76,7 @@ const SubscribeSection = () => {
           w={{ base: "max-content", sm: "220px", lg: "260px" }}
           placeholder="Email*"
           fontSize="15px"
+          onFocus={() => eventLogger("click", "subscribe_input")}
           _placeholder={{
             fontSize: "15px",
             color: "text.body",
