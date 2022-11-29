@@ -1,8 +1,12 @@
 import ReactGA from "react-ga";
 
 const useAnalyticsEventTracker = () => {
-  const eventTracker = (action = "test action", label = "test label") => {
-    ReactGA.event({ action, label, category: "User" });
+  const eventTracker = (action, label) => {
+    if (!action) return;
+    let evtObject = { action, category: "User" };
+    if (label) evtObject["label"] = label;
+
+    ReactGA.event(evtObject);
   };
   return eventTracker;
 };
