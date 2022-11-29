@@ -4,20 +4,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import { fetchAPI } from "src/utils/api";
 import theme from "src/utils/theme";
-import "../assets/css/style.css";
 import Layout from "src/components/Layout";
+import "../assets/css/style.css";
 
 const MyApp = ({ Component, pageProps }) => {
-  // const { global } = pageProps;
-
   return (
     <>
-      <Head>
-        {/* <link
-          rel="shortcut icon"
-          href={getStrapiMedia(global.attributes.favicon)}
-        /> */}
-      </Head>
+      <Head></Head>
       <ChakraProvider theme={theme} resetCSS={true}>
         <Layout>
           <Component {...pageProps} />

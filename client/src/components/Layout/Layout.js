@@ -7,7 +7,7 @@ import TextLogo from "src/components/TextLogo";
 
 const layout = ({ children, categories }) => {
   return (
-    <Box overflowX="hidden" minH="100vh" id="layout">
+    <Box overflowX="hidden" h="100%" minH="100vh" id="layout">
       <Box display={{ base: "none", md: "block" }}>
         <TextLogo />
         <Navbar categories={categories} />
@@ -23,7 +23,13 @@ const layout = ({ children, categories }) => {
         {children}
       </Box>
 
-      <Text fontSize="sm" mt="3rem" mb="1rem" textAlign="center">
+      <Text
+        border="1px solid green"
+        fontSize="sm"
+        mt="3rem"
+        mb="1rem"
+        textAlign="center"
+      >
         &copy; 2022 moneyandotherthings.com
       </Text>
     </Box>

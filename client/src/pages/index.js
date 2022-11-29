@@ -6,7 +6,7 @@ import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
 
 const Home = ({ homepage }) => {
-  console.log("\nFETCH RESPONSES:", { homepage });
+  // console.log("\nFETCH RESPONSES:", { homepage });
 
   return (
     <Box>
@@ -16,50 +16,23 @@ const Home = ({ homepage }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomePage
-        // articles={articles}
-        // categories={categories}
-        homepage={homepage}
-      />
+      <HomePage homepage={homepage} />
       <ShareModal />
     </Box>
   );
 };
 
 export async function getStaticProps() {
-  // Run API calls in parallel
   const homepageRes = await fetchAPI("/homepage", {
     populate: {
       featured_post: {
         populate: { article: "*" },
-        // populate: { article: { populate: "image" } },
       },
     },
   });
 
-  // Backup
-  // const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-  //   fetchAPI("/articles", { populate: ["image", "category"] }),
-  //   fetchAPI("/categories", { populate: "*" }),
-  //   fetchAPI("/homepage", {
-  //     populate: {
-  //       seo: { populate: "*" },
-  //       featured_post: {
-  //         populate: { article: { populate: "image" } },
-  //       },
-  //     },
-  //   }),
-  // ]);
-
   return {
-    // props: {
-    //   articles: articlesRes,
-    //   categories: categoriesRes,
-    //   homepage: homepageRes,
-    // },
     props: {
-      // articles: articlesRes.data,
-      // categories: categoriesRes.data,
       homepage: homepageRes.data,
     },
     revalidate: 1,
