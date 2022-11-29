@@ -6,14 +6,11 @@ import ReactGA from "react-ga";
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
 import TextLogo from "src/components/TextLogo";
-import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const layout = ({ children, categories }) => {
   const { asPath } = useRouter();
-  const logEvent = useAnalyticsEventTracker();
 
   useEffect(() => {
-    console.log("PAGE CHANGE:", asPath);
     ReactGA.pageview(asPath);
   }, [asPath]);
 
@@ -23,7 +20,6 @@ const layout = ({ children, categories }) => {
       h="100%"
       minH="100vh"
       id="layout"
-      // border="1px solid red"
       direction="column"
       justifyContent="space-between"
     >
