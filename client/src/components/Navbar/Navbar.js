@@ -3,6 +3,7 @@ import { Box, Flex, Text, Heading, Center, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 import {
   FacebookIcon,
   TwitterIcon,
@@ -12,6 +13,7 @@ import {
 import { navLinks } from "./links";
 
 const Navbar = () => {
+  const gaEventTracker = useAnalyticsEventTracker("Contact us");
   const { asPath } = useRouter();
   return (
     <Box w="100%" display={{ base: "none", md: "block" }} h="50px">
