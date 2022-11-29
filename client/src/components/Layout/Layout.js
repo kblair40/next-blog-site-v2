@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
@@ -20,6 +20,10 @@ const layout = ({ children, categories, seo }) => {
       </Box>
 
       <Box position="relative">{children}</Box>
+
+      <Text fontSize="sm" mt="3rem" mb="1rem" textAlign="center">
+        &copy; 2022 moneyandotherthings.com
+      </Text>
     </Box>
   );
 };
