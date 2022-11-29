@@ -25,9 +25,9 @@ const Navbar = () => {
             />
           );
         })}
-        <NavLink>
+        {/* <NavLink>
           <SocialLinks />
-        </NavLink>
+        </NavLink> */}
       </Flex>
     </Box>
   );
@@ -59,38 +59,9 @@ const NavLink = ({ linkObj, children, isActive }) => {
           color={isActive ? "brand.lightgreen" : "text.body"}
         >
           {children ? children : linkObj.label}
-          {/* {linkObj.label} */}
         </Center>
       </Link>
     </Box>
-  );
-};
-
-const TextLogo = () => {
-  return (
-    <Flex
-      align="center"
-      direction="column"
-      pt="60px"
-      mb={{ base: "28px", md: "58px" }}
-      // w="100%"
-    >
-      <Heading
-        maxW="90vw"
-        color="brand.darkgreen"
-        fontFamily="Playfair Display"
-        textAlign="center"
-        fontSize={{ base: "36px", sm: "48px", md: "64px", lg: "72px" }}
-        lineHeight="normal"
-        mb="10px"
-        fontWeight="800"
-      >
-        Money and Other Things
-      </Heading>
-      <Text color="brand.darkgreen" fontSize={{ sm: "17px" }}>
-        A collection of money stories and tips
-      </Text>
-    </Flex>
   );
 };
 
