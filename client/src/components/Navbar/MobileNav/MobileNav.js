@@ -9,14 +9,14 @@ import {
   Flex,
   Stack,
   Button,
-  Divider,
+  // Divider,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { navLinks } from "../links";
-import { SocialLinks } from "../Navbar";
+// import { SocialLinks } from "../Navbar";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
