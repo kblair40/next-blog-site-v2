@@ -72,6 +72,8 @@ const Article = ({ article }) => {
                 },
                 // "& img": {
                 //   float: "right",
+                //   width: "55%",
+                //   marginLeft: "3rem",
                 // },
               },
             }}
