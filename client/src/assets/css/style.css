@@ -165,8 +165,7 @@ a {
 /* ckeditor5-image/theme/imagestyle.css */
 .ck-content .image-style-side {
   float: right;
-  margin-left: var(--ck-image-style-spacing);
-  /* margin-left: 3em; */
+  margin-left: var(--ck-image-style-spacing) !important;
   max-width: 50%;
 }
 /* ckeditor5-image/theme/imagestyle.css */
@@ -524,6 +523,6 @@ a {
 
 .ck-content a {
   /*  */
-  color: #53614D;
+  color: #53614d;
   text-decoration: underline;
 }
