@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import ReactGA from "react-ga";
@@ -10,8 +10,12 @@ import TextLogo from "src/components/TextLogo";
 const layout = ({ children, categories }) => {
   const { asPath } = useRouter();
 
+  const curPath = useRef();
   useEffect(() => {
-    ReactGA.pageview(asPath);
+    if (curPath.current !== asPath) {
+      ReactGA.pageview(asPath);
+      curPath.current = asPath;
+    }
   }, [asPath]);
 
   return (
