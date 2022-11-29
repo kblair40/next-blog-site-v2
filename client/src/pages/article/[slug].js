@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import {
   Heading,
@@ -28,6 +28,14 @@ const Article = ({ article }) => {
     shareImage: article.attributes.image,
     article: true,
   };
+
+  useEffect(() => {
+    // add target=_blank to all links in blog post so they open in new tab
+    let links = Array.from(
+      document.querySelector(".ck-content").getElementsByTagName("a")
+    );
+    links.forEach((link) => (link.target = "_blank"));
+  }, []);
 
   return (
     <Fragment>
@@ -63,24 +71,14 @@ const Article = ({ article }) => {
 
           <Heading mb="2rem">{article.attributes.title}</Heading>
 
-          <Box
-            sx={{
-              ".markdown": {
-                whiteSpace: "pre-wrap",
-                "& a": {
-                  color: "brand.lightgreen",
-                },
-                // "& img": {
-                //   float: "right",
-                //   width: "55%",
-                //   marginLeft: "3rem",
-                // },
-              },
-            }}
-          >
-            <ReactMarkdown className="markdown">
+          <Box w="100%">
+            <Box
+              className="ck-content"
+              dangerouslySetInnerHTML={{ __html: article.attributes.content }}
+            />
+            {/* <ReactMarkdown className="markdown">
               {article.attributes.content}
-            </ReactMarkdown>
+            </ReactMarkdown> */}
           </Box>
 
           <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
