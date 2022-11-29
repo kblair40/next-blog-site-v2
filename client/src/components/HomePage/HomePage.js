@@ -5,13 +5,17 @@ import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
 import ContactForm from "src/components/Forms/ContactForm";
 import AdditionalPosts from "./AdditionalPosts";
+import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const HomePage = ({ articles, categories, homepage }) => {
+  const eventLogger = useAnalyticsEventTracker();
+
   let featuredPost;
   if (homepage && homepage.attributes?.featured_post) {
     featuredPost = homepage.attributes.featured_post.article.data;
-    console.log("FEATURED POST:", featuredPost);
+    // console.log("FEATURED POST:", featuredPost);
   }
+
   return (
     <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
       <SEO seo={homepage?.attributes.seo} />
@@ -34,6 +38,7 @@ const HomePage = ({ articles, categories, homepage }) => {
 export default HomePage;
 
 const SubscribeSection = () => {
+  const eventLogger = useAnalyticsEventTracker();
   return (
     <Flex
       mt="72px"
