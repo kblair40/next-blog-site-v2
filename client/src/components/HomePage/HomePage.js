@@ -1,15 +1,13 @@
 import React from "react";
 import { Flex, Heading, Input, Button, Box, Divider } from "@chakra-ui/react";
-// import Articles from "src/components/Articles";
+
 import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
 import ContactForm from "src/components/Forms/ContactForm";
 import AdditionalPosts from "./AdditionalPosts";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
-const HomePage = ({ articles, categories, homepage }) => {
-  const eventLogger = useAnalyticsEventTracker();
-
+const HomePage = ({ homepage }) => {
   let featuredPost;
   if (homepage && homepage.attributes?.featured_post) {
     featuredPost = homepage.attributes.featured_post.article.data;
@@ -23,8 +21,6 @@ const HomePage = ({ articles, categories, homepage }) => {
         {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
         <SubscribeSection />
       </Flex>
-
-      {/* TRAIN OF THOUGHT */}
 
       <AdditionalPosts />
 
@@ -103,10 +99,3 @@ const SubscribeSection = () => {
     </Flex>
   );
 };
-
-{
-  /* <Flex pt="80px" pb="2rem" direction="column" align="center" w="100%">
-  <FeaturedPost />
-  <SubscribeSection />
-</Flex> */
-}
