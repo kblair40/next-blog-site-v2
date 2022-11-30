@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Flex, Heading, Input, Button, Box, Divider } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Input,
+  Button,
+  Box,
+  Divider,
+  Text,
+} from "@chakra-ui/react";
 import axios from "axios";
 
 import SEO from "src/components/SEO";
@@ -38,6 +46,8 @@ export default HomePage;
 const SubscribeSection = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+
   const eventLogger = useAnalyticsEventTracker();
 
   const handleSubscribe = async () => {
@@ -45,6 +55,8 @@ const SubscribeSection = () => {
       setError("Email address is required");
       return;
     }
+
+    setLoading(true);
 
     try {
       const now = new Date().getTime();
@@ -62,8 +74,14 @@ const SubscribeSection = () => {
 
       console.log("\nSUBSCRIBE RESPONSE:", response.data);
     } catch (e) {
-      console.log("FAILED ADDING NEW SUBSCRIBER:", e);
+      // console.log("FAILED ADDING NEW SUBSCRIBER:", e);
+      const error = e.response?.data?.error;
+      console.log("FAILED ADDING NEW SUBSCRIBER:", error.message);
+      if (error) {
+        setError("Someone with that email address is already subscribed");
+      }
     }
+    setLoading(false);
   };
 
   const handleChangeEmail = (e) => {
@@ -88,6 +106,7 @@ const SubscribeSection = () => {
       justify={{ base: "center", md: "space-between" }}
       px={{ base: "1rem" }}
       direction={{ base: "column", md: "row" }}
+      position="relative"
     >
       <Heading
         textAlign={{ base: "left" }}
@@ -122,6 +141,7 @@ const SubscribeSection = () => {
         />
 
         <Button
+          isLoading={loading}
           w="140px"
           borderRadius="2px"
           ml="12px"
@@ -136,6 +156,18 @@ const SubscribeSection = () => {
           Subscribe
         </Button>
       </Flex>
+
+      {error && (
+        <Text
+          position="absolute"
+          bottom=".5rem"
+          fontSize="13px"
+          color="red.400"
+          whiteSpace="nowrap"
+        >
+          {error}
+        </Text>
+      )}
     </Flex>
   );
 };
