@@ -11,6 +11,8 @@ const SubscribeForm = () => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
+  const toast = useToast();
+
   const eventLogger = useAnalyticsEventTracker();
 
   const handleSubscribe = async () => {
@@ -34,14 +36,17 @@ const SubscribeForm = () => {
           Authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
         },
       });
-      console.log("\nSUBSCRIBE RESPONSE:", response.data);
+      console.log("\nSUBSCRIBE RESPONSE:", response);
 
-      if (
-        response.data &&
-        response.data.attributes &&
-        response.data.attributes.email
-      ) {
-        // Trigger success toast here.
+      if (response.status === 200) {
+        toast({
+          title: "Thanks for subscribing!",
+          // description: "Unsubscribe anytime",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          containerStyle: { backgroundColor: "brand.darkgreen" },
+        });
       }
     } catch (e) {
       // console.log("FAILED ADDING NEW SUBSCRIBER:", e);
