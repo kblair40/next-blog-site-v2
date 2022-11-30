@@ -1,7 +1,17 @@
 import React, { useState } from "react";
-import { Text, Flex, useToast, Heading, Input, Button } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Box,
+  HStack,
+  useToast,
+  Heading,
+  Input,
+  Button,
+} from "@chakra-ui/react";
 import axios from "axios";
 
+import { CheckCircleIcon } from "src/utils/icons";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
@@ -36,20 +46,32 @@ const SubscribeForm = () => {
           Authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
         },
       });
-      console.log("\nSUBSCRIBE RESPONSE:", response);
+      // console.log("\nSUBSCRIBE RESPONSE:", response);
 
       if (response.status === 200) {
         toast({
-          title: "Thanks for subscribing!",
-          // description: "Unsubscribe anytime",
-          status: "success",
           duration: 3000,
           isClosable: true,
-          containerStyle: { backgroundColor: "brand.darkgreen" },
+          // 300 x 48 for chakra version
+          render: () => (
+            <Flex
+              align="center"
+              bg="brand.lightgreen"
+              h="48px"
+              px="1rem"
+              rounded="md"
+            >
+              <HStack spacing="1rem">
+                <CheckCircleIcon fill="white" boxSize="18px" />
+                <Text color="white" fontWeight="700" fontSize="lg">
+                  Thanks for subscribing!
+                </Text>
+              </HStack>
+            </Flex>
+          ),
         });
       }
     } catch (e) {
-      // console.log("FAILED ADDING NEW SUBSCRIBER:", e);
       const error = e.response?.data?.error;
       console.log("FAILED ADDING NEW SUBSCRIBER:", error.message);
       if (error && error.message) {
