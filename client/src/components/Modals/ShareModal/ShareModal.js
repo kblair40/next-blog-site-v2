@@ -40,7 +40,13 @@ const ShareModal = ({ isOpen, onClose, slug, articleData }) => {
 
         <ModalBody pb="2rem">
           <Stack direction="row" justify="space-between">
-            <EmailShareButton>
+            <EmailShareButton
+              disabled={!articleData || !articleData.slug || !articleData.title}
+              subject={articleData?.title}
+              url={`${WEBSITE_URL}article/${articleData?.slug}`}
+              body={articleData?.title}
+              separator={"\n"}
+            >
               <IconButton
                 rounded="full"
                 size="sm"
