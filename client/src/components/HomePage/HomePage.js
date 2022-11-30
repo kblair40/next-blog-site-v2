@@ -16,8 +16,10 @@ const HomePage = ({ homepage }) => {
   return (
     <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
       <SEO seo={homepage?.attributes.seo} />
+
       <Flex direction="column" align="center" mt="90px" mb="2rem">
         {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
+
         <SubscribeForm />
       </Flex>
 
