@@ -31,6 +31,7 @@ const ShareModal = ({ isOpen, onClose, slug, articleData }) => {
       isOpen={isOpen}
       onClose={onClose}
       size={{ base: "xs", sm: "xs" }}
+      returnFocusOnClose={false}
       isCentered
     >
       <ModalOverlay />
