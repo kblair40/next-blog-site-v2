@@ -14,24 +14,18 @@ import {
 } from "@chakra-ui/react";
 
 import ShareModal from "src/components/Modals/ShareModal";
-import { MoreVerticalIcon, ShareIcon } from "src/utils/icons";
-// import { getStrapiMedia } from "src/utils/media";
+import {
+  // MoreVerticalIcon,
+  ShareIcon,
+} from "src/utils/icons";
 import Image from "next/image";
-
-// w = height * 0.371382634
-// 622 x 231
 
 const Card = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
-  const [articleSlug, setArticleSlug] = useState("");
   const [articleData, setArticleData] = useState();
 
   useEffect(() => {
-    // if (article && article.attributes && article.attributes.slug) {
-    //   setArticleSlug(article.attributes.slug);
-    // }
     if (article && article.attributes) {
-      // setArticleSlug(article.attributes.slug);
       setArticleData(article.attributes);
     }
   }, [article]);
@@ -47,7 +41,6 @@ const Card = ({ article }) => {
       <ShareModal
         isOpen={shareModalOpen}
         onClose={() => setShareModalOpen(false)}
-        slug={articleSlug}
         articleData={articleData}
       />
 

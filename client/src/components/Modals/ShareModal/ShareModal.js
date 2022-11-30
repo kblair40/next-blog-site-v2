@@ -21,7 +21,7 @@ import {
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 console.log("WEBSITE_URL:", WEBSITE_URL);
 
-const ShareModal = ({ isOpen, onClose, slug, articleData }) => {
+const ShareModal = ({ isOpen, onClose, articleData }) => {
   const handleShareWindowClose = () => {
     console.log("SHARE WINDOW CLOSED");
   };
