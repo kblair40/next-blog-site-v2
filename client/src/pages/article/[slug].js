@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import {
   Heading,
@@ -15,12 +15,27 @@ import {
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 
-import { TwitterIcon, FacebookIcon, CopyIcon } from "src/utils/icons";
+import ShareModal from "src/components/Modals/ShareModal";
+import {
+  TwitterIcon,
+  FacebookIcon,
+  ShareIcon,
+  CopyIcon,
+} from "src/utils/icons";
 import Seo from "src/components/SEO";
 import { fetchAPI } from "src/utils/api";
 
+const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+
 const Article = ({ article }) => {
-  // TODO: ADD SCRIPT THAT RUNS WHEN CONTENT CHANGES AND ADDS target=_blank TO ALL ANCHOR ELEMENTS
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [articleData, setArticleData] = useState();
+
+  useEffect(() => {
+    if (article && article.attributes) {
+      setArticleData(article.attributes);
+    }
+  }, [article]);
 
   const seo = {
     metaTitle: article.attributes.title,
@@ -39,6 +54,11 @@ const Article = ({ article }) => {
 
   return (
     <Fragment>
+      <ShareModal
+        isOpen={shareModalOpen}
+        onClose={() => setShareModalOpen(false)}
+        articleData={articleData}
+      />
       <Seo seo={seo} />
       <Flex
         mt="72px"
@@ -84,7 +104,7 @@ const Article = ({ article }) => {
           <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
 
           <Box w="100%" mt="1rem">
-            <ShareLinks />
+            <ShareLinks onClickShare={() => setShareModalOpen(true)} />
           </Box>
         </Flex>
       </Flex>
@@ -122,7 +142,7 @@ export async function getStaticProps({ params }) {
 
 export default Article;
 
-const ShareLinks = () => {
+const ShareLinks = ({ onClickShare }) => {
   const boxSize = "16px";
   const iconButtonProps = {
     size: "sm",
@@ -165,17 +185,11 @@ const ShareLinks = () => {
 
   return (
     <HStack spacing="1.5rem">
-      <Tooltip label="Share to Facebook">
+      <Tooltip label="Share Post">
         <IconButton
           {...iconButtonProps}
-          icon={<FacebookIcon boxSize={boxSize} />}
-        />
-      </Tooltip>
-
-      <Tooltip label="Share to Twitter">
-        <IconButton
-          {...iconButtonProps}
-          icon={<TwitterIcon boxSize={boxSize} />}
+          icon={<ShareIcon boxSize={boxSize} />}
+          onClick={onClickShare}
         />
       </Tooltip>
 
