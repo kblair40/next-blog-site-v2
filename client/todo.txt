@@ -1,0 +1,7 @@
+TODO
+1. Google Analytics
+  - Basic functionality complete.
+  - Need to think through what 'events' we want to log for
+2. Share to Twitter/Facebook
+3. Need a way for a user to unsubscribe
+4. Contact form needs to send email to erinjdunne@gmail.com
