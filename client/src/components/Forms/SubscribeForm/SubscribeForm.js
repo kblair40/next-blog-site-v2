@@ -68,6 +68,12 @@ const SubscribeForm = () => {
     if (error) setError();
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && email.length >= 3) {
+      handleSubscribe();
+    }
+  };
+
   return (
     <Flex
       mt="72px"
@@ -116,6 +122,7 @@ const SubscribeForm = () => {
           onFocus={() => eventLogger("click subscribe input")}
           value={email}
           onChange={handleChangeEmail}
+          onKeyDown={handleKeyDown}
         />
 
         <Button
