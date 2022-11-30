@@ -77,8 +77,16 @@ const SubscribeSection = () => {
       // console.log("FAILED ADDING NEW SUBSCRIBER:", e);
       const error = e.response?.data?.error;
       console.log("FAILED ADDING NEW SUBSCRIBER:", error.message);
-      if (error) {
-        setError("Someone with that email address is already subscribed");
+      if (error && error.message) {
+        let dupErrorMsg =
+          "Someone with that email address is already subscribed";
+        let invalidErrorMsg =
+          "That does not appear to be a valid email address";
+        if (error.message.includes("unique")) {
+          setError(dupErrorMsg);
+        } else if (error.message.includes("valid")) {
+          setError(invalidErrorMsg);
+        }
       }
     }
     setLoading(false);
