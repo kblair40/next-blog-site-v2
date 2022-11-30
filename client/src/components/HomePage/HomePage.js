@@ -71,8 +71,15 @@ const SubscribeSection = () => {
           Authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
         },
       });
-
       console.log("\nSUBSCRIBE RESPONSE:", response.data);
+
+      if (
+        response.data &&
+        response.data.attributes &&
+        response.data.attributes.email
+      ) {
+        // Trigger success toast here.
+      }
     } catch (e) {
       // console.log("FAILED ADDING NEW SUBSCRIBER:", e);
       const error = e.response?.data?.error;
