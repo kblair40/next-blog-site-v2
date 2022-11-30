@@ -4,7 +4,8 @@
   "info": {
     "singularName": "subscriber",
     "pluralName": "subscribers",
-    "displayName": "Subscriber"
+    "displayName": "Subscriber",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,7 +14,8 @@
   "attributes": {
     "email": {
       "type": "email",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "subscribed_timestamp": {
       "type": "biginteger",

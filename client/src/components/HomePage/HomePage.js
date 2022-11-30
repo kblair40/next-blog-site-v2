@@ -14,7 +14,6 @@ const HomePage = ({ homepage }) => {
   let featuredPost;
   if (homepage && homepage.attributes?.featured_post) {
     featuredPost = homepage.attributes.featured_post.article.data;
-    // console.log("FEATURED POST:", featuredPost);
   }
 
   return (
