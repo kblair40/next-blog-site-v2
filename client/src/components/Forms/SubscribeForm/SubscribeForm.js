@@ -4,6 +4,8 @@ import axios from "axios";
 
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
+const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
+
 const SubscribeForm = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState();

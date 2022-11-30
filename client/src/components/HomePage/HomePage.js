@@ -1,23 +1,11 @@
-import React, { useState } from "react";
-import {
-  Flex,
-  Heading,
-  Input,
-  Button,
-  Box,
-  Divider,
-  Text,
-} from "@chakra-ui/react";
-import axios from "axios";
+import React from "react";
+import { Flex, Box, Divider } from "@chakra-ui/react";
 
 import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
 import ContactForm from "src/components/Forms/ContactForm";
 import SubscribeForm from "src/components/Forms/SubscribeForm";
 import AdditionalPosts from "./AdditionalPosts";
-import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
-
-const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 const HomePage = ({ homepage }) => {
   let featuredPost;
