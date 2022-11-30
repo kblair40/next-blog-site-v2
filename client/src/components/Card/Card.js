@@ -6,14 +6,15 @@ import {
   Flex,
   Box,
   IconButton,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
+  // Menu,
+  // MenuButton,
+  // MenuList,
+  // MenuItem,
+  Tooltip,
 } from "@chakra-ui/react";
 
 import ShareModal from "src/components/Modals/ShareModal";
-import { MoreVerticalIcon } from "src/utils/icons";
+import { MoreVerticalIcon, ShareIcon } from "src/utils/icons";
 // import { getStrapiMedia } from "src/utils/media";
 import Image from "next/image";
 
@@ -50,7 +51,22 @@ const Card = ({ article }) => {
         articleData={articleData}
       />
 
-      <Menu>
+      <Tooltip label="Share Post" placement="left" openDelay={500}>
+        <IconButton
+          icon={<ShareIcon boxSize="18px" fill="#303030" />}
+          position="absolute"
+          top="1rem"
+          right="1rem"
+          variant="ghost"
+          rounded="full"
+          _hover={{ bg: "gray.50" }}
+          _active={{ bg: "gray.50" }}
+          size="sm"
+          onClick={() => setShareModalOpen(true)}
+        />
+      </Tooltip>
+
+      {/* <Menu>
         <MenuButton
           position="absolute"
           top="1rem"
@@ -64,11 +80,14 @@ const Card = ({ article }) => {
           icon={<MoreVerticalIcon boxSize="18px" />}
         />
         <MenuList py={0}>
-          <MenuItem onClick={() => setShareModalOpen(true)}>
+          <MenuItem
+            icon={<ShareIcon boxSize="14px" />}
+            onClick={() => setShareModalOpen(true)}
+          >
             Share Post
           </MenuItem>
         </MenuList>
-      </Menu>
+      </Menu> */}
 
       <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative">
         {article && article.attributes && article.attributes.image_url ? (
