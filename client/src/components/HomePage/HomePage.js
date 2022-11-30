@@ -14,6 +14,7 @@ import axios from "axios";
 import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
 import ContactForm from "src/components/Forms/ContactForm";
+import SubscribeForm from "src/components/Forms/SubscribeForm";
 import AdditionalPosts from "./AdditionalPosts";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
