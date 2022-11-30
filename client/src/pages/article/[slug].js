@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
 import {
   Heading,
   Text,
@@ -16,16 +16,9 @@ import dayjs from "dayjs";
 import { useRouter } from "next/router";
 
 import ShareModal from "src/components/Modals/ShareModal";
-import {
-  TwitterIcon,
-  FacebookIcon,
-  ShareIcon,
-  CopyIcon,
-} from "src/utils/icons";
+import { ShareIcon, CopyIcon } from "src/utils/icons";
 import Seo from "src/components/SEO";
 import { fetchAPI } from "src/utils/api";
-
-const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 const Article = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -96,9 +89,6 @@ const Article = ({ article }) => {
               className="ck-content"
               dangerouslySetInnerHTML={{ __html: article.attributes.content }}
             />
-            {/* <ReactMarkdown className="markdown">
-              {article.attributes.content}
-            </ReactMarkdown> */}
           </Box>
 
           <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
