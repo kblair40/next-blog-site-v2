@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
 import {
@@ -22,6 +22,18 @@ import Image from "next/image";
 
 const Card = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [articleSlug, setArticleSlug] = useState("");
+  const [articleData, setArticleData] = useState();
+
+  useEffect(() => {
+    // if (article && article.attributes && article.attributes.slug) {
+    //   setArticleSlug(article.attributes.slug);
+    // }
+    if (article && article.attributes) {
+      // setArticleSlug(article.attributes.slug);
+      setArticleData(article.attributes);
+    }
+  }, [article]);
 
   return (
     <Flex
@@ -34,6 +46,8 @@ const Card = ({ article }) => {
       <ShareModal
         isOpen={shareModalOpen}
         onClose={() => setShareModalOpen(false)}
+        slug={articleSlug}
+        articleData={articleData}
       />
 
       <Menu>

@@ -21,7 +21,7 @@ import {
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 console.log("WEBSITE_URL:", WEBSITE_URL);
 
-const ShareModal = ({ isOpen, onClose }) => {
+const ShareModal = ({ isOpen, onClose, slug, articleData }) => {
   const handleShareWindowClose = () => {
     console.log("SHARE WINDOW CLOSED");
   };
@@ -48,7 +48,8 @@ const ShareModal = ({ isOpen, onClose }) => {
               />
             </EmailShareButton>
             <FacebookShareButton
-              url="https://www.moneyandotherthings.com/"
+              disabled={!articleData || !articleData.slug}
+              url={`${WEBSITE_URL}article/${articleData?.slug}`}
               onShareWindowClose={handleShareWindowClose}
             >
               <IconButton
@@ -59,7 +60,9 @@ const ShareModal = ({ isOpen, onClose }) => {
             </FacebookShareButton>
 
             <TwitterShareButton
-              url="https://www.moneyandotherthings.com/"
+              disabled={!articleData || !articleData.slug || !articleData.title}
+              title={articleData ? articleData.title : ""}
+              url={WEBSITE_URL + `article/${articleData?.slug}`}
               onShareWindowClose={handleShareWindowClose}
             >
               <IconButton
