@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Flex, Heading, Input, Button, Box, Divider } from "@chakra-ui/react";
+import axios from "axios";
 
 import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
 import ContactForm from "src/components/Forms/ContactForm";
 import AdditionalPosts from "./AdditionalPosts";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
+
+const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 const HomePage = ({ homepage }) => {
   let featuredPost;
@@ -34,7 +37,42 @@ const HomePage = ({ homepage }) => {
 export default HomePage;
 
 const SubscribeSection = () => {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState();
   const eventLogger = useAnalyticsEventTracker();
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setError("Email address is required");
+      return;
+    }
+
+    try {
+      const now = new Date().getTime();
+
+      const response = await axios({
+        method: "post",
+        url: "https://money-and-other-things.herokuapp.com/api/subscribers",
+        data: {
+          data: { email, subscribed_timestamp: now },
+        },
+        headers: {
+          Authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
+        },
+      });
+
+      console.log("\nSUBSCRIBE RESPONSE:", response.data);
+    } catch (e) {
+      console.log("FAILED ADDING NEW SUBSCRIBER:", e);
+    }
+  };
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+    // Clear error every time email value changes
+    if (error) setError();
+  };
+
   return (
     <Flex
       mt="72px"
@@ -72,7 +110,6 @@ const SubscribeSection = () => {
           w={{ base: "max-content", sm: "220px", lg: "260px" }}
           placeholder="Email*"
           fontSize="15px"
-          onFocus={() => eventLogger("click subscribe input")}
           _placeholder={{
             fontSize: "15px",
             color: "text.body",
@@ -80,6 +117,9 @@ const SubscribeSection = () => {
           }}
           pl="4px"
           _focusVisible={{ borderColor: "brand.lightgreen" }}
+          onFocus={() => eventLogger("click subscribe input")}
+          value={email}
+          onChange={handleChangeEmail}
         />
 
         <Button
@@ -92,6 +132,7 @@ const SubscribeSection = () => {
           _hover={{ bg: "text.body" }}
           _active={{ bg: "text.body" }}
           size={{ base: "sm", sm: "md" }}
+          onClick={handleSubscribe}
         >
           Subscribe
         </Button>
