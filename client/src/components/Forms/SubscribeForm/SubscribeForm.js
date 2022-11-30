@@ -35,6 +35,11 @@ const SubscribeForm = () => {
       return;
     }
 
+    if (disabled) {
+      // user tried submitting via enter key.  Disallow if submits should not be allowed
+      return;
+    }
+
     setLoading(true);
 
     try {
