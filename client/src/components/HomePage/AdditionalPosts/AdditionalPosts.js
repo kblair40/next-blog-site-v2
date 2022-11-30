@@ -2,7 +2,7 @@ import React from "react";
 import { Text, Flex, Stack, Button, Box } from "@chakra-ui/react";
 
 import BookRecommendation from "src/components/BookRecommendation";
-import Card from "src/components/Articles/Card";
+import Card from "src/components/Card";
 
 const AdditionalPosts = () => {
   return (

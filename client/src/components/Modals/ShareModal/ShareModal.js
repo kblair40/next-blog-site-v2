@@ -18,6 +18,9 @@ import {
   EmailIcon,
 } from "react-share";
 
+const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
+console.log("WEBSITE_URL:", WEBSITE_URL);
+
 const ShareModal = ({ isOpen, onClose }) => {
   const handleShareWindowClose = () => {
     console.log("SHARE WINDOW CLOSED");

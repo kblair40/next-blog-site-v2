@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Flex, Stack } from "@chakra-ui/react";
 
 import { fetchAPI } from "src/utils/api";
-import Card from "src/components/Articles/Card";
+import Card from "src/components/Card";
 
 const Posts = ({ articles }) => {
   return (
