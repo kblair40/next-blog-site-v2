@@ -19,14 +19,19 @@ const SubscribeForm = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
 
   const toast = useToast();
 
   const eventLogger = useAnalyticsEventTracker();
 
   const handleSubscribe = async () => {
-    if (!email) {
+    if (!email || email.length <= 4) {
       setError("Email address is required");
+      setTimeout(() => {
+        // if no activity, still clear the error after 10 seconds
+        setError("");
+      }, 3000);
       return;
     }
 
@@ -69,6 +74,14 @@ const SubscribeForm = () => {
             </Flex>
           ),
         });
+
+        setEmail("");
+        setDisabled(true);
+        setTimeout(() => {
+          // disable submit button for 10 seconds after a successful submit to prevent rapid signups.
+          // TODO: make this logic better/safer.  Probably need to get ip addresses involved
+          setDisabled(false);
+        }, 10000);
       }
     } catch (e) {
       const error = e.response?.data?.error;
@@ -152,6 +165,7 @@ const SubscribeForm = () => {
         />
 
         <Button
+          isDisabled={disabled}
           isLoading={loading}
           w="140px"
           borderRadius="2px"
