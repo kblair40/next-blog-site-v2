@@ -5,7 +5,7 @@ import ShareModal from "src/components/Modals/ShareModal";
 import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
 
-const Home = ({ homepage }) => {
+const Home = ({ homepage, articles }) => {
   // console.log("\nFETCH RESPONSES:", { homepage });
 
   return (
@@ -16,7 +16,7 @@ const Home = ({ homepage }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomePage homepage={homepage} />
+      <HomePage homepage={homepage} articles={articles} />
       <ShareModal />
     </Box>
   );
@@ -31,9 +31,29 @@ export async function getStaticProps() {
     },
   });
 
+  let [home, articles] = await Promise.all([
+    fetchAPI("/homepage", {
+      populate: {
+        featured_post: {
+          populate: { article: "*" },
+        },
+      },
+    }),
+    fetchAPI("/articles", {
+      sort: "createdAt:desc",
+    }),
+  ]);
+
+  if (articles && articles.data) {
+    // TODO: REMOVE THIS.  ONLY MEANT TO SIMULATE HAVING 4 'recent' posts
+    articles.data = [...articles.data, ...articles.data];
+  }
+
   return {
     props: {
-      homepage: homepageRes?.data || null,
+      // homepage: homepageRes?.data || null,
+      homepage: home?.data || null,
+      articles: articles?.data?.slice(0, 4) || null,
     },
     revalidate: 1,
   };
