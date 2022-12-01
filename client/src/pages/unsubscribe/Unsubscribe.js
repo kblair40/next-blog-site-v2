@@ -7,7 +7,11 @@ import {
   FormControl,
   FormLabel,
   useToast,
+  Text,
+  Box,
+  Flex,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 import { fetchAPI } from "src/utils/api";
 import CustomToast from "src/components/CustomToast";
@@ -36,6 +40,7 @@ const Unsubscribe = () => {
         foundSubscriber = subscribersRes.data[0];
         console.log("\n\nFOUND SUBSCRIBER:", foundSubscriber);
       } else if (subscribersRes?.data && !subscribersRes.data.length) {
+        showErrorToast();
         setNotFound(true);
         setLoading(false);
         return;
@@ -93,9 +98,22 @@ const Unsubscribe = () => {
     setValue("");
   };
 
+  const showErrorToast = () => {
+    toast({
+      duration: 3000,
+      render: () => (
+        <CustomToast
+          // description="Sorry to see you go!"
+          msg={`Sorry, something went wrong.  Please use the "send unsubscribe email" link above`}
+          status="failure"
+        />
+      ),
+    });
+  };
+
   return (
-    <Center h="300px">
-      <Stack w="100%" maxW="300px">
+    <Center h="400px">
+      <Stack w="80vw" maxW="500px">
         <FormControl>
           <FormLabel>Enter your email address</FormLabel>
           <Input
@@ -113,11 +131,23 @@ const Unsubscribe = () => {
           color="white"
           _hover={{ bg: "brand.darkgreen" }}
           _active={{ bg: "brand.darkgreen" }}
-
-          //
         >
           Unsubscribe
         </Button>
+
+        <Box w="100%" pt="2.5rem">
+          <Text textAlign="center">
+            If you're having any issues unsubscribing, please send us an email
+            at moneyandotherthings@gmail.com with the email address you would
+            like removed in the subject line of the email.
+          </Text>
+
+          <Flex justify="center" mt="1rem">
+            <Link href="mailto:moneyandotherthings.com?subject=<your-email-here>&body=Unsubscribe!">
+              <Button variant="ghost">Send Email</Button>
+            </Link>
+          </Flex>
+        </Box>
       </Stack>
     </Center>
   );

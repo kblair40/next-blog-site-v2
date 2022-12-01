@@ -6,21 +6,26 @@ import { CheckCircleIcon } from "src/utils/icons";
 // status === "success" | "failure"
 const CustomToast = ({ msg, status = "success", description = null }) => {
   const isSuccess = status === "success";
-  const bg = isSuccess ? "brand.lightgreen" : "red.100";
+  const bg = isSuccess ? "brand.lightgreen" : "red.50";
   const color = isSuccess ? "white" : "red.600";
 
   return (
     <Flex
       align="center"
       bg={bg}
-      h={description ? "64px" : "48px"}
-      px="1rem"
+      // h={description ? "64px" : "48px"}
+      p="1rem"
       rounded="md"
     >
       <HStack spacing="1rem">
-        <CheckCircleIcon fill="white" boxSize="18px" />
+        {isSuccess ? <CheckCircleIcon fill="white" boxSize="18px" /> : null}
         <Flex direction="column">
-          <Text color="white" fontWeight="700" fontSize="lg">
+          <Text
+            textAlign={!isSuccess ? "center" : "left"}
+            color={color}
+            fontWeight="700"
+            fontSize="lg"
+          >
             {msg}
           </Text>
 
