@@ -53,7 +53,6 @@ const AdditionalPosts = ({ articles }) => {
                 </Stack>
               </Collapse>
 
-              {/* <Card article={DUMMY_ARTICLE} /> */}
               <Flex justify="center">
                 <Button
                   w="100%"
@@ -82,7 +81,6 @@ const AdditionalPosts = ({ articles }) => {
           h={{ base: "1px", md: "100%" }}
           bg="#303030"
           m={{ base: "2rem 0", md: "0 1.5rem" }}
-          //
         />
       </Flex>
 
