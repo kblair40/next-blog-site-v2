@@ -13,7 +13,8 @@ import axios from "axios";
 import { CheckCircleIcon } from "src/utils/icons";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
-const NEXT_PUBLIC_API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
+const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+console.log("STRAPI_API_TOKEN:", STRAPI_API_TOKEN);
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState("");
@@ -53,7 +54,7 @@ const SubscribeForm = () => {
           data: { email, subscribed_timestamp: now },
         },
         headers: {
-          Authorization: `bearer ${NEXT_PUBLIC_API_TOKEN}`,
+          Authorization: `bearer ${STRAPI_API_TOKEN}`,
         },
       });
       // console.log("\nSUBSCRIBE RESPONSE:", response);

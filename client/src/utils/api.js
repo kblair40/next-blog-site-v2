@@ -1,6 +1,6 @@
 import qs from "qs";
 
-const token = process.env.NEXT_PUBLIC_API_TOKEN || "";
+const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
 // console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
 
 /**
