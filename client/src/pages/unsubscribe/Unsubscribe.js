@@ -19,6 +19,7 @@ import CustomToast from "src/components/CustomToast";
 const Unsubscribe = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const [validEmail, setValidEmail] = useState("");
 
   const toast = useToast();
 
@@ -33,7 +34,6 @@ const Unsubscribe = () => {
           email: value.toLowerCase(),
         },
       });
-      console.log("SUBSCRIBERS RES:", subscribersRes.data);
       if (subscribersRes?.data && subscribersRes.data.length) {
         foundSubscriber = subscribersRes.data[0];
         if (foundSubscriber.attributes.active === false) {
@@ -70,8 +70,6 @@ const Unsubscribe = () => {
           }
         );
 
-        // console.log("\n\nUNSUBSCRIBE RES:", unsubscribeRes, "\n\n");
-
         if (
           unsubscribeRes?.data?.attributes &&
           unsubscribeRes.data.attributes.active === false
@@ -90,11 +88,14 @@ const Unsubscribe = () => {
         }
       } catch (e) {
         console.log("\n\nFAILED TO UNSUBSCRIBE:", e, "\n\n");
-        // setError("Failed to patch found subscriber");
+        setValidEmail(value);
+        // The entered email address is valid and was found, but for some unknown reason the PUT request failed.
+        // In this case, show the default general error message.
+        // The mailto link can use the value of validEmail to pre-populate subject line
         showErrorToast();
       }
     } else {
-      showErrorToast();
+      showErrorToast("not found");
     }
 
     setLoading(false);
@@ -130,6 +131,10 @@ const Unsubscribe = () => {
 
     setLoading(false);
   };
+
+  const emailSubject = validEmail
+    ? `Unsubscribe ${validEmail}`
+    : "<your-email-here>";
 
   return (
     <Center h="400px">
@@ -168,7 +173,9 @@ const Unsubscribe = () => {
           </Text>
 
           <Flex justify="center" mt="1rem">
-            <Link href="mailto:moneyandotherthings.com?subject=<your-email-here>&body=Unsubscribe!">
+            <Link
+              href={`mailto:moneyandotherthings.com?subject=${emailSubject}&body=Unsubscribe!`}
+            >
               <Button variant="ghost">Send Email</Button>
             </Link>
           </Flex>
