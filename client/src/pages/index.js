@@ -33,7 +33,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      homepage: homepageRes.data,
+      homepage: homepageRes?.data || null,
     },
     revalidate: 1,
   };

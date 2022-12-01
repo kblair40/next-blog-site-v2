@@ -46,6 +46,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
 
   try {
     // Trigger API call
+    console.log("\nFETCH OPTIONS:", { requestUrl, mergedOptions });
     const response = await fetch(requestUrl, mergedOptions);
     console.log("\n\nAPI RESPONSE:", response, "\n\n");
 
@@ -57,6 +58,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
     const data = await response.json();
     return data;
   } catch (e) {
+    return JSON.stringify({});
     console.log("\n\nFETCH FAILED:", e, "\n\n");
   }
 }

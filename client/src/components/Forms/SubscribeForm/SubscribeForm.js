@@ -47,6 +47,7 @@ const SubscribeForm = () => {
 
       const response = await axios({
         method: "post",
+        // url: "http://localhost:1337/api/subscribers",
         url: "https://money-and-other-things.herokuapp.com/api/subscribers",
         data: {
           data: { email, subscribed_timestamp: now },
@@ -90,7 +91,7 @@ const SubscribeForm = () => {
       }
     } catch (e) {
       const error = e.response?.data?.error;
-      console.log("FAILED ADDING NEW SUBSCRIBER:", error.message);
+      console.log("FAILED ADDING NEW SUBSCRIBER:", error ? error.message : e);
       if (error && error.message) {
         let dupErrorMsg =
           "Someone with that email address is already subscribed";
