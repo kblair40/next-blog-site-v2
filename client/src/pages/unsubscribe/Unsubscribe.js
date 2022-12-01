@@ -73,6 +73,7 @@ const Unsubscribe = () => {
         ) {
           // unsubscribe was successful
           toast({
+            duration: 3000,
             render: () => (
               <CustomToast
                 description="Sorry to see you go!"
