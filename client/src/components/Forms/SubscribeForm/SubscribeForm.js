@@ -51,7 +51,8 @@ const SubscribeForm = () => {
         // url: "http://localhost:1337/api/subscribers",
         url: "https://money-and-other-things.herokuapp.com/api/subscribers",
         data: {
-          data: { email, subscribed_timestamp: now },
+          // toLowerCase ALWAYS.  Otherwise unsubscribe may not find the email address
+          data: { email: email.toLowerCase(), subscribed_timestamp: now },
         },
         headers: {
           Authorization: `bearer ${STRAPI_API_TOKEN}`,
