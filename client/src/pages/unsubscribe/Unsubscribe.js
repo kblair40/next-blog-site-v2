@@ -40,7 +40,7 @@ const Unsubscribe = () => {
           showErrorToast("already unsubscribed");
           return;
         }
-        console.log("\n\nFOUND SUBSCRIBER:", foundSubscriber);
+        // console.log("\n\nFOUND SUBSCRIBER:", foundSubscriber);
       } else if (subscribersRes?.data && !subscribersRes.data.length) {
         showErrorToast("not found");
 
