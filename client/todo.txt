@@ -2,5 +2,6 @@ TODO
 1. Google Analytics
   - Basic functionality complete.
   - Need to think through what 'events' we want to log for
+2. On subscribe, a thank you email should be sent
+  - Should be fully functional, but needs some style
 3. Need a way for a user to unsubscribe
-4. On subscribe, a thank you email should be sent
