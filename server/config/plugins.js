@@ -10,6 +10,7 @@ module.exports = ({ env }) => {
         settings: {
           defaultFrom: "moneyandotherthings@gmail.com",
           defaultReplyTo: "moneyandotherthings@gmail.com",
+          testAddress: "moneyandotherthings@gmail.com",
         },
       },
     },
