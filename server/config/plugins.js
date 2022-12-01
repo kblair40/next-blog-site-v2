@@ -1,34 +1,15 @@
 // plugins.js
-module.exports = () => {
+module.exports = ({ env }) => {
   return {
     email: {
       config: {
-        provider: "sendmail",
+        provider: "sendgrid",
         providerOptions: {
-          // logger: {
-          //   debug: console.log,
-          //   info: console.info,
-          //   warn: console.warn,
-          //   error: console.error,
-          // },
-          silent: false,
-          // dkim: {
-          //   // Default: False
-          //   privateKey: fs.readFileSync("./dkim-private.pem", "utf8"),
-          //   keySelector: "mydomainkey",
-          // },
-          // devPort: 1025, // Default: False
-          // devPort: 1337, // Default: False
-          // devHost: "localhost", // Default: localhost
-          // smtpPort: 2525, // Default: 25
-          // smtpHost: "localhost", // Default: -1 - extra smtp host after resolveMX
+          apiKey: env("SENDGRID_API_KEY"),
         },
         settings: {
-          defaultFrom: "kblairdev40@gmail.com",
-          defaultReplyTo: "kblairdev40@gmail.com",
-          testAddress: "kblairdev40@gmail.com",
-          subject: "TEST",
-          html: "This is the email",
+          defaultFrom: "moneyandotherthings@gmail.com",
+          defaultReplyTo: "moneyandotherthings@gmail.com",
         },
       },
     },
