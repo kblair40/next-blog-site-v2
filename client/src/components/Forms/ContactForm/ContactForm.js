@@ -6,10 +6,21 @@ import {
   Heading,
   Stack,
   Box,
+  Text,
   Flex,
 } from "@chakra-ui/react";
+import emailjs from "@emailjs/browser";
 
 // Todo: Setup emailjs or similar provider
+
+const EMAIL_JS_PRIVATE_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PRIVATE_KEY;
+const EMAIL_JS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY;
+const EMAIL_JS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
+console.log("KEYS:", {
+  EMAIL_JS_PRIVATE_KEY,
+  EMAIL_JS_PUBLIC_KEY,
+  EMAIL_JS_SERVICE_ID,
+});
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -17,11 +28,37 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
     const { name, email, message } = formData;
     console.log("FORM DATA:", formData);
-    // email stuff here
+
+    if (!name || !email || !message) {
+      setError("All fields are required");
+      setTimeout(() => {
+        setError("");
+      }, 10000);
+      return;
+    }
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message,
+    };
+
+    try {
+      const sendResponse = await emailjs.send(
+        EMAIL_JS_SERVICE_ID,
+        "template_7hfy285",
+        templateParams,
+        EMAIL_JS_PUBLIC_KEY
+      );
+      console.log("SEND RESPONSE:", sendResponse);
+    } catch (e) {
+      console.log("Failed to send contact form email:", e);
+    }
   };
 
   return (
@@ -81,7 +118,7 @@ const ContactForm = () => {
             focusBorderColor="gray.300"
           />
 
-          <Flex w="100%" justify={{ base: "center" }}>
+          <Flex w="100%" direction="column" align={{ base: "center" }}>
             <Button
               w="100%"
               maxW="300px"
@@ -97,6 +134,20 @@ const ContactForm = () => {
             >
               Submit
             </Button>
+
+            {error && (
+              <Text
+                mt="8px"
+                // height={0}
+                opacity={error ? 1 : 0}
+                fontSize="sm"
+                color="red.400"
+                textAlign="center"
+                lineHeight={1}
+              >
+                {error ? error : "noshow"}
+              </Text>
+            )}
           </Flex>
         </Stack>
       </Flex>
