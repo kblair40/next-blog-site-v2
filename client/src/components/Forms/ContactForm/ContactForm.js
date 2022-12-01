@@ -30,16 +30,43 @@ const ContactForm = () => {
   });
   const [error, setError] = useState("");
 
+  const getDateString = (timestamp) => {
+    let date = new Date(timestamp);
+    let month = date.getMonth();
+    let day = date.getDate();
+    let year = date.getFullYear();
+
+    return `${month + 1}/${day}/${year}`;
+  };
+
+  const setThenClearError = (msg, delay = 10000) => {
+    // sets an error, then clears it after 10 (or delay arg) seconds
+    setError(msg);
+    setTimeout(() => setError(""), delay);
+  };
+
   const handleSubmit = async () => {
     const { name, email, message } = formData;
     console.log("FORM DATA:", formData);
 
     if (!name || !email || !message) {
-      setError("All fields are required");
-      setTimeout(() => {
-        setError("");
-      }, 10000);
+      setThenClearError("All fields are required");
       return;
+    }
+
+    const lastSentTime = localStorage.getItem("last_sent_timestamp");
+    let now = new Date().getTime();
+    if (lastSentTime) {
+      let lastSentDateString = getDateString(parseInt(lastSentTime));
+      let nowDateString = getDateString(now);
+
+      if (nowDateString === lastSentDateString) {
+        // message already sent by this user today.
+        let errMsg =
+          "Only one message per day is allowed.  Please try again tomorrow";
+        setThenClearError(errMsg);
+        return;
+      }
     }
 
     const templateParams = {
@@ -56,6 +83,7 @@ const ContactForm = () => {
         EMAIL_JS_PUBLIC_KEY
       );
       console.log("SEND RESPONSE:", sendResponse);
+      localStorage.setItem("last_sent_timestamp", now);
     } catch (e) {
       console.log("Failed to send contact form email:", e);
     }
