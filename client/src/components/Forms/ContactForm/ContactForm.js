@@ -128,6 +128,7 @@ const ContactForm = () => {
             />
 
             <Input
+              type="email"
               ml={{ md: "2rem" }}
               value={formData.email}
               onChange={(e) =>

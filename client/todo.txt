@@ -3,4 +3,4 @@ TODO
   - Basic functionality complete.
   - Need to think through what 'events' we want to log for
 3. Need a way for a user to unsubscribe
-4. Contact form needs to send email to erinjdunne@gmail.com
+4. On subscribe, a thank you email should be sent
