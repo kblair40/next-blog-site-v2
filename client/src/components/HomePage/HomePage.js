@@ -7,7 +7,7 @@ import ContactForm from "src/components/Forms/ContactForm";
 import SubscribeForm from "src/components/Forms/SubscribeForm";
 import AdditionalPosts from "./AdditionalPosts";
 
-const HomePage = ({ homepage }) => {
+const HomePage = ({ homepage, articles }) => {
   let featuredPost;
   if (homepage && homepage.attributes?.featured_post) {
     featuredPost = homepage.attributes.featured_post.article.data;
@@ -23,7 +23,7 @@ const HomePage = ({ homepage }) => {
         <SubscribeForm />
       </Flex>
 
-      <AdditionalPosts />
+      <AdditionalPosts articles={articles} />
 
       <Divider borderColor="#303030" mb="2rem" />
 
