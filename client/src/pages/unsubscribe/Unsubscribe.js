@@ -19,8 +19,6 @@ import CustomToast from "src/components/CustomToast";
 const Unsubscribe = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
-  const [notFound, setNotFound] = useState(false);
-  const [error, setError] = useState("");
 
   const toast = useToast();
 
@@ -36,26 +34,28 @@ const Unsubscribe = () => {
         },
       });
       console.log("SUBSCRIBERS RES:", subscribersRes.data);
-      if (subscribersRes && subscribersRes.data && subscribersRes.data.length) {
+      if (subscribersRes?.data && subscribersRes.data.length) {
         foundSubscriber = subscribersRes.data[0];
+        if (foundSubscriber.attributes.active === false) {
+          showErrorToast("already unsubscribed");
+          return;
+        }
         console.log("\n\nFOUND SUBSCRIBER:", foundSubscriber);
       } else if (subscribersRes?.data && !subscribersRes.data.length) {
-        showErrorToast();
-        setNotFound(true);
-        setLoading(false);
+        showErrorToast("not found");
+
         return;
       }
     } catch (e) {
       console.log("ERROR: FAILED FETCHING SUBSCRIBERS:", e);
-      setNotFound(true);
       setLoading(false);
       return;
     }
 
     if (foundSubscriber) {
-      console.log("YES FOUND SUBSCRIBER:", foundSubscriber);
+      // console.log("YES FOUND SUBSCRIBER:", foundSubscriber);
       const { id } = foundSubscriber;
-      console.log("ID:", id);
+      // console.log("ID:", id);
 
       const now = new Date().getTime();
       try {
@@ -90,25 +90,45 @@ const Unsubscribe = () => {
         }
       } catch (e) {
         console.log("\n\nFAILED TO UNSUBSCRIBE:", e, "\n\n");
-        setError("Failed to patch found subscriber");
+        // setError("Failed to patch found subscriber");
+        showErrorToast();
       }
+    } else {
+      showErrorToast();
     }
 
     setLoading(false);
     setValue("");
   };
 
-  const showErrorToast = () => {
+  const showErrorToast = (msg = null) => {
+    let description = null;
+    if (msg && msg === "already unsubscribed") {
+      msg = "You are already unsubscribed.";
+      description =
+        "If you're still receiving emails, please use the 'Send Email' link above to send us an email with your email address in the subject line";
+    } else if (msg && msg === "not found") {
+      msg = "Could not find a subscriber with that email address";
+      description =
+        "Please use the 'Send email' link above to send us an email with the email address you would like unsubscribed in the subject line";
+    }
+
     toast({
-      duration: 3000,
+      duration: 10000, // 10 seconds
       render: () => (
         <CustomToast
-          // description="Sorry to see you go!"
-          msg={`Sorry, something went wrong.  Please use the "send unsubscribe email" link above`}
+          msg={
+            msg
+              ? msg
+              : `Sorry, something went wrong.  Please use the "Send Email" link above`
+          }
           status="failure"
+          description={description}
         />
       ),
     });
+
+    setLoading(false);
   };
 
   return (
@@ -120,6 +140,11 @@ const Unsubscribe = () => {
             focusBorderColor="brand.darkgreen"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter" && !!value.length) {
+                handleSubmit();
+              }
+            }}
           />
         </FormControl>
 

@@ -21,7 +21,7 @@ const CustomToast = ({ msg, status = "success", description = null }) => {
         {isSuccess ? <CheckCircleIcon fill="white" boxSize="18px" /> : null}
         <Flex direction="column">
           <Text
-            textAlign={!isSuccess ? "center" : "left"}
+            // textAlign={!isSuccess ? "center" : "left"}
             color={color}
             fontWeight="700"
             fontSize="lg"
