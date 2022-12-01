@@ -24,7 +24,7 @@ module.exports = {
   // },
   async afterCreate(event) {
     const { result } = event;
-    console.log("\nAFTER CREATE EVENT RESULT lifecycle:", result);
+    console.log("\nAFTER CREATE EVENT RESULT lifecycle ONLY:", result);
 
     try {
       await strapi.plugins["email"].services.email.send({
