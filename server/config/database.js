@@ -16,17 +16,15 @@
 
 const parse = require("pg-connection-string").parse;
 const config = parse(process.env.DATABASE_URL);
-console.log("\nDATABASE_URL:", process.env.DATABASE_URL);
-console.log("\nCONFIG:", config, "\n");
+// console.log("\nDATABASE_URL:", process.env.DATABASE_URL);
+// console.log("\nCONFIG:", config, "\n");
 
 module.exports = ({ env }) => ({
   connection: {
     client: "postgres",
     connection: {
       host: config.host,
-      // host: "127.0.0.1",
       port: config.port,
-      // port: 5432,
       database: config.database,
       user: config.user,
       password: config.password,
