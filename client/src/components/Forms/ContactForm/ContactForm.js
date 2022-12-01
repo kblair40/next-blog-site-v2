@@ -22,12 +22,14 @@ console.log("KEYS:", {
   EMAIL_JS_SERVICE_ID,
 });
 
+const DEFAULT_FORM_DATA = {
+  name: "",
+  email: "",
+  message: "",
+};
+
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
   const [error, setError] = useState("");
 
   const getDateString = (timestamp) => {
@@ -83,7 +85,10 @@ const ContactForm = () => {
         EMAIL_JS_PUBLIC_KEY
       );
       console.log("SEND RESPONSE:", sendResponse);
+
       localStorage.setItem("last_sent_timestamp", now);
+
+      setFormData(DEFAULT_FORM_DATA);
     } catch (e) {
       console.log("Failed to send contact form email:", e);
     }
