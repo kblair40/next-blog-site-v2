@@ -8,15 +8,17 @@ import {
   FormLabel,
   useToast,
 } from "@chakra-ui/react";
-import { fetchAPI } from "src/utils/api";
 
-const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+import { fetchAPI } from "src/utils/api";
+import CustomToast from "src/components/CustomToast";
 
 const Unsubscribe = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState("");
+
+  const toast = useToast();
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -63,33 +65,35 @@ const Unsubscribe = () => {
           }
         );
 
-        console.log("\n\nUNSUBSCRIBE RES:", unsubscribeRes, "\n\n");
+        // console.log("\n\nUNSUBSCRIBE RES:", unsubscribeRes, "\n\n");
+
+        if (
+          unsubscribeRes?.data?.attributes &&
+          unsubscribeRes.data.attributes.active === false
+        ) {
+          // unsubscribe was successful
+          toast({
+            render: () => (
+              <CustomToast
+                description="Sorry to see you go!"
+                msg={`Unsubscribed ${value}`}
+                status="success"
+              />
+            ),
+          });
+        }
       } catch (e) {
         console.log("\n\nFAILED TO UNSUBSCRIBE:", e, "\n\n");
         setError("Failed to patch found subscriber");
       }
     }
-    // kblair40@gmail.com
-
-    // DO STUFF
-    // const response = await axios({
-    //   method: "post",
-    //   // url: "http://localhost:1337/api/subscribers",
-    //   url: "https://money-and-other-things.herokuapp.com/api/subscribers",
-    //   data: {
-    //     data: { email, subscribed_timestamp: now },
-    //   },
-    //   headers: {
-    //     Authorization: `bearer ${STRAPI_API_TOKEN}`,
-    //   },
-    // });
 
     setLoading(false);
     setValue("");
   };
 
   return (
-    <Center h="300px" border="1px solid red">
+    <Center h="300px">
       <Stack w="100%" maxW="300px">
         <FormControl>
           <FormLabel>Enter your email address</FormLabel>

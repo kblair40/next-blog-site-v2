@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 
+import CustomToast from "src/components/CustomToast";
 import { CheckCircleIcon } from "src/utils/icons";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
@@ -66,21 +67,24 @@ const SubscribeForm = () => {
           isClosable: true,
           // 300 x 48 for chakra version
           render: () => (
-            <Flex
-              align="center"
-              bg="brand.lightgreen"
-              h="48px"
-              px="1rem"
-              rounded="md"
-            >
-              <HStack spacing="1rem">
-                <CheckCircleIcon fill="white" boxSize="18px" />
-                <Text color="white" fontWeight="700" fontSize="lg">
-                  Thanks for subscribing!
-                </Text>
-              </HStack>
-            </Flex>
+            <CustomToast msg="Thanks for subscribing!" status="success" />
           ),
+          // render: () => (
+          //   <Flex
+          //     align="center"
+          //     bg="brand.lightgreen"
+          //     h="48px"
+          //     px="1rem"
+          //     rounded="md"
+          //   >
+          //     <HStack spacing="1rem">
+          //       <CheckCircleIcon fill="white" boxSize="18px" />
+          //       <Text color="white" fontWeight="700" fontSize="lg">
+          //         Thanks for subscribing!
+          //       </Text>
+          //     </HStack>
+          //   </Flex>
+          // ),
         });
 
         setEmail("");
