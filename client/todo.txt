@@ -5,3 +5,6 @@ TODO
 2. On subscribe, a thank you email should be sent
   - Should be fully functional, but needs some style
 3. Need a way for a user to unsubscribe
+4. Page transitions
+  - Fade between
+    - try to use framer motion (PresenceTransition (or something like that))
