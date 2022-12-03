@@ -64,7 +64,7 @@ const SubscribeForm = () => {
       if (response.status === 200) {
         toast({
           duration: 3000,
-          isClosable: true,
+          // isClosable: true,
           // 300 x 48 for chakra version
           render: () => (
             <CustomToast msg="Thanks for subscribing!" status="success" />
