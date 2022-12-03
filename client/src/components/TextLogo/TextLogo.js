@@ -33,7 +33,7 @@ const SmallLogo = () => {
         <Heading
           maxW="90vw"
           color="brand.darkgreen"
-          fontFamily="Playfair Display"
+          // fontFamily="Playfair Display"
           textAlign="center"
           fontSize={{ base: "36px", sm: "42px" }}
           lineHeight="normal"
@@ -63,7 +63,7 @@ const LargeLogo = () => {
         <Heading
           maxW="90vw"
           color="brand.darkgreen"
-          fontFamily="Playfair Display"
+          // fontFamily="Playfair Display"
           textAlign="center"
           fontSize={{ md: "60px", lg: "72px" }}
           whiteSpace="nowrap"

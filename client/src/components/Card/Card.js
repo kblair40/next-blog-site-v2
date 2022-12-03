@@ -107,6 +107,7 @@ const Card = ({ article }) => {
               transition="color 0.3s"
               noOfLines={2}
               lineHeight={{ base: "1.2", md: "unset" }}
+              fontFamily="Nunito"
             >
               {article.attributes.title}
             </Text>
