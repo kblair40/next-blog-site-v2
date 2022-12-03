@@ -1,7 +1,8 @@
 import React from "react";
-import { Flex, Box, Divider, Center, Spinner } from "@chakra-ui/react";
+import { Flex, Box, Divider } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
+import Loading from "src/components/Loading";
 import FeaturedPost from "src/components/FeaturedPost";
 
 const SEO = dynamic(() => import("src/components/SEO"), {
@@ -54,11 +55,3 @@ const HomePage = ({ homepage, articles }) => {
 };
 
 export default HomePage;
-
-const Loading = () => {
-  return (
-    <Center h="200px">
-      <Spinner />
-    </Center>
-  );
-};

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import {
   Text,
   Flex,
@@ -10,6 +10,7 @@ import {
   Collapse,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 import BookRecommendation from "src/components/BookRecommendation";
 import Card from "src/components/Card";
