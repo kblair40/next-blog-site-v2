@@ -12,6 +12,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { fetchAPI } from "src/utils/api";
 import CustomToast from "src/components/CustomToast";
@@ -137,51 +138,60 @@ const Unsubscribe = () => {
     : "<your-email-here>";
 
   return (
-    <Center h="400px">
-      <Stack w="80vw" maxW="500px">
-        <FormControl>
-          <FormLabel>Enter your email address</FormLabel>
-          <Input
-            focusBorderColor="brand.darkgreen"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter" && !!value.length) {
-                handleSubmit();
-              }
-            }}
-          />
-        </FormControl>
+    <AnimatePresence>
+      <motion.div
+        key="home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Center h="400px">
+          <Stack w="80vw" maxW="500px">
+            <FormControl>
+              <FormLabel>Enter your email address</FormLabel>
+              <Input
+                focusBorderColor="brand.darkgreen"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter" && !!value.length) {
+                    handleSubmit();
+                  }
+                }}
+              />
+            </FormControl>
 
-        <Button
-          isLoading={loading}
-          isDisabled={!value}
-          onClick={handleSubmit}
-          bg={"brand.lightgreen"}
-          color="white"
-          _hover={{ bg: "brand.darkgreen" }}
-          _active={{ bg: "brand.darkgreen" }}
-        >
-          Unsubscribe
-        </Button>
-
-        <Box w="100%" pt="2.5rem">
-          <Text textAlign="center">
-            If you're having any issues unsubscribing, please send us an email
-            at moneyandotherthings@gmail.com with the email address you would
-            like removed in the subject line of the email.
-          </Text>
-
-          <Flex justify="center" mt="1rem">
-            <Link
-              href={`mailto:moneyandotherthings.com?subject=${emailSubject}&body=Unsubscribe!`}
+            <Button
+              isLoading={loading}
+              isDisabled={!value}
+              onClick={handleSubmit}
+              bg={"brand.lightgreen"}
+              color="white"
+              _hover={{ bg: "brand.darkgreen" }}
+              _active={{ bg: "brand.darkgreen" }}
             >
-              <Button variant="ghost">Send Email</Button>
-            </Link>
-          </Flex>
-        </Box>
-      </Stack>
-    </Center>
+              Unsubscribe
+            </Button>
+
+            <Box w="100%" pt="2.5rem">
+              <Text textAlign="center">
+                If you're having any issues unsubscribing, please send us an
+                email at moneyandotherthings@gmail.com with the email address
+                you would like removed in the subject line of the email.
+              </Text>
+
+              <Flex justify="center" mt="1rem">
+                <Link
+                  href={`mailto:moneyandotherthings.com?subject=${emailSubject}&body=Unsubscribe!`}
+                >
+                  <Button variant="ghost">Send Email</Button>
+                </Link>
+              </Flex>
+            </Box>
+          </Stack>
+        </Center>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
