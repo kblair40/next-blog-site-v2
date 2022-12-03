@@ -1,49 +1,58 @@
 import React from "react";
 import { Text, Box, Flex, Heading, Divider } from "@chakra-ui/react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 import ContactForm from "src/components/Forms/ContactForm";
-// import { getStrapiMedia } from "src/utils/media";
 import { fetchAPI } from "src/utils/api";
 
 const AboutPage = ({ about }) => {
   return (
-    <Flex
-      px={{ base: "1rem", sm: "1.5rem", md: "2rem" }}
-      direction="column"
-      align="center"
-      w="100%"
-      mt="2rem"
-      pb="2rem"
-      minW="332px"
-    >
-      <Box w="100%" border="1px solid #303030" position="relative">
-        <Box
+    <AnimatePresence>
+      <motion.div
+        key="home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Flex
+          px={{ base: "1rem", sm: "1.5rem", md: "2rem" }}
+          direction="column"
+          align="center"
           w="100%"
-          position="relative"
-          h={{ base: "280px", sm: "380px", md: "480px" }}
+          mt="2rem"
+          pb="2rem"
+          minW="332px"
         >
-          <Image
-            alt="about image"
-            src={about.image_url}
-            objectFit="cover"
-            fill
-          />
-        </Box>
+          <Box w="100%" border="1px solid #303030" position="relative">
+            <Box
+              w="100%"
+              position="relative"
+              h={{ base: "280px", sm: "380px", md: "480px" }}
+            >
+              <Image
+                alt="about image"
+                src={about.image_url}
+                objectFit="cover"
+                fill
+              />
+            </Box>
 
-        <Flex w="100%" direction="column" px="32px" pb="50px">
-          <Heading fontSize="4xl" my="50px">
-            Hey! So Glad You're Here.
-          </Heading>
+            <Flex w="100%" direction="column" px="32px" pb="50px">
+              <Heading fontSize="4xl" my="50px">
+                Hey! So Glad You're Here.
+              </Heading>
 
-          <Text>{about.description}</Text>
+              <Text>{about.description}</Text>
+            </Flex>
+          </Box>
+
+          <Divider my="3rem" borderColor="text.body" />
+
+          <ContactForm />
         </Flex>
-      </Box>
-
-      <Divider my="3rem" borderColor="text.body" />
-
-      <ContactForm />
-    </Flex>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
