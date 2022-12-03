@@ -11,20 +11,36 @@ const Posts = ({ articles }) => {
       <motion.div
         key="home"
         initial={{ opacity: 0 }}
+        // whileInView={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
         <Flex justify="center">
-          <Stack mt="2rem" spacing="1.5rem">
+          <ArticleList articles={articles} />
+          {/* <Stack mt="2rem" spacing="1.5rem">
             {articles && articles.length
               ? articles.map((article, i) => {
                   return <Card article={article} key={i} />;
                 })
               : null}
-          </Stack>
+          </Stack> */}
         </Flex>
       </motion.div>
     </AnimatePresence>
+  );
+};
+
+const ArticleList = ({ articles }) => {
+  return (
+    <motion.div>
+      <Stack mt="2rem" spacing="1.5rem">
+        {articles && articles.length
+          ? articles.map((article, i) => {
+              return <Card article={article} key={i} />;
+            })
+          : null}
+      </Stack>
+    </motion.div>
   );
 };
 
