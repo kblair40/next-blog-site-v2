@@ -4,7 +4,6 @@ import { Box } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 
-// import ShareModal from "src/components/Modals/ShareModal";
 import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
 
@@ -13,8 +12,6 @@ const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
 });
 
 const Home = ({ homepage, articles }) => {
-  // console.log("\nFETCH RESPONSES:", { homepage });
-
   return (
     <AnimatePresence>
       <motion.div

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Flex, Stack, Center, Button } from "@chakra-ui/react";
+import { Box, Text, Center, Button } from "@chakra-ui/react";
 
 import { ChevronDownIcon } from "src/utils/icons";
 
