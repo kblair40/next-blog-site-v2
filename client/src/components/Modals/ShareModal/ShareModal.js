@@ -23,7 +23,7 @@ const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
 
 const ShareModal = ({ isOpen, onClose, articleData }) => {
   const handleShareWindowClose = () => {
-    console.log("SHARE WINDOW CLOSED");
+    // console.log("SHARE WINDOW CLOSED");
   };
 
   return (

@@ -43,7 +43,7 @@ MyApp.getInitialProps = async (ctx) => {
   // console.log("GLOBAL RES:", globalRes);
   // Pass the data to our page via props
   // return appProps;
-  console.log("\nAPP PROPS:", appProps);
+  // console.log("\nAPP PROPS:", appProps);
   return { ...appProps };
 };
 

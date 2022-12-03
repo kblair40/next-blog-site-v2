@@ -35,20 +35,20 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   };
 
   // Build request URL
-  const queryString = qs.stringify(urlParamsObject);
-  console.log("\n\n\n\nQUERY DATA:", {
-    queryString,
-    path,
-  });
+  // const queryString = qs.stringify(urlParamsObject);
+  // console.log("\n\n\n\nQUERY DATA:", {
+  //   queryString,
+  //   path,
+  // });
   const requestUrl = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`;
 
   try {
     // Trigger API call
-    console.log("\nFETCH OPTIONS:", { requestUrl, mergedOptions });
+    // console.log("\nFETCH OPTIONS:", { requestUrl, mergedOptions });
     const response = await fetch(requestUrl, mergedOptions);
-    console.log("\n\nAPI RESPONSE:", response, "\n\n");
+    // console.log("\n\nAPI RESPONSE:", response, "\n\n");
 
     // Handle response
     if (!response.ok) {
@@ -58,7 +58,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
     const data = await response.json();
     return data;
   } catch (e) {
-    return JSON.stringify({});
     console.log("\n\nFETCH FAILED:", e, "\n\n");
+    return JSON.stringify({});
   }
 }

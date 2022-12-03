@@ -51,7 +51,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
       <Link
         href={linkObj ? linkObj.to : "#"}
         legacyBehavior
-        onClick={() => console.log("clicked")}
+        // onClick={() => console.log("clicked")}
       >
         <Center
           h="100%"

@@ -151,7 +151,7 @@ const ShareLinks = ({ onClickShare }) => {
   };
 
   const router = useRouter();
-  console.log("\n\nROUTER:", router.asPath, "\n\n");
+  // console.log("\n\nROUTER:", router.asPath, "\n\n");
 
   const { onCopy } = useClipboard(
     "https://www.moneyandotherthings.com" + router.asPath

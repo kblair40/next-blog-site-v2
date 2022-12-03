@@ -15,11 +15,6 @@ import emailjs from "@emailjs/browser";
 
 const EMAIL_JS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY;
 const EMAIL_JS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
-// console.log("KEYS:", {
-//   EMAIL_JS_PRIVATE_KEY,
-//   EMAIL_JS_PUBLIC_KEY,
-//   EMAIL_JS_SERVICE_ID,
-// });
 
 const DEFAULT_FORM_DATA = {
   name: "",
@@ -48,7 +43,7 @@ const ContactForm = () => {
 
   const handleSubmit = async () => {
     const { name, email, message } = formData;
-    console.log("FORM DATA:", formData);
+    // console.log("FORM DATA:", formData);
 
     if (!name || !email || !message) {
       setThenClearError("All fields are required");
@@ -83,7 +78,7 @@ const ContactForm = () => {
         templateParams,
         EMAIL_JS_PUBLIC_KEY
       );
-      console.log("SEND RESPONSE:", sendResponse);
+      // console.log("SEND RESPONSE:", sendResponse);
 
       localStorage.setItem("last_sent_timestamp", now);
 

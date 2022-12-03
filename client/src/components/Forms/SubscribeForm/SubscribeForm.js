@@ -1,21 +1,12 @@
 import React, { useState } from "react";
-import {
-  Text,
-  Flex,
-  HStack,
-  useToast,
-  Heading,
-  Input,
-  Button,
-} from "@chakra-ui/react";
+import { Text, Flex, useToast, Heading, Input, Button } from "@chakra-ui/react";
 import axios from "axios";
 
 import CustomToast from "src/components/CustomToast";
-import { CheckCircleIcon } from "src/utils/icons";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-console.log("STRAPI_API_TOKEN:", STRAPI_API_TOKEN);
+// console.log("STRAPI_API_TOKEN:", STRAPI_API_TOKEN);
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState("");
@@ -97,7 +88,7 @@ const SubscribeForm = () => {
       }
     } catch (e) {
       const error = e.response?.data?.error;
-      console.log("FAILED ADDING NEW SUBSCRIBER:", error ? error.message : e);
+      // console.log("FAILED ADDING NEW SUBSCRIBER:", error ? error.message : e);
       if (error && error.message) {
         let dupErrorMsg =
           "Someone with that email address is already subscribed";
