@@ -7,4 +7,4 @@ TODO
 3. Need a way for a user to unsubscribe
 4. Page transitions
   - Fade between
-    - try to use framer motion (PresenceTransition (or something like that))
+    - try to use framer motion (AnimatePresence (or something like that))
