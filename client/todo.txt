@@ -7,8 +7,8 @@ TODO
 3. Need a way for a user to unsubscribe
    - Mostlye exists now at /unsubscribe
 4. 404 page
-5. Contact page
-   - Something needs to be there as a placeholder for now.
 6. Share buttons below articles
 7. Automatically create relation between article and category when article is created
    - Maybe afterCreate middleware for article/post/whatever-i-called-it
+8. See if Avenir is available as a system font for mac/linux AND windows
+   - Update body font if so
