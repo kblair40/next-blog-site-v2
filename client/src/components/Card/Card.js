@@ -53,35 +53,11 @@ const Card = ({ article }) => {
         />
       </Tooltip>
 
-      {/* <Menu>
-        <MenuButton
-          position="absolute"
-          top="1rem"
-          right="1rem"
-          as={IconButton}
-          variant="ghost"
-          rounded="full"
-          _hover={{ bg: "gray.50" }}
-          _active={{ bg: "gray.50" }}
-          size="sm"
-          icon={<MoreVerticalIcon boxSize="18px" />}
-        />
-        <MenuList py={0}>
-          <MenuItem
-            icon={<ShareIcon boxSize="14px" />}
-            onClick={() => setShareModalOpen(true)}
-          >
-            Share Post
-          </MenuItem>
-        </MenuList>
-      </Menu> */}
-
-      {/* <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative"> */}
       <Box
         h={{ base: "200px", sm: "240px", md: "231px" }}
-        // w={{ base: "40%", sm: "50%" }}
         w={{ base: "230px", sm: "300px" }}
         position="relative"
+        overflow="hidden"
       >
         {article && article.attributes && article.attributes.image_url ? (
           <Image
@@ -90,8 +66,6 @@ const Card = ({ article }) => {
             style={{
               objectFit: "cover",
             }}
-            // objectFit="cover"
-            // priority
             fill
           />
         ) : null}

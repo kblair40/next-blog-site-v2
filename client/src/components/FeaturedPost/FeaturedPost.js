@@ -23,7 +23,8 @@ const FeaturedPost = ({ featuredPost }) => {
         <Image
           alt="post image"
           src={featuredPost.attributes.image_url}
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
+          // objectFit="cover"
           priority
           fill
         />

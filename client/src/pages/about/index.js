@@ -36,6 +36,7 @@ const AboutPage = ({ about }) => {
               <Image
                 alt="about image"
                 src={about.image_url}
+                style={{ objectFit: "cover" }}
                 // objectFit="cover"
                 fill
               />
