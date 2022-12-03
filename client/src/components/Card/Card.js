@@ -1,5 +1,6 @@
 import React, { useState, Suspense, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import dayjs from "dayjs";
 import { Text, Flex, Box, IconButton, Tooltip } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
@@ -15,6 +16,8 @@ const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
 const Card = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [articleData, setArticleData] = useState();
+
+  const { asPath } = useRouter();
 
   useEffect(() => {
     if (article && article.attributes) {
@@ -62,6 +65,8 @@ const Card = ({ article }) => {
         {article && article.attributes && article.attributes.image_url ? (
           <Image
             fill
+            // should be priority if on a posts page
+            priority={asPath !== "/"}
             alt="post image"
             src={article.attributes.image_url}
             style={{ objectFit: "cover" }}

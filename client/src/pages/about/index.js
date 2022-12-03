@@ -27,18 +27,26 @@ const AboutPage = ({ about }) => {
           pb="2rem"
           minW="332px"
         >
-          <Box w="100%" border="1px solid #303030" position="relative">
+          <Box
+            w="100%"
+            maxW="900px"
+            border="1px solid #303030"
+            position="relative"
+          >
             <Box
               w="100%"
               position="relative"
               h={{ base: "280px", sm: "380px", md: "480px" }}
             >
               <Image
+                fill
+                priority
                 alt="about image"
                 src={about.image_url}
                 style={{ objectFit: "cover" }}
-                // objectFit="cover"
-                fill
+                sizes="(min-width: 768px) 900px,
+                  (min-width: 480px) 800px,
+                  500px"
               />
             </Box>
 
