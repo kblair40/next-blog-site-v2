@@ -1,6 +1,8 @@
 import React from "react";
-import { Text } from "@chakra-ui/react";
+import { Text, Box } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
+
+import ContactForm from "src/components/Forms/ContactForm";
 
 const ContactPage = () => {
   return (
@@ -11,9 +13,12 @@ const ContactPage = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <Text mt="2rem" textAlign="center">
+        <Box width="100%" mt="3rem">
+          <ContactForm />
+        </Box>
+        {/* <Text mt="2rem" textAlign="center">
           Todo: Contact Page
-        </Text>
+        </Text> */}
       </motion.div>
     </AnimatePresence>
   );
