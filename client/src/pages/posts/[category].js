@@ -38,24 +38,20 @@ const ArticleList = ({ articles }) => {
 };
 
 export async function getStaticProps({ params }) {
-  // console.log("PARAMS:", params);
-  const category = params.category;
-  // console.log("CATEGORY:", category);
   const categoriesRes = await fetchAPI("/categories", {
     filters: {
-      name: category,
+      name: params.category,
     },
     populate: {
       articles: { populate: "*" },
     },
   });
 
-  // console.log("n\nCATEGORIES RES:", categoriesRes.data);
   let articles = categoriesRes.data[0].attributes.articles.data;
 
   return {
-    props: { articles, category },
-    revalidate: 1,
+    props: { articles },
+    // revalidate: 1,
   };
 }
 
@@ -63,10 +59,6 @@ export async function getStaticPaths() {
   let categoriesRes;
   try {
     categoriesRes = await fetchAPI("/categories", { fields: ["slug"] });
-    // console.log("\n\nCATEGORIES:", categoriesRes, "\n\n");
-    // for (let cat of categoriesRes.data) {
-    //   console.log("\nFOUND CATEGORY ATTRS::", cat.attributes, "\n");
-    // }
   } catch (e) {
     console.log("FAILED FETCHING ARTICLES:", e);
   }
