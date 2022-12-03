@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import ContactForm from "src/components/Forms/ContactForm";
@@ -16,9 +16,6 @@ const ContactPage = () => {
         <Box width="100%" mt="3rem">
           <ContactForm />
         </Box>
-        {/* <Text mt="2rem" textAlign="center">
-          Todo: Contact Page
-        </Text> */}
       </motion.div>
     </AnimatePresence>
   );
