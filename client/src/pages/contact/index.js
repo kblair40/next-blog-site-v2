@@ -6,7 +6,7 @@ const ContactPage = () => {
   return (
     <AnimatePresence>
       <motion.div
-        key="home"
+        key="contact"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

@@ -9,7 +9,7 @@ const Posts = ({ articles }) => {
   return (
     <AnimatePresence>
       <motion.div
-        key="home"
+        key="posts"
         initial={{ opacity: 0 }}
         // whileInView={{ opacity: 1 }}
         animate={{ opacity: 1 }}
@@ -32,7 +32,7 @@ const Posts = ({ articles }) => {
 
 const ArticleList = ({ articles }) => {
   return (
-    <motion.div>
+    <motion.div layout>
       <Stack mt="2rem" spacing="1.5rem">
         {articles && articles.length
           ? articles.map((article, i) => {

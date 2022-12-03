@@ -10,7 +10,7 @@ const AboutPage = ({ about }) => {
   return (
     <AnimatePresence>
       <motion.div
-        key="home"
+        key="about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
