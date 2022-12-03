@@ -76,12 +76,21 @@ const Card = ({ article }) => {
         </MenuList>
       </Menu> */}
 
-      <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative">
+      {/* <Box h="100%" w={{ base: "40%", sm: "50%" }} position="relative"> */}
+      <Box
+        h={{ base: "200px", sm: "240px", md: "231px" }}
+        // w={{ base: "40%", sm: "50%" }}
+        w={{ base: "230px", sm: "300px" }}
+        position="relative"
+      >
         {article && article.attributes && article.attributes.image_url ? (
           <Image
             alt="post image"
             src={article.attributes.image_url}
-            objectFit="cover"
+            style={{
+              objectFit: "cover",
+            }}
+            // objectFit="cover"
             // priority
             fill
           />
