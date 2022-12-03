@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     loader: "default",
     // hostname: "localhost",
-    hostname: "res.cloudinary.com",
+    // hostname: "res.cloudinary.com",
     // domains: ["localhost"],
     domains: ["money-and-other-things.herokuapp.com", "res.cloudinary.com"],
   },
