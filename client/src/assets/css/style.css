@@ -469,6 +469,19 @@ a {
 .ck-content ol {
   list-style-type: decimal;
 }
+
+/* Custom */
+.ck-content :is(ol, ul) li:not(:last-child) {
+  /* .5rem margin-bottom for li's that are direct children of 
+  an ol or ul, but not for the last li */
+  margin-bottom: 0.5rem;
+}
+.ck-content :is(ol, ul) {
+  padding-left: 1rem;
+  list-style-position: inside;
+}
+/* End Custom */
+
 /* ckeditor5-list/theme/liststyles.css */
 .ck-content ol ol {
   list-style-type: lower-latin;
