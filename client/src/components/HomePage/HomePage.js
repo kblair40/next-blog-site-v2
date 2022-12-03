@@ -2,11 +2,7 @@ import React from "react";
 import { Flex, Box, Divider, Center, Spinner } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
-// import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
-// import ContactForm from "src/components/Forms/ContactForm";
-// import SubscribeForm from "src/components/Forms/SubscribeForm";
-// import AdditionalPosts from "./AdditionalPosts";
 
 const SEO = dynamic(() => import("src/components/SEO"), {
   suspense: true,
