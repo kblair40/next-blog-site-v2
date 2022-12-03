@@ -10,6 +10,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
+import { validateEmail } from "src/utils/helpers";
 
 // Todo: Setup emailjs or similar provider
 
@@ -25,6 +26,7 @@ const DEFAULT_FORM_DATA = {
 const ContactForm = () => {
   const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
   const [error, setError] = useState("");
+  const [invalidEmail, setInvalidEmail] = useState(false);
 
   const getDateString = (timestamp) => {
     let date = new Date(timestamp);
@@ -43,7 +45,14 @@ const ContactForm = () => {
 
   const handleSubmit = async () => {
     const { name, email, message } = formData;
-    // console.log("FORM DATA:", formData);
+
+    const isValid = validateEmail(email);
+    // console.log("\n\nVALID EMAIL?", isValid);
+    if (!isValid) {
+      // console.log("invalid");
+      setInvalidEmail(true);
+      return;
+    }
 
     if (!name || !email || !message) {
       setThenClearError("All fields are required");
@@ -125,9 +134,12 @@ const ContactForm = () => {
               type="email"
               ml={{ md: "2rem" }}
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              onChange={(e) => {
+                setFormData({ ...formData, email: e.target.value });
+                if (invalidEmail) {
+                  setInvalidEmail(false);
+                }
+              }}
               variant="flushed"
               placeholder="Email"
               pl=".5rem"
@@ -163,19 +175,21 @@ const ContactForm = () => {
               Submit
             </Button>
 
-            {error && (
+            {error || invalidEmail ? (
               <Text
                 mt="8px"
                 // height={0}
-                opacity={error ? 1 : 0}
+                opacity={error || invalidEmail ? 1 : 0}
                 fontSize="sm"
                 color="red.400"
                 textAlign="center"
                 lineHeight={1}
               >
-                {error ? error : "noshow"}
+                {error
+                  ? error
+                  : "That does not appear to be a valid email address"}
               </Text>
-            )}
+            ) : null}
           </Flex>
         </Stack>
       </Flex>
