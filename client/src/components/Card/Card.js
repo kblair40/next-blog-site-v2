@@ -61,12 +61,12 @@ const Card = ({ article }) => {
       >
         {article && article.attributes && article.attributes.image_url ? (
           <Image
+            fill
             alt="post image"
             src={article.attributes.image_url}
-            style={{
-              objectFit: "cover",
-            }}
-            fill
+            style={{ objectFit: "cover" }}
+            sizes="(min-width: 480px) 310px,
+              240px"
           />
         ) : null}
       </Box>

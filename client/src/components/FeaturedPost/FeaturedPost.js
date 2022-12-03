@@ -11,22 +11,24 @@ const FeaturedPost = ({ featuredPost }) => {
     <React.Fragment>
       <Box
         width={{
-          base: "calc(100vw - 32px)",
-          sm: "calc(100vw - 64px)",
+          base: "350px",
+          sm: "450px",
           md: "700px",
           lg: "900px",
         }}
-        // width={{ base: "340px", sm: "420px", md: "700px", lg: "900px" }}
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
         <Image
+          priority
+          fill
           alt="post image"
           src={featuredPost.attributes.image_url}
           style={{ objectFit: "cover" }}
-          // objectFit="cover"
-          priority
-          fill
+          sizes="(min-width: 992px) 900px,
+              (min-width: 768px) 700px,
+              (min-width: 480px) 450px,
+              350px"
         />
 
         <Center
@@ -52,8 +54,8 @@ const FeaturedPost = ({ featuredPost }) => {
 
       <Flex
         width={{
-          base: "calc(100vw - 32px)",
-          sm: "calc(100vw - 64px)",
+          base: "350px",
+          sm: "450px",
           md: "700px",
           lg: "900px",
         }}
