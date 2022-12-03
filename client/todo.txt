@@ -5,10 +5,11 @@ TODO
 2. On subscribe, a thank you email should be sent
   - Should be fully functional, but needs some style
 3. Need a way for a user to unsubscribe
-   - Mostlye exists now at /unsubscribe
+   - Mostly exists now at /unsubscribe
 4. 404 page
-6. Share buttons below articles
-7. Automatically create relation between article and category when article is created
+   - Pretty good, but style could improve
+   - Something creative wouldn't hurt either
+6. Automatically create relation between article and category when article is created
    - Maybe afterCreate middleware for article/post/whatever-i-called-it
-8. See if Avenir is available as a system font for mac/linux AND windows
+7. See if Avenir is available as a system font for mac/linux AND windows
    - Update body font if so
