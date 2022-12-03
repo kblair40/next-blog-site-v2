@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Flex, Center, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 import {
   FacebookIcon,
@@ -15,22 +16,29 @@ const Navbar = () => {
   const { asPath } = useRouter();
 
   return (
-    <Box w="100%" display={{ base: "none", md: "block" }} h="50px">
-      <Flex justify="space-evenly" h="100%">
-        {navLinks.map((linkObj, i) => {
-          return (
-            <NavLink
-              isActive={linkObj.to === asPath}
-              linkObj={linkObj}
-              key={i}
-            />
-          );
-        })}
-        {/* <NavLink>
+    <motion.div
+      key={"nav"}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+    >
+      <Box w="100%" display={{ base: "none", md: "block" }} h="50px">
+        <Flex justify="space-evenly" h="100%">
+          {navLinks.map((linkObj, i) => {
+            return (
+              <NavLink
+                isActive={linkObj.to === asPath}
+                linkObj={linkObj}
+                key={i}
+              />
+            );
+          })}
+          {/* <NavLink>
           <SocialLinks />
         </NavLink> */}
-      </Flex>
-    </Box>
+        </Flex>
+      </Box>
+    </motion.div>
   );
 };
 
@@ -47,11 +55,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
       border="1px solid #424242"
       borderRight="none"
     >
-      <Link
-        href={linkObj ? linkObj.to : "#"}
-        legacyBehavior
-        // onClick={() => console.log("clicked")}
-      >
+      <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
           h="100%"
           fontSize="14px"

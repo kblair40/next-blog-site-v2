@@ -1,11 +1,20 @@
 import React from "react";
 import { Flex, Text, Heading, useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const TextLogo = () => {
   const isMd = useBreakpointValue({ base: false, md: true });
 
-  return isMd ? <LargeLogo /> : <SmallLogo />;
+  return (
+    <motion.div
+      key={"text-logo"}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      {isMd ? <LargeLogo /> : <SmallLogo />}
+    </motion.div>
+  );
 };
 
 export default TextLogo;
