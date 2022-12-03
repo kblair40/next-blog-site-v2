@@ -1,24 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import Link from "next/link";
 import dayjs from "dayjs";
-import {
-  Text,
-  Flex,
-  Box,
-  IconButton,
-  // Menu,
-  // MenuButton,
-  // MenuList,
-  // MenuItem,
-  Tooltip,
-} from "@chakra-ui/react";
-
-import ShareModal from "src/components/Modals/ShareModal";
-import {
-  // MoreVerticalIcon,
-  ShareIcon,
-} from "src/utils/icons";
+import { Text, Flex, Box, IconButton, Tooltip } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+// import ShareModal from "src/components/Modals/ShareModal";
+import { ShareIcon } from "src/utils/icons";
+
+const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
+  suspense: true,
+});
 
 const Card = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -38,11 +30,13 @@ const Card = ({ article }) => {
       border="1px solid #303030"
       position="relative"
     >
-      <ShareModal
-        isOpen={shareModalOpen}
-        onClose={() => setShareModalOpen(false)}
-        articleData={articleData}
-      />
+      <Suspense fallback={<div />}>
+        <ShareModal
+          isOpen={shareModalOpen}
+          onClose={() => setShareModalOpen(false)}
+          articleData={articleData}
+        />
+      </Suspense>
 
       <Tooltip label="Share Post" placement="left" openDelay={500}>
         <IconButton
