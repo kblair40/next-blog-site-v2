@@ -1,11 +1,28 @@
 import React from "react";
-import { Flex, Box, Divider } from "@chakra-ui/react";
+import { Flex, Box, Divider, Center, Spinner } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
 
-import SEO from "src/components/SEO";
+// import SEO from "src/components/SEO";
 import FeaturedPost from "src/components/FeaturedPost";
-import ContactForm from "src/components/Forms/ContactForm";
-import SubscribeForm from "src/components/Forms/SubscribeForm";
-import AdditionalPosts from "./AdditionalPosts";
+// import ContactForm from "src/components/Forms/ContactForm";
+// import SubscribeForm from "src/components/Forms/SubscribeForm";
+// import AdditionalPosts from "./AdditionalPosts";
+
+const SEO = dynamic(() => import("src/components/SEO"), {
+  suspense: true,
+});
+const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
+  suspense: true,
+});
+const SubscribeForm = dynamic(
+  () => import("src/components/Forms/SubscribeForm"),
+  {
+    suspense: true,
+  }
+);
+const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
+  suspense: true,
+});
 
 const HomePage = ({ homepage, articles }) => {
   let featuredPost;
@@ -15,21 +32,37 @@ const HomePage = ({ homepage, articles }) => {
 
   return (
     <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
-      <SEO seo={homepage?.attributes.seo} />
+      <React.Suspense fallback={<div />}>
+        <SEO seo={homepage?.attributes.seo} />
+      </React.Suspense>
 
       <Flex direction="column" align="center" mt="90px" mb="2rem">
         {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
 
-        <SubscribeForm />
+        <React.Suspense fallback={<Loading />}>
+          <SubscribeForm />
+        </React.Suspense>
       </Flex>
 
-      <AdditionalPosts articles={articles} />
+      <React.Suspense fallback={<Loading />}>
+        <AdditionalPosts articles={articles} />
+      </React.Suspense>
 
       <Divider borderColor="#303030" mb="2rem" />
 
-      <ContactForm />
+      <React.Suspense fallback={<Loading />}>
+        <ContactForm />
+      </React.Suspense>
     </Box>
   );
 };
 
 export default HomePage;
+
+const Loading = () => {
+  return (
+    <Center h="200px">
+      <Spinner />
+    </Center>
+  );
+};

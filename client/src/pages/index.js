@@ -1,10 +1,16 @@
+import { Suspense } from "react";
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 
-import ShareModal from "src/components/Modals/ShareModal";
+// import ShareModal from "src/components/Modals/ShareModal";
 import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
+
+const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
+  suspense: true,
+});
 
 const Home = ({ homepage, articles }) => {
   // console.log("\nFETCH RESPONSES:", { homepage });
@@ -25,7 +31,12 @@ const Home = ({ homepage, articles }) => {
           </Head>
 
           <HomePage homepage={homepage} articles={articles} />
-          <ShareModal />
+
+          {/* <ShareModal /> */}
+
+          <Suspense fallback={<div />}>
+            <ShareModal />
+          </Suspense>
         </Box>
       </motion.div>
     </AnimatePresence>
