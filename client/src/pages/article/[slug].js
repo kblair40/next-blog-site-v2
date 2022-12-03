@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
+import { motion, AnimatePresence } from "framer-motion";
 
 import ShareModal from "src/components/Modals/ShareModal";
 import { ShareIcon, CopyIcon } from "src/utils/icons";
@@ -46,59 +47,66 @@ const Article = ({ article }) => {
   }, []);
 
   return (
-    <Fragment>
-      <ShareModal
-        isOpen={shareModalOpen}
-        onClose={() => setShareModalOpen(false)}
-        articleData={articleData}
-      />
-      <Seo seo={seo} />
-      <Flex
-        mt="72px"
-        w="100%"
-        justify="center"
-        px={{ base: "1rem", sm: "2rem", md: "4rem" }}
+    <AnimatePresence>
+      <motion.div
+        key="home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       >
+        <ShareModal
+          isOpen={shareModalOpen}
+          onClose={() => setShareModalOpen(false)}
+          articleData={articleData}
+        />
+        <Seo seo={seo} />
         <Flex
-          direction="column"
+          mt="72px"
           w="100%"
-          maxW={{ lg: "1000px" }}
-          p={{ base: "12px", sm: "24px", md: "40px", lg: "60px" }}
-          border="1px solid black"
+          justify="center"
+          px={{ base: "1rem", sm: "2rem", md: "4rem" }}
         >
           <Flex
-            mb="2rem"
+            direction="column"
             w="100%"
-            display="inline-flex"
-            fontSize="sm"
-            align="center"
+            maxW={{ lg: "1000px" }}
+            p={{ base: "12px", sm: "24px", md: "40px", lg: "60px" }}
+            border="1px solid black"
           >
-            <Text display="inline">
-              {dayjs(article.attributes.published_at).format("MMM DD")}
-            </Text>
-            <Text mx="8px" display="inline" fontSize="6px">
-              &bull;
-            </Text>
-            <Text display="inline">{`${article.attributes.minutes_to_read} min read`}</Text>
+            <Flex
+              mb="2rem"
+              w="100%"
+              display="inline-flex"
+              fontSize="sm"
+              align="center"
+            >
+              <Text display="inline">
+                {dayjs(article.attributes.published_at).format("MMM DD")}
+              </Text>
+              <Text mx="8px" display="inline" fontSize="6px">
+                &bull;
+              </Text>
+              <Text display="inline">{`${article.attributes.minutes_to_read} min read`}</Text>
+            </Flex>
+
+            <Heading mb="2rem">{article.attributes.title}</Heading>
+
+            <Box w="100%">
+              <Box
+                className="ck-content"
+                dangerouslySetInnerHTML={{ __html: article.attributes.content }}
+              />
+            </Box>
+
+            <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
+
+            <Box w="100%" mt="1rem">
+              <ShareLinks onClickShare={() => setShareModalOpen(true)} />
+            </Box>
           </Flex>
-
-          <Heading mb="2rem">{article.attributes.title}</Heading>
-
-          <Box w="100%">
-            <Box
-              className="ck-content"
-              dangerouslySetInnerHTML={{ __html: article.attributes.content }}
-            />
-          </Box>
-
-          <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
-
-          <Box w="100%" mt="1rem">
-            <ShareLinks onClickShare={() => setShareModalOpen(true)} />
-          </Box>
         </Flex>
-      </Flex>
-    </Fragment>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

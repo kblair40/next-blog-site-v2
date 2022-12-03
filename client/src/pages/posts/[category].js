@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Flex, Stack } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 
