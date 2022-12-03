@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 // import ReactMarkdown from "react-markdown";
 import {
   Heading,
@@ -15,11 +15,20 @@ import {
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 
-import ShareModal from "src/components/Modals/ShareModal";
+// import ShareModal from "src/components/Modals/ShareModal";
 import { ShareIcon, CopyIcon } from "src/utils/icons";
-import Seo from "src/components/SEO";
+// import Seo from "src/components/SEO";
 import { fetchAPI } from "src/utils/api";
+import Loading from "src/components/Loading";
+
+const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
+  suspense: true,
+});
+const Seo = dynamic(() => import("src/components/SEO"), {
+  suspense: true,
+});
 
 const Article = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -54,12 +63,18 @@ const Article = ({ article }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <ShareModal
-          isOpen={shareModalOpen}
-          onClose={() => setShareModalOpen(false)}
-          articleData={articleData}
-        />
-        <Seo seo={seo} />
+        <Suspense fallback={<Loading />}>
+          <ShareModal
+            isOpen={shareModalOpen}
+            onClose={() => setShareModalOpen(false)}
+            articleData={articleData}
+          />
+        </Suspense>
+
+        <Suspense fallback={<div />}>
+          <Seo seo={seo} />
+        </Suspense>
+
         <Flex
           mt="72px"
           w="100%"

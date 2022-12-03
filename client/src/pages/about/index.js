@@ -2,9 +2,12 @@ import React from "react";
 import { Text, Box, Flex, Heading, Divider } from "@chakra-ui/react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 
-import ContactForm from "src/components/Forms/ContactForm";
 import { fetchAPI } from "src/utils/api";
+const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
+  suspense: true,
+});
 
 const AboutPage = ({ about }) => {
   return (
@@ -49,7 +52,9 @@ const AboutPage = ({ about }) => {
 
           <Divider my="3rem" borderColor="text.body" />
 
-          <ContactForm />
+          <React.Suspense fallback={<div />}>
+            <ContactForm />
+          </React.Suspense>
         </Flex>
       </motion.div>
     </AnimatePresence>

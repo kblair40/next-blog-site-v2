@@ -1,8 +1,11 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
 
-import ContactForm from "src/components/Forms/ContactForm";
+const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
+  suspense: true,
+});
 
 const ContactPage = () => {
   return (
@@ -14,7 +17,9 @@ const ContactPage = () => {
         exit={{ opacity: 0 }}
       >
         <Box width="100%" mt="3rem">
-          <ContactForm />
+          <React.Suspense fallback={<div />}>
+            <ContactForm />
+          </React.Suspense>
         </Box>
       </motion.div>
     </AnimatePresence>
