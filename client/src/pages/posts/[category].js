@@ -7,34 +7,33 @@ import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
 
 const Posts = ({ articles }) => {
+  const router = useRouter();
   return (
     <AnimatePresence>
-      <ArticleList articles={articles} />
+      <motion.div
+        key={router.asPath}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        layout
+      >
+        <ArticleList articles={articles} />
+      </motion.div>
     </AnimatePresence>
   );
 };
 
 const ArticleList = ({ articles }) => {
-  const router = useRouter();
-  // console.log("\n\nROUTER:", router, "\n\n");
-
   return (
-    <motion.div
-      key={router.asPath}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <Flex justify="center">
-        <Stack mt="2rem" spacing="1.5rem">
-          {articles && articles.length
-            ? articles.map((article, i) => {
-                return <Card article={article} key={i} />;
-              })
-            : null}
-        </Stack>
-      </Flex>
-    </motion.div>
+    <Flex justify="center">
+      <Stack mt="2rem" spacing="1.5rem">
+        {articles && articles.length
+          ? articles.map((article, i) => {
+              return <Card article={article} key={i} />;
+            })
+          : null}
+      </Stack>
+    </Flex>
   );
 };
 
