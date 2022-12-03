@@ -13,14 +13,13 @@ import emailjs from "@emailjs/browser";
 
 // Todo: Setup emailjs or similar provider
 
-const EMAIL_JS_PRIVATE_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PRIVATE_KEY;
 const EMAIL_JS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY;
 const EMAIL_JS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
-console.log("KEYS:", {
-  EMAIL_JS_PRIVATE_KEY,
-  EMAIL_JS_PUBLIC_KEY,
-  EMAIL_JS_SERVICE_ID,
-});
+// console.log("KEYS:", {
+//   EMAIL_JS_PRIVATE_KEY,
+//   EMAIL_JS_PUBLIC_KEY,
+//   EMAIL_JS_SERVICE_ID,
+// });
 
 const DEFAULT_FORM_DATA = {
   name: "",
