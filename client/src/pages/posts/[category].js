@@ -1,22 +1,30 @@
 import React, { Fragment } from "react";
 import { Flex, Stack } from "@chakra-ui/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
 
 const Posts = ({ articles }) => {
   return (
-    <Fragment>
-      <Flex justify="center">
-        <Stack mt="2rem" spacing="1.5rem">
-          {articles && articles.length
-            ? articles.map((article, i) => {
-                return <Card article={article} key={i} />;
-              })
-            : null}
-        </Stack>
-      </Flex>
-    </Fragment>
+    <AnimatePresence>
+      <motion.div
+        key="home"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Flex justify="center">
+          <Stack mt="2rem" spacing="1.5rem">
+            {articles && articles.length
+              ? articles.map((article, i) => {
+                  return <Card article={article} key={i} />;
+                })
+              : null}
+          </Stack>
+        </Flex>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
