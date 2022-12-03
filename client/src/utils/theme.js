@@ -33,7 +33,7 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    body: "Nunito, system-ui, sans-serif",
+    body: "Nunito, Avenir, Arial, system-ui, sans-serif",
     heading: "Playfair Display, serif",
   },
 });

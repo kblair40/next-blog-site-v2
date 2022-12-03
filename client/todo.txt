@@ -13,3 +13,4 @@ TODO
    - Maybe afterCreate middleware for article/post/whatever-i-called-it
 7. See if Avenir is available as a system font for mac/linux AND windows
    - Update body font if so
+8. Add 'sizes' prop to most (maybe all) images
