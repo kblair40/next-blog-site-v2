@@ -24,6 +24,7 @@ const FeaturedPost = ({ featuredPost }) => {
           alt="post image"
           src={featuredPost.attributes.image_url}
           objectFit="cover"
+          priority
           fill
         />
 

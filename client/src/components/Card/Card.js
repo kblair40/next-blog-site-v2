@@ -88,6 +88,7 @@ const Card = ({ article }) => {
             alt="post image"
             src={article.attributes.image_url}
             objectFit="cover"
+            priority
             fill
           />
         ) : null}
