@@ -60,57 +60,27 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  // let articlesRes;
-  // try {
-  //   articlesRes = await fetchAPI("/articles", {
-  //     filters: {
-  //       category: {
-  //         $eq: "money",
-  //       },
-  //     },
-  //     // fields: ["category"],
-  //   });
-  // } catch (e) {
-  //   console.log("FAILED FETCHING ARTICLES:", e);
-  // }
+  let categoriesRes;
+  try {
+    categoriesRes = await fetchAPI("/categories", { fields: ["slug"] });
+    // console.log("\n\nCATEGORIES:", categoriesRes, "\n\n");
+    // for (let cat of categoriesRes.data) {
+    //   console.log("\nFOUND CATEGORY ATTRS::", cat.attributes, "\n");
+    // }
+  } catch (e) {
+    console.log("FAILED FETCHING ARTICLES:", e);
+  }
 
-  // console.log("\n\nARTICLES RES:", articlesRes, "\n\n");
+  let paths = [];
+  if (categoriesRes?.data) {
+    paths = categoriesRes.data.map((cat) => ({
+      params: {
+        category: cat.attributes.slug,
+      },
+    }));
+  }
 
-  return {
-    paths: [],
-    // paths: ["/posts/a", "/posts/b", "/posts/idk"],
-    // paths: articlesRes.data.map((article) => ({
-    //   params: {
-    //     category: article.attributes.category,
-    //   },
-    // })),
-    // fallback: false,
-    fallback: "blocking",
-  };
+  return { paths, fallback: false };
 }
-
-// BACKUP
-// export async function getStaticPaths() {
-//   let articlesRes;
-//   try {
-//     articlesRes = await fetchAPI("/articles", {
-//       fields: ["category"],
-//     });
-//   } catch (e) {
-//     console.log("FAILED FETCHING ARTICLES:", e);
-//   }
-
-//   console.log("\n\nARTICLES RES:", articlesRes, "\n\n");
-
-//   return {
-//     paths: ["/posts/a", "/posts/b", "/posts/idk"],
-//     // paths: articlesRes.data.map((article) => ({
-//     //   params: {
-//     //     category: article.attributes.category,
-//     //   },
-//     // })),
-//     fallback: false,
-//   };
-// }
 
 export default Posts;
