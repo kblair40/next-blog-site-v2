@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex, Stack } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
@@ -8,46 +9,39 @@ import Card from "src/components/Card";
 const Posts = ({ articles }) => {
   return (
     <AnimatePresence>
-      <motion.div
-        key="posts"
-        initial={{ opacity: 0 }}
-        // whileInView={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <Flex justify="center">
-          <ArticleList articles={articles} />
-          {/* <Stack mt="2rem" spacing="1.5rem">
-            {articles && articles.length
-              ? articles.map((article, i) => {
-                  return <Card article={article} key={i} />;
-                })
-              : null}
-          </Stack> */}
-        </Flex>
-      </motion.div>
+      <ArticleList articles={articles} />
     </AnimatePresence>
   );
 };
 
 const ArticleList = ({ articles }) => {
+  const router = useRouter();
+  // console.log("\n\nROUTER:", router, "\n\n");
+
   return (
-    <motion.div layout>
-      <Stack mt="2rem" spacing="1.5rem">
-        {articles && articles.length
-          ? articles.map((article, i) => {
-              return <Card article={article} key={i} />;
-            })
-          : null}
-      </Stack>
+    <motion.div
+      key={router.asPath}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Flex justify="center">
+        <Stack mt="2rem" spacing="1.5rem">
+          {articles && articles.length
+            ? articles.map((article, i) => {
+                return <Card article={article} key={i} />;
+              })
+            : null}
+        </Stack>
+      </Flex>
     </motion.div>
   );
 };
 
 export async function getStaticProps({ params }) {
-  console.log("PARAMS:", params);
+  // console.log("PARAMS:", params);
   const category = params.category;
-  console.log("CATEGORY:", category);
+  // console.log("CATEGORY:", category);
   const categoriesRes = await fetchAPI("/categories", {
     filters: {
       name: category,
