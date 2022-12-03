@@ -1,9 +1,8 @@
 import React from "react";
-import { Box, Flex, Text, Heading, Center, HStack } from "@chakra-ui/react";
+import { Box, Flex, Center, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 import {
   FacebookIcon,
   TwitterIcon,
