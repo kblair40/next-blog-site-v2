@@ -1,14 +1,25 @@
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
-import ReactGA from "react-ga";
 // import localFont from "@next/font/local";
+// import ReactGA from "react-ga";
+import dynamic from "next/dynamic";
 
 import theme from "src/utils/theme";
 import Layout from "src/components/Layout";
 import "../assets/css/style.css";
 
+const ReactGA = dynamic(() =>
+  import("react-ga").then((comp) => {
+    console.log("\n\nREACT GA:", comp, "\n\n");
+  })
+);
+
+console.log("REACTGA:", ReactGA);
+
 const TRACKING_ID = "UA-250380145-1";
-ReactGA.initialize(TRACKING_ID);
+if (ReactGA && ReactGA.initialize) {
+  ReactGA.initialize(TRACKING_ID);
+}
 
 // export const nunito = localFont({
 //   src: [
