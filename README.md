@@ -5,12 +5,12 @@ A blog about money, and some other things.  Currently only live in a staging env
 ---
 
 ## Built With
-##### Client
+#### Client
  - NextJS/React
  - Chakra UI
 
 
-##### Server
+#### Server
  - Strapi Headless CMS
  - Postgres
  - CKEditor (for writing new blog posts)
