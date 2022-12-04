@@ -20,7 +20,8 @@ A blog about money, and some other things.  Currently only live in a staging env
 
 ### Todo before production
  - Improve styles of 404 page / configure 500 error page
+ - Add 'Recent Articles' component to bottom of /article/[slug]
  - Add tests for 'email on subscribe' functions
  - Confirm all unsubscribe functionality complies with the law
  - On Sendgrid, finish 'welcome' email template and configure 'send' function to use the template on subscribe events
- - split custom css for article/[slug] so it loads on page mount, rather than in _app component
+ - Split custom css for article/[slug] so it loads on page mount, rather than in _app component
