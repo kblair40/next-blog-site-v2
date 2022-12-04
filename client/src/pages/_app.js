@@ -13,6 +13,21 @@ console.log("REACTGA:", ReactGA);
 const TRACKING_ID = "UA-250380145-1";
 ReactGA.initialize(TRACKING_ID);
 
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <>
+      <Head></Head>
+      <ChakraProvider theme={theme} resetCSS={true}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
+    </>
+  );
+};
+
+export default MyApp;
+
 // export const nunito = localFont({
 //   src: [
 //     {
@@ -113,18 +128,3 @@ ReactGA.initialize(TRACKING_ID);
 //     },
 //   ],
 // });
-
-const MyApp = ({ Component, pageProps }) => {
-  return (
-    <>
-      <Head></Head>
-      <ChakraProvider theme={theme} resetCSS={true}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ChakraProvider>
-    </>
-  );
-};
-
-export default MyApp;
