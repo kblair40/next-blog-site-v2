@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-// import ReactGA from "react-ga";
+import ReactGA from "react-ga";
 
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
@@ -13,7 +13,7 @@ const layout = ({ children, categories }) => {
   const curPath = useRef();
   useEffect(() => {
     if (curPath.current !== asPath) {
-      // ReactGA.pageview(asPath);
+      ReactGA.pageview(asPath);
       curPath.current = asPath;
     }
   }, [asPath]);
