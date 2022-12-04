@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 // import localFont from "@next/font/local";
@@ -7,13 +8,21 @@ import dynamic from "next/dynamic";
 import theme from "src/utils/theme";
 import Layout from "src/components/Layout";
 import "../assets/css/style.css";
+dynamic(() => import("../assets/css/editor.css"));
 
-console.log("REACTGA:", ReactGA);
+// console.log("REACTGA:", ReactGA);
+console.log("DOCUMENT:", typeof document);
 
 const TRACKING_ID = "UA-250380145-1";
 ReactGA.initialize(TRACKING_ID);
 
 const MyApp = ({ Component, pageProps }) => {
+  // useEffect(() => {
+  //   const check = document.fonts.check("12px 'Nunito'");
+  //   console.log("CHECK:", check);
+  //   console.log("FONTS:", document.fonts);
+  // });
+
   return (
     <>
       <Head></Head>
