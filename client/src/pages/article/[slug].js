@@ -45,11 +45,17 @@ const Article = ({ article }) => {
   };
 
   useEffect(() => {
-    // add target=_blank to all links in blog post so they open in new tab
+    // adds target=_blank to all links in blog post so they open in new tab
     let links = Array.from(
       document.querySelector(".ck-content").getElementsByTagName("a")
     );
     links.forEach((link) => (link.target = "_blank"));
+
+    const innerSpans = document.querySelectorAll("a span");
+    console.log("INNER SPANS:", innerSpans);
+    innerSpans.forEach((innerSpan) => {
+      innerSpan.style.color = "#7D9174";
+    });
   }, []);
 
   return (
@@ -103,7 +109,15 @@ const Article = ({ article }) => {
 
             <Heading mb="2rem">{article.attributes.title}</Heading>
 
-            <Box w="100%">
+            <Box
+              w="100%"
+              sx={{
+                a: {
+                  // color: "brand.lightgreen",
+                  color: "#7D9174",
+                },
+              }}
+            >
               <Box
                 className="ck-content"
                 dangerouslySetInnerHTML={{ __html: article.attributes.content }}
@@ -122,20 +136,6 @@ const Article = ({ article }) => {
   );
 };
 
-// export async function getStaticPaths() {
-//   // const articlesRes = await fetchAPI("/articles", { fields: ["slug"] });
-
-//   return {
-//     paths: [],
-//     // paths: articlesRes.data.map((article) => ({
-//     //   params: {
-//     //     slug: article.attributes.slug,
-//     //   },
-//     // })),
-//     fallback: false,
-//   };
-// }
-
 export async function getServerSideProps({ params }) {
   const articlesRes = await fetchAPI("/articles", {
     filters: {
@@ -147,27 +147,8 @@ export async function getServerSideProps({ params }) {
 
   return {
     props: { article: articlesRes.data[0], categories: categoriesRes },
-    // revalidate: 1,
   };
-  // return {
-  //   props: {}, // will be passed to the page component as props
-  // }
 }
-
-// export async function getStaticProps({ params }) {
-//   const articlesRes = await fetchAPI("/articles", {
-//     filters: {
-//       slug: params.slug,
-//     },
-//     populate: ["image", "category", "author.picture"],
-//   });
-//   const categoriesRes = await fetchAPI("/categories");
-
-//   return {
-//     props: { article: articlesRes.data[0], categories: categoriesRes },
-//     revalidate: 1,
-//   };
-// }
 
 export default Article;
 

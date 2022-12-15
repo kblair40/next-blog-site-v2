@@ -494,8 +494,15 @@ a {
   }
   
   .ck-content a {
-    /*  */
-    color: #53614d;
+    color: #53614d !important;
+    text-decoration: underline;
+  }
+  .ck-content a span {
+    color: #53614d !important;
+    text-decoration: underline;
+  }
+  .ck-content a span u {
+    color: #53614d !important;
     text-decoration: underline;
   }
   
