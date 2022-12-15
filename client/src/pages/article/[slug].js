@@ -54,7 +54,7 @@ const Article = ({ article }) => {
     const innerSpans = document.querySelectorAll("a span");
     console.log("INNER SPANS:", innerSpans);
     innerSpans.forEach((innerSpan) => {
-      innerSpan.style.color = "#7D9174";
+      innerSpan.style.color = "#53614D";
     });
   }, []);
 
