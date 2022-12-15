@@ -122,21 +122,21 @@ const Article = ({ article }) => {
   );
 };
 
-export async function getStaticPaths() {
-  // const articlesRes = await fetchAPI("/articles", { fields: ["slug"] });
+// export async function getStaticPaths() {
+//   // const articlesRes = await fetchAPI("/articles", { fields: ["slug"] });
 
-  return {
-    paths: [],
-    // paths: articlesRes.data.map((article) => ({
-    //   params: {
-    //     slug: article.attributes.slug,
-    //   },
-    // })),
-    fallback: false,
-  };
-}
+//   return {
+//     paths: [],
+//     // paths: articlesRes.data.map((article) => ({
+//     //   params: {
+//     //     slug: article.attributes.slug,
+//     //   },
+//     // })),
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const articlesRes = await fetchAPI("/articles", {
     filters: {
       slug: params.slug,
@@ -147,9 +147,27 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { article: articlesRes.data[0], categories: categoriesRes },
-    revalidate: 1,
+    // revalidate: 1,
   };
+  // return {
+  //   props: {}, // will be passed to the page component as props
+  // }
 }
+
+// export async function getStaticProps({ params }) {
+//   const articlesRes = await fetchAPI("/articles", {
+//     filters: {
+//       slug: params.slug,
+//     },
+//     populate: ["image", "category", "author.picture"],
+//   });
+//   const categoriesRes = await fetchAPI("/categories");
+
+//   return {
+//     props: { article: articlesRes.data[0], categories: categoriesRes },
+//     revalidate: 1,
+//   };
+// }
 
 export default Article;
 
