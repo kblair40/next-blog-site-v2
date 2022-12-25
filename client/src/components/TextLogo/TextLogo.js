@@ -11,6 +11,8 @@ const TextLogo = () => {
       key={"text-logo"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      // style={{ border: "1px solid red" }}
+      style={{ background: "#53614D" }}
     >
       {isMd ? <LargeLogo /> : <SmallLogo />}
     </motion.div>
@@ -33,6 +35,7 @@ const SmallLogo = () => {
         <Heading
           maxW="90vw"
           color="brand.darkgreen"
+          // color="white"
           // fontFamily="Playfair Display"
           textAlign="center"
           fontSize={{ base: "36px", sm: "42px" }}
@@ -55,26 +58,36 @@ const LargeLogo = () => {
     <Flex
       align="center"
       direction="column"
-      pt="60px"
-      mb={{ base: "28px", md: "58px" }}
-      h="180px"
+      // pt="60px"
+      pt="48px"
+      // mb={{ base: "28px", md: "58px" }}
+      // h="180px"
+      pb="2rem"
     >
       <Link href="/">
         <Heading
+          color="white"
           maxW="90vw"
-          color="brand.darkgreen"
+          // color="brand.darkgreen"
           // fontFamily="Playfair Display"
           textAlign="center"
-          fontSize={{ md: "60px", lg: "72px" }}
+          // fontSize={{ md: "60px", lg: "72px" }} // removal new
+          fontSize={{ md: "60px", lg: "80px" }}
           whiteSpace="nowrap"
           lineHeight="normal"
           mb="10px"
-          fontWeight="800"
+          // fontWeight="800" // removal new
+          fontWeight={"400"} // new
+          textTransform="uppercase" // new
         >
           Money and Other Things
         </Heading>
       </Link>
-      <Text color="brand.darkgreen" fontSize={{ sm: "17px" }}>
+      <Text
+        // color="brand.darkgreen"
+        color="white"
+        fontSize={{ sm: "17px" }}
+      >
         A collection of money stories and tips
       </Text>
     </Flex>

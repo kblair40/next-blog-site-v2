@@ -20,9 +20,18 @@ const Navbar = () => {
       key={"nav"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      style={{ background: "#fff9f3" }}
       // exit={{ opacity: 0 }}
     >
-      <Box w="100%" display={{ base: "none", md: "block" }} h="50px">
+      <Box
+        // position="relative" // new
+        // bottom="24px" // new
+        w="100%"
+        display={{ base: "none", md: "block" }}
+        bg="brand.creme" // new
+        pt="1.5rem" // new
+        // h="50px" // removal is new
+      >
         <Flex justify="space-evenly" h="100%">
           {navLinks.map((linkObj, i) => {
             return (
@@ -52,13 +61,13 @@ const NavLink = ({ linkObj, children, isActive }) => {
       flex={1}
       h="100%"
       px="5px"
-      border="1px solid #424242"
+      // border="1px solid #424242"
       borderRight="none"
     >
       <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
           h="100%"
-          fontSize="14px"
+          fontSize="18px"
           fontWeight="500"
           textAlign="center"
           transitionDuration="0.3s"
@@ -66,6 +75,8 @@ const NavLink = ({ linkObj, children, isActive }) => {
             color: "brand.lightgreen",
           }}
           color={isActive ? "brand.lightgreen" : "text.body"}
+          // color="white" // new
+          // fontWeight="600"
         >
           {children ? children : linkObj.label}
         </Center>

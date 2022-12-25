@@ -42,13 +42,14 @@ const FeaturedPost = ({ featuredPost }) => {
           border="5px solid"
           borderColor="brand.darkgreen"
           // borderColor="white"
-          // bg="white"
-          bg="brand.darkgreen"
+          bg="white"
+          // bg="brand.darkgreen"
         >
           <Text
             // color="black"
             fontWeight="500"
-            color="#fff"
+            // color="#fff"
+            color="brand.darkgreen"
             fontSize={{ base: "lg", sm: "xl", md: "2xl" }}
             letterSpacing={{ base: "3.5px", sm: "6px", md: "8px" }}
           >
@@ -69,6 +70,7 @@ const FeaturedPost = ({ featuredPost }) => {
         border="1px solid black"
         borderTop="none"
         boxSizing="border-box"
+        bg="white" // new
       >
         <Box display="inline" fontSize="xs" mb="1rem">
           <Text display="inline">

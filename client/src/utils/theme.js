@@ -5,6 +5,7 @@ const theme = extendTheme({
     brand: {
       darkgreen: "#53614D",
       lightgreen: "#7D9174",
+      creme: "#fff9f3",
     },
     text: {
       body: "#303030",
@@ -34,7 +35,8 @@ const theme = extendTheme({
   },
   fonts: {
     body: "Nunito, Avenir, Arial, system-ui, sans-serif",
-    heading: "Playfair Display, serif",
+    // heading: "Playfair Display, serif",
+    heading: "Bodoni",
   },
 });
 
