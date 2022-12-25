@@ -32,18 +32,23 @@ const FeaturedPost = ({ featuredPost }) => {
         />
 
         <Center
-          px={{ base: "1.5rem", md: "2rem" }}
+          px={{ base: "1.5rem", md: ".75rem" }}
           h={{ base: "42px", sm: "52px", md: "62px" }}
           position="absolute"
           transform="translateY(-50%)"
           top={0}
+          // left={"1rem"}
           left={0}
           border="5px solid"
           borderColor="brand.darkgreen"
-          bg="white"
+          // borderColor="white"
+          // bg="white"
+          bg="brand.darkgreen"
         >
           <Text
-            color="black"
+            // color="black"
+            fontWeight="500"
+            color="#fff"
             fontSize={{ base: "lg", sm: "xl", md: "2xl" }}
             letterSpacing={{ base: "3.5px", sm: "6px", md: "8px" }}
           >
