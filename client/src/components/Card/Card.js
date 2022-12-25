@@ -30,8 +30,10 @@ const Card = ({ article }) => {
       maxW={{ base: "92vw", sm: "90vw" }}
       w={{ base: "92vw", sm: "90vw", md: "100%" }}
       h={{ base: "200px", sm: "240px", md: "231px" }}
-      border="1px solid #303030"
+      border="1px solid #979797"
       position="relative"
+      bg="white" // new
+      // shadow="lg"
     >
       <Suspense fallback={<div />}>
         <ShareModal
@@ -61,6 +63,8 @@ const Card = ({ article }) => {
         w={{ base: "230px", sm: "300px" }}
         position="relative"
         overflow="hidden"
+        // bg="white"
+        // border="1px solid red"
       >
         {article && article.attributes && article.attributes.image_url ? (
           <Image
@@ -78,7 +82,8 @@ const Card = ({ article }) => {
 
       <Flex
         h="100%"
-        w={{ base: "60%", md: "50%" }}
+        // w={{ base: "60%", md: "50%" }}
+        w={{ base: "60%" }}
         direction="column"
         p={{
           base: "20px 12px 17px",
@@ -86,6 +91,8 @@ const Card = ({ article }) => {
           md: "28px 24px 25px",
         }}
         overflowY="hidden" // just in case
+        bg="white" // new
+        // border="1px solid red"
       >
         <Box display="inline" fontSize="xs" mb="1rem">
           <Text display="inline" textTransform="uppercase">

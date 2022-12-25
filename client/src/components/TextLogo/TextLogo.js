@@ -58,11 +58,12 @@ const LargeLogo = () => {
     <Flex
       align="center"
       direction="column"
+      // justify="center"
       // pt="60px"
-      pt="48px"
+      pt="60px"
       // mb={{ base: "28px", md: "58px" }}
       // h="180px"
-      pb="2rem"
+      pb="3rem"
     >
       <Link href="/">
         <Heading
@@ -86,7 +87,9 @@ const LargeLogo = () => {
       <Text
         // color="brand.darkgreen"
         color="white"
-        fontSize={{ sm: "17px" }}
+        fontSize={{ sm: "22px" }}
+        fontFamily="parisienne"
+        letterSpacing="4px"
       >
         A collection of money stories and tips
       </Text>

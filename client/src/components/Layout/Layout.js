@@ -33,6 +33,7 @@ const layout = ({ children, categories }) => {
           // border="2px solid black"
           // bg="brand.darkgreen"
           display={{ base: "none", md: "block" }}
+          // pb="1rem"
         >
           <TextLogo />
           <Navbar categories={categories} />

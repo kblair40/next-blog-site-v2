@@ -67,16 +67,18 @@ const NavLink = ({ linkObj, children, isActive }) => {
       <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
           h="100%"
-          fontSize="18px"
-          fontWeight="500"
+          fontSize="20px"
+          // fontWeight="500"
           textAlign="center"
           transitionDuration="0.3s"
           _groupHover={{
             color: "brand.lightgreen",
           }}
-          color={isActive ? "brand.lightgreen" : "text.body"}
+          // color={isActive ? "brand.lightgreen" : "text.body"}
           // color="white" // new
-          // fontWeight="600"
+          color="brand.darkgreen"
+          fontWeight="600"
+          letterSpacing="2px"
         >
           {children ? children : linkObj.label}
         </Center>
