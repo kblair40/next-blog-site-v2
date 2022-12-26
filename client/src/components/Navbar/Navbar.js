@@ -55,7 +55,7 @@ const Navbar = () => {
         // display={{ base: "none", md: "block" }}
         display={{ base: "none", md: "flex" }} // new (was md: block)
         bg="brand.creme" // new
-        pt="1rem" // new
+        // pt="1rem" // new
         pl="1rem"
         pr="1rem"
         // h="50px" // removal is new
@@ -65,8 +65,8 @@ const Navbar = () => {
       >
         <Box
           position="relative"
-          h="60px"
-          w="180px"
+          h="70px"
+          w="210px"
           mr={{ md: "1.5rem", lg: "3rem" }}
         >
           <Image
@@ -152,7 +152,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
         <Center
           // border="2px solid red"
           h="100%"
-          fontSize="18px"
+          fontSize="16px"
           // fontWeight="500"
           textAlign="center"
           transitionDuration="0.3s"
