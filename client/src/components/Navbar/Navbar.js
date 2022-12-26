@@ -32,9 +32,13 @@ const Navbar = () => {
         width: "100vw",
         // paddingLeft: "1rem",
         // paddingRight: "2rem",
+        // display: "flex",
+        // justifyContent: "center",
       }}
     >
       <Box
+        maxW="1000px"
+        mx="auto"
         h="100%"
         // position="sticky"
         sx={
@@ -59,7 +63,12 @@ const Navbar = () => {
         justify="space-between"
         w="100vw"
       >
-        <Box position="relative" h="60px" w="180px" mr="1.5rem">
+        <Box
+          position="relative"
+          h="60px"
+          w="180px"
+          mr={{ md: "1.5rem", lg: "3rem" }}
+        >
           <Image
             src="https://res.cloudinary.com/erinsblog/image/upload/v1672077301/Money_and_Other_Things_Logo_dzvjxy.jpg"
             style={{
@@ -69,7 +78,14 @@ const Navbar = () => {
           />
         </Box>
 
-        <Flex justify="space-evenly" h="100%" w="100%">
+        <Flex
+          py=".5rem"
+          justify="space-evenly"
+          h="100%"
+          w="100%"
+          // border="1px solid black"
+          maxW="695px"
+        >
           {navLinks.map((linkObj, i) => {
             return (
               <NavLink
