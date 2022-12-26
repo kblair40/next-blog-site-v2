@@ -25,18 +25,6 @@ const Navbar = () => {
   //   console.log("IN VIEW:", inView);
   // }, [inView]);
 
-  const observeRef = useRef();
-  useEffect(() => {
-    const options = {
-      root: observeRef.current,
-      rootMargin: "0px",
-      threshold: 0,
-    };
-    const observer = new IntersectionObserver((...args) =>
-      console.log("Callback:", args)
-    );
-  }, []);
-
   return (
     <motion.div
       key={"nav"}
@@ -56,7 +44,6 @@ const Navbar = () => {
         // display: "flex",
         // justifyContent: "center",
       }}
-      ref={observeRef}
     >
       <Box
         // ref={observe}

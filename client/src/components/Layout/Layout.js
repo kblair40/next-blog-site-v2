@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import ReactGA from "react-ga";
-import { useInView } from "react-cool-inview";
+// import { useInView } from "react-cool-inview";
 
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
 import TextLogo from "src/components/TextLogo";
 
 const layout = ({ children, categories }) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
+  // const [isIntersecting, setIsIntersecting] = useState(false);
 
   // const { observe, inView } = useInView({
   //   threshold: 0, // Default is 0
@@ -25,6 +25,22 @@ const layout = ({ children, categories }) => {
       curPath.current = asPath;
     }
   }, [asPath]);
+
+  const observeRef = useRef();
+  useEffect(() => {
+    const options = {
+      // root: observeRef.current,
+      rootMargin: "80px",
+      threshold: 0,
+    };
+    const cb = (args) => console.log("ARGS:", args);
+    const observer = new IntersectionObserver(cb, options);
+
+    if (observeRef && observeRef.current) {
+      observer.observe(observeRef.current);
+      // observer.observe(document.getElementById("to-observe"));
+    }
+  }, [observeRef]);
 
   // useEffect(() => {
   //   console.log("IN VIEW:", inView);
@@ -44,10 +60,7 @@ const layout = ({ children, categories }) => {
       <Box>
         <Box display={{ base: "none", md: "block" }}>
           {/* <TextLogo /> */}
-          <Box
-          // ref={observe}
-          //
-          >
+          <Box ref={observeRef} id="to-observe">
             <Navbar categories={categories} />
           </Box>
         </Box>
