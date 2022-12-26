@@ -61,11 +61,12 @@ const NavLink = ({ linkObj, children, isActive }) => {
       flex={1}
       h="100%"
       px="5px"
-      // border="1px solid #424242"
+      // border="1px solid #424242" // new removal
       borderRight="none"
     >
       <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
+          // border="2px solid red"
           h="100%"
           fontSize="20px"
           // fontWeight="500"
