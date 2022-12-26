@@ -3,6 +3,7 @@ import { Box, Flex, Center, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import {
   FacebookIcon,
@@ -20,19 +21,55 @@ const Navbar = () => {
       key={"nav"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      style={{ background: "#fff9f3" }}
-      // exit={{ opacity: 0 }}
+      style={{
+        background: "#fff9f3",
+        // border: "1px solid red",
+        position: "fixed",
+        top: 0,
+        zIndex: 100000,
+        height: "80px",
+        // border: "1px solid #ccc",
+        width: "100vw",
+        // paddingLeft: "1rem",
+        // paddingRight: "2rem",
+      }}
     >
       <Box
+        h="100%"
+        // position="sticky"
+        sx={
+          {
+            // position: "sticky",
+            // position: "-webkit-sticky",
+            // top: "60px",
+          }
+        }
+        // top="0"
         // position="relative" // new
         // bottom="24px" // new
-        w="100%"
-        display={{ base: "none", md: "block" }}
+        // w="100%"
+        // display={{ base: "none", md: "block" }}
+        display={{ base: "none", md: "flex" }} // new (was md: block)
         bg="brand.creme" // new
-        pt="1.5rem" // new
+        pt="1rem" // new
+        pl="1rem"
+        pr="1rem"
         // h="50px" // removal is new
+        // border="1px solid black"
+        justify="space-between"
+        w="100vw"
       >
-        <Flex justify="space-evenly" h="100%">
+        <Box position="relative" h="60px" w="180px" mr="1.5rem">
+          <Image
+            src="https://res.cloudinary.com/erinsblog/image/upload/v1672077301/Money_and_Other_Things_Logo_dzvjxy.jpg"
+            style={{
+              objectFit: "cover",
+            }}
+            fill
+          />
+        </Box>
+
+        <Flex justify="space-evenly" h="100%" w="100%">
           {navLinks.map((linkObj, i) => {
             return (
               <NavLink
@@ -85,7 +122,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
         background: "brand.darkgreen",
         transition: "0.2x",
         position: "relative",
-        bottom: "4px",
+        bottom: "12px",
         margin: "2px auto 0",
       }}
       _hover={{
@@ -99,7 +136,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
         <Center
           // border="2px solid red"
           h="100%"
-          fontSize="20px"
+          fontSize="18px"
           // fontWeight="500"
           textAlign="center"
           transitionDuration="0.3s"

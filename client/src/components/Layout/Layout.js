@@ -27,15 +27,11 @@ const layout = ({ children, categories }) => {
       direction="column"
       justifyContent="space-between"
       bg="brand.creme" // new
+      pt="80px"
     >
       <Box>
-        <Box
-          // border="2px solid black"
-          // bg="brand.darkgreen"
-          display={{ base: "none", md: "block" }}
-          // pb="1rem"
-        >
-          <TextLogo />
+        <Box display={{ base: "none", md: "block" }}>
+          {/* <TextLogo /> */}
           <Navbar categories={categories} />
         </Box>
 
@@ -45,12 +41,7 @@ const layout = ({ children, categories }) => {
           <TextLogo />
         </Box>
 
-        <Box
-          h="100%"
-          // border="1px solid green"
-          position="relative"
-          bg="brand.creme"
-        >
+        <Box h="100%" position="relative" bg="brand.creme">
           {children}
         </Box>
       </Box>
