@@ -1,13 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, Text, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import ReactGA from "react-ga";
+import { useInView } from "react-cool-inview";
 
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
 import TextLogo from "src/components/TextLogo";
 
 const layout = ({ children, categories }) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  // const { observe, inView } = useInView({
+  //   threshold: 0, // Default is 0
+  //   rootMargin: "-80px",
+  // });
+
   const { asPath } = useRouter();
 
   const curPath = useRef();
@@ -17,6 +25,10 @@ const layout = ({ children, categories }) => {
       curPath.current = asPath;
     }
   }, [asPath]);
+
+  // useEffect(() => {
+  //   console.log("IN VIEW:", inView);
+  // }, [inView]);
 
   return (
     <Flex
@@ -32,7 +44,12 @@ const layout = ({ children, categories }) => {
       <Box>
         <Box display={{ base: "none", md: "block" }}>
           {/* <TextLogo /> */}
-          <Navbar categories={categories} />
+          <Box
+          // ref={observe}
+          //
+          >
+            <Navbar categories={categories} />
+          </Box>
         </Box>
 
         {/* hides self when md breakpoint is hit */}

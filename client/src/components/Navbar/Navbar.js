@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Box, Flex, Center, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Image from "next/image";
+// import { useInView } from "react-cool-inview";
 
 import {
   FacebookIcon,
@@ -15,6 +16,26 @@ import { navLinks } from "./links";
 
 const Navbar = () => {
   const { asPath } = useRouter();
+
+  // const { observe, inView } = useInView({
+  //   threshold: 0, // Default is 0
+  // });
+
+  // useEffect(() => {
+  //   console.log("IN VIEW:", inView);
+  // }, [inView]);
+
+  const observeRef = useRef();
+  useEffect(() => {
+    const options = {
+      root: observeRef.current,
+      rootMargin: "0px",
+      threshold: 0,
+    };
+    const observer = new IntersectionObserver((...args) =>
+      console.log("Callback:", args)
+    );
+  }, []);
 
   return (
     <motion.div
@@ -35,8 +56,10 @@ const Navbar = () => {
         // display: "flex",
         // justifyContent: "center",
       }}
+      ref={observeRef}
     >
       <Box
+        // ref={observe}
         // maxW="1000px"
         mx="auto"
         h="100%"
@@ -76,6 +99,7 @@ const Navbar = () => {
             style={{
               objectFit: "cover",
             }}
+            alt="img"
             fill
           />
         </Box>
