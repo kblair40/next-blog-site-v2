@@ -63,6 +63,23 @@ const NavLink = ({ linkObj, children, isActive }) => {
       px="5px"
       // border="1px solid #424242" // new removal
       borderRight="none"
+      _after={{
+        content: `""`,
+        display: "block",
+        width: 0,
+        height: "2px",
+        background: "brand.darkgreen",
+        transition: "0.2x",
+        position: "relative",
+        bottom: "4px",
+        margin: "2px auto 0",
+      }}
+      _hover={{
+        _after: {
+          width: "35px",
+          transition: "width 0.2s",
+        },
+      }}
     >
       <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
@@ -80,6 +97,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
           color="brand.darkgreen"
           fontWeight="600"
           letterSpacing="2px"
+          className="link-wrapper"
         >
           {children ? children : linkObj.label}
         </Center>
