@@ -37,7 +37,7 @@ const Navbar = () => {
       }}
     >
       <Box
-        maxW="1000px"
+        // maxW="1000px"
         mx="auto"
         h="100%"
         // position="sticky"
@@ -58,10 +58,12 @@ const Navbar = () => {
         // pt="1rem" // new
         pl="1rem"
         pr="1rem"
+        pt=".5rem"
         // h="50px" // removal is new
         // border="1px solid black"
         justify="space-between"
         w="100vw"
+        // shadow="lg"
       >
         <Box
           position="relative"
