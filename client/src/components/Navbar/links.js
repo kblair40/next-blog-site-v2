@@ -25,19 +25,19 @@ export const navLinks = [
   },
   {
     label: "Life",
-    to: "/contact",
+    to: "/posts/life",
   },
   {
     label: "Love",
-    to: "/contact",
+    to: "/posts/money",
   },
   {
     label: "Travel",
-    to: "/contact",
+    to: "/posts/travel",
   },
   {
     label: "Style",
-    to: "/contact",
+    to: "/posts/style",
   },
   {
     label: "About",
