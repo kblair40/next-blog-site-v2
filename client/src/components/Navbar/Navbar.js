@@ -54,6 +54,19 @@ const Navbar = () => {
 export default Navbar;
 
 const NavLink = ({ linkObj, children, isActive }) => {
+  const inactiveStyles = {
+    content: `""`,
+    display: "block",
+    width: 0,
+    height: "2px",
+    background: "brand.darkgreen",
+    transition: "0.2x",
+    position: "relative",
+    bottom: "4px",
+    margin: "2px auto 0",
+  };
+
+  const activeStyles = {};
   return (
     <Box
       role="group"
@@ -66,7 +79,8 @@ const NavLink = ({ linkObj, children, isActive }) => {
       _after={{
         content: `""`,
         display: "block",
-        width: 0,
+        width: isActive ? "35px" : 0,
+        // width: 0,
         height: "2px",
         background: "brand.darkgreen",
         transition: "0.2x",
