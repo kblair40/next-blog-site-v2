@@ -88,8 +88,8 @@ const Article = ({ article }) => {
             direction="column"
             w="100%"
             maxW={{ lg: "1000px" }}
-            p={{ base: "12px", sm: "24px", md: "40px", lg: "60px" }}
-            border="1px solid black"
+            p={{ base: "12px", sm: "24px", md: "40px", lg: "q0px" }}
+            // border="1px solid black"
           >
             <Flex
               mb="2rem"
@@ -107,7 +107,9 @@ const Article = ({ article }) => {
               <Text display="inline">{`${article.attributes.minutes_to_read} min read`}</Text>
             </Flex>
 
-            <Heading mb="2rem">{article.attributes.title}</Heading>
+            <Heading mb="2rem" textAlign="center">
+              {article.attributes.title}
+            </Heading>
 
             <Box
               w="100%"

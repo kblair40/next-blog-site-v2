@@ -81,25 +81,36 @@ const Navbar = () => {
         </Box>
 
         <Flex
-          py=".5rem"
-          justify="space-evenly"
-          h="100%"
-          w="100%"
+          position="fixed"
+          top={"1.5rem"}
+          left={0}
+          right={0}
+          justify="center"
+          w="100vw"
           // border="1px solid black"
-          maxW="695px"
         >
-          {navLinks.map((linkObj, i) => {
-            return (
-              <NavLink
-                isActive={linkObj.to === asPath}
-                linkObj={linkObj}
-                key={i}
-              />
-            );
-          })}
-          {/* <NavLink>
+          <Flex
+            py=".5rem"
+            justify="space-evenly"
+            h="100%"
+            w="100%"
+            // w="100vw"
+            // border="1px solid black"
+            maxW="695px"
+          >
+            {navLinks.map((linkObj, i) => {
+              return (
+                <NavLink
+                  isActive={linkObj.to === asPath}
+                  linkObj={linkObj}
+                  key={i}
+                />
+              );
+            })}
+            {/* <NavLink>
           <SocialLinks />
         </NavLink> */}
+          </Flex>
         </Flex>
       </Box>
     </motion.div>
