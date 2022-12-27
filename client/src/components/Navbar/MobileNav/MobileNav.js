@@ -13,8 +13,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
+import Search from "../Search";
 import { navLinks } from "../links";
 // import { SocialLinks } from "../Navbar";
 
@@ -42,27 +44,32 @@ const MobileNav = () => {
         borderBottom="1px solid"
         borderColor="text.body"
         py=".5rem"
-        justify="flex-end"
+        justify="space-between"
+        px="1rem"
+        // pr="1rem"
+        // pl="1rem"
       >
-        {/* <Flex
+        <Box
           position="relative"
-          flex={1}
-          w="100%"
-          h="40px"
-          justify="center"
-          align="center"
+          h={{ base: "40px", sm: "40px" }}
+          w={{ base: "120px", sm: "120px" }}
+          minW={{ base: "120px", sm: "120px" }}
         >
-          <SocialLinks spacing="1rem" iconBoxSize="26px" />
-        </Flex> */}
-
-        {/* <Box my="-8px" h="56px">
-          <Divider orientation="vertical" borderColor="text.body" />
-        </Box> */}
+          <Image
+            src="https://res.cloudinary.com/erinsblog/image/upload/v1672144985/Money_and_Other_Things_Logo2_zfrp33.jpg"
+            style={{
+              objectFit: "cover",
+            }}
+            alt="img"
+            fill
+          />
+        </Box>
 
         <Flex
-          w="100%"
+          w="32px"
           position="relative"
-          maxW="64px"
+          maxW="32px"
+          minW="32px"
           justify="center"
           align="center"
         >
