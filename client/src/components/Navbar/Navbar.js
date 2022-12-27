@@ -162,7 +162,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
         <Center
           // border="2px solid red"
           h="100%"
-          fontSize="16px"
+          fontSize={{ md: "14px", lg: "18px" }}
           // fontWeight="500"
           textAlign="center"
           transitionDuration="0.3s"

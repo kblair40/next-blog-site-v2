@@ -12,13 +12,23 @@ import {
 
 const Search = () => {
   return (
-    <InputGroup w="100%" maxW={{ lg: "180px" }}>
+    <InputGroup
+      w="100%"
+      maxW={{ md: "140px" }}
+      minW={{ md: "140px" }}
+      ml={{ md: "1rem", lg: "1.5rem" }}
+      mr={{ md: "1rem" }}
+    >
       <InputLeftElement>
         {/* <Flex direction="column" justify="center" h="100%"> */}
         <SearchIcon fill="#ccc" boxSize="16px" />
         {/* </Flex> */}
       </InputLeftElement>
-      <Input placeholder="Search..." />
+      <Input
+        borderColor="brand.lightgreen"
+        focusBorderColor="brand.lightgreen"
+        placeholder="Search..."
+      />
     </InputGroup>
   );
 };
