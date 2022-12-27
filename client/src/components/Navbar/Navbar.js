@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import NavLinks from "./NavLinks";
 import Search from "./Search";
 import {
   FacebookIcon,
@@ -49,14 +50,16 @@ const Navbar = ({ isIntersecting }) => {
         pt=".5rem"
         justify="space-between"
         w="100vw"
+        // border="1px solid green"
         shadow={isIntersecting ? "md" : "none"}
         transition="box-shadow .5s"
+        justifyContent="space-between"
       >
         <Box
           position="relative"
           h="70px"
           w="210px"
-          mr={{ md: "1.5rem", xl: "3rem" }}
+          mr={{ md: "1.5rem", lg: "2rem", xl: "3rem" }}
         >
           <Image
             src="https://res.cloudinary.com/erinsblog/image/upload/v1672077301/Money_and_Other_Things_Logo_dzvjxy.jpg"
@@ -74,26 +77,13 @@ const Navbar = ({ isIntersecting }) => {
           left={0}
           right={0}
           justify="center"
-          w={{ md: "100%", xl: "100vw" }}
+          // w={{ md: "100%", xl: "100vw" }}
+          w={{ md: "100%" }}
           align="center"
+          // border="1px solid red"
+          // justify={{ md: "space-between", xl: "unset" }}
         >
-          <Flex
-            py=".5rem"
-            justify="space-evenly"
-            h="100%"
-            w="100%"
-            maxW="695px"
-          >
-            {navLinks.map((linkObj, i) => {
-              return (
-                <NavLink
-                  isActive={linkObj.to === asPath}
-                  linkObj={linkObj}
-                  key={i}
-                />
-              );
-            })}
-          </Flex>
+          <NavLinks />
 
           <Search />
         </Flex>
@@ -103,60 +93,6 @@ const Navbar = ({ isIntersecting }) => {
 };
 
 export default Navbar;
-
-const NavLink = ({ linkObj, children, isActive }) => {
-  return (
-    <Box
-      role="group"
-      cursor="pointer"
-      flex={1}
-      h="100%"
-      px="5px"
-      // border="1px solid #424242" // new removal
-      borderRight="none"
-      _after={{
-        content: `""`,
-        display: "block",
-        width: isActive ? "35px" : 0,
-        // width: 0,
-        height: "2px",
-        background: "brand.darkgreen",
-        transition: "0.2s",
-        position: "relative",
-        bottom: { md: "12px", xl: "2px" },
-        margin: "2px auto 0",
-      }}
-      _hover={{
-        _after: {
-          width: "35px",
-          transition: "width 0.2s",
-        },
-      }}
-    >
-      <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
-        <Center
-          // border="2px solid red"
-          h="100%"
-          fontSize={{ md: "14px", lg: "18px" }}
-          // fontWeight="500"
-          textAlign="center"
-          transitionDuration="0.3s"
-          _groupHover={{
-            color: "brand.lightgreen",
-          }}
-          // color={isActive ? "brand.lightgreen" : "text.body"}
-          // color="white" // new
-          color="brand.darkgreen"
-          fontWeight="600"
-          letterSpacing="2px"
-          className="link-wrapper"
-        >
-          {children ? children : linkObj.label}
-        </Center>
-      </Link>
-    </Box>
-  );
-};
 
 export const SocialLinks = ({ spacing = "8px", iconBoxSize = "20px" }) => {
   const boxSize = iconBoxSize;

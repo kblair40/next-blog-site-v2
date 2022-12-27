@@ -12,34 +12,40 @@ import {
 
 const Search = () => {
   return (
-    <InputGroup
-      w="100%"
-      maxW={{ md: "140px", lg: "180px", xl: "220px" }}
-      minW={{ md: "140px" }}
-      ml={{ md: "1rem", lg: "1.5rem" }}
-      mr={{ md: "1rem" }}
-      size="sm"
+    <Box
+    // position={{ xl: "fixed" }}
+    // top={{ xl: "1.75rem" }}
+    // right={{ xl: "3rem" }}
     >
-      <InputLeftElement>
-        {/* <Flex
+      <InputGroup
+        w="100%"
+        maxW={{ md: "140px", lg: "180px", xl: "220px" }}
+        minW={{ md: "140px" }}
+        ml={{ md: "1rem", lg: "1.5rem" }}
+        mr={{ md: "1rem", xl: 0 }}
+        size="sm"
+      >
+        <InputLeftElement>
+          {/* <Flex
           direction="column"
           justify="center"
           h="100%"
           border="1px solid black"
         > */}
-        <SearchIcon fill="#ccc" boxSize="16px" />
-        {/* </Flex> */}
-      </InputLeftElement>
-      <Input
-        rounded="md"
-        borderColor="brand.lightgreen"
-        focusBorderColor="brand.lightgreen"
-        placeholder="Search..."
-        _placeholder={{ color: "brand.darkgreen", opacity: "0.8" }}
-        _hover={{ borderColor: "brand.darkgreen" }}
-        transition="border-color 0.2s"
-      />
-    </InputGroup>
+          <SearchIcon fill="#ccc" boxSize="16px" />
+          {/* </Flex> */}
+        </InputLeftElement>
+        <Input
+          rounded="md"
+          borderColor="brand.lightgreen"
+          focusBorderColor="brand.lightgreen"
+          placeholder="Search..."
+          _placeholder={{ color: "brand.darkgreen", opacity: "0.8" }}
+          _hover={{ borderColor: "brand.darkgreen" }}
+          transition="border-color 0.2s"
+        />
+      </InputGroup>
+    </Box>
   );
 };
 
