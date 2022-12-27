@@ -74,7 +74,7 @@ const Navbar = ({ isIntersecting }) => {
         justify="space-between"
         w="100vw"
         shadow={isIntersecting ? "md" : "none"}
-        transition="all .5s"
+        transition="box-shadow .5s"
       >
         <Box
           position="relative"
@@ -93,12 +93,12 @@ const Navbar = ({ isIntersecting }) => {
         </Box>
 
         <Flex
-          position="fixed"
+          position={{ lg: "fixed" }}
           top={"1.5rem"}
           left={0}
           right={0}
           justify="center"
-          w="100vw"
+          w={{ md: "100%", lg: "100vw" }}
           // border="1px solid black"
         >
           <Flex
