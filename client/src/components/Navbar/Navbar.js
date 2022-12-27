@@ -11,7 +11,6 @@ import {
   TwitterIcon,
   PinterestIcon,
   InstagramIcon,
-  SearchIcon,
 } from "src/utils/icons";
 import { navLinks } from "./links";
 
@@ -33,45 +32,21 @@ const Navbar = ({ isIntersecting }) => {
       animate={{ opacity: 1 }}
       style={{
         background: "#fff9f3",
-        // border: "1px solid red",
         position: "fixed",
         top: 0,
         zIndex: 100000,
         height: "80px",
-        // border: "1px solid #ccc",
         width: "100vw",
-        // paddingLeft: "1rem",
-        // paddingRight: "2rem",
-        // display: "flex",
-        // justifyContent: "center",
       }}
     >
       <Box
-        // ref={observe}
-        // maxW="1000px"
         mx="auto"
         h="100%"
-        // position="sticky"
-        sx={
-          {
-            // position: "sticky",
-            // position: "-webkit-sticky",
-            // top: "60px",
-          }
-        }
-        // top="0"
-        // position="relative" // new
-        // bottom="24px" // new
-        // w="100%"
-        // display={{ base: "none", md: "block" }}
         display={{ base: "none", md: "flex" }} // new (was md: block)
         bg="brand.creme" // new
-        // pt="1rem" // new
         pl="1rem"
         pr="1rem"
         pt=".5rem"
-        // h="50px" // removal is new
-        // border="1px solid black"
         justify="space-between"
         w="100vw"
         shadow={isIntersecting ? "md" : "none"}
@@ -146,9 +121,9 @@ const NavLink = ({ linkObj, children, isActive }) => {
         // width: 0,
         height: "2px",
         background: "brand.darkgreen",
-        transition: "0.2x",
+        transition: "0.2s",
         position: "relative",
-        bottom: "12px",
+        bottom: { md: "12px", xl: "2px" },
         margin: "2px auto 0",
       }}
       _hover={{
