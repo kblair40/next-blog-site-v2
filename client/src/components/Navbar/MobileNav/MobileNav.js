@@ -97,7 +97,7 @@ const NavDrawer = ({ isOpen, onClose }) => {
       placement="right"
     >
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent bg="brand.creme" borderTop="1px solid" borderColor="#aaa">
         <DrawerCloseButton />
 
         <DrawerBody px="2rem">
