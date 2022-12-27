@@ -17,14 +17,22 @@ const Search = () => {
       // maxW={{ md: "140px", lg: "180px", xl: "180px" }}
       // ml="-1rem" // maxW 186, should be 166 to match image width.  -1rem ml offsets difference
       // maxW={{ md: "120px", lg: "166px" }}
-      ml="-12px"
-      maxW={{ md: "120px", lg: "186px" }}
-      minW={{ base: "180px", md: "120px" }}
+      ml={{ base: "2rem", md: "-12px" }}
+      mr={{ base: "2rem", md: "unset" }}
+      maxW={{ base: "100%", sm: "200px", md: "120px", lg: "186px" }}
+      minW={{ base: "100px", md: "120px" }}
+      variant={{ base: "unstyled" }}
+      borderBottom="1px solid"
+      transition="border-color 0.2s"
+      borderColor="brand.lightgreen"
+      _hover={{ borderColor: "brand.darkgreen" }}
+      alignSelf={{ base: "flex-end", md: "center" }}
     >
-      <InputLeftElement>
+      <InputLeftElement w="24px">
         <SearchIcon fill="#fff" boxSize="16px" />
       </InputLeftElement>
       <Input
+        pl="32px"
         rounded="md"
         borderColor="brand.lightgreen"
         focusBorderColor="brand.lightgreen"

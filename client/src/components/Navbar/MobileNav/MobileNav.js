@@ -35,25 +35,30 @@ const MobileNav = () => {
   return (
     <React.Fragment>
       <Flex
+        zIndex={10000000}
         align="center"
-        position="absolute"
+        // position="absolute"
+        bg="brand.creme"
+        position="fixed"
         top={0}
         left={0}
         right={0}
         w="100vw"
         borderBottom="1px solid"
-        borderColor="text.body"
+        borderColor={"#e0e0e0"}
+        // borderColor="text.body"
         py=".5rem"
         justify="space-between"
         px="1rem"
         // pr="1rem"
         // pl="1rem"
+        // border="1px solid black"
       >
         <Box
           position="relative"
-          h={{ base: "40px", sm: "40px" }}
-          w={{ base: "120px", sm: "120px" }}
-          minW={{ base: "120px", sm: "120px" }}
+          h={{ base: "36.6px", sm: "40px" }}
+          w={{ base: "110px", sm: "120px" }}
+          minW={{ base: "110px", sm: "120px" }}
         >
           <Image
             src="https://res.cloudinary.com/erinsblog/image/upload/v1672144985/Money_and_Other_Things_Logo2_zfrp33.jpg"
@@ -64,6 +69,8 @@ const MobileNav = () => {
             fill
           />
         </Box>
+
+        <Search />
 
         <Flex
           w="32px"
