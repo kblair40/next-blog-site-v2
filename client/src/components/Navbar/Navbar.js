@@ -80,7 +80,7 @@ const Navbar = ({ isIntersecting }) => {
           position="relative"
           h="70px"
           w="210px"
-          mr={{ md: "1.5rem", lg: "3rem" }}
+          mr={{ md: "1.5rem", xl: "3rem" }}
         >
           <Image
             src="https://res.cloudinary.com/erinsblog/image/upload/v1672077301/Money_and_Other_Things_Logo_dzvjxy.jpg"
@@ -93,12 +93,12 @@ const Navbar = ({ isIntersecting }) => {
         </Box>
 
         <Flex
-          position={{ lg: "fixed" }}
+          position={{ xl: "fixed" }}
           top={"1.5rem"}
           left={0}
           right={0}
           justify="center"
-          w={{ md: "100%", lg: "100vw" }}
+          w={{ md: "100%", xl: "100vw" }}
           // border="1px solid black"
         >
           <Flex
