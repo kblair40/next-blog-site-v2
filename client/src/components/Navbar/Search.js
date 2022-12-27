@@ -26,7 +26,7 @@ const Search = () => {
       alignSelf={{ base: "flex-end", md: "center" }}
     >
       <InputLeftElement w="24px">
-        <SearchIcon fill="#fff" boxSize="16px" />
+        <SearchIcon fill="brand.lightgreen" boxSize="16px" />
       </InputLeftElement>
       <Input
         pl="32px"
