@@ -97,6 +97,12 @@ const ContactForm = () => {
     }
   };
 
+  const inputStyles = {
+    borderColor: "#868686",
+    focusBorderColor: "brand.lightgreen",
+    _placeholder: { color: "brand.darkgreen", opacity: 0.8 },
+  };
+
   return (
     <Box w="100%">
       <Heading
@@ -127,7 +133,8 @@ const ContactForm = () => {
               variant="flushed"
               placeholder="Name"
               pl=".5rem"
-              focusBorderColor="gray.300"
+              // focusBorderColor="gray.300"
+              {...inputStyles}
             />
 
             <Input
@@ -143,7 +150,8 @@ const ContactForm = () => {
               variant="flushed"
               placeholder="Email"
               pl=".5rem"
-              focusBorderColor="gray.300"
+              // focusBorderColor="gray.300"
+              {...inputStyles}
             />
           </Stack>
 
@@ -155,7 +163,8 @@ const ContactForm = () => {
             placeholder="Type your message here"
             pl=".5rem"
             rows={4}
-            focusBorderColor="gray.300"
+            // focusBorderColor="gray.300"
+            {...inputStyles}
           />
 
           <Flex w="100%" direction="column" align={{ base: "center" }}>
