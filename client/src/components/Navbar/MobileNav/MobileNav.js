@@ -47,22 +47,25 @@ const MobileNav = ({ isIntersecting }) => {
         justify="space-between"
         px="1rem"
         shadow={isIntersecting ? "md" : "none"}
+        transition="box-shadow 0.5s"
       >
-        <Box
-          position="relative"
-          h={{ base: "36.6px", sm: "40px" }}
-          w={{ base: "110px", sm: "120px" }}
-          minW={{ base: "110px", sm: "120px" }}
-        >
-          <Image
-            src="https://res.cloudinary.com/erinsblog/image/upload/v1672144985/Money_and_Other_Things_Logo2_zfrp33.jpg"
-            style={{
-              objectFit: "cover",
-            }}
-            alt="img"
-            fill
-          />
-        </Box>
+        <Link href="/">
+          <Box
+            position="relative"
+            h={{ base: "36.6px", sm: "40px" }}
+            w={{ base: "110px", sm: "120px" }}
+            minW={{ base: "110px", sm: "120px" }}
+          >
+            <Image
+              src="https://res.cloudinary.com/erinsblog/image/upload/v1672144985/Money_and_Other_Things_Logo2_zfrp33.jpg"
+              style={{
+                objectFit: "cover",
+              }}
+              alt="img"
+              fill
+            />
+          </Box>
+        </Link>
 
         <Search />
 

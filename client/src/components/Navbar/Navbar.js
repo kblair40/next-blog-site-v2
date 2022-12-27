@@ -2,6 +2,7 @@ import React from "react";
 import { Box, HStack, useTheme, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 import NavLinks from "./NavLinks";
 import Search from "./Search";
@@ -56,21 +57,23 @@ const Navbar = ({ isIntersecting }) => {
         // transition="box-shadow .5s"
         alignItems="center"
       >
-        <Box
-          position="relative"
-          h={{ base: "70px", md: "40px", lg: "50px", xl: "55.3px" }}
-          w={{ base: "180px", md: "120px", lg: "150px", xl: "166px" }}
-          minW={{ base: "180px", md: "120px", lg: "150px" }}
-        >
-          <Image
-            src="https://res.cloudinary.com/erinsblog/image/upload/v1672144985/Money_and_Other_Things_Logo2_zfrp33.jpg"
-            style={{
-              objectFit: "cover",
-            }}
-            alt="img"
-            fill
-          />
-        </Box>
+        <Link href="/">
+          <Box
+            position="relative"
+            h={{ base: "70px", md: "40px", lg: "50px", xl: "55.3px" }}
+            w={{ base: "180px", md: "120px", lg: "150px", xl: "166px" }}
+            minW={{ base: "180px", md: "120px", lg: "150px" }}
+          >
+            <Image
+              src="https://res.cloudinary.com/erinsblog/image/upload/v1672144985/Money_and_Other_Things_Logo2_zfrp33.jpg"
+              style={{
+                objectFit: "cover",
+              }}
+              alt="img"
+              fill
+            />
+          </Box>
+        </Link>
 
         {/* <Flex
           position={{ xl: "fixed" }}

@@ -91,7 +91,7 @@ const layout = ({ children, categories }) => {
         <Box display={{ base: "block", md: "none" }}>
           <MobileNav categories={categories} isIntersecting={isIntersecting} />
           <Box ref={mobileObserveRef} h="1px" w="100%" bg="transparent" />
-          <TextLogo />
+          {/* <TextLogo /> */}
         </Box>
 
         <Box h="100%" position="relative" bg="brand.creme">
