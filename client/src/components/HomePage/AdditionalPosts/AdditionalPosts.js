@@ -40,7 +40,8 @@ const AdditionalPosts = ({ articles }) => {
       <Flex justify="center" flex={{ md: 1 }} py="1rem">
         <Box w="100%" maxW={{ md: "700px" }}>
           <Text mb="2rem" fontSize="2xl" letterSpacing={"5px"}>
-            TRAIN OF THOUGHT
+            {/* TRAIN OF THOUGHT */}
+            RECENT POSTS
           </Text>
 
           {!articles ? (

@@ -15,26 +15,14 @@ const Search = () => {
     <InputGroup
       w="100%"
       // maxW={{ md: "140px", lg: "180px", xl: "180px" }}
-      // ml="-1rem" // maxW 166, should be 150 to match image width.  -1rem ml offsets difference
+      // ml="-1rem" // maxW 186, should be 166 to match image width.  -1rem ml offsets difference
       // maxW={{ md: "120px", lg: "166px" }}
-      // ml="-12px"
+      ml="-12px"
       maxW={{ md: "120px", lg: "186px" }}
       minW={{ base: "180px", md: "120px" }}
-      // minW={{ md: "120px" }}
-      // ml={{ md: "1rem", lg: "1.5rem" }}
-      // ml={{ md: "1.5rem", lg: "2rem" }}
-      // mr={{ md: "0rem", lg: "1rem" }}
-      // size="sm"
     >
       <InputLeftElement>
-        {/* <Flex
-          direction="column"
-          justify="center"
-          h="100%"
-          border="1px solid black"
-        > */}
         <SearchIcon fill="#fff" boxSize="16px" />
-        {/* </Flex> */}
       </InputLeftElement>
       <Input
         rounded="md"
