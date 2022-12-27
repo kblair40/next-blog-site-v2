@@ -46,7 +46,8 @@ const MobileNav = ({ isIntersecting }) => {
         py=".5rem"
         justify="space-between"
         px="1rem"
-        shadow={isIntersecting ? "md" : "none"}
+        // shadow={isIntersecting ? "md" : "none"}
+        shadow="md"
         transition="box-shadow 0.5s"
       >
         <Link href="/">

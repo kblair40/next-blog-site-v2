@@ -37,7 +37,8 @@ const Navbar = ({ isIntersecting }) => {
         height: "80px",
         width: "100vw",
         transition: "box-shadow 0.5s",
-        boxShadow: isIntersecting ? theme.shadows.md : "none",
+        // boxShadow: isIntersecting ? theme.shadows.md : "none",
+        boxShadow: theme.shadows.md,
         padding: padding,
         // border: "1px solid green",
       }}
