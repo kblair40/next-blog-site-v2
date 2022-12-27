@@ -14,9 +14,6 @@ const Search = () => {
   return (
     <InputGroup
       w="100%"
-      // maxW={{ md: "140px", lg: "180px", xl: "180px" }}
-      // ml="-1rem" // maxW 186, should be 166 to match image width.  -1rem ml offsets difference
-      // maxW={{ md: "120px", lg: "166px" }}
       ml={{ base: "2rem", md: "-12px" }}
       mr={{ base: "2rem", md: "unset" }}
       maxW={{ base: "100%", sm: "200px", md: "120px", lg: "186px" }}
