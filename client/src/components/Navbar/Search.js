@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SearchIcon } from "src/utils/icons";
-import {
-  Box,
-  Flex,
-  Center,
-  HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-} from "@chakra-ui/react";
+import { HStack, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 const Search = () => {
+  const [value, setValue] = useState("");
+
+  const { asPath } = useRouter();
+  useEffect(() => {
+    // anytime path changes, clear input
+    setValue("");
+  }, [asPath]);
+
   return (
     <InputGroup
       w="100%"
@@ -41,6 +42,8 @@ const Search = () => {
         }}
         _hover={{ borderColor: "brand.darkgreen" }}
         transition="border-color 0.2s"
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
       />
     </InputGroup>
   );
