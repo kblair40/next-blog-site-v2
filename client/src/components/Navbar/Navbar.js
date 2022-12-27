@@ -1,7 +1,5 @@
 import React from "react";
-import { Box, Flex, Center, HStack } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { Box, HStack, useTheme, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -13,18 +11,15 @@ import {
   PinterestIcon,
   InstagramIcon,
 } from "src/utils/icons";
-import { navLinks } from "./links";
 
 const Navbar = ({ isIntersecting }) => {
-  const { asPath } = useRouter();
+  const theme = useTheme();
 
-  // const { observe, inView } = useInView({
-  //   threshold: 0, // Default is 0
-  // });
-
-  // useEffect(() => {
-  //   console.log("IN VIEW:", inView);
-  // }, [inView]);
+  const padding = useBreakpointValue({
+    md: "0.5rem 1rem 0",
+    lg: "0.5rem 1.5rem 0",
+    xl: "0.5rem 2.5rem 0",
+  });
 
   return (
     <motion.div
@@ -35,34 +30,40 @@ const Navbar = ({ isIntersecting }) => {
         background: "#fff9f3",
         position: "fixed",
         top: 0,
+        right: 0,
+        left: 0,
         zIndex: 100000,
         height: "80px",
         width: "100vw",
+        transition: "box-shadow 0.5s",
+        boxShadow: isIntersecting ? theme.shadows.md : "none",
+        padding: padding,
+        // border: "1px solid green",
       }}
     >
       <Box
-        mx="auto"
         h="100%"
         display={{ base: "none", md: "flex" }} // new (was md: block)
         bg="brand.creme" // new
-        pl="1rem"
-        pr="1rem"
-        pt=".5rem"
-        justify="space-between"
-        w="100vw"
-        // border="1px solid green"
-        shadow={isIntersecting ? "md" : "none"}
-        transition="box-shadow .5s"
+        // pl="1rem"
+        // pr="1rem"
+        // pt=".5rem"
         justifyContent="space-between"
+        // w="100vw"
+        w="100%"
+        // border="1px solid green"
+        // shadow={isIntersecting ? "md" : "none"}
+        // transition="box-shadow .5s"
+        alignItems="center"
       >
         <Box
           position="relative"
-          h="70px"
-          w="210px"
-          mr={{ md: "1.5rem", lg: "2rem", xl: "3rem" }}
+          h={{ base: "70px", md: "40px", lg: "50px" }}
+          w={{ base: "180px", md: "120px", lg: "150px" }}
+          minW={{ base: "180px", md: "120px", lg: "150px" }}
         >
           <Image
-            src="https://res.cloudinary.com/erinsblog/image/upload/v1672077301/Money_and_Other_Things_Logo_dzvjxy.jpg"
+            src="https://res.cloudinary.com/erinsblog/image/upload/v1672144985/Money_and_Other_Things_Logo2_zfrp33.jpg"
             style={{
               objectFit: "cover",
             }}
@@ -71,22 +72,19 @@ const Navbar = ({ isIntersecting }) => {
           />
         </Box>
 
-        <Flex
+        {/* <Flex
           position={{ xl: "fixed" }}
           top={"1.5rem"}
           left={0}
           right={0}
           justify="center"
-          // w={{ md: "100%", xl: "100vw" }}
           w={{ md: "100%" }}
           align="center"
-          // border="1px solid red"
-          // justify={{ md: "space-between", xl: "unset" }}
-        >
-          <NavLinks />
+        > */}
+        <NavLinks />
 
-          <Search />
-        </Flex>
+        <Search />
+        {/* </Flex> */}
       </Box>
     </motion.div>
   );

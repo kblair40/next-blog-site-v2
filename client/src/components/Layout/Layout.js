@@ -30,7 +30,7 @@ const layout = ({ children, categories }) => {
   useEffect(() => {
     const options = {
       // root: observeRef.current,
-      rootMargin: "-70px",
+      rootMargin: "-50px", // -80px to get shadow immediately on scroll
       threshold: 0,
     };
 

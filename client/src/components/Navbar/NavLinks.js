@@ -14,6 +14,8 @@ const NavLinks = () => {
       h="100%"
       w="100%"
       maxW="695px"
+      mx="1.5rem"
+
       // border="1px solid green"
     >
       {navLinks.map((linkObj, i) => {
@@ -44,7 +46,8 @@ const NavLink = ({ linkObj, children, isActive }) => {
         background: "brand.darkgreen",
         transition: "0.2s",
         position: "relative",
-        bottom: { md: "12px", xl: "2px" },
+        // bottom: { md: "12px", xl: "2px" },
+        bottom: "14px",
         margin: "2px auto 0",
       }}
       _hover={{
@@ -57,7 +60,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
       <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
           h="100%"
-          fontSize={{ md: "14px", lg: "18px" }}
+          fontSize={{ md: "16px", lg: "18px" }}
           textAlign="center"
           transitionDuration="0.3s"
           _groupHover={{
