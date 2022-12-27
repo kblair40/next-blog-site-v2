@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Flex, useBreakpointValue } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import ReactGA from "react-ga";
 // import { useInView } from "react-cool-inview";
@@ -16,6 +16,8 @@ const layout = ({ children, categories }) => {
   //   rootMargin: "-80px",
   // });
 
+  const isMd = useBreakpointValue({ base: false, md: true });
+
   const { asPath } = useRouter();
 
   const curPath = useRef();
@@ -27,6 +29,8 @@ const layout = ({ children, categories }) => {
   }, [asPath]);
 
   const observeRef = useRef();
+  const mobileObserveRef = useRef();
+
   useEffect(() => {
     const options = {
       // root: observeRef.current,
@@ -36,26 +40,29 @@ const layout = ({ children, categories }) => {
 
     let callback = (entries, observer) => {
       entries.forEach((entry) => {
-        // Each entry describes an intersection change for one observed
-        // target element:
-        //   entry.boundingClientRect
-        //   entry.intersectionRatio
-        //   entry.intersectionRect
         console.log("IS INTERSECTING:", entry.target, entry.isIntersecting);
-        //   entry.rootBounds
-        //   entry.target
-        //   entry.time
+        setIsIntersecting(!entry.isIntersecting);
+      });
+    };
+    let mobileCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        console.log("IS INTERSECTING:", entry.target, entry.isIntersecting);
         setIsIntersecting(!entry.isIntersecting);
       });
     };
 
     const observer = new IntersectionObserver(callback, options);
+    const mobileObserver = new IntersectionObserver(mobileCallback, options);
+
+    if (mobileObserveRef && mobileObserveRef.current) {
+      mobileObserver.observe(mobileObserveRef.current);
+    }
 
     if (observeRef && observeRef.current) {
       observer.observe(observeRef.current);
       // observer.observe(document.getElementById("to-observe"));
     }
-  }, [observeRef]);
+  }, [observeRef, isMd, mobileObserveRef]);
 
   // useEffect(() => {
   //   console.log("IN VIEW:", inView);
@@ -77,18 +84,13 @@ const layout = ({ children, categories }) => {
           {/* <TextLogo /> */}
 
           <Navbar categories={categories} isIntersecting={isIntersecting} />
-          <Box
-            ref={observeRef}
-            id="to-observe"
-            h="1px"
-            w="100%"
-            bg="transparent"
-          />
+          <Box ref={observeRef} h="1px" w="100%" bg="transparent" />
         </Box>
 
         {/* hides self when md breakpoint is hit */}
         <Box display={{ base: "block", md: "none" }}>
-          <MobileNav categories={categories} />
+          <MobileNav categories={categories} isIntersecting={isIntersecting} />
+          <Box ref={mobileObserveRef} h="1px" w="100%" bg="transparent" />
           <TextLogo />
         </Box>
 

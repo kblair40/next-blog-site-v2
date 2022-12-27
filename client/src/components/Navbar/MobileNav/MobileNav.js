@@ -20,7 +20,7 @@ import Search from "../Search";
 import { navLinks } from "../links";
 // import { SocialLinks } from "../Navbar";
 
-const MobileNav = () => {
+const MobileNav = ({ isIntersecting }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => setIsOpen((prev) => !prev);
 
@@ -37,22 +37,16 @@ const MobileNav = () => {
       <Flex
         zIndex={10000000}
         align="center"
-        // position="absolute"
         bg="brand.creme"
         position="fixed"
         top={0}
         left={0}
         right={0}
         w="100vw"
-        borderBottom="1px solid"
-        borderColor={"#e0e0e0"}
-        // borderColor="text.body"
         py=".5rem"
         justify="space-between"
         px="1rem"
-        // pr="1rem"
-        // pl="1rem"
-        // border="1px solid black"
+        shadow={isIntersecting ? "md" : "none"}
       >
         <Box
           position="relative"
