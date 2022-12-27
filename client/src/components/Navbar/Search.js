@@ -1,6 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { SearchIcon } from "src/utils/icons";
-import { HStack, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  HStack,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+  Portal,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 const Search = () => {
