@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 
 const FeaturedPost = ({ featuredPost }) => {
   return (
-    <React.Fragment>
+    <Box mr="3rem">
       <Box
         width={{
           base: "350px",
@@ -16,6 +16,12 @@ const FeaturedPost = ({ featuredPost }) => {
           md: "700px",
           lg: "900px",
         }}
+        // width={{
+        //   base: "175px",
+        //   sm: "225px",
+        //   md: "350px",
+        //   lg: "450px",
+        // }}
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
@@ -65,6 +71,12 @@ const FeaturedPost = ({ featuredPost }) => {
           md: "700px",
           lg: "900px",
         }}
+        // width={{
+        //   base: "175px",
+        //   sm: "225px",
+        //   md: "350px",
+        //   lg: "450px",
+        // }}
         direction="column"
         p="28px 24px 25px"
         border="1px solid black"
@@ -110,7 +122,7 @@ const FeaturedPost = ({ featuredPost }) => {
           </Flex>
         </Link>
       </Flex>
-    </React.Fragment>
+    </Box>
   );
 };
 

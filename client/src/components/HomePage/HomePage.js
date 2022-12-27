@@ -20,6 +20,12 @@ const SubscribeForm = dynamic(
 const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
   suspense: true,
 });
+const BookRecommendation = dynamic(
+  () => import("src/components/BookRecommendation"),
+  {
+    suspense: true,
+  }
+);
 
 const HomePage = ({ homepage, articles }) => {
   let featuredPost;
@@ -34,7 +40,16 @@ const HomePage = ({ homepage, articles }) => {
       </React.Suspense>
 
       <Flex direction="column" align="center" mt="90px" mb="2rem">
-        {featuredPost && <FeaturedPost featuredPost={featuredPost} />}
+        {/* {featuredPost && <FeaturedPost featuredPost={featuredPost} />} */}
+        {/* <Flex w="100%" justify="space-between"> */}
+        {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
+
+        {/* <React.Suspense fallback={<div />}>
+            <Box minW={{ base: "200px" }} w={{ base: "200px" }}>
+              <BookRecommendation />
+            </Box>
+          </React.Suspense> */}
+        {/* </Flex> */}
 
         <React.Suspense fallback={<Loading />}>
           <SubscribeForm />
