@@ -1,16 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Box, Flex, Center, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import Image from "next/image";
-// import { useInView } from "react-cool-inview";
 
+import Search from "./Search";
 import {
   FacebookIcon,
   TwitterIcon,
   PinterestIcon,
   InstagramIcon,
+  SearchIcon,
 } from "src/utils/icons";
 import { navLinks } from "./links";
 
@@ -99,15 +100,13 @@ const Navbar = ({ isIntersecting }) => {
           right={0}
           justify="center"
           w={{ md: "100%", xl: "100vw" }}
-          // border="1px solid black"
+          align="center"
         >
           <Flex
             py=".5rem"
             justify="space-evenly"
             h="100%"
             w="100%"
-            // w="100vw"
-            // border="1px solid black"
             maxW="695px"
           >
             {navLinks.map((linkObj, i) => {
@@ -119,10 +118,9 @@ const Navbar = ({ isIntersecting }) => {
                 />
               );
             })}
-            {/* <NavLink>
-          <SocialLinks />
-        </NavLink> */}
           </Flex>
+
+          <Search />
         </Flex>
       </Box>
     </motion.div>
@@ -132,19 +130,6 @@ const Navbar = ({ isIntersecting }) => {
 export default Navbar;
 
 const NavLink = ({ linkObj, children, isActive }) => {
-  const inactiveStyles = {
-    content: `""`,
-    display: "block",
-    width: 0,
-    height: "2px",
-    background: "brand.darkgreen",
-    transition: "0.2x",
-    position: "relative",
-    bottom: "4px",
-    margin: "2px auto 0",
-  };
-
-  const activeStyles = {};
   return (
     <Box
       role="group"
