@@ -14,7 +14,7 @@ import {
 } from "src/utils/icons";
 import { navLinks } from "./links";
 
-const Navbar = () => {
+const Navbar = ({ isIntersecting }) => {
   const { asPath } = useRouter();
 
   // const { observe, inView } = useInView({
@@ -73,7 +73,8 @@ const Navbar = () => {
         // border="1px solid black"
         justify="space-between"
         w="100vw"
-        // shadow="lg"
+        shadow={isIntersecting ? "md" : "none"}
+        transition="all .5s"
       >
         <Box
           position="relative"

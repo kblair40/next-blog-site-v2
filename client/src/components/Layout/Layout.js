@@ -9,7 +9,7 @@ import Navbar from "src/components/Navbar";
 import TextLogo from "src/components/TextLogo";
 
 const layout = ({ children, categories }) => {
-  // const [isIntersecting, setIsIntersecting] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
   // const { observe, inView } = useInView({
   //   threshold: 0, // Default is 0
@@ -30,11 +30,26 @@ const layout = ({ children, categories }) => {
   useEffect(() => {
     const options = {
       // root: observeRef.current,
-      rootMargin: "80px",
+      rootMargin: "-70px",
       threshold: 0,
     };
-    const cb = (args) => console.log("ARGS:", args);
-    const observer = new IntersectionObserver(cb, options);
+
+    let callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        // Each entry describes an intersection change for one observed
+        // target element:
+        //   entry.boundingClientRect
+        //   entry.intersectionRatio
+        //   entry.intersectionRect
+        console.log("IS INTERSECTING:", entry.target, entry.isIntersecting);
+        //   entry.rootBounds
+        //   entry.target
+        //   entry.time
+        setIsIntersecting(!entry.isIntersecting);
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
 
     if (observeRef && observeRef.current) {
       observer.observe(observeRef.current);
@@ -60,9 +75,15 @@ const layout = ({ children, categories }) => {
       <Box>
         <Box display={{ base: "none", md: "block" }}>
           {/* <TextLogo /> */}
-          <Box ref={observeRef} id="to-observe">
-            <Navbar categories={categories} />
-          </Box>
+
+          <Navbar categories={categories} isIntersecting={isIntersecting} />
+          <Box
+            ref={observeRef}
+            id="to-observe"
+            h="1px"
+            w="100%"
+            bg="transparent"
+          />
         </Box>
 
         {/* hides self when md breakpoint is hit */}
