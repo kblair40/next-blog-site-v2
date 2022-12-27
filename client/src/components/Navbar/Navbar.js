@@ -58,8 +58,8 @@ const Navbar = ({ isIntersecting }) => {
       >
         <Box
           position="relative"
-          h={{ base: "70px", md: "40px", lg: "50px" }}
-          w={{ base: "180px", md: "120px", lg: "150px" }}
+          h={{ base: "70px", md: "40px", lg: "50px", xl: "55.3px" }}
+          w={{ base: "180px", md: "120px", lg: "150px", xl: "166px" }}
           minW={{ base: "180px", md: "120px", lg: "150px" }}
         >
           <Image

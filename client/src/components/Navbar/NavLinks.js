@@ -14,7 +14,7 @@ const NavLinks = () => {
       h="100%"
       w="100%"
       maxW="695px"
-      mx="1.5rem"
+      mx={{ md: "2rem", lg: "3rem" }}
 
       // border="1px solid green"
     >

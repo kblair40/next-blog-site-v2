@@ -15,8 +15,10 @@ const Search = () => {
     <InputGroup
       w="100%"
       // maxW={{ md: "140px", lg: "180px", xl: "180px" }}
-      ml="-1rem" // maxW 166, should be 150 to match image width.  -1rem ml offsets difference
-      maxW={{ md: "120px", lg: "166px" }}
+      // ml="-1rem" // maxW 166, should be 150 to match image width.  -1rem ml offsets difference
+      // maxW={{ md: "120px", lg: "166px" }}
+      // ml="-12px"
+      maxW={{ md: "120px", lg: "186px" }}
       minW={{ base: "180px", md: "120px" }}
       // minW={{ md: "120px" }}
       // ml={{ md: "1rem", lg: "1.5rem" }}
@@ -31,7 +33,7 @@ const Search = () => {
           h="100%"
           border="1px solid black"
         > */}
-        <SearchIcon fill="#ccc" boxSize="16px" />
+        <SearchIcon fill="#fff" boxSize="16px" />
         {/* </Flex> */}
       </InputLeftElement>
       <Input
@@ -39,7 +41,11 @@ const Search = () => {
         borderColor="brand.lightgreen"
         focusBorderColor="brand.lightgreen"
         placeholder="Search..."
-        _placeholder={{ color: "brand.darkgreen", opacity: "0.8" }}
+        _placeholder={{
+          color: "brand.darkgreen",
+          opacity: "0.8",
+          fontSize: "14px",
+        }}
         _hover={{ borderColor: "brand.darkgreen" }}
         transition="border-color 0.2s"
       />
