@@ -15,13 +15,6 @@ import dynamic from "next/dynamic";
 import Loading from "src/components/Loading";
 import Card from "src/components/Card";
 
-const BookRecommendation = dynamic(
-  () => import("src/components/BookRecommendation"),
-  {
-    suspense: true,
-  }
-);
-
 const AdditionalPosts = ({ articles }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -91,17 +84,6 @@ const AdditionalPosts = ({ articles }) => {
           m={{ base: "2rem 0", md: "0 1.5rem" }}
         />
       </Flex>
-
-      <Box
-        w={{ base: "100%", md: "min-content" }}
-        pt="1rem"
-        maxW={{ md: "320px" }}
-        minW={{ md: "240px" }}
-      >
-        <Suspense fallback={<Loading />}>
-          <BookRecommendation />
-        </Suspense>
-      </Box>
     </Flex>
   );
 };

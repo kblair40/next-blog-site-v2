@@ -20,8 +20,8 @@ const SubscribeForm = dynamic(
 const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
   suspense: true,
 });
-const BookRecommendation = dynamic(
-  () => import("src/components/BookRecommendation"),
+const FeaturedResources = dynamic(
+  () => import("src/components/FeaturedResources"),
   {
     suspense: true,
   }
@@ -40,13 +40,11 @@ const HomePage = ({ homepage, articles }) => {
       </React.Suspense>
 
       <Flex direction="column" align="center" mt="90px" mb="2rem">
-        {/* {featuredPost && <FeaturedPost featuredPost={featuredPost} />} */}
-        {/* <Flex w="100%" justify="space-between"> */}
         {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
 
         {/* <React.Suspense fallback={<div />}>
             <Box minW={{ base: "200px" }} w={{ base: "200px" }}>
-              <BookRecommendation />
+              <FeaturedResources />
             </Box>
           </React.Suspense> */}
         {/* </Flex> */}
@@ -70,3 +68,16 @@ const HomePage = ({ homepage, articles }) => {
 };
 
 export default HomePage;
+
+{
+  /* <Box
+  w={{ base: "100%", md: "min-content" }}
+  pt="1rem"
+  maxW={{ md: "320px" }}
+  minW={{ md: "240px" }}
+>
+  <Suspense fallback={<Loading />}>
+    <BookRecommendation />
+  </Suspense>
+</Box>; */
+}
