@@ -42,7 +42,7 @@ const HomePage = ({ homepage, articles }) => {
       <Grid
         mt={{ base: "60px", md: "90px" }}
         mb="2rem"
-        border="1px solid black"
+        // border="1px solid black"
         gridTemplateAreas={{
           base: `
           "feat-p"
@@ -68,13 +68,19 @@ const HomePage = ({ homepage, articles }) => {
           sm: "474px 183px auto auto 1px 394px",
           // sm: "474px 183px 240px 500px 1px 394px",
           // md: "587px 183px 240px 500px 1px 394px", // backup
-          md: "587px 183px auto 1px 394px", // probably better than below
+          md: "auto 183px auto 1px 394px", // probably better than below
+          // md: "587px 183px auto 1px 394px", // probably better than below
           // md: "587px 183px 280px 1px 394px", // probably better than below
           // md: "587px 183px 500px 1px 394px",
         }}
         rowGap={{ base: "2rem" }}
-        columnGap={{ md: "2rem" }}
-        px={{ base: "1.5rem", sm: "2.5rem" }}
+        columnGap={{ md: "2rem", lg: "4rem" }}
+        px={{ base: "1.5rem", sm: "2.5rem", lg: "5rem" }}
+        sx={{
+          "> *": {
+            // border: "1px solid skyblue",
+          },
+        }}
       >
         <GridItem area="feat-p">
           <FeaturedPost featuredPost={featuredPost} />
