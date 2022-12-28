@@ -27,13 +27,13 @@ const Card = ({ article }) => {
 
   return (
     <Flex
-      // maxW={{ base: "92vw", sm: "90vw" }}
       w="100%"
-      // w={{ base: "92vw", sm: "90vw", md: "100%", lg: "" }}
-      h={{ base: "200px", sm: "240px", md: "231px" }}
+      // h={{ base: "200px", sm: "240px", md: "231px" }} // old
+      h={{ base: "200px", sm: "200px", md: "220px" }} // new
       border="1px solid #979797"
       position="relative"
       bg="white" // new
+      overflow="hidden"
       // shadow="lg"
     >
       <Suspense fallback={<div />}>
@@ -60,8 +60,11 @@ const Card = ({ article }) => {
       </Tooltip>
 
       <Box
-        h={{ base: "200px", sm: "240px", md: "231px" }}
-        w={{ base: "230px", sm: "300px" }}
+        // border="1px solid red"
+        // h={{ base: "200px", sm: "240px", md: "231px" }} // old
+        // w={{ base: "230px", sm: "300px" }} // old
+        h={{ base: "200px", sm: "210px", md: "220px" }} // new
+        w={{ base: "220px", sm: "200px", md: "210px" }} // new
         position="relative"
         overflow="hidden"
         // bg="white"
@@ -75,13 +78,16 @@ const Card = ({ article }) => {
             alt="post image"
             src={article.attributes.image_url}
             style={{ objectFit: "cover" }}
-            sizes="(min-width: 480px) 310px,
-              240px"
+            // sizes="(min-width: 480px) 310px,
+            //   240px" // new
+            // sizes="(min-width: 480px) 310px,
+            //   240px" // old
           />
         ) : null}
       </Box>
 
       <Flex
+        // border="1px solid green"
         h="100%"
         // w={{ base: "60%", md: "50%" }}
         w={{ base: "60%" }}
