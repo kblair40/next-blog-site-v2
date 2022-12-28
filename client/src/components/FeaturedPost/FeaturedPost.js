@@ -18,9 +18,9 @@ const FeaturedPost = ({ featuredPost }) => {
         width={{
           // base: "350px",
           base: "100%",
-          sm: "450px",
-          md: "700px",
-          lg: "900px",
+          // sm: "450px",
+          // md: "700px",
+          // lg: "900px",
         }}
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         // maxH={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
@@ -44,18 +44,13 @@ const FeaturedPost = ({ featuredPost }) => {
           position="absolute"
           transform="translateY(-50%)"
           top={0}
-          // left={"1rem"}
           left={0}
           border="5px solid"
           borderColor="brand.darkgreen"
-          // borderColor="white"
           bg="white"
-          // bg="brand.darkgreen"
         >
           <Text
-            // color="black"
             fontWeight="500"
-            // color="#fff"
             color="brand.darkgreen"
             fontSize={{ base: "lg", sm: "xl", md: "2xl" }}
             letterSpacing={{ base: "3.5px", sm: "6px", md: "8px" }}
@@ -67,18 +62,6 @@ const FeaturedPost = ({ featuredPost }) => {
 
       <Flex
         w={{ base: "100%" }}
-        // width={{ // newer
-        //   base: "350px",
-        //   sm: "450px",
-        //   md: "700px",
-        //   lg: "900px",
-        // }}
-        // width={{ // older
-        //   base: "175px",
-        //   sm: "225px",
-        //   md: "350px",
-        //   lg: "450px",
-        // }}
         direction="column"
         p="28px 24px 25px"
         border="1px solid black"
