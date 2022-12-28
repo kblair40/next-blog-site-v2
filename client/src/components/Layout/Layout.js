@@ -28,46 +28,6 @@ const layout = ({ children, categories }) => {
     }
   }, [asPath]);
 
-  const observeRef = useRef();
-  const mobileObserveRef = useRef();
-
-  useEffect(() => {
-    const options = {
-      // root: observeRef.current,
-      rootMargin: "-50px", // -80px to get shadow immediately on scroll
-      threshold: 0,
-    };
-
-    let callback = (entries, observer) => {
-      entries.forEach((entry) => {
-        console.log("IS INTERSECTING:", entry.target, entry.isIntersecting);
-        setIsIntersecting(!entry.isIntersecting);
-      });
-    };
-    let mobileCallback = (entries, observer) => {
-      entries.forEach((entry) => {
-        console.log("IS INTERSECTING:", entry.target, entry.isIntersecting);
-        setIsIntersecting(!entry.isIntersecting);
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, options);
-    const mobileObserver = new IntersectionObserver(mobileCallback, options);
-
-    if (mobileObserveRef && mobileObserveRef.current) {
-      mobileObserver.observe(mobileObserveRef.current);
-    }
-
-    if (observeRef && observeRef.current) {
-      observer.observe(observeRef.current);
-      // observer.observe(document.getElementById("to-observe"));
-    }
-  }, [observeRef, isMd, mobileObserveRef]);
-
-  // useEffect(() => {
-  //   console.log("IN VIEW:", inView);
-  // }, [inView]);
-
   return (
     <Flex
       overflowX="hidden"
@@ -83,14 +43,14 @@ const layout = ({ children, categories }) => {
         <Box display={{ base: "none", md: "block" }}>
           {/* <TextLogo /> */}
 
-          <Navbar categories={categories} isIntersecting={isIntersecting} />
-          <Box ref={observeRef} h="1px" w="100%" bg="transparent" />
+          <Navbar categories={categories} />
+          {/* <Box ref={observeRef} h="1px" w="100%" bg="transparent" /> */}
         </Box>
 
         {/* hides self when md breakpoint is hit */}
         <Box display={{ base: "block", md: "none" }}>
-          <MobileNav categories={categories} isIntersecting={isIntersecting} />
-          <Box ref={mobileObserveRef} h="1px" w="100%" bg="transparent" />
+          <MobileNav categories={categories} />
+          {/* <Box ref={mobileObserveRef} h="1px" w="100%" bg="transparent" /> */}
           {/* <TextLogo /> */}
         </Box>
 

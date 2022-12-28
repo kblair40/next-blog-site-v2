@@ -13,7 +13,7 @@ import {
   InstagramIcon,
 } from "src/utils/icons";
 
-const Navbar = ({ isIntersecting }) => {
+const Navbar = () => {
   const theme = useTheme();
 
   const padding = useBreakpointValue({

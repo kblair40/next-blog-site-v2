@@ -20,7 +20,7 @@ import Search from "../Search";
 import { navLinks } from "../links";
 // import { SocialLinks } from "../Navbar";
 
-const MobileNav = ({ isIntersecting }) => {
+const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => setIsOpen((prev) => !prev);
 
