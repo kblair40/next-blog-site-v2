@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, HStack, useTheme, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  useTheme,
+  useBreakpointValue,
+  Flex,
+  Heading,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -59,7 +66,11 @@ const Navbar = () => {
         alignItems="center"
       >
         <Link href="/">
+          {/* <MoneyLogo /> */}
           <Box
+            // position="fixed"
+            // top="90px"
+            // left="1rem"
             position="relative"
             h={{ base: "70px", md: "40px", lg: "50px", xl: "55.3px" }}
             w={{ base: "180px", md: "120px", lg: "150px", xl: "166px" }}
@@ -105,5 +116,30 @@ export const SocialLinks = ({ spacing = "8px", iconBoxSize = "20px" }) => {
       <TwitterIcon boxSize={boxSize} />
       <PinterestIcon boxSize={boxSize} />
     </HStack>
+  );
+};
+
+const MoneyLogo = () => {
+  return (
+    <Flex direction="column" align="center" color="brand.darkgreen">
+      <Heading
+        fontSize="26px"
+        fontWeight="400"
+        letterSpacing=".6px"
+        sx={{
+          fontWeight: "500 !important",
+        }}
+      >
+        money
+      </Heading>
+      <Heading
+        whiteSpace="nowrap"
+        fontWeight="500"
+        fontSize="7px"
+        letterSpacing="3px"
+      >
+        AND OTHER THINGS
+      </Heading>
+    </Flex>
   );
 };
