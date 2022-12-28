@@ -13,7 +13,7 @@ const NavLinks = () => {
       justify="space-evenly"
       h="100%"
       w="100%"
-      maxW="695px"
+      // maxW="695px"
       mx={{ md: "2rem", lg: "3rem", xl: "5rem" }}
 
       // border="1px solid green"
@@ -32,11 +32,11 @@ export default NavLinks;
 const NavLink = ({ linkObj, children, isActive }) => {
   return (
     <Box
+      border="1px solid red"
       role="group"
       cursor="pointer"
       flex={1}
       h="100%"
-      // px="5px"
       borderRight="none"
       _after={{
         content: `""`,
@@ -46,7 +46,6 @@ const NavLink = ({ linkObj, children, isActive }) => {
         background: "brand.darkgreen",
         transition: "0.2s",
         position: "relative",
-        // bottom: { md: "12px", xl: "2px" },
         bottom: "14px",
         margin: "2px auto 0",
       }}
@@ -60,7 +59,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
       <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
           h="100%"
-          fontSize={{ md: "16px", lg: "18px" }}
+          fontSize={{ md: "13px", lg: "18px" }}
           textAlign="center"
           transitionDuration="0.3s"
           _groupHover={{
@@ -70,6 +69,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
           fontWeight="600"
           letterSpacing="2px"
           className="link-wrapper"
+          whiteSpace="nowrap"
         >
           {children ? children : linkObj.label}
         </Center>

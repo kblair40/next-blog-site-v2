@@ -19,17 +19,14 @@ export const navLinks = [
   //   label: "Contact",
   //   to: "/contact",
   // },
+  // Love, Travel, Style, Guests, Gift Guides
   {
     label: "Home",
     to: "/",
   },
   {
-    label: "Life",
-    to: "/posts/life",
-  },
-  {
     label: "Love",
-    to: "/posts/money",
+    to: "/posts/love",
   },
   {
     label: "Travel",
@@ -38,6 +35,14 @@ export const navLinks = [
   {
     label: "Style",
     to: "/posts/style",
+  },
+  {
+    label: "Guests",
+    to: "/posts/guests",
+  },
+  {
+    label: "Gift Guides",
+    to: "/posts/gift-guides",
   },
   {
     label: "About",

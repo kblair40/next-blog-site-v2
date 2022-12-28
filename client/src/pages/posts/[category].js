@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
 
+// Love, Travel, Style, Guests, Gift Guides
+
 const Posts = ({ articles }) => {
   const router = useRouter();
   return (
