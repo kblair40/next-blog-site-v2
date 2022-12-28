@@ -13,7 +13,6 @@ import {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
-// import ShareModal from "src/components/Modals/ShareModal";
 import { ShareIcon } from "src/utils/icons";
 
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
@@ -35,13 +34,11 @@ const Card = ({ article }) => {
   return (
     <Flex
       w="100%"
-      // h={{ base: "200px", sm: "240px", md: "231px" }} // old
       h={{ base: "200px", sm: "200px", md: "220px" }} // new
       border="1px solid #979797"
       position="relative"
       bg="white" // new
       overflow="hidden"
-      // shadow="lg"
     >
       <Suspense fallback={<div />}>
         <ShareModal
@@ -67,15 +64,10 @@ const Card = ({ article }) => {
       </Tooltip>
 
       <Box
-        // border="1px solid red"
-        // h={{ base: "200px", sm: "240px", md: "231px" }} // old
-        // w={{ base: "230px", sm: "300px" }} // old
         h={{ base: "200px", sm: "210px", md: "220px" }} // new
         w={{ base: "220px", sm: "200px", md: "210px" }} // new
         position="relative"
         overflow="hidden"
-        // bg="white"
-        // border="1px solid red"
       >
         {article && article.attributes && article.attributes.image_url ? (
           <Image
@@ -87,8 +79,6 @@ const Card = ({ article }) => {
             style={{ objectFit: "cover" }}
             // sizes="(min-width: 480px) 310px,
             //   240px" // new
-            // sizes="(min-width: 480px) 310px,
-            //   240px" // old
           />
         ) : null}
       </Box>
@@ -126,7 +116,6 @@ const Card = ({ article }) => {
               transition="color 0.3s"
               noOfLines={2}
               lineHeight={{ base: "1.2", md: "1.3" }}
-              // fontFamily="Nunito"
             >
               {article.attributes.title}
             </Heading>
