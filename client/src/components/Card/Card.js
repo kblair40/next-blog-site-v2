@@ -2,7 +2,14 @@ import React, { useState, Suspense, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
-import { Text, Flex, Box, IconButton, Tooltip } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Box,
+  IconButton,
+  Tooltip,
+  Heading,
+} from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 
@@ -87,9 +94,7 @@ const Card = ({ article }) => {
       </Box>
 
       <Flex
-        // border="1px solid green"
         h="100%"
-        // w={{ base: "60%", md: "50%" }}
         w={{ base: "60%" }}
         direction="column"
         p={{
@@ -113,7 +118,7 @@ const Card = ({ article }) => {
 
         <Link href={`/article/${article.attributes.slug}`}>
           <Flex direction="column" role="group" cursor="pointer">
-            <Text
+            <Heading
               fontWeight="700"
               mb="12px"
               fontSize={{ base: "22px", sm: "24px", md: "30px" }}
@@ -121,11 +126,10 @@ const Card = ({ article }) => {
               transition="color 0.3s"
               noOfLines={2}
               lineHeight={{ base: "1.2", md: "1.3" }}
-              fontFamily="Nunito"
-              // color="brand.darkgreen"
+              // fontFamily="Nunito"
             >
               {article.attributes.title}
-            </Text>
+            </Heading>
 
             <Text
               _groupHover={{ color: "brand.lightgreen" }}

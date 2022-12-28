@@ -37,7 +37,7 @@ const theme = extendTheme({
   fonts: {
     body: "Nunito, Avenir, Arial, system-ui, sans-serif",
     // heading: "Playfair Display, serif",
-    heading: "Bodoni",
+    heading: "Bodoni, serif, system-ui",
   },
 });
 
