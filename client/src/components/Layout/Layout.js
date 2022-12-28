@@ -1,33 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Box, Text, Flex, useBreakpointValue } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import ReactGA from "react-ga";
-// import { useInView } from "react-cool-inview";
+import React from "react";
+import { Box, Text, Flex } from "@chakra-ui/react";
 
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
-import TextLogo from "src/components/TextLogo";
 
 const layout = ({ children, categories }) => {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-
-  // const { observe, inView } = useInView({
-  //   threshold: 0, // Default is 0
-  //   rootMargin: "-80px",
-  // });
-
-  const isMd = useBreakpointValue({ base: false, md: true });
-
-  const { asPath } = useRouter();
-
-  const curPath = useRef();
-  useEffect(() => {
-    if (curPath.current !== asPath) {
-      ReactGA.pageview(asPath);
-      curPath.current = asPath;
-    }
-  }, [asPath]);
-
   return (
     <Flex
       overflowX="hidden"
@@ -41,17 +18,12 @@ const layout = ({ children, categories }) => {
     >
       <Box>
         <Box display={{ base: "none", md: "block" }}>
-          {/* <TextLogo /> */}
-
           <Navbar categories={categories} />
-          {/* <Box ref={observeRef} h="1px" w="100%" bg="transparent" /> */}
         </Box>
 
         {/* hides self when md breakpoint is hit */}
         <Box display={{ base: "block", md: "none" }}>
           <MobileNav categories={categories} />
-          {/* <Box ref={mobileObserveRef} h="1px" w="100%" bg="transparent" /> */}
-          {/* <TextLogo /> */}
         </Box>
 
         <Box h="100%" position="relative" bg="brand.creme">
@@ -59,13 +31,7 @@ const layout = ({ children, categories }) => {
         </Box>
       </Box>
 
-      <Text
-        // border="1px solid green"
-        fontSize="sm"
-        mt="3rem"
-        mb="1rem"
-        textAlign="center"
-      >
+      <Text fontSize="sm" mt="3rem" mb="1rem" textAlign="center">
         &copy; 2022 moneyandotherthings.com
       </Text>
     </Flex>

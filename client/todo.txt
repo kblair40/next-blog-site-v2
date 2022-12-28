@@ -17,3 +17,4 @@ TODO
 11. Put everything in perfect alignment on home page
    - confirm card looks good when wifi returns
 12. Detect offline and prevent fetches????
+13. remove react-cool-inview package
