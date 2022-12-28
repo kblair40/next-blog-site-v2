@@ -13,6 +13,9 @@ import {
   Center,
   Spinner,
   Text,
+  Box,
+  Flex,
+  Stack,
   // HStack,
   // PopoverCloseButton,
   // PopoverAnchor,
@@ -38,9 +41,22 @@ const Search = () => {
     if (value.length >= 2 && !showResults) {
       console.log("\nOPENING");
       setShowResults(true);
+
+      setSearching(true);
+
+      // delete this and replace with real fetch
+      setTimeout(() => {
+        // setResults(["fdsa"]);
+        setResults([]);
+        setSearching(false);
+      }, 1000);
     } else if (value.length < 2 && showResults) {
       console.log("\nCLOSING");
       setShowResults(false);
+
+      if (results && results.length) {
+        setResults([]);
+      }
     }
   };
 
@@ -84,16 +100,22 @@ const Search = () => {
 
       <PopoverContent>
         <PopoverArrow />
-        <PopoverHeader>Header</PopoverHeader>
+        {/* <PopoverHeader p=".5rem 1rem">Header</PopoverHeader> */}
 
-        <PopoverBody>
+        <PopoverBody p={0}>
           {searching ? (
             <Center h="100px">
               <Spinner />
             </Center>
           ) : !searching && showResults && results.length === 0 ? (
-            <Text textAlign="center">No Reults</Text>
-          ) : null}
+            <Text my=".5rem" textAlign="center" fontWeight="500">
+              No Results
+            </Text>
+          ) : (
+            <Box w="100%">
+              <Result />
+            </Box>
+          )}
         </PopoverBody>
       </PopoverContent>
     </Popover>
@@ -101,3 +123,22 @@ const Search = () => {
 };
 
 export default Search;
+
+const Result = ({ result }) => {
+  return (
+    <Box
+      w="100%"
+      px="1rem"
+      py=".25rem"
+      cursor="pointer"
+      transition="background-color 0.3s"
+      //
+      _hover={{
+        bg: "brand.creme",
+      }}
+    >
+      <Text>Combining Finances for the First Time</Text>
+      {/* <Text>{result.title}</Text> */}
+    </Box>
+  );
+};
