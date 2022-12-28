@@ -1,6 +1,43 @@
 // plugins.js
 module.exports = ({ env }) => {
   return {
+    "fuzzy-search": {
+      enabled: true,
+      config: {
+        contentTypes: [
+          {
+            // api::<api-name>.<controller-name>
+            uid: "api::article.article",
+            modelName: "article",
+            transliterate: true,
+            queryConstraints: {
+              where: {
+                $and: [
+                  {
+                    publishedAt: { $notNull: true },
+                  },
+                ],
+              },
+            },
+            fuzzysortOptions: {
+              characterLimit: 300,
+              threshold: -600,
+              limit: 7,
+              keys: [
+                {
+                  name: "title",
+                  weight: 100,
+                },
+                // {
+                //   name: "description",
+                //   weight: -100,
+                // },
+              ],
+            },
+          },
+        ],
+      },
+    },
     email: {
       config: {
         provider: "sendgrid",
