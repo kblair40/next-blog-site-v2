@@ -21,15 +21,19 @@
     "name": {
       "type": "enumeration",
       "enum": [
-        "money",
-        "life"
+        "love",
+        "travel",
+        "style",
+        "guests",
+        "gift-guides"
       ],
       "required": true
     },
     "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article"
+      "target": "api::article.article",
+      "mappedBy": "category"
     }
   }
 }
