@@ -13,7 +13,7 @@ TODO
    - Maybe afterCreate middleware for article/post/whatever-i-called-it
 7. Look at using script component to import css for article ([slug]) page
 8. Box shadow transition needs optimizations - https://tobiasahlin.com/blog/how-to-animate-box-shadow/
-9. alsways show nav shadow
-10. add functionality for adding tabs on strapi-side
+10. add functionality for adding tags on strapi-side
 11. Put everything in perfect alignment on home page
-12. Detect offline and prevenlt fetches
+   - confirm card looks good when wifi returns
+12. Detect offline and prevent fetches????
