@@ -10,7 +10,9 @@ const FeaturedPost = ({ featuredPost }) => {
   return (
     <Box
       // mr="3rem"
+      w="100%"
       border="1px solid red"
+      id="feat-p"
     >
       <Box
         width={{
@@ -20,20 +22,16 @@ const FeaturedPost = ({ featuredPost }) => {
           md: "700px",
           lg: "900px",
         }}
-        // width={{
-        //   base: "175px",
-        //   sm: "225px",
-        //   md: "350px",
-        //   lg: "450px",
-        // }}
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
+        // maxH={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
         <Image
           priority
           fill
           alt="post image"
-          src={featuredPost.attributes.image_url}
+          // src={featuredPost.attributes.image_url}
+          src=""
           style={{ objectFit: "cover" }}
           sizes="(min-width: 992px) 900px,
               (min-width: 768px) 700px,
@@ -69,13 +67,14 @@ const FeaturedPost = ({ featuredPost }) => {
       </Box>
 
       <Flex
-        width={{
-          base: "350px",
-          sm: "450px",
-          md: "700px",
-          lg: "900px",
-        }}
-        // width={{
+        w={{ base: "100%" }}
+        // width={{ // newer
+        //   base: "350px",
+        //   sm: "450px",
+        //   md: "700px",
+        //   lg: "900px",
+        // }}
+        // width={{ // older
         //   base: "175px",
         //   sm: "225px",
         //   md: "350px",
@@ -90,15 +89,17 @@ const FeaturedPost = ({ featuredPost }) => {
       >
         <Box display="inline" fontSize="xs" mb="1rem">
           <Text display="inline">
-            {dayjs(featuredPost.createdAt).format("MMM DD, YYYY")}
+            Dec 20, 2022
+            {/* {dayjs(featuredPost.createdAt).format("MMM DD, YYYY")} */}
           </Text>
           <Text display="inline" mx="6px">
             &bull;
           </Text>
           <Text display="inline">
-            {featuredPost.attributes.minutes_to_read
+            3 min
+            {/* {featuredPost.attributes.minutes_to_read
               ? `${featuredPost.attributes.minutes_to_read} min`
-              : null}
+              : null} */}
           </Text>
         </Box>
 
@@ -113,7 +114,8 @@ const FeaturedPost = ({ featuredPost }) => {
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
             >
-              {featuredPost.attributes.title}
+              Combining Finances for the First Time
+              {/* {featuredPost.attributes.title} */}
             </Text>
 
             <Text
@@ -121,7 +123,10 @@ const FeaturedPost = ({ featuredPost }) => {
               transition="color 0.3s"
               noOfLines={2}
             >
-              {featuredPost.attributes.preview_text || ""}
+              Sint proident ut nulla officia nostrud in. Ea incididunt aliquip
+              sint qui nulla laborum dolor. Ullamco do laborum mollit tempor ea
+              occaecat id laborum non.
+              {/* {featuredPost.attributes.preview_text || ""} */}
             </Text>
           </Flex>
         </Link>

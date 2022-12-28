@@ -40,7 +40,7 @@ const HomePage = ({ homepage, articles }) => {
       </React.Suspense>
 
       <Grid
-        mt="90px"
+        mt={{ base: "60px", md: "90px" }}
         mb="2rem"
         border="1px solid black"
         gridTemplateAreas={{
@@ -54,10 +54,16 @@ const HomePage = ({ homepage, articles }) => {
         `,
         }}
         gridTemplateColumns={{ base: "100%" }}
-        gridTemplateRows={{ base: "260px 183px 240px 240px 1px 372px" }}
+        gridTemplateRows={{
+          base: "429px 183px 240px 500px 1px 394px",
+          sm: "236px 183px 240px 500px 1px 394px",
+          md: "394px 183px 240px 500px 1px 394px",
+        }}
+        rowGap={{ base: "2rem" }}
       >
         <GridItem area="feat-p">
-          {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
+          <FeaturedPost featuredPost={featuredPost} />
+          {/* {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null} */}
         </GridItem>
 
         <GridItem area="sub">
@@ -68,9 +74,9 @@ const HomePage = ({ homepage, articles }) => {
 
         <GridItem area="feat-r">
           <React.Suspense fallback={<div />}>
-            <Box minW={{ base: "200px" }} w={{ base: "200px" }}>
-              <FeaturedResources />
-            </Box>
+            {/* <Box minW={{ base: "200px" }} w={{ base: "200px" }}> */}
+            <FeaturedResources />
+            {/* </Box> */}
           </React.Suspense>
         </GridItem>
 

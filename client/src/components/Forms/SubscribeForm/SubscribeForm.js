@@ -118,16 +118,18 @@ const SubscribeForm = () => {
 
   return (
     <Flex
+      id="subscribe"
       // mt="72px"
       border="1px solid orange"
       borderTop="1px solid black"
       borderBottom="1px solid black"
-      width={{
-        base: "calc(100vw - 32px)",
-        sm: "calc(100vw - 64px)",
-        md: "700px",
-        lg: "900px",
-      }}
+      w="100%" // newer
+      // width={{ // older
+      //   base: "calc(100vw - 32px)",
+      //   sm: "calc(100vw - 64px)",
+      //   md: "700px",
+      //   lg: "900px",
+      // }}
       // h={{ base: "183px" }} // old
       h="100%" // new
       align={{ base: "center", md: "center" }}

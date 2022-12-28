@@ -104,7 +104,13 @@ const ContactForm = () => {
   };
 
   return (
-    <Box w="100%" border="1px solid blue">
+    <Box
+      w="100%"
+      border="1px solid blue"
+      // zIndex={1000000000}
+      // bg="white"
+      id="contact"
+    >
       <Heading
         textAlign={{ base: "center" }}
         mb={{ base: "1.5rem", md: "2rem" }}
