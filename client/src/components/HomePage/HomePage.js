@@ -64,7 +64,7 @@ const HomePage = ({ homepage, articles }) => {
         gridTemplateColumns={{ base: "100%", md: "auto minmax(240px, 300px)" }}
         w="100%"
         gridTemplateRows={{
-          base: "429px 183px 240px 500px 1px 394px",
+          base: "429px 183px auto auto 1px 394px",
           sm: "474px 183px auto auto 1px 394px",
           // sm: "474px 183px 240px 500px 1px 394px",
           // md: "587px 183px 240px 500px 1px 394px", // backup
@@ -73,7 +73,7 @@ const HomePage = ({ homepage, articles }) => {
           // md: "587px 183px 280px 1px 394px", // probably better than below
           // md: "587px 183px 500px 1px 394px",
         }}
-        rowGap={{ base: "2rem" }}
+        rowGap={{ base: "2.5rem", sm: "3rem" }}
         columnGap={{ md: "2rem", lg: "4rem" }}
         px={{ base: "1.5rem", sm: "2.5rem", lg: "5rem" }}
         sx={{
