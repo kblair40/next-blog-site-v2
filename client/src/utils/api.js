@@ -8,9 +8,11 @@ const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
  * @param {string} path Path of the URL
  * @returns {string} Full Strapi URL
  */
-const BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
-export function getStrapiURL(path = "", baseUrl = BASE_URL) {
+// const BASE_URL =
+//   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+export function getStrapiURL(path = "") {
+  let baseUrl =
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
   return `${baseUrl}${path}`;
   // return `${
   //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
