@@ -27,6 +27,18 @@ const Search = () => {
     setValue("");
   }, [asPath]);
 
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setValue(value);
+    if (value.length >= 2 && !showResults) {
+      console.log("\nOPENING");
+      setShowResults(true);
+    } else if (value.length < 2 && showResults) {
+      console.log("\nCLOSING");
+      setShowResults(false);
+    }
+  };
+
   return (
     <Popover isOpen={showReults} onClose={() => setShowResults(false)}>
       <PopoverTrigger>
@@ -59,7 +71,7 @@ const Search = () => {
             }}
             _hover={{ borderColor: "brand.darkgreen" }}
             transition="border-color 0.2s"
-            onChange={(e) => setValue(e.target.value)}
+            onChange={handleChange}
             value={value}
           />
         </InputGroup>
