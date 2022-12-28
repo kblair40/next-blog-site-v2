@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { SearchIcon } from "src/utils/icons";
 import {
   Input,
@@ -14,6 +14,7 @@ import {
   Spinner,
   Text,
   Box,
+  useOutsideClick,
   Flex,
   Stack,
   // HStack,
@@ -29,11 +30,13 @@ const Search = () => {
   const [searching, setSearching] = useState(false);
   const [results, setResults] = useState([]);
 
-  const { asPath } = useRouter();
+  const popoverContentRef = useRef();
+
+  const router = useRouter();
   useEffect(() => {
     // anytime path changes, clear input
     setValue("");
-  }, [asPath]);
+  }, [router.asPath]);
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -60,10 +63,29 @@ const Search = () => {
     }
   };
 
+  const handleClickResult = (slug) => {
+    router.push(`/articles/${slug}`);
+  };
+
+  const handleOutsideClick = (e) => {
+    const { id } = e.target;
+    console.log("\nCLICKED ID:", id, "\n");
+  };
+
+  useOutsideClick({
+    ref: popoverContentRef,
+    handler: handleOutsideClick,
+  });
+
   return (
-    <Popover isOpen={showResults} onClose={() => setShowResults(false)}>
+    <Popover
+      autoFocus={false}
+      isOpen={showResults}
+      onClose={() => setShowResults(false)}
+    >
       <PopoverTrigger>
         <InputGroup
+          id="search-input"
           w="100%"
           ml={{ base: "2rem", md: "-12px" }}
           mr={{ base: "2rem", md: "unset" }}
@@ -98,7 +120,7 @@ const Search = () => {
         </InputGroup>
       </PopoverTrigger>
 
-      <PopoverContent>
+      <PopoverContent ref={popoverContentRef}>
         <PopoverArrow />
         {/* <PopoverHeader p=".5rem 1rem">Header</PopoverHeader> */}
 
@@ -113,7 +135,7 @@ const Search = () => {
             </Text>
           ) : (
             <Box w="100%">
-              <Result />
+              <Result onClick={handleClickResult} result={{}} />
             </Box>
           )}
         </PopoverBody>
@@ -124,9 +146,10 @@ const Search = () => {
 
 export default Search;
 
-const Result = ({ result }) => {
+const Result = ({ result, onClick }) => {
   return (
     <Box
+      onClick={onClick}
       w="100%"
       px="1rem"
       py=".25rem"
