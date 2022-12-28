@@ -4,8 +4,8 @@ import {
   HStack,
   useTheme,
   useBreakpointValue,
-  Flex,
-  Heading,
+  // Flex,
+  // Heading,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -68,9 +68,6 @@ const Navbar = () => {
         <Link href="/">
           {/* <MoneyLogo /> */}
           <Box
-            // position="fixed"
-            // top="90px"
-            // left="1rem"
             position="relative"
             h={{ base: "70px", md: "40px", lg: "50px", xl: "55.3px" }}
             w={{ base: "180px", md: "120px", lg: "150px", xl: "166px" }}
@@ -87,19 +84,9 @@ const Navbar = () => {
           </Box>
         </Link>
 
-        {/* <Flex
-          position={{ xl: "fixed" }}
-          top={"1.5rem"}
-          left={0}
-          right={0}
-          justify="center"
-          w={{ md: "100%" }}
-          align="center"
-        > */}
         <NavLinks />
 
         <Search />
-        {/* </Flex> */}
       </Box>
     </motion.div>
   );
@@ -119,27 +106,27 @@ export const SocialLinks = ({ spacing = "8px", iconBoxSize = "20px" }) => {
   );
 };
 
-const MoneyLogo = () => {
-  return (
-    <Flex direction="column" align="center" color="brand.darkgreen">
-      <Heading
-        fontSize="26px"
-        fontWeight="400"
-        letterSpacing=".6px"
-        sx={{
-          fontWeight: "500 !important",
-        }}
-      >
-        money
-      </Heading>
-      <Heading
-        whiteSpace="nowrap"
-        fontWeight="500"
-        fontSize="7px"
-        letterSpacing="3px"
-      >
-        AND OTHER THINGS
-      </Heading>
-    </Flex>
-  );
-};
+// const MoneyLogo = () => {
+//   return (
+//     <Flex direction="column" align="center" color="brand.darkgreen">
+//       <Heading
+//         fontSize="26px"
+//         fontWeight="400"
+//         letterSpacing=".6px"
+//         sx={{
+//           fontWeight: "500 !important",
+//         }}
+//       >
+//         money
+//       </Heading>
+//       <Heading
+//         whiteSpace="nowrap"
+//         fontWeight="500"
+//         fontSize="7px"
+//         letterSpacing="3px"
+//       >
+//         AND OTHER THINGS
+//       </Heading>
+//     </Flex>
+//   );
+// };
