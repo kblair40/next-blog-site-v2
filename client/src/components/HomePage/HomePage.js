@@ -42,7 +42,6 @@ const HomePage = ({ homepage, articles }) => {
       <Grid
         mt={{ base: "60px", md: "90px" }}
         mb="2rem"
-        // border="1px solid black"
         gridTemplateAreas={{
           base: `
           "feat-p"
