@@ -20,7 +20,7 @@ module.exports = ({ env }) => {
               },
             },
             fuzzysortOptions: {
-              characterLimit: 300,
+              characterLimit: 30,
               threshold: -600,
               limit: 7,
               keys: [
@@ -38,6 +38,7 @@ module.exports = ({ env }) => {
         ],
       },
     },
+    // end "fuzzy-search", start "email"
     email: {
       config: {
         provider: "sendgrid",
