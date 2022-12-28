@@ -4,26 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 
-// import { getStrapiMedia } from "src/utils/media";
-
 const FeaturedPost = ({ featuredPost }) => {
   return (
-    <Box
-      // mr="3rem"
-      w="100%"
-      // border="1px solid red"
-      id="feat-p"
-    >
+    <Box w="100%" id="feat-p">
       <Box
-        width={{
-          // base: "350px",
-          base: "100%",
-          // sm: "450px",
-          // md: "700px",
-          // lg: "900px",
-        }}
+        width="100%"
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
-        // maxH={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
         <Image
