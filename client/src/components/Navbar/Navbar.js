@@ -40,7 +40,7 @@ const Navbar = () => {
         top: 0,
         right: 0,
         left: 0,
-        zIndex: 100000,
+        zIndex: 1000,
         height: "80px",
         width: "100vw",
         transition: "box-shadow 0.5s",
@@ -54,15 +54,8 @@ const Navbar = () => {
         h="100%"
         display={{ base: "none", md: "flex" }} // new (was md: block)
         bg="brand.creme" // new
-        // pl="1rem"
-        // pr="1rem"
-        // pt=".5rem"
         justifyContent="space-between"
-        // w="100vw"
         w="100%"
-        // border="1px solid green"
-        // shadow={isIntersecting ? "md" : "none"}
-        // transition="box-shadow .5s"
         alignItems="center"
       >
         <Link href="/">

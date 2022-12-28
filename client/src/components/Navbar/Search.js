@@ -24,7 +24,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import api from "src/utils/api";
+import { fetchAPI } from "src/utils/api";
 
 const Search = () => {
   const [value, setValue] = useState("");
@@ -39,6 +39,15 @@ const Search = () => {
     // anytime path changes, clear input
     setValue("");
   }, [router.asPath]);
+
+  const fetchResults = async () => {
+    try {
+      const response = await fetchAPI();
+    } catch (e) {
+      console.error("FAILED TO FIND RESULTS:", e);
+      setResults([]);
+    }
+  };
 
   const handleChange = (e) => {
     const { value } = e.target;

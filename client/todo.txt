@@ -9,8 +9,10 @@ TODO
 4. 404 page
    - Good enough, but style could improve
    - Something creative wouldn't hurt either
-6. Automatically create relation between article and category when article is created
+5. Automatically create relation between article and category when article is created
    - Maybe afterCreate middleware for article/post/whatever-i-called-it
-7. Look at using script component to import css for article ([slug]) page
-8. Box shadow transition needs optimizations - https://tobiasahlin.com/blog/how-to-animate-box-shadow/
-10. add functionality for adding tags on strapi-side
+6. Look at using script component to import css for article ([slug]) page
+7. Box shadow transition needs optimizations - https://tobiasahlin.com/blog/how-to-animate-box-shadow/
+8. add functionality for adding tags on strapi-side
+9. Add all categories to backend
+10. Add links for each category to frontend
