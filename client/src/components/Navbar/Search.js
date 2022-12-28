@@ -49,8 +49,8 @@ const Search = () => {
 
       // delete this and replace with real fetch
       setTimeout(() => {
-        // setResults(["fdsa"]);
-        setResults([]);
+        setResults(["fdsa"]);
+        // setResults([]);
         setSearching(false);
       }, 1000);
     } else if (value.length < 2 && showResults) {
@@ -70,6 +70,11 @@ const Search = () => {
   const handleOutsideClick = (e) => {
     const { id } = e.target;
     console.log("\nCLICKED ID:", id, "\n");
+    if (id !== "search-input") {
+      setShowResults(false);
+    } else {
+      setShowResults(true);
+    }
   };
 
   useOutsideClick({
@@ -78,14 +83,9 @@ const Search = () => {
   });
 
   return (
-    <Popover
-      autoFocus={false}
-      isOpen={showResults}
-      onClose={() => setShowResults(false)}
-    >
+    <Popover autoFocus={false} isOpen={showResults} closeOnBlur={false}>
       <PopoverTrigger>
         <InputGroup
-          id="search-input"
           w="100%"
           ml={{ base: "2rem", md: "-12px" }}
           mr={{ base: "2rem", md: "unset" }}
@@ -98,10 +98,11 @@ const Search = () => {
           _hover={{ borderColor: "brand.darkgreen" }}
           alignSelf={{ base: "flex-end", md: "center" }}
         >
-          <InputLeftElement w="24px">
+          <InputLeftElement w="24px" pointerEvents="none">
             <SearchIcon fill="brand.lightgreen" boxSize="16px" />
           </InputLeftElement>
           <Input
+            id="search-input"
             pl="32px"
             rounded="md"
             borderColor="brand.lightgreen"
@@ -126,7 +127,7 @@ const Search = () => {
 
         <PopoverBody p={0}>
           {searching ? (
-            <Center h="100px">
+            <Center h="60px">
               <Spinner />
             </Center>
           ) : !searching && showResults && results.length === 0 ? (
@@ -160,7 +161,7 @@ const Result = ({ result, onClick }) => {
         bg: "brand.creme",
       }}
     >
-      <Text>Combining Finances for the First Time</Text>
+      <Text fontWeight="500">Combining Finances for the First Time</Text>
       {/* <Text>{result.title}</Text> */}
     </Box>
   );
