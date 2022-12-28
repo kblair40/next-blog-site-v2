@@ -14,7 +14,3 @@ TODO
 7. Look at using script component to import css for article ([slug]) page
 8. Box shadow transition needs optimizations - https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 10. add functionality for adding tags on strapi-side
-11. Put everything in perfect alignment on home page
-   - confirm card looks good when wifi returns
-12. Detect offline and prevent fetches????
-13. remove react-cool-inview package
