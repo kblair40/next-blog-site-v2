@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Divider } from "@chakra-ui/react";
+import { Flex, Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
 import Loading from "src/components/Loading";
@@ -39,32 +39,76 @@ const HomePage = ({ homepage, articles }) => {
         <SEO seo={homepage?.attributes.seo} />
       </React.Suspense>
 
-      <Flex direction="column" align="center" mt="90px" mb="2rem">
-        {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
+      <Grid mt="90px" mb="2rem">
+        <GridItem>
+          {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
+        </GridItem>
 
-        {/* <React.Suspense fallback={<div />}>
+        <GridItem>
+          <React.Suspense fallback={<div />}>
             <Box minW={{ base: "200px" }} w={{ base: "200px" }}>
               <FeaturedResources />
             </Box>
-          </React.Suspense> */}
-        {/* </Flex> */}
+          </React.Suspense>
+        </GridItem>
 
-        <React.Suspense fallback={<Loading />}>
-          <SubscribeForm />
-        </React.Suspense>
-      </Flex>
+        <GridItem>
+          <React.Suspense fallback={<Loading />}>
+            <SubscribeForm />
+          </React.Suspense>
+        </GridItem>
 
-      <React.Suspense fallback={<Loading />}>
-        <AdditionalPosts articles={articles} />
-      </React.Suspense>
+        <GridItem>
+          <React.Suspense fallback={<Loading />}>
+            <AdditionalPosts articles={articles} />
+          </React.Suspense>
+        </GridItem>
 
-      <Divider borderColor="#303030" mb="2rem" />
+        <GridItem>
+          <Divider borderColor="#303030" mb="2rem" />
+        </GridItem>
 
-      <React.Suspense fallback={<Loading />}>
-        <ContactForm />
-      </React.Suspense>
+        <GridItem>
+          <React.Suspense fallback={<Loading />}>
+            <ContactForm />
+          </React.Suspense>
+        </GridItem>
+      </Grid>
     </Box>
   );
+
+  // return (
+  //   <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
+  //     <React.Suspense fallback={<div />}>
+  //       <SEO seo={homepage?.attributes.seo} />
+  //     </React.Suspense>
+
+  //     <Flex direction="column" align="center" mt="90px" mb="2rem">
+  //       {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
+
+  //       {/* <React.Suspense fallback={<div />}>
+  //           <Box minW={{ base: "200px" }} w={{ base: "200px" }}>
+  //             <FeaturedResources />
+  //           </Box>
+  //         </React.Suspense> */}
+  //       {/* </Flex> */}
+
+  //       <React.Suspense fallback={<Loading />}>
+  //         <SubscribeForm />
+  //       </React.Suspense>
+  //     </Flex>
+
+  //     <React.Suspense fallback={<Loading />}>
+  //       <AdditionalPosts articles={articles} />
+  //     </React.Suspense>
+
+  //     <Divider borderColor="#303030" mb="2rem" />
+
+  //     <React.Suspense fallback={<Loading />}>
+  //       <ContactForm />
+  //     </React.Suspense>
+  //   </Box>
+  // );
 };
 
 export default HomePage;
