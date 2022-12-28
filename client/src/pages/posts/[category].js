@@ -47,7 +47,13 @@ export async function getStaticProps({ params }) {
     },
   });
 
-  let articles = categoriesRes.data[0].attributes.articles.data;
+  let articles;
+
+  try {
+    articles = categoriesRes.data[0].attributes.articles.data;
+  } catch (e) {
+    articles = [];
+  }
 
   return {
     props: { articles },
