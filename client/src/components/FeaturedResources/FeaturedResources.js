@@ -5,7 +5,7 @@ import { ChevronDownIcon } from "src/utils/icons";
 
 const FeaturedResources = () => {
   return (
-    <Box w="100%">
+    <Box w="100%" border="1px solid red">
       <Text
         fontWeight="600"
         fontSize="sm"

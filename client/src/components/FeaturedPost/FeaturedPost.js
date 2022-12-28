@@ -8,10 +8,14 @@ import dayjs from "dayjs";
 
 const FeaturedPost = ({ featuredPost }) => {
   return (
-    <Box mr="3rem">
+    <Box
+      // mr="3rem"
+      border="1px solid red"
+    >
       <Box
         width={{
-          base: "350px",
+          // base: "350px",
+          base: "100%",
           sm: "450px",
           md: "700px",
           lg: "900px",

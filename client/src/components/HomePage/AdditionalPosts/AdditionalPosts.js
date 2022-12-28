@@ -27,8 +27,9 @@ const AdditionalPosts = ({ articles }) => {
   return (
     <Flex
       direction={{ base: "column", md: "row" }}
-      mb="2rem"
+      // mb="2rem"
       justify="space-between"
+      border="1px solid green"
     >
       <Flex justify="center" flex={{ md: 1 }} py="1rem">
         <Box w="100%" maxW={{ md: "700px" }}>

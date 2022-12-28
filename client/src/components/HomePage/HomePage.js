@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Divider, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
 import Loading from "src/components/Loading";
@@ -34,17 +34,39 @@ const HomePage = ({ homepage, articles }) => {
   }
 
   return (
-    <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
+    <Box pb="2rem" minH="100vh" maxW="100vw" w="100%">
       <React.Suspense fallback={<div />}>
         <SEO seo={homepage?.attributes.seo} />
       </React.Suspense>
 
-      <Grid mt="90px" mb="2rem">
-        <GridItem>
+      <Grid
+        mt="90px"
+        mb="2rem"
+        border="1px solid black"
+        gridTemplateAreas={{
+          base: `
+          "feat-p"
+          "sub"
+          "recent"
+          "feat-r"
+          "div"
+          "contact"
+        `,
+        }}
+        gridTemplateColumns={{ base: "100%" }}
+        gridTemplateRows={{ base: "260px 183px 240px 240px 1px 372px" }}
+      >
+        <GridItem area="feat-p">
           {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
         </GridItem>
 
-        <GridItem>
+        <GridItem area="sub">
+          <React.Suspense fallback={<Loading />}>
+            <SubscribeForm />
+          </React.Suspense>
+        </GridItem>
+
+        <GridItem area="feat-r">
           <React.Suspense fallback={<div />}>
             <Box minW={{ base: "200px" }} w={{ base: "200px" }}>
               <FeaturedResources />
@@ -52,23 +74,17 @@ const HomePage = ({ homepage, articles }) => {
           </React.Suspense>
         </GridItem>
 
-        <GridItem>
-          <React.Suspense fallback={<Loading />}>
-            <SubscribeForm />
-          </React.Suspense>
-        </GridItem>
-
-        <GridItem>
+        <GridItem area="recent">
           <React.Suspense fallback={<Loading />}>
             <AdditionalPosts articles={articles} />
           </React.Suspense>
         </GridItem>
 
-        <GridItem>
+        <GridItem area="div">
           <Divider borderColor="#303030" mb="2rem" />
         </GridItem>
 
-        <GridItem>
+        <GridItem area="contact">
           <React.Suspense fallback={<Loading />}>
             <ContactForm />
           </React.Suspense>

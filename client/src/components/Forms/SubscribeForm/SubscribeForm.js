@@ -118,7 +118,8 @@ const SubscribeForm = () => {
 
   return (
     <Flex
-      mt="72px"
+      // mt="72px"
+      border="1px solid orange"
       borderTop="1px solid black"
       borderBottom="1px solid black"
       width={{
@@ -127,10 +128,11 @@ const SubscribeForm = () => {
         md: "700px",
         lg: "900px",
       }}
-      h={{ base: "183px" }}
+      // h={{ base: "183px" }} // old
+      h="100%" // new
       align={{ base: "center", md: "center" }}
       justify={{ base: "center", md: "space-between" }}
-      px={{ base: "1rem" }}
+      // px={{ base: "1rem" }}
       direction={{ base: "column", md: "row" }}
       position="relative"
     >

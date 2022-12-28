@@ -104,7 +104,7 @@ const ContactForm = () => {
   };
 
   return (
-    <Box w="100%">
+    <Box w="100%" border="1px solid blue">
       <Heading
         textAlign={{ base: "center" }}
         mb={{ base: "1.5rem", md: "2rem" }}
