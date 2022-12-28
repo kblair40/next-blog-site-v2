@@ -4,22 +4,27 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  HStack,
   Popover,
   PopoverTrigger,
   PopoverContent,
   PopoverHeader,
   PopoverBody,
   PopoverArrow,
+  Center,
+  Spinner,
+  Text,
+  // HStack,
   // PopoverCloseButton,
   // PopoverAnchor,
-  Portal,
+  // Portal,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 const Search = () => {
   const [value, setValue] = useState("");
-  const [showReults, setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [results, setResults] = useState([]);
 
   const { asPath } = useRouter();
   useEffect(() => {
@@ -40,7 +45,7 @@ const Search = () => {
   };
 
   return (
-    <Popover isOpen={showReults} onClose={() => setShowResults(false)}>
+    <Popover isOpen={showResults} onClose={() => setShowResults(false)}>
       <PopoverTrigger>
         <InputGroup
           w="100%"
@@ -81,7 +86,15 @@ const Search = () => {
         <PopoverArrow />
         <PopoverHeader>Header</PopoverHeader>
 
-        <PopoverBody>{/*  */}</PopoverBody>
+        <PopoverBody>
+          {searching ? (
+            <Center h="100px">
+              <Spinner />
+            </Center>
+          ) : !searching && showResults && results.length === 0 ? (
+            <Text textAlign="center">No Reults</Text>
+          ) : null}
+        </PopoverBody>
       </PopoverContent>
     </Popover>
   );
