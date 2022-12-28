@@ -24,6 +24,8 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
+import api from "src/utils/api";
+
 const Search = () => {
   const [value, setValue] = useState("");
   const [showResults, setShowResults] = useState(false);
