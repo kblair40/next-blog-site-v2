@@ -10,16 +10,16 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
+  // PopoverCloseButton,
+  // PopoverAnchor,
   Portal,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 const Search = () => {
   const [value, setValue] = useState("");
+  const [showReults, setShowResults] = useState(false);
 
   const { asPath } = useRouter();
   useEffect(() => {
@@ -28,7 +28,7 @@ const Search = () => {
   }, [asPath]);
 
   return (
-    <Popover>
+    <Popover isOpen={showReults} onClose={() => setShowResults(false)}>
       <PopoverTrigger>
         <InputGroup
           w="100%"
