@@ -25,7 +25,7 @@ const Posts = ({ articles }) => {
 
 const ArticleList = ({ articles }) => {
   return (
-    <Flex justify="center">
+    <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
       <Stack mt="2rem" spacing="1.5rem">
         {articles && articles.length
           ? articles.map((article, i) => {
