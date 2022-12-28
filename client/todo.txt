@@ -16,3 +16,4 @@ TODO
 9. alsways show nav shadow
 10. add functionality for adding tabs on strapi-side
 11. Put everything in perfect alignment on home page
+12. Detect offline and prevenlt fetches
