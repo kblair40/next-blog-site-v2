@@ -106,7 +106,7 @@ const ContactForm = () => {
   return (
     <Box
       w="100%"
-      border="1px solid blue"
+      // border="1px solid blue"
       // zIndex={1000000000}
       // bg="white"
       id="contact"

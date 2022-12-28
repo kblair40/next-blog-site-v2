@@ -52,14 +52,29 @@ const HomePage = ({ homepage, articles }) => {
           "div"
           "contact"
         `,
+          md: `
+            "feat-p feat-p"
+            "sub sub"
+            "recent feat-r"
+            "div div"
+            "contact contact"
+          `,
         }}
-        gridTemplateColumns={{ base: "100%" }}
+        // gridTemplateColumns={{ base: "100%", md: "7fr 2fr" }}
+        gridTemplateColumns={{ base: "100%", md: "auto minmax(240px, 300px)" }}
+        w="100%"
         gridTemplateRows={{
           base: "429px 183px 240px 500px 1px 394px",
-          sm: "236px 183px 240px 500px 1px 394px",
-          md: "394px 183px 240px 500px 1px 394px",
+          sm: "474px 183px auto auto 1px 394px",
+          // sm: "474px 183px 240px 500px 1px 394px",
+          // md: "587px 183px 240px 500px 1px 394px", // backup
+          md: "587px 183px auto 1px 394px", // probably better than below
+          // md: "587px 183px 280px 1px 394px", // probably better than below
+          // md: "587px 183px 500px 1px 394px",
         }}
         rowGap={{ base: "2rem" }}
+        columnGap={{ md: "2rem" }}
+        px={{ base: "1.5rem", sm: "2.5rem" }}
       >
         <GridItem area="feat-p">
           <FeaturedPost featuredPost={featuredPost} />

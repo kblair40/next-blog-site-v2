@@ -26,13 +26,23 @@ const AdditionalPosts = ({ articles }) => {
 
   return (
     <Flex
+      w="100%"
+      maxW="100%"
       direction={{ base: "column", md: "row" }}
       // mb="2rem"
       justify="space-between"
-      border="1px solid green"
+      // border="1px solid green"
+      // w="auto"
     >
-      <Flex justify="center" flex={{ md: 1 }} py="1rem">
-        <Box w="100%" maxW={{ md: "700px" }}>
+      <Flex
+        justify="center"
+        w="100%" // new
+        maxW="100%" // new
+        // flex={{ md: 1 }} // new removals
+        // py="1rem" // new removals
+      >
+        {/* <Box w="100%" maxW={{ md: "700px" }}> */}
+        <Box w="100%">
           <Text mb="2rem" fontSize="2xl" letterSpacing={"5px"}>
             RECENT POSTS
           </Text>
@@ -77,14 +87,14 @@ const AdditionalPosts = ({ articles }) => {
         </Box>
       </Flex>
 
-      <Flex justify="center" w="center">
+      {/* <Flex justify="center" w="center">
         <Box
           w={{ base: "100%", md: "1px" }}
           h={{ base: "1px", md: "100%" }}
           bg="#303030"
           m={{ base: "2rem 0", md: "0 1.5rem" }}
         />
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 };

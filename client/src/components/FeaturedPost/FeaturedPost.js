@@ -11,7 +11,7 @@ const FeaturedPost = ({ featuredPost }) => {
     <Box
       // mr="3rem"
       w="100%"
-      border="1px solid red"
+      // border="1px solid red"
       id="feat-p"
     >
       <Box

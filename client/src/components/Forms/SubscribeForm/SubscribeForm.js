@@ -120,7 +120,7 @@ const SubscribeForm = () => {
     <Flex
       id="subscribe"
       // mt="72px"
-      border="1px solid orange"
+      // border="1px solid orange"
       borderTop="1px solid black"
       borderBottom="1px solid black"
       w="100%" // newer
