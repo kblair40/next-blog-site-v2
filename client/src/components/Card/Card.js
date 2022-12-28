@@ -114,7 +114,7 @@ const Card = ({ article }) => {
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
               noOfLines={2}
-              lineHeight={{ base: "1.2", md: "unset" }}
+              lineHeight={{ base: "1.2", md: "1.3" }}
               fontFamily="Nunito"
               // color="brand.darkgreen"
             >

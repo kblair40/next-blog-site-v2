@@ -30,8 +30,7 @@ const FeaturedPost = ({ featuredPost }) => {
           priority
           fill
           alt="post image"
-          // src={featuredPost.attributes.image_url}
-          src=""
+          src={featuredPost.attributes.image_url}
           style={{ objectFit: "cover" }}
           sizes="(min-width: 992px) 900px,
               (min-width: 768px) 700px,
@@ -89,17 +88,15 @@ const FeaturedPost = ({ featuredPost }) => {
       >
         <Box display="inline" fontSize="xs" mb="1rem">
           <Text display="inline">
-            Dec 20, 2022
-            {/* {dayjs(featuredPost.createdAt).format("MMM DD, YYYY")} */}
+            {dayjs(featuredPost.createdAt).format("MMM DD, YYYY")}
           </Text>
           <Text display="inline" mx="6px">
             &bull;
           </Text>
           <Text display="inline">
-            3 min
-            {/* {featuredPost.attributes.minutes_to_read
+            {featuredPost.attributes.minutes_to_read
               ? `${featuredPost.attributes.minutes_to_read} min`
-              : null} */}
+              : null}
           </Text>
         </Box>
 
@@ -114,8 +111,7 @@ const FeaturedPost = ({ featuredPost }) => {
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
             >
-              Combining Finances for the First Time
-              {/* {featuredPost.attributes.title} */}
+              {featuredPost.attributes.title}
             </Text>
 
             <Text
@@ -123,10 +119,7 @@ const FeaturedPost = ({ featuredPost }) => {
               transition="color 0.3s"
               noOfLines={2}
             >
-              Sint proident ut nulla officia nostrud in. Ea incididunt aliquip
-              sint qui nulla laborum dolor. Ullamco do laborum mollit tempor ea
-              occaecat id laborum non.
-              {/* {featuredPost.attributes.preview_text || ""} */}
+              {featuredPost.attributes.preview_text || ""}
             </Text>
           </Flex>
         </Link>
