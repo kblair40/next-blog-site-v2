@@ -1,7 +1,11 @@
 import qs from "qs";
 
 const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
+const envName = process.env.NODE_ENV;
 // console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
+
+console.log("ENV NAME:", envName);
+console.log("API URL:", process.env.NEXT_PUBLIC_STRAPI_API_URL);
 
 /**
  * Get full Strapi URL from path
@@ -11,9 +15,9 @@ const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
 // const BASE_URL =
 //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
 export function getStrapiURL(path = "") {
-  // let baseUrl = // This is what we want
-  //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
-  let baseUrl = "http://localhost:1337";
+  let baseUrl =
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+  // let baseUrl = "http://localhost:1337";
   return `${baseUrl}${path}`;
   // return `${
   //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
@@ -31,9 +35,17 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   let headers = {
     "Content-Type": "application/json",
   };
+  // headers["Authorization"] = "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
+  //  PUT BELOW 'IF' CHECK BACK - DELETE LINE ABOVE
   if (token) {
-    headers["Authorization"] = `bearer ${token}`;
+    console.log("YES TOKEN");
+    // headers["Authorization"] = `bearer ${token}`; // old
+    headers["Authorization"] = `${token}`; // new
+  } else {
+    headers["Authorization"] =
+      "2327aba91f2a917004eb66f5b0ac03c7bf71af60024965138dbd2f8305833ef89cfe20b2f9d0ed76b5372835e70836ec0d26e5a39c04256d707926e7b315474da9f25bc1b4f83a7ea8e232cf9278da7e9dac70263089ec5be46183912fd8b6ae84d47e042727fdfea9994e2da3b32159de87923e0e1bf7252dc8e92a84efd625";
   }
+
   // Merge default and user options
   const mergedOptions = {
     headers,
