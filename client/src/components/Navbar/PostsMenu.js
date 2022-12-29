@@ -13,9 +13,11 @@ import {
   Box,
   Text,
   Stack,
+  Flex,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
+import { ChevronDownIcon } from "src/utils/icons";
 import { NavLink } from "./NavLinks";
 import { navLinks } from "./links";
 
@@ -31,7 +33,7 @@ const PostsMenu = () => {
       <PopoverTrigger>
         <Button variant="unstyled">
           <NavLink onClick={() => setIsOpen(!isOpen)} isDisabled={true}>
-            Posts
+            <Text>Posts</Text>
             {/* <Text onClick={() => setIsOpen(true)}>Posts</Text> */}
           </NavLink>
         </Button>
@@ -44,7 +46,11 @@ const PostsMenu = () => {
       // bg="brand.creme"
       >
         <PopoverBody>
-          <Stack>
+          <Stack
+            //
+            spacing="0"
+            // sx={{ "> *": { border: "1px solid #eee" } }}
+          >
             {LINKS.map((link, i) => {
               return (
                 <Link href={link.to} key={i}>
@@ -52,7 +58,7 @@ const PostsMenu = () => {
                     // bg="brand.creme"
                     bg="white"
                     // transition="background-color, color 0.3s"
-                    transition="all 0.3s"
+                    transition="background-color 0.3s"
                     _hover={{
                       // bg: "white",
                       // bg: "brand.creme",
@@ -60,10 +66,26 @@ const PostsMenu = () => {
                       // bg: "brand.darkgreen",
                       color: "white",
                     }}
+                    // _hover={{
+                    //   // bg: "white",
+                    //   // bg: "brand.creme",
+                    //   bg: "brand.lightgreen",
+                    //   // bg: "brand.darkgreen",
+                    //   // color: "white",
+                    // }}
                     w="100%"
                     p="6px 4px"
+                    color="brand.darkgreen"
+                    // role="group"
                   >
-                    <Text color="inherit">{link.label}</Text>
+                    <Text
+                      transition="color 0.3s"
+                      color="inherit"
+                      // color="brand.darkgreen"
+                      // _groupHover={{ color: "white" }}
+                    >
+                      {link.label}
+                    </Text>
                   </Box>
                 </Link>
               );

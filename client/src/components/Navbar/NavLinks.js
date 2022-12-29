@@ -140,7 +140,7 @@ export const NavLink = ({
           color="brand.darkgreen"
           fontWeight="600"
           letterSpacing="1.5px"
-          className="link-wrapper"
+          // className="link-wrapper"
           whiteSpace="nowrap"
         >
           {children ? children : linkObj.label}
