@@ -9,33 +9,19 @@ import PostsMenu from "./PostsMenu";
 const NavLinks = () => {
   const { asPath } = useRouter();
 
-  // const bp = useBreakpointValue(
-  //   { base: "base", sm: "sm", md: "md", lg: "lg" },
-  //   { ssr: false }
-  // );
-  // console.log("BP:", bp);
   const isMd = useBreakpointValue({ base: false, md: true, lg: false });
-  // const linksMap = {
-  //   md: [navLinks[0], navLinks[navLinks.length - 1]],
-  //   lg: navLinks,
-  // };
   const links = isMd ? [navLinks[0], navLinks[navLinks.length - 1]] : navLinks;
-  // const linkWidth = isMd ? "33%" :
+
+  // const childBorder = { "> *": { border: "1px solid red" } };
   return (
     <Flex
       py=".5rem"
       justify="space-evenly"
       h="100%"
       w="100%"
-      // maxW="695px"
       maxW={{ md: "480px", lg: "700px" }}
       mx={{ md: "2rem", lg: "3rem", xl: "5rem" }}
-      sx={
-        {
-          // "> *": { border: "1px solid red" },
-        }
-      }
-      // border="1px solid green"
+      // sx={childBorder}
     >
       {/* {navLinks.map((linkObj, i) => { */}
       {links.map((linkObj, i) => {
@@ -50,9 +36,11 @@ const NavLinks = () => {
         );
       })}
 
-      <NavLink>
-        <PostsMenu />
-      </NavLink>
+      <Box display={{ md: "block", lg: "none" }}>
+        <NavLink>
+          <PostsMenu />
+        </NavLink>
+      </Box>
     </Flex>
   );
 };
@@ -69,17 +57,12 @@ export const NavLink = ({
 }) => {
   return (
     <Box
-      // pointerEvents="nosne"
       px=".75rem"
       w="100%"
       order={order}
-      // border="1px solid red"
       role="group"
       cursor="pointer"
-      // flex={1}
-      // flex={linkObj?.label === "Gift Guides" ? 1.9 : 1}
       h="100%"
-      // borderRight="none"
       _after={
         isDisabled
           ? null
@@ -122,7 +105,6 @@ export const NavLink = ({
           color="brand.darkgreen"
           fontWeight="600"
           letterSpacing="1.5px"
-          // className="link-wrapper"
           whiteSpace="nowrap"
         >
           {children ? children : linkObj.label}
