@@ -25,7 +25,7 @@ const NavLinks = () => {
     >
       {/* {navLinks.map((linkObj, i) => { */}
       {links.map((linkObj, i) => {
-        console.log("LINK:", linkObj);
+        // console.log("LINK:", linkObj);
         return (
           <NavLink
             order={i === 0 || !isMd ? i : i === 1 && isMd ? i + 1 : i}
