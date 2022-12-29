@@ -16,7 +16,7 @@ const FeaturedPost = ({ featuredPost }) => {
           priority
           fill
           alt="post image"
-          src={featuredPost.attributes.image_url}
+          src={featuredPost?.attributes.image_url}
           style={{ objectFit: "cover" }}
           sizes="(min-width: 992px) 900px,
               (min-width: 768px) 700px,
@@ -57,14 +57,14 @@ const FeaturedPost = ({ featuredPost }) => {
       >
         <Box display="inline" fontSize="xs" mb="1rem">
           <Text display="inline">
-            {dayjs(featuredPost.createdAt).format("MMM DD, YYYY")}
+            {dayjs(featuredPost?.createdAt).format("MMM DD, YYYY")}
           </Text>
           <Text display="inline" mx="6px">
             &bull;
           </Text>
           <Text display="inline">
-            {featuredPost.attributes.minutes_to_read
-              ? `${featuredPost.attributes.minutes_to_read} min`
+            {featuredPost?.attributes.minutes_to_read
+              ? `${featuredPost?.attributes.minutes_to_read} min`
               : null}
           </Text>
         </Box>
@@ -80,7 +80,7 @@ const FeaturedPost = ({ featuredPost }) => {
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
             >
-              {featuredPost.attributes.title}
+              {featuredPost?.attributes.title}
             </Text>
 
             <Text
@@ -88,7 +88,7 @@ const FeaturedPost = ({ featuredPost }) => {
               transition="color 0.3s"
               noOfLines={2}
             >
-              {featuredPost.attributes.preview_text || ""}
+              {featuredPost?.attributes.preview_text || ""}
             </Text>
           </Flex>
         </Link>

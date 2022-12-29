@@ -20,7 +20,7 @@ module.exports = ({ env }) => {
               },
             },
             fuzzysortOptions: {
-              characterLimit: 30,
+              characterLimit: 400,
               // threshold: -600,
               threshold: -1200,
               limit: 7,

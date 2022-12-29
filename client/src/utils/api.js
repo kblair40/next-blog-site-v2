@@ -11,8 +11,9 @@ const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
 // const BASE_URL =
 //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
 export function getStrapiURL(path = "") {
-  let baseUrl =
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+  // let baseUrl = // This is what we want
+  //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+  let baseUrl = "http://localhost:1337";
   return `${baseUrl}${path}`;
   // return `${
   //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
@@ -41,10 +42,10 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
 
   // Build request URL
   const queryString = qs.stringify(urlParamsObject);
-  // console.log("\n\n\n\nQUERY DATA:", {
-  //   queryString,
-  //   path,
-  // });
+  console.log("\n\n\n\nQUERY DATA:", {
+    queryString,
+    path,
+  });
   const requestUrl = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`;

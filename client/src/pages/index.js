@@ -41,13 +41,13 @@ const Home = ({ homepage, articles }) => {
 };
 
 export async function getStaticProps() {
-  const homepageRes = await fetchAPI("/homepage", {
-    populate: {
-      featured_post: {
-        populate: { article: "*" },
-      },
-    },
-  });
+  // const homepageRes = await fetchAPI("/homepage", {
+  //   populate: {
+  //     featured_post: {
+  //       populate: { article: "*" },
+  //     },
+  //   },
+  // });
 
   let [home, articles] = await Promise.all([
     fetchAPI("/homepage", {

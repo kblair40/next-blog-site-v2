@@ -40,30 +40,42 @@ const Search = () => {
     setValue("");
   }, [router.asPath]);
 
-  const fetchResults = async () => {
+  const fetchResults = async (searchString) => {
     try {
-      const response = await fetchAPI();
+      // const response = await fetchAPI(
+      //   `/fuzzy-search/search?query=${searchString}&locale=en`
+      // );
+      const response = await fetchAPI(`/fuzzy-search/search`, {
+        query: searchString,
+        locale: "en",
+      });
+      console.log("\nRESULTS RESPONSE:", response.data);
     } catch (e) {
       console.error("FAILED TO FIND RESULTS:", e);
       setResults([]);
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { value } = e.target;
     setValue(value);
-    if (value.length >= 2 && !showResults) {
+    // if (value.length >= 2 && !showResults) {
+    if (value.length >= 2) {
       console.log("\nOPENING");
       setShowResults(true);
 
       setSearching(true);
 
+      console.log("SEARCHING", value);
+      await fetchResults(value);
+
       // delete this and replace with real fetch
-      setTimeout(() => {
-        setResults(["fdsa"]);
-        // setResults([]);
-        setSearching(false);
-      }, 1000);
+
+      // setTimeout(() => {
+      //   setResults(["fdsa"]);
+      //   // setResults([]);
+      //   setSearching(false);
+      // }, 1000);
     } else if (value.length < 2 && showResults) {
       console.log("\nCLOSING");
       setShowResults(false);
@@ -72,6 +84,7 @@ const Search = () => {
         setResults([]);
       }
     }
+    setSearching(false);
   };
 
   const handleClickResult = (slug) => {
