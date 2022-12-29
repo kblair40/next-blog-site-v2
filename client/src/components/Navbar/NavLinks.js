@@ -30,11 +30,9 @@ const NavLinks = () => {
       // maxW="695px"
       maxW={{ md: "400px", lg: "700px" }}
       mx={{ md: "2rem", lg: "3rem", xl: "5rem" }}
-      sx={
-        {
-          // "> *": { border: "1px solid red" },
-        }
-      }
+      // sx={{
+      //   "> *": { border: "1px solid red" },
+      // }}
       // border="1px solid green"
     >
       {/* {navLinks.map((linkObj, i) => { */}
@@ -61,18 +59,18 @@ const NavLinks = () => {
         <PostsMenu />
       </Flex> */}
 
-      <NavLink>
-        <Flex
-          // flex={1}
-          display={isMd ? "flex" : "none"}
-          h="100%"
-          align="center"
-          justify="center"
-          order={1}
-        >
+      <Flex
+        // flex={1}
+        display={isMd ? "flex" : "none"}
+        h="100%"
+        align="center"
+        justify="center"
+        order={1}
+      >
+        <NavLink>
           <PostsMenu />
-        </Flex>
-      </NavLink>
+        </NavLink>
+      </Flex>
     </Flex>
   );
 };
@@ -89,14 +87,17 @@ export const NavLink = ({
 }) => {
   return (
     <Box
-      // pointerEvents="none"
+      // pointerEvents="nosne"
+      px=".75rem"
+      w="100%"
       order={order}
       // border="1px solid red"
       role="group"
       cursor="pointer"
-      flex={1}
+      // flex={1}
+      // flex={linkObj?.label === "Gift Guides" ? 1.9 : 1}
       h="100%"
-      borderRight="none"
+      // borderRight="none"
       _after={
         isDisabled
           ? null
@@ -130,7 +131,7 @@ export const NavLink = ({
       >
         <Center
           h="100%"
-          fontSize={{ md: "15px", lg: "18px" }}
+          fontSize={{ md: "17px", lg: "16px" }}
           textAlign="center"
           transitionDuration="0.3s"
           _groupHover={{
@@ -138,7 +139,7 @@ export const NavLink = ({
           }}
           color="brand.darkgreen"
           fontWeight="600"
-          letterSpacing="2px"
+          letterSpacing="1.5px"
           className="link-wrapper"
           whiteSpace="nowrap"
         >

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import {
+  // PopoverHeader,
+  // PopoverFooter,
+  // PopoverArrow,
+  // PopoverCloseButton,
+  // PopoverAnchor,
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
   PopoverBody,
-  PopoverFooter,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverAnchor,
   Button,
   Box,
   Text,
@@ -40,14 +40,30 @@ const PostsMenu = () => {
         </Button> */}
       </PopoverTrigger>
 
-      <PopoverContent bg="brand.creme">
+      <PopoverContent
+      // bg="brand.creme"
+      >
         <PopoverBody>
           <Stack>
             {LINKS.map((link, i) => {
               return (
                 <Link href={link.to} key={i}>
-                  <Box w="100%" p="6px 4px">
-                    <Text>{link.label}</Text>
+                  <Box
+                    // bg="brand.creme"
+                    bg="white"
+                    // transition="background-color, color 0.3s"
+                    transition="all 0.3s"
+                    _hover={{
+                      // bg: "white",
+                      // bg: "brand.creme",
+                      bg: "brand.lightgreen",
+                      // bg: "brand.darkgreen",
+                      color: "white",
+                    }}
+                    w="100%"
+                    p="6px 4px"
+                  >
+                    <Text color="inherit">{link.label}</Text>
                   </Box>
                 </Link>
               );

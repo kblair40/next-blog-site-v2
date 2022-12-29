@@ -61,6 +61,7 @@ const Navbar = () => {
         <Link href="/">
           {/* <MoneyLogo /> */}
           <Box
+            // border="1px solid"
             position="relative"
             h={{ base: "70px", md: "40px", lg: "50px", xl: "55.3px" }}
             w={{ base: "180px", md: "120px", lg: "150px", xl: "166px" }}

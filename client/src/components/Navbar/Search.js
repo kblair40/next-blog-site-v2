@@ -97,10 +97,14 @@ const Search = () => {
     <Popover autoFocus={false} isOpen={showResults} closeOnBlur={false}>
       <PopoverTrigger>
         <InputGroup
+          // border="1px solid green"
+          position="relative"
+          bottom={{ sm: "4px", md: "-2px" }}
           w="100%"
           ml={{ base: "2rem", md: "-12px" }}
           mr={{ base: "2rem", md: "unset" }}
-          maxW={{ base: "100%", sm: "200px", md: "120px", lg: "186px" }}
+          maxW={{ base: "100%", sm: "228px", md: "200px", lg: "226px" }}
+          // maxW={{ base: "100%", sm: "200px", md: "120px", lg: "186px" }}
           minW={{ base: "100px", md: "120px" }}
           variant={{ base: "unstyled" }}
           borderBottom="1px solid"
