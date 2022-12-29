@@ -48,11 +48,12 @@ const PostsMenu = () => {
         </Button>
       </PopoverTrigger>
 
-      <PopoverContent>
+      <PopoverContent p={0} w="fit-content">
         <PopoverBody>
           <Stack
             spacing="0"
-            // sx={{ "> *": { border: "1px solid #eee" } }}
+            // sx={{ "> *": { border: "1px solid #aaa" } }}
+            //
           >
             {LINKS.map((link, i) => {
               return (
@@ -61,14 +62,20 @@ const PostsMenu = () => {
                     bg="white"
                     transition="background-color 0.3s"
                     w="100%"
-                    p="6px 4px"
+                    p="8px 32px"
                     color="brand.darkgreen"
+                    rounded="md"
                     _hover={{
                       bg: "brand.lightgreen",
                       color: "white",
                     }}
                   >
-                    <Text transition="color 0.3s" color="inherit">
+                    <Text
+                      textAlign="center"
+                      fontWeight="600"
+                      transition="color 0.3s"
+                      color="inherit"
+                    >
                       {link.label}
                     </Text>
                   </Box>
