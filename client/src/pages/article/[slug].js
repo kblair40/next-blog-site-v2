@@ -159,9 +159,17 @@ const ShareLinks = ({ onClickShare }) => {
   const iconButtonProps = {
     size: "sm",
     rounded: "full",
-    bg: "white",
-    _hover: { bg: "gray.50" },
-    _active: { bg: "gray.100" },
+    border: "1px solid transparent",
+    bg: "brand.creme",
+    transition: "border-color 0.3s",
+    _hover: {
+      // bg: "gray.50"
+      borderColor: "brand.lightgreen",
+    },
+    _active: {
+      // bg: "gray.100"
+      borderColor: "brand.darkgreen",
+    },
   };
 
   const router = useRouter();
