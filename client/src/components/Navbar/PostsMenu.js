@@ -1,10 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  // PopoverHeader,
-  // PopoverFooter,
-  // PopoverCloseButton,
-  // PopoverAnchor,
-  PopoverArrow,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -13,19 +8,25 @@ import {
   Box,
   Text,
   Stack,
-  Flex,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { ChevronDownIcon } from "src/utils/icons";
 import { NavLink } from "./NavLinks";
 import { navLinks } from "./links";
 
 const LINKS = navLinks.slice(1, navLinks.length - 1);
-console.log("LINKS:", LINKS);
+// console.log("LINKS:", LINKS);
 
 const PostsMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { asPath } = useRouter();
+
+  useEffect(() => {
+    if (isOpen) setIsOpen(false);
+  }, [asPath]);
 
   return (
     <Popover
