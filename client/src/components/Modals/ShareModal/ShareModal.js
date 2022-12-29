@@ -35,8 +35,11 @@ const ShareModal = ({ isOpen, onClose, articleData }) => {
       isCentered
     >
       <ModalOverlay />
-      <ModalContent rounded="lg">
-        <ModalCloseButton />
+      <ModalContent
+        rounded="lg"
+        // bg="brand.creme"
+      >
+        <ModalCloseButton rounded="full" _hover={{ bg: "brand.creme" }} />
         <ModalHeader fontWeight="600">Share</ModalHeader>
 
         <ModalBody pb="2rem">
