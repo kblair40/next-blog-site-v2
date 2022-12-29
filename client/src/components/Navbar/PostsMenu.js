@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
+import { NavLink } from "./NavLinks";
 import { navLinks } from "./links";
 
 const LINKS = navLinks.slice(1, navLinks.length - 1);
@@ -26,14 +27,20 @@ const PostsMenu = () => {
 
   return (
     <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      {/* <Popover> */}
       <PopoverTrigger>
-        <Text onClick={() => setIsOpen(true)}>Posts</Text>
+        <Button variant="unstyled">
+          <NavLink onClick={() => setIsOpen(!isOpen)} isDisabled={true}>
+            Posts
+            {/* <Text onClick={() => setIsOpen(true)}>Posts</Text> */}
+          </NavLink>
+        </Button>
         {/* <Button onClick={() => setIsOpen(true)} variant="link">
           Posts
         </Button> */}
       </PopoverTrigger>
 
-      <PopoverContent>
+      <PopoverContent bg="brand.creme">
         <PopoverBody>
           <Stack>
             {LINKS.map((link, i) => {

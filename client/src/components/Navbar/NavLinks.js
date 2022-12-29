@@ -79,9 +79,17 @@ const NavLinks = () => {
 
 export default NavLinks;
 
-const NavLink = ({ linkObj, children, isActive, order }) => {
+export const NavLink = ({
+  linkObj,
+  children,
+  isActive,
+  order,
+  isDisabled,
+  onClick,
+}) => {
   return (
     <Box
+      // pointerEvents="none"
       order={order}
       // border="1px solid red"
       role="group"
@@ -89,25 +97,37 @@ const NavLink = ({ linkObj, children, isActive, order }) => {
       flex={1}
       h="100%"
       borderRight="none"
-      _after={{
-        content: `""`,
-        display: "block",
-        width: isActive ? "35px" : 0,
-        height: "2px",
-        background: "brand.darkgreen",
-        transition: "0.2s",
-        position: "relative",
-        bottom: "14px",
-        margin: "2px auto 0",
-      }}
+      _after={
+        isDisabled
+          ? null
+          : {
+              content: `""`,
+              display: "block",
+              width: isActive ? "35px" : 0,
+              height: "2px",
+              background: "brand.darkgreen",
+              transition: "0.2s",
+              position: "relative",
+              bottom: "14px",
+              margin: "2px auto 0",
+            }
+      }
       _hover={{
         _after: {
           width: "35px",
           transition: "width 0.2s",
         },
       }}
+      onClick={onClick ? onClick : null}
     >
-      <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
+      <Link
+        style={{
+          pointerEvents: isDisabled ? "none" : "auto",
+        }}
+        isDisabled={true}
+        href={linkObj ? linkObj.to : {}}
+        legacyBehavior
+      >
         <Center
           h="100%"
           fontSize={{ md: "15px", lg: "18px" }}
