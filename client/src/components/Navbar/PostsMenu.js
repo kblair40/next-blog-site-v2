@@ -10,6 +10,9 @@ import {
   PopoverCloseButton,
   PopoverAnchor,
   Button,
+  Box,
+  Text,
+  Stack,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -20,23 +23,29 @@ console.log("LINKS:", LINKS);
 
 const PostsMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Popover isOpen={isOpen}>
+    <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
       <PopoverTrigger>
-        <Button variant="link">Posts</Button>
+        <Text onClick={() => setIsOpen(true)}>Posts</Text>
+        {/* <Button onClick={() => setIsOpen(true)} variant="link">
+          Posts
+        </Button> */}
       </PopoverTrigger>
 
       <PopoverContent>
         <PopoverBody>
-          {LINKS.map((link, i) => {
-            return (
-              <Link href={link.to} key={i}>
-                <Box w="100%" p="6px 4px">
-                  <Text>{link.label}</Text>
-                </Box>
-              </Link>
-            );
-          })}
+          <Stack>
+            {LINKS.map((link, i) => {
+              return (
+                <Link href={link.to} key={i}>
+                  <Box w="100%" p="6px 4px">
+                    <Text>{link.label}</Text>
+                  </Box>
+                </Link>
+              );
+            })}
+          </Stack>
         </PopoverBody>
       </PopoverContent>
     </Popover>

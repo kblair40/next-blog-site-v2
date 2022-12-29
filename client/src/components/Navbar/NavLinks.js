@@ -1,12 +1,26 @@
 import React from "react";
-import { Box, Flex, Center } from "@chakra-ui/react";
+import { Box, Flex, Center, useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { navLinks } from "./links";
+import PostsMenu from "./PostsMenu";
 
 const NavLinks = () => {
   const { asPath } = useRouter();
+
+  // const bp = useBreakpointValue(
+  //   { base: "base", sm: "sm", md: "md", lg: "lg" },
+  //   { ssr: false }
+  // );
+  // console.log("BP:", bp);
+  const isMd = useBreakpointValue({ base: false, md: true, lg: false });
+  // const linksMap = {
+  //   md: [navLinks[0], navLinks[navLinks.length - 1]],
+  //   lg: navLinks,
+  // };
+  const links = isMd ? [navLinks[0], navLinks[navLinks.length - 1]] : navLinks;
+  // const linkWidth = isMd ? "33%" :
   return (
     <Flex
       py=".5rem"
@@ -14,25 +28,62 @@ const NavLinks = () => {
       h="100%"
       w="100%"
       // maxW="695px"
+      maxW={{ md: "400px", lg: "700px" }}
       mx={{ md: "2rem", lg: "3rem", xl: "5rem" }}
-
+      sx={
+        {
+          // "> *": { border: "1px solid red" },
+        }
+      }
       // border="1px solid green"
     >
-      {navLinks.map((linkObj, i) => {
+      {/* {navLinks.map((linkObj, i) => { */}
+      {links.map((linkObj, i) => {
+        console.log("LINK:", linkObj);
         return (
-          <NavLink isActive={linkObj.to === asPath} linkObj={linkObj} key={i} />
+          <NavLink
+            order={i === 0 || !isMd ? i : i === 1 && isMd ? i + 1 : i}
+            isActive={linkObj.to === asPath}
+            linkObj={linkObj}
+            key={i}
+          />
         );
       })}
+
+      {/* <Flex
+        flex={1}
+        display={isMd ? "flex" : "none"}
+        h="100%"
+        align="center"
+        justify="center"
+        order={1}
+      >
+        <PostsMenu />
+      </Flex> */}
+
+      <NavLink>
+        <Flex
+          // flex={1}
+          display={isMd ? "flex" : "none"}
+          h="100%"
+          align="center"
+          justify="center"
+          order={1}
+        >
+          <PostsMenu />
+        </Flex>
+      </NavLink>
     </Flex>
   );
 };
 
 export default NavLinks;
 
-const NavLink = ({ linkObj, children, isActive }) => {
+const NavLink = ({ linkObj, children, isActive, order }) => {
   return (
     <Box
-      border="1px solid red"
+      order={order}
+      // border="1px solid red"
       role="group"
       cursor="pointer"
       flex={1}
@@ -59,7 +110,7 @@ const NavLink = ({ linkObj, children, isActive }) => {
       <Link href={linkObj ? linkObj.to : "#"} legacyBehavior>
         <Center
           h="100%"
-          fontSize={{ md: "13px", lg: "18px" }}
+          fontSize={{ md: "15px", lg: "18px" }}
           textAlign="center"
           transitionDuration="0.3s"
           _groupHover={{
