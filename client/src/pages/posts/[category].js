@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Stack } from "@chakra-ui/react";
+import { Flex, Stack, Text } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 
@@ -9,11 +9,12 @@ import Card from "src/components/Card";
 // Love, Travel, Style, Guests, Gift Guides
 
 const Posts = ({ articles }) => {
-  const router = useRouter();
+  const { asPath } = useRouter();
+
   return (
     <AnimatePresence>
       <motion.div
-        key={router.asPath}
+        key={asPath}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -26,17 +27,34 @@ const Posts = ({ articles }) => {
 };
 
 const ArticleList = ({ articles }) => {
-  return (
-    <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
-      <Stack mt="2rem" spacing="1.5rem">
-        {articles && articles.length
-          ? articles.map((article, i) => {
-              return <Card article={article} key={i} />;
-            })
-          : null}
-      </Stack>
-    </Flex>
-  );
+  // const [hasArticles, setHasArticles] = useState(!!articles && !!article.length);
+
+  if (!!articles && !!articles.length) {
+    return (
+      <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
+        <Stack mt="2rem" spacing="1.5rem">
+          {articles && articles.length
+            ? articles.map((article, i) => {
+                return <Card article={article} key={i} />;
+              })
+            : null}
+        </Stack>
+      </Flex>
+    );
+  } else {
+    return (
+      <Flex justify="center" px={{ base: "1rem", sm: "2rem" }} pt="4rem">
+        <Text
+          align="center"
+          fontWeight="600"
+          fontSize="1.25rem"
+          letterSpacing={".5px"}
+        >
+          No Articles Found
+        </Text>
+      </Flex>
+    );
+  }
 };
 
 export async function getStaticProps({ params }) {
@@ -48,8 +66,7 @@ export async function getStaticProps({ params }) {
       articles: { populate: "*" },
     },
   });
-
-  console.log("categoriesRes:", categoriesRes);
+  // console.log("categoriesRes:", categoriesRes);
 
   let articles;
 
