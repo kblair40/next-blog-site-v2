@@ -37,10 +37,10 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   };
   // headers["Authorization"] = "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
   //  PUT BELOW 'IF' CHECK BACK - DELETE LINE ABOVE
-  if (token) {
+  if (token && envName !== "development") {
     console.log("YES TOKEN");
     // headers["Authorization"] = `bearer ${token}`; // old
-    headers["Authorization"] = `${token}`; // new
+    headers["Authorization"] = `bearer ${token}`; // new
   } else {
     headers["Authorization"] =
       "2327aba91f2a917004eb66f5b0ac03c7bf71af60024965138dbd2f8305833ef89cfe20b2f9d0ed76b5372835e70836ec0d26e5a39c04256d707926e7b315474da9f25bc1b4f83a7ea8e232cf9278da7e9dac70263089ec5be46183912fd8b6ae84d47e042727fdfea9994e2da3b32159de87923e0e1bf7252dc8e92a84efd625";
