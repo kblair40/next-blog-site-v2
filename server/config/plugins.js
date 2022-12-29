@@ -9,7 +9,7 @@ module.exports = ({ env }) => {
             // api::<api-name>.<controller-name>
             uid: "api::article.article",
             modelName: "article",
-            transliterate: true,
+            // transliterate: true,
             queryConstraints: {
               where: {
                 $and: [
@@ -21,7 +21,8 @@ module.exports = ({ env }) => {
             },
             fuzzysortOptions: {
               characterLimit: 30,
-              threshold: -600,
+              // threshold: -600,
+              threshold: -1200,
               limit: 7,
               keys: [
                 {
