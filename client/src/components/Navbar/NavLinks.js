@@ -30,9 +30,11 @@ const NavLinks = () => {
       // maxW="695px"
       maxW={{ md: "480px", lg: "700px" }}
       mx={{ md: "2rem", lg: "3rem", xl: "5rem" }}
-      sx={{
-        "> *": { border: "1px solid red" },
-      }}
+      sx={
+        {
+          // "> *": { border: "1px solid red" },
+        }
+      }
       // border="1px solid green"
     >
       {/* {navLinks.map((linkObj, i) => { */}

@@ -32,22 +32,24 @@ const PostsMenu = () => {
       //
       isOpen={isOpen}
       onClose={() => setIsOpen(false)}
-      matchWidth={true}
     >
       <PopoverTrigger>
         <Button variant="unstyled">
           <NavLink onClick={() => setIsOpen(!isOpen)} isDisabled={true}>
-            <Text>Posts</Text>
+            <Stack align="center" direction="row">
+              <Box>Posts</Box>
+              <ChevronDownIcon
+                transform={isOpen ? "rotate(-180deg)" : "rotate(0deg)"}
+                boxSize="13px"
+              />
+            </Stack>
           </NavLink>
         </Button>
       </PopoverTrigger>
 
       <PopoverContent>
-        <PopoverArrow />
-
         <PopoverBody>
           <Stack
-            //
             spacing="0"
             // sx={{ "> *": { border: "1px solid #eee" } }}
           >
