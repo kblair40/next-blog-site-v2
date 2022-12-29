@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import {
   // PopoverHeader,
   // PopoverFooter,
-  // PopoverArrow,
   // PopoverCloseButton,
   // PopoverAnchor,
+  PopoverArrow,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -28,23 +28,23 @@ const PostsMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Popover isOpen={isOpen} onClose={() => setIsOpen(false)}>
-      {/* <Popover> */}
+    <Popover
+      //
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+      matchWidth={true}
+    >
       <PopoverTrigger>
         <Button variant="unstyled">
           <NavLink onClick={() => setIsOpen(!isOpen)} isDisabled={true}>
             <Text>Posts</Text>
-            {/* <Text onClick={() => setIsOpen(true)}>Posts</Text> */}
           </NavLink>
         </Button>
-        {/* <Button onClick={() => setIsOpen(true)} variant="link">
-          Posts
-        </Button> */}
       </PopoverTrigger>
 
-      <PopoverContent
-      // bg="brand.creme"
-      >
+      <PopoverContent>
+        <PopoverArrow />
+
         <PopoverBody>
           <Stack
             //
@@ -55,35 +55,17 @@ const PostsMenu = () => {
               return (
                 <Link href={link.to} key={i}>
                   <Box
-                    // bg="brand.creme"
                     bg="white"
-                    // transition="background-color, color 0.3s"
                     transition="background-color 0.3s"
-                    _hover={{
-                      // bg: "white",
-                      // bg: "brand.creme",
-                      bg: "brand.lightgreen",
-                      // bg: "brand.darkgreen",
-                      color: "white",
-                    }}
-                    // _hover={{
-                    //   // bg: "white",
-                    //   // bg: "brand.creme",
-                    //   bg: "brand.lightgreen",
-                    //   // bg: "brand.darkgreen",
-                    //   // color: "white",
-                    // }}
                     w="100%"
                     p="6px 4px"
                     color="brand.darkgreen"
-                    // role="group"
+                    _hover={{
+                      bg: "brand.lightgreen",
+                      color: "white",
+                    }}
                   >
-                    <Text
-                      transition="color 0.3s"
-                      color="inherit"
-                      // color="brand.darkgreen"
-                      // _groupHover={{ color: "white" }}
-                    >
+                    <Text transition="color 0.3s" color="inherit">
                       {link.label}
                     </Text>
                   </Box>

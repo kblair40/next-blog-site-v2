@@ -28,11 +28,11 @@ const NavLinks = () => {
       h="100%"
       w="100%"
       // maxW="695px"
-      maxW={{ md: "400px", lg: "700px" }}
+      maxW={{ md: "480px", lg: "700px" }}
       mx={{ md: "2rem", lg: "3rem", xl: "5rem" }}
-      // sx={{
-      //   "> *": { border: "1px solid red" },
-      // }}
+      sx={{
+        "> *": { border: "1px solid red" },
+      }}
       // border="1px solid green"
     >
       {/* {navLinks.map((linkObj, i) => { */}
@@ -48,29 +48,9 @@ const NavLinks = () => {
         );
       })}
 
-      {/* <Flex
-        flex={1}
-        display={isMd ? "flex" : "none"}
-        h="100%"
-        align="center"
-        justify="center"
-        order={1}
-      >
+      <NavLink>
         <PostsMenu />
-      </Flex> */}
-
-      <Flex
-        // flex={1}
-        display={isMd ? "flex" : "none"}
-        h="100%"
-        align="center"
-        justify="center"
-        order={1}
-      >
-        <NavLink>
-          <PostsMenu />
-        </NavLink>
-      </Flex>
+      </NavLink>
     </Flex>
   );
 };
