@@ -35,7 +35,7 @@ const MobileNav = () => {
   return (
     <React.Fragment>
       <Flex
-        zIndex={10000000}
+        zIndex={100}
         align="center"
         bg="brand.creme"
         position="fixed"

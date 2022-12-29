@@ -40,7 +40,7 @@ const Navbar = () => {
         top: 0,
         right: 0,
         left: 0,
-        zIndex: 1000,
+        zIndex: 10,
         height: "80px",
         width: "100vw",
         transition: "box-shadow 0.5s",
