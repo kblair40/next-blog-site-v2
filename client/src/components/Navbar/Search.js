@@ -146,9 +146,13 @@ const Search = () => {
         </InputGroup>
       </PopoverTrigger>
 
-      <PopoverContent ref={popoverContentRef} rounded="sm" maxW="275px">
-        {/* <PopoverArrow /> */}
-
+      <PopoverContent
+        // border="none"
+        borderColor="gray.100"
+        ref={popoverContentRef}
+        rounded="sm"
+        maxW="275px"
+      >
         <PopoverBody p={0}>
           {searching ? (
             <Center h="60px">
