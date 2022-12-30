@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Text, Flex, useToast, Heading, Input, Button } from "@chakra-ui/react";
 import axios from "axios";
 
+import { NeverMissAPost } from "src/utils/icons";
 import CustomToast from "src/components/CustomToast";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
@@ -119,18 +120,9 @@ const SubscribeForm = ({ ...props }) => {
   return (
     <Flex
       id="subscribe"
-      // mt="72px"
-      // border="1px solid orange"
       borderTop="1px solid #848484"
       borderBottom="1px solid #848484"
-      w="100%" // newer
-      // width={{ // older
-      //   base: "calc(100vw - 32px)",
-      //   sm: "calc(100vw - 64px)",
-      //   md: "700px",
-      //   lg: "900px",
-      // }}
-      // h={{ base: "183px" }} // old
+      w="100%"
       h="100%" // new
       align={{ base: "center", md: "center" }}
       justify={{ base: "center", md: "space-between" }}
@@ -139,19 +131,8 @@ const SubscribeForm = ({ ...props }) => {
       position="relative"
       {...props}
     >
-      {/* <Text
-        textAlign={{ base: "left" }}
-        color="text.body"
-        fontSize={{ base: "28px", sm: "36px" }}
-        flex={{ md: 1 }}
-        fontWeight="800"
-        mb={{ base: "1.5rem", md: 0 }}
-        mr={{ md: "1rem" }}
-        // fontFamily="'Mr Dafoe'"
-      >
-        Never Miss a New Post.
-      </Text> */}
-      <Heading
+      <NeverMissAPost />
+      {/* <Heading
         textAlign={{ base: "left" }}
         color="text.body"
         fontSize={{ base: "28px", sm: "36px" }}
@@ -161,14 +142,13 @@ const SubscribeForm = ({ ...props }) => {
         mr={{ md: "1rem" }}
       >
         Never Miss a New Post.
-      </Heading>
+      </Heading> */}
 
       <Flex ml={{ md: "1.5rem" }} align="end" w={{ base: "100%", md: "unset" }}>
         <Input
           borderBottom="2px solid"
           borderColor="brand.lightgreen"
           variant="flushed"
-          // w={{ base: "max-content", sm: "220px", lg: "260px" }}
           w={{ base: "70%", sm: "70%", md: "240px", lg: "260px", xl: "300px" }}
           placeholder="Email*"
           fontSize="15px"
