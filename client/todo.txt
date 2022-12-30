@@ -14,3 +14,4 @@ TODO
 6. Look at using script component to import css for article ([slug]) page
 7. Box shadow transition needs optimizations - https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 8. add functionality for adding tags on strapi-side
+9. add debounce/throttle for article search

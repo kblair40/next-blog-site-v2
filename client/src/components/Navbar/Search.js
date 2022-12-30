@@ -7,20 +7,14 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
   PopoverBody,
   PopoverArrow,
+  PopoverCloseButton,
   Center,
   Spinner,
   Text,
   Box,
   useOutsideClick,
-  Flex,
-  Stack,
-  // HStack,
-  // PopoverCloseButton,
-  // PopoverAnchor,
-  // Portal,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
@@ -33,6 +27,7 @@ const Search = () => {
   const [results, setResults] = useState([]);
 
   const popoverContentRef = useRef();
+  const closeButtonRef = useRef();
 
   const router = useRouter();
   useEffect(() => {
@@ -80,6 +75,9 @@ const Search = () => {
   };
 
   const handleClickResult = (slug) => {
+    console.log("CLOSE:", closeButtonRef.current);
+    setShowResults(false);
+    // closeButtonRef.current.click();
     router.push(`/article/${slug}`);
   };
 
@@ -109,7 +107,6 @@ const Search = () => {
           ml={{ base: "2rem", md: "-12px" }}
           mr={{ base: "2rem", md: "unset" }}
           maxW={{ base: "100%", sm: "228px", md: "200px", lg: "226px" }}
-          // maxW={{ base: "100%", sm: "200px", md: "120px", lg: "186px" }}
           minW={{ base: "100px", md: "120px" }}
           variant={{ base: "unstyled" }}
           borderBottom="1px solid"
@@ -142,7 +139,8 @@ const Search = () => {
       </PopoverTrigger>
 
       <PopoverContent ref={popoverContentRef}>
-        <PopoverArrow />
+        <PopoverCloseButton ref={closeButtonRef} />
+        {/* <PopoverArrow /> */}
 
         <PopoverBody p={0}>
           {searching ? (
