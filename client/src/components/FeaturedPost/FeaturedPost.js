@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Flex, Center } from "@chakra-ui/react";
+import { Box, Text, Flex, Center, Heading } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
@@ -73,7 +73,16 @@ const FeaturedPost = ({ featuredPost }) => {
           href={featuredPost ? `/article/${featuredPost.attributes.slug}` : "#"}
         >
           <Flex direction="column" role="group" cursor="pointer">
-            <Text
+            <Heading
+              // fontWeight="700"
+              mb="12px"
+              fontSize="30px"
+              _groupHover={{ color: "brand.lightgreen" }}
+              transition="color 0.3s"
+            >
+              {featuredPost?.attributes.title}
+            </Heading>
+            {/* <Text
               fontWeight="700"
               mb="12px"
               fontSize="30px"
@@ -81,7 +90,7 @@ const FeaturedPost = ({ featuredPost }) => {
               transition="color 0.3s"
             >
               {featuredPost?.attributes.title}
-            </Text>
+            </Text> */}
 
             <Text
               _groupHover={{ color: "brand.lightgreen" }}
