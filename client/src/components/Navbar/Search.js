@@ -39,6 +39,7 @@ const Search = () => {
   const searchCallback = async (searchString) => {
     setSearching(true);
     setShowResults(true);
+
     const results = await fetchResults(searchString);
 
     if (results) setResults(results);
@@ -50,23 +51,17 @@ const Search = () => {
   const debouncedFetch = useCallback(debounce(searchCallback, 300), []);
 
   const fetchResults = async (searchString) => {
-    console.log("\n\nSEARCHING\n\n");
+    // console.log("\nSEARCHING");
     try {
       const response = await fetchAPI(`/article/search/${searchString}`);
-      console.log("\nRESULTS RESPONSE:", response.results);
-      console.log("\nRESULTS RESPONSE OBJ:", Object.keys(response));
+      console.log("RESULTS RESPONSE:", response.results);
       if (response && response.results) {
         return response.results;
-        setResults(response.results);
       }
     } catch (e) {
       console.error("FAILED TO FIND RESULTS:", e);
       return [];
-      // setResults([]);
     }
-    // if (searching) {
-    //   setSearching(false);
-    // }
   };
 
   const handleChange = async (e) => {
