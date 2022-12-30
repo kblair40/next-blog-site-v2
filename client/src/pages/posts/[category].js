@@ -3,6 +3,7 @@ import { Flex, Stack, Text } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 
+import PiggyBank from "src/components/PiggyBank";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
 
@@ -44,14 +45,15 @@ const ArticleList = ({ articles }) => {
   } else {
     return (
       <Flex justify="center" px={{ base: "1rem", sm: "2rem" }} pt="4rem">
-        <Text
+        <PiggyBank />
+        {/* <Text
           align="center"
           fontWeight="600"
           fontSize="1.25rem"
           letterSpacing={".5px"}
         >
           No Articles Found
-        </Text>
+        </Text> */}
       </Flex>
     );
   }

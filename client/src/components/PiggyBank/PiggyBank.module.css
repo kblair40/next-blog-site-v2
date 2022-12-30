@@ -5,38 +5,20 @@
   }
   
   .container {
-    height: 100vh;
-    min-height: 100vh;
-    background-color: #414b3a;
-  }
-  
-  .top_text_container { height: 25%; padding-top: 5vh; }
-  .top_text {
-    font-size: 72px;
-    color: white;
-    font-weight: 100;
-    text-align: center;
-    letter-spacing: .25px;
-    font-family: "Roboto Slab";
-  }
-  
-  .bottom_text_container { height: 25%; }
-  .bottom_text {
-    font-size: 42px;
-    color: #dbdbdb;
-    font-weight: 200;
-    text-align: center;
-    letter-spacing: .25px;
-    font-family: "Roboto Slab";
+    /* height: 100vh;
+    min-height: 100vh; */
+    width: 100%;
+    /* background-color: #414b3a; */
+    background-color: transparent;
   }
   
   .animation_container {
-    transform: scale(0.8);
+    transform: scale(.8);
     height: 50%;
   }
   
   .main_content {
-    height: 100vh;
+    /* height: 100vh; */
   }
   
   @media (max-width: 800px) {
