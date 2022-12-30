@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, Flex, useToast, Heading, Input, Button } from "@chakra-ui/react";
+import { Text, Flex, useToast, Input, Button } from "@chakra-ui/react";
 import axios from "axios";
 
 import CustomToast from "src/components/CustomToast";
@@ -7,7 +7,6 @@ import NeverMissAPost from "src/components/NeverMissAPost";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-// console.log("STRAPI_API_TOKEN:", STRAPI_API_TOKEN);
 
 const SubscribeForm = ({ ...props }) => {
   const [email, setEmail] = useState("");
@@ -41,7 +40,6 @@ const SubscribeForm = ({ ...props }) => {
 
       const response = await axios({
         method: "post",
-        // url: "http://localhost:1337/api/subscribers",
         url: "https://money-and-other-things.herokuapp.com/api/subscribers",
         data: {
           // toLowerCase ALWAYS.  Otherwise unsubscribe may not find the email address
@@ -61,22 +59,6 @@ const SubscribeForm = ({ ...props }) => {
           render: () => (
             <CustomToast msg="Thanks for subscribing!" status="success" />
           ),
-          // render: () => (
-          //   <Flex
-          //     align="center"
-          //     bg="brand.lightgreen"
-          //     h="48px"
-          //     px="1rem"
-          //     rounded="md"
-          //   >
-          //     <HStack spacing="1rem">
-          //       <CheckCircleIcon fill="white" boxSize="18px" />
-          //       <Text color="white" fontWeight="700" fontSize="lg">
-          //         Thanks for subscribing!
-          //       </Text>
-          //     </HStack>
-          //   </Flex>
-          // ),
         });
 
         setEmail("");
