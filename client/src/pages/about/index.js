@@ -41,8 +41,8 @@ const AboutPage = ({ about }) => {
               <Image
                 fill
                 priority
-                alt="about image"
-                src={about.image_url}
+                alt="about"
+                src={about?.image_url || ""}
                 style={{ objectFit: "cover" }}
                 sizes="(min-width: 768px) 900px,
                   (min-width: 480px) 800px,
@@ -55,7 +55,7 @@ const AboutPage = ({ about }) => {
                 Hey! So Glad You're Here.
               </Heading>
 
-              <Text>{about.description}</Text>
+              <Text>{about?.description}</Text>
             </Flex>
           </Box>
 
@@ -79,10 +79,10 @@ export async function getStaticProps() {
         about_content: { populate: ["image"] },
       },
     });
-    // console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
+    console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
 
     return {
-      props: { about: about.data.attributes.about_content },
+      props: { about: about?.data?.attributes?.about_content || {} },
     };
   } catch (e) {
     console.log("ABOUT ERROR:", e);
