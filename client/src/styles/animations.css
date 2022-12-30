@@ -134,18 +134,17 @@
 }
 
 @keyframes write {
-  to {
+  99% {
     stroke-dashoffset: 0;
-  }
-  /* 66% {
-    stroke-dashoffset: 0;
-    fill-opacity: 0;
+    fill-opacity: 1;
   }
   100% {
+    stroke-dashoffset: 0;
     fill-opacity: 1;
-  } */
+    stroke-opacity: 0;
+  }
 }
 
 .write-logo {
-  animation: write 2s ease forwards;
+  animation: write 600ms ease-in-out forwards;
 }
