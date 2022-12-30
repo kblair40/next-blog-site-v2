@@ -148,7 +148,7 @@ export async function getServerSideProps({ params }) {
   const categoriesRes = await fetchAPI("/categories");
 
   return {
-    props: { article: articlesRes.data[0], categories: categoriesRes },
+    props: { article: articlesRes?.data[0], categories: categoriesRes },
   };
 }
 
