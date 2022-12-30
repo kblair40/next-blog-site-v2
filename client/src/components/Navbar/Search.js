@@ -143,7 +143,6 @@ const Search = () => {
 
       <PopoverContent ref={popoverContentRef}>
         <PopoverArrow />
-        {/* <PopoverHeader p=".5rem 1rem">Header</PopoverHeader> */}
 
         <PopoverBody p={0}>
           {searching ? (
@@ -162,7 +161,7 @@ const Search = () => {
                       <Result
                         key={i}
                         onClick={handleClickResult}
-                        result={article}
+                        result={article.item}
                       />
                     );
                   })
