@@ -59,18 +59,12 @@ const HomePage = ({ homepage, articles }) => {
             "contact contact"
           `,
         }}
-        // gridTemplateColumns={{ base: "100%", md: "7fr 2fr" }}
         gridTemplateColumns={{ base: "100%", md: "auto minmax(240px, 300px)" }}
         w="100%"
         gridTemplateRows={{
           base: "429px 183px auto auto 1px 394px",
           sm: "474px 183px auto auto 1px 394px",
-          // sm: "474px 183px 240px 500px 1px 394px",
-          // md: "587px 183px 240px 500px 1px 394px", // backup
-          md: "auto 183px auto 1px 394px", // probably better than below
-          // md: "587px 183px auto 1px 394px", // probably better than below
-          // md: "587px 183px 280px 1px 394px", // probably better than below
-          // md: "587px 183px 500px 1px 394px",
+          md: "auto 183px auto 1px 394px",
         }}
         rowGap={{ base: "2.5rem", sm: "3rem" }}
         columnGap={{ md: "2rem", lg: "4rem" }}
@@ -83,7 +77,6 @@ const HomePage = ({ homepage, articles }) => {
       >
         <GridItem area="feat-p">
           <FeaturedPost featuredPost={featuredPost} />
-          {/* {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null} */}
         </GridItem>
 
         <GridItem area="sub">
@@ -94,9 +87,7 @@ const HomePage = ({ homepage, articles }) => {
 
         <GridItem area="feat-r">
           <React.Suspense fallback={<div />}>
-            {/* <Box minW={{ base: "200px" }} w={{ base: "200px" }}> */}
             <FeaturedResources />
-            {/* </Box> */}
           </React.Suspense>
         </GridItem>
 
@@ -118,52 +109,6 @@ const HomePage = ({ homepage, articles }) => {
       </Grid>
     </Box>
   );
-
-  // return (
-  //   <Box pb="2rem" minH="100vh" maxW="100vw" overflowX="hidden" px="1.5rem">
-  //     <React.Suspense fallback={<div />}>
-  //       <SEO seo={homepage?.attributes.seo} />
-  //     </React.Suspense>
-
-  //     <Flex direction="column" align="center" mt="90px" mb="2rem">
-  //       {featuredPost ? <FeaturedPost featuredPost={featuredPost} /> : null}
-
-  //       {/* <React.Suspense fallback={<div />}>
-  //           <Box minW={{ base: "200px" }} w={{ base: "200px" }}>
-  //             <FeaturedResources />
-  //           </Box>
-  //         </React.Suspense> */}
-  //       {/* </Flex> */}
-
-  //       <React.Suspense fallback={<Loading />}>
-  //         <SubscribeForm />
-  //       </React.Suspense>
-  //     </Flex>
-
-  //     <React.Suspense fallback={<Loading />}>
-  //       <AdditionalPosts articles={articles} />
-  //     </React.Suspense>
-
-  //     <Divider borderColor="#303030" mb="2rem" />
-
-  //     <React.Suspense fallback={<Loading />}>
-  //       <ContactForm />
-  //     </React.Suspense>
-  //   </Box>
-  // );
 };
 
 export default HomePage;
-
-{
-  /* <Box
-  w={{ base: "100%", md: "min-content" }}
-  pt="1rem"
-  maxW={{ md: "320px" }}
-  minW={{ md: "240px" }}
->
-  <Suspense fallback={<Loading />}>
-    <BookRecommendation />
-  </Suspense>
-</Box>; */
-}
