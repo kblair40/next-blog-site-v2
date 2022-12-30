@@ -145,7 +145,7 @@ const Search = () => {
         </InputGroup>
       </PopoverTrigger>
 
-      <PopoverContent ref={popoverContentRef} rounded="sm">
+      <PopoverContent ref={popoverContentRef} rounded="sm" maxW="275px">
         {/* <PopoverArrow /> */}
 
         <PopoverBody p={0}>
@@ -192,7 +192,7 @@ const Result = ({ result, onClick }) => {
       onClick={() => onClick(result.slug)}
       w="100%"
       px="1rem"
-      py=".25rem"
+      py=".5rem"
       cursor="pointer"
       transition="background-color 0.3s"
       //
@@ -200,8 +200,20 @@ const Result = ({ result, onClick }) => {
         bg: "brand.creme",
       }}
     >
-      {/* <Text fontWeight="500">Combining Finances for the First Time</Text> */}
-      <Text>{result.title}</Text>
+      <Stack direction="row" align="center">
+        <Box position="relative" h="40px" w="48px" minW="48px">
+          <Image
+            src={result.image_url}
+            alt="result-image"
+            style={{ objectFit: "cover", borderRadius: "1px" }}
+            fill
+          />
+        </Box>
+
+        <Text lineHeight={1.2} fontSize="15px" noOfLines={2} fontWeight="500">
+          {result.title}
+        </Text>
+      </Stack>
     </Box>
   );
 };
