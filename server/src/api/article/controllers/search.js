@@ -25,13 +25,15 @@ const controller = createCoreController(
           console.log("\n\nSEARCH TEXT:", searchTerm, "\n\n");
           const allArticles = await service.find();
           console.log("\n\nALL ARTICLES:", allArticles, "\n\n");
+          // ctx.body.data = allArticles;
+          return allArticles;
           // ctx.body = allArticles;
-          ctx.body = "ok";
+          // ctx.body = "ok";
         } catch (err) {
           console.log("\n\n\n\nSEARCH ERROR:", err, "\n\n\n\n\n");
           ctx.body = err;
 
-          // return { msg: "ERROR ERROR" };
+          return { msg: "ERROR ERROR" };
         }
       },
     };
