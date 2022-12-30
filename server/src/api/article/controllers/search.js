@@ -33,7 +33,7 @@ const controller = createCoreController(
           console.log("\n\n\n\nSEARCH ERROR:", err, "\n\n\n\n\n");
           ctx.body = err;
 
-          return { msg: "ERROR ERROR" };
+          return [];
         }
       },
     };
