@@ -126,6 +126,7 @@ const Search = () => {
             <SearchIcon fill="brand.lightgreen" boxSize="16px" />
           </InputLeftElement>
           <Input
+            autoComplete="off"
             id="search-input"
             pl="32px"
             rounded="md"
