@@ -15,6 +15,7 @@ import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 import { ShareIcon, CopyIcon } from "src/utils/icons";
 import { fetchAPI } from "src/utils/api";
@@ -79,7 +80,7 @@ const Article = ({ article }) => {
         </Suspense>
 
         <Flex
-          mt="72px"
+          mt="24px"
           w="100%"
           justify="center"
           px={{ base: "1rem", sm: "2rem", md: "4rem" }}
@@ -89,10 +90,9 @@ const Article = ({ article }) => {
             w="100%"
             maxW={{ lg: "1000px" }}
             p={{ base: "12px", sm: "24px", md: "40px", lg: "q0px" }}
-            // border="1px solid black"
           >
             <Flex
-              mb="2rem"
+              mb="1rem"
               w="100%"
               display="inline-flex"
               fontSize="sm"
@@ -106,10 +106,27 @@ const Article = ({ article }) => {
               </Text>
               <Text display="inline">{`${article.attributes.minutes_to_read} min read`}</Text>
             </Flex>
-
-            <Heading mb="2rem" textAlign="center">
+            <Heading
+              mb="2rem"
+              textAlign="center"
+              fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+            >
               {article.attributes.title}
             </Heading>
+
+            <Box
+              w="100%"
+              h={{ base: "280px", sm: "320px", md: "380px" }}
+              position="relative"
+              mb="2rem"
+            >
+              <Image
+                fill
+                src={article.attributes.image_url}
+                alt="img"
+                style={{ objectFit: "cover" }}
+              />
+            </Box>
 
             <Box
               w="100%"
