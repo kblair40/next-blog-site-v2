@@ -68,12 +68,6 @@ const Search = () => {
       await fetchResults(value);
 
       // delete this and replace with real fetch
-
-      // setTimeout(() => {
-      //   setResults(["fdsa"]);
-      //   // setResults([]);
-      //   setSearching(false);
-      // }, 1000);
     } else if (value.length < 2 && showResults) {
       console.log("\nCLOSING");
       setShowResults(false);
@@ -86,7 +80,7 @@ const Search = () => {
   };
 
   const handleClickResult = (slug) => {
-    router.push(`/articles/${slug}`);
+    router.push(`/article/${slug}`);
   };
 
   const handleOutsideClick = (e) => {
@@ -186,7 +180,7 @@ export default Search;
 const Result = ({ result, onClick }) => {
   return (
     <Box
-      onClick={onClick}
+      onClick={() => onClick(result.slug)}
       w="100%"
       px="1rem"
       py=".25rem"
