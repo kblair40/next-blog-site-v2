@@ -139,6 +139,18 @@ const SubscribeForm = ({ ...props }) => {
       position="relative"
       {...props}
     >
+      {/* <Text
+        textAlign={{ base: "left" }}
+        color="text.body"
+        fontSize={{ base: "28px", sm: "36px" }}
+        flex={{ md: 1 }}
+        fontWeight="800"
+        mb={{ base: "1.5rem", md: 0 }}
+        mr={{ md: "1rem" }}
+        // fontFamily="'Mr Dafoe'"
+      >
+        Never Miss a New Post.
+      </Text> */}
       <Heading
         textAlign={{ base: "left" }}
         color="text.body"
