@@ -8,7 +8,7 @@ import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 // console.log("STRAPI_API_TOKEN:", STRAPI_API_TOKEN);
 
-const SubscribeForm = () => {
+const SubscribeForm = ({ ...props }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
@@ -137,6 +137,7 @@ const SubscribeForm = () => {
       // px={{ base: "1rem" }}
       direction={{ base: "column", md: "row" }}
       position="relative"
+      {...props}
     >
       <Heading
         textAlign={{ base: "left" }}

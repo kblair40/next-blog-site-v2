@@ -27,7 +27,9 @@ const Home = ({ homepage, articles }) => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
 
+          {/* <Box border="1px solid blue"> */}
           <HomePage homepage={homepage} articles={articles} />
+          {/* </Box> */}
 
           {/* <ShareModal /> */}
 

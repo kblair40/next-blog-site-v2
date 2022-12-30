@@ -34,13 +34,20 @@ const HomePage = ({ homepage, articles }) => {
   }
 
   return (
-    <Box pb="2rem" minH="100vh" maxW="100vw" w="100%">
+    <Box
+      pt={{ base: "3rem", md: "5rem" }}
+      pb="2rem"
+      minH="100vh"
+      maxW="100vw"
+      w="100%"
+      // border="1px solid red"
+    >
       <React.Suspense fallback={<div />}>
         <SEO seo={homepage?.attributes.seo} />
       </React.Suspense>
 
       <Grid
-        mt={{ base: "60px", md: "90px" }}
+        // mt={{ base: "60px", md: "90px" }}
         mb="2rem"
         gridTemplateAreas={{
           base: `
@@ -52,28 +59,26 @@ const HomePage = ({ homepage, articles }) => {
           "contact"
         `,
           md: `
-            "feat-p feat-p"
+            "feat-p feat-r"
             "sub sub"
-            "recent feat-r"
-            "div div"
-            "contact contact"
+            "recent contact"
           `,
         }}
-        gridTemplateColumns={{ base: "100%", md: "auto minmax(240px, 300px)" }}
+        gridTemplateColumns={{
+          base: "auto",
+          md: "auto minmax(240px, 300px)",
+          lg: "auto minmax(280px, 340px)",
+        }}
+        // gridTemplateColumns={{ base: "auto", md: "auto auto" }}
         w="100%"
         gridTemplateRows={{
-          base: "429px 183px auto auto 1px 394px",
-          sm: "474px 183px auto auto 1px 394px",
-          md: "auto 183px auto 1px 394px",
+          base: "auto auto auto auto 1px auto",
+          sm: "auto auto auto auto 1px auto",
+          md: "auto auto auto",
         }}
-        rowGap={{ base: "2.5rem", sm: "3rem" }}
-        columnGap={{ md: "2rem", lg: "4rem" }}
+        rowGap={{ base: "2.5rem", sm: "3.5rem" }}
+        columnGap={{ md: "2.5rem", lg: "4rem" }}
         px={{ base: "1.5rem", sm: "2.5rem", lg: "5rem" }}
-        sx={{
-          "> *": {
-            // border: "1px solid skyblue",
-          },
-        }}
       >
         <GridItem area="feat-p">
           <FeaturedPost featuredPost={featuredPost} />
@@ -81,7 +86,7 @@ const HomePage = ({ homepage, articles }) => {
 
         <GridItem area="sub">
           <React.Suspense fallback={<Loading />}>
-            <SubscribeForm />
+            <SubscribeForm py={{ base: "2rem", md: "3rem" }} />
           </React.Suspense>
         </GridItem>
 
@@ -97,7 +102,7 @@ const HomePage = ({ homepage, articles }) => {
           </React.Suspense>
         </GridItem>
 
-        <GridItem area="div">
+        <GridItem area="div" display={{ md: "none" }}>
           <Divider borderColor="#303030" mb="2rem" />
         </GridItem>
 
@@ -110,5 +115,90 @@ const HomePage = ({ homepage, articles }) => {
     </Box>
   );
 };
+
+// BACKUP
+// const HomePage = ({ homepage, articles }) => {
+//   let featuredPost;
+//   if (homepage && homepage.attributes?.featured_post) {
+//     featuredPost = homepage.attributes.featured_post.article.data;
+//   }
+
+//   return (
+//     <Box pb="2rem" minH="100vh" maxW="100vw" w="100%">
+//       <React.Suspense fallback={<div />}>
+//         <SEO seo={homepage?.attributes.seo} />
+//       </React.Suspense>
+
+//       <Grid
+//         mt={{ base: "60px", md: "90px" }}
+//         mb="2rem"
+//         gridTemplateAreas={{
+//           base: `
+//           "feat-p"
+//           "sub"
+//           "recent"
+//           "feat-r"
+//           "div"
+//           "contact"
+//         `,
+//           md: `
+//             "feat-p feat-p"
+//             "sub sub"
+//             "recent feat-r"
+//             "div div"
+//             "contact contact"
+//           `,
+//         }}
+//         gridTemplateColumns={{ base: "100%", md: "auto minmax(240px, 300px)" }}
+//         w="100%"
+//         gridTemplateRows={{
+//           base: "429px 183px auto auto 1px 394px",
+//           sm: "474px 183px auto auto 1px 394px",
+//           md: "auto 183px auto 1px 394px",
+//         }}
+//         rowGap={{ base: "2.5rem", sm: "3rem" }}
+//         columnGap={{ md: "2rem", lg: "4rem" }}
+//         px={{ base: "1.5rem", sm: "2.5rem", lg: "5rem" }}
+//         sx={{
+//           "> *": {
+//             // border: "1px solid skyblue",
+//           },
+//         }}
+//       >
+//         <GridItem area="feat-p">
+//           <FeaturedPost featuredPost={featuredPost} />
+//         </GridItem>
+
+//         <GridItem area="sub">
+//           <React.Suspense fallback={<Loading />}>
+//             <SubscribeForm />
+//           </React.Suspense>
+//         </GridItem>
+
+//         <GridItem area="feat-r">
+//           <React.Suspense fallback={<div />}>
+//             <FeaturedResources />
+//           </React.Suspense>
+//         </GridItem>
+
+//         <GridItem area="recent">
+//           <React.Suspense fallback={<Loading />}>
+//             <AdditionalPosts articles={articles} />
+//           </React.Suspense>
+//         </GridItem>
+
+//         <GridItem area="div">
+//           <Divider borderColor="#303030" mb="2rem" />
+//         </GridItem>
+
+//         <GridItem area="contact">
+//           <React.Suspense fallback={<Loading />}>
+//             <ContactForm />
+//           </React.Suspense>
+//         </GridItem>
+//       </Grid>
+//     </Box>
+//   );
+// };
 
 export default HomePage;
