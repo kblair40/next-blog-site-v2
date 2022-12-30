@@ -43,11 +43,11 @@ const Search = () => {
   const fetchResults = async (searchString) => {
     try {
       const response = await fetchAPI(`/article/search/${searchString}`);
-      // const response = await fetchAPI(`/fuzzy-search/search`, {
-      //   query: searchString,
-      //   locale: "en",
-      // });
-      console.log("\nRESULTS RESPONSE:", response.data);
+      console.log("\nRESULTS RESPONSE:", response.results);
+      console.log("\nRESULTS RESPONSE OBJ:", Object.keys(response));
+      if (response && response.results) {
+        setResults(response.results);
+      }
     } catch (e) {
       console.error("FAILED TO FIND RESULTS:", e);
       setResults([]);
@@ -162,7 +162,17 @@ const Search = () => {
             </Text>
           ) : (
             <Box w="100%">
-              <Result onClick={handleClickResult} result={{}} />
+              {results && results.length
+                ? results.map((article, i) => {
+                    return (
+                      <Result
+                        key={i}
+                        onClick={handleClickResult}
+                        result={article}
+                      />
+                    );
+                  })
+                : null}
             </Box>
           )}
         </PopoverBody>
@@ -187,8 +197,8 @@ const Result = ({ result, onClick }) => {
         bg: "brand.creme",
       }}
     >
-      <Text fontWeight="500">Combining Finances for the First Time</Text>
-      {/* <Text>{result.title}</Text> */}
+      {/* <Text fontWeight="500">Combining Finances for the First Time</Text> */}
+      <Text>{result.title}</Text>
     </Box>
   );
 };
