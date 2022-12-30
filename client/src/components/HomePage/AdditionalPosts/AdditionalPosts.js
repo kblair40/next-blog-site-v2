@@ -21,7 +21,7 @@ const AdditionalPosts = ({ articles }) => {
   const router = useRouter();
 
   const handleClickMoreSecondTime = () => {
-    router.push("/posts/money");
+    router.push("/posts/love");
   };
 
   return (
