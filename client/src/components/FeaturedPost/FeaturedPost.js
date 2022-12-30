@@ -73,7 +73,7 @@ const FeaturedPost = ({ featuredPost }) => {
           href={featuredPost ? `/article/${featuredPost.attributes.slug}` : "#"}
         >
           <Flex direction="column" role="group" cursor="pointer">
-            <Heading
+            {/* <Heading
               // fontWeight="700"
               mb="12px"
               fontSize="30px"
@@ -81,8 +81,8 @@ const FeaturedPost = ({ featuredPost }) => {
               transition="color 0.3s"
             >
               {featuredPost?.attributes.title}
-            </Heading>
-            {/* <Text
+            </Heading> */}
+            <Text
               fontWeight="700"
               mb="12px"
               fontSize="30px"
@@ -90,7 +90,7 @@ const FeaturedPost = ({ featuredPost }) => {
               transition="color 0.3s"
             >
               {featuredPost?.attributes.title}
-            </Text> */}
+            </Text>
 
             <Text
               _groupHover={{ color: "brand.lightgreen" }}

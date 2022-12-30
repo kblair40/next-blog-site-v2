@@ -110,7 +110,19 @@ const Card = ({ article }) => {
 
         <Link href={`/article/${article.attributes.slug}`}>
           <Flex direction="column" role="group" cursor="pointer">
-            <Heading
+            <Text
+              fontWeight="700"
+              mb="12px"
+              fontSize={{ base: "22px", sm: "24px", md: "28px" }}
+              _groupHover={{ color: "brand.lightgreen" }}
+              transition="color 0.3s"
+              noOfLines={2}
+              lineHeight={{ base: "1.2", md: "1.3" }}
+            >
+              {article.attributes.title}
+            </Text>
+
+            {/* <Heading
               fontWeight="700"
               mb="12px"
               fontSize={{ base: "22px", sm: "24px", md: "30px" }}
@@ -120,7 +132,7 @@ const Card = ({ article }) => {
               lineHeight={{ base: "1.2", md: "1.3" }}
             >
               {article.attributes.title}
-            </Heading>
+            </Heading> */}
 
             <Text
               w="100%"
