@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Text, Center, Button } from "@chakra-ui/react";
+import Image from "next/image";
 
 import { ChevronDownIcon } from "src/utils/icons";
 
@@ -18,6 +19,15 @@ const FeaturedResources = () => {
       <Text mt="4px" fontSize="sm" textAlign="center" letterSpacing="6.5px">
         by Jen Sincero
       </Text>
+
+      {/* <Box position="relative" mt="1rem" w="100%" h="180px">
+        <Image
+          src="https://res.cloudinary.com/erinsblog/image/upload/v1672426352/sincero_f9h2zi.jpg"
+          alt="img"
+          style={{ objectFit: "contain" }}
+          fill
+        />
+      </Box> */}
 
       <Center
         mt="1rem"
