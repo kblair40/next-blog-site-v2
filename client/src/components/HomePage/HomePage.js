@@ -65,11 +65,11 @@ const HomePage = ({ homepage, articles }) => {
         }}
         w="100%"
         gridTemplateRows={{
-          base: "429px 183px auto auto 1px 394px",
-          sm: "474px 183px auto auto 1px 394px",
-          md: "auto 183px auto 1px 394px",
+          base: "auto auto auto auto 1px 394px",
+          sm: "auto auto auto auto 1px 394px",
+          md: "auto auto auto 1px 394px",
         }}
-        rowGap={{ base: "2.5rem", sm: "3rem" }}
+        rowGap={{ base: "2.5rem", md: "3.5rem" }}
         columnGap={{ md: "2rem", lg: "4rem" }}
         px={{ base: "1.5rem", sm: "2.5rem", lg: "5rem" }}
         sx={{
@@ -78,13 +78,13 @@ const HomePage = ({ homepage, articles }) => {
           },
         }}
       >
-        <GridItem area="feat-p">
+        <GridItem area="feat-p" maxW="900px" m="0 auto">
           <FeaturedPost featuredPost={featuredPost} />
         </GridItem>
 
         <GridItem area="sub">
           <React.Suspense fallback={<Loading />}>
-            <SubscribeForm />
+            <SubscribeForm py={{ base: "2rem", md: "3rem" }} />
           </React.Suspense>
         </GridItem>
 
