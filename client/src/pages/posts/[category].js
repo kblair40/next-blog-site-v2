@@ -78,7 +78,7 @@ export async function getStaticProps({ params }) {
   }
 
   return {
-    props: { articles },
+    props: { articles: articles.reverse() },
     // revalidate: 1,
   };
 }

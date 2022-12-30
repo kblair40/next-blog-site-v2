@@ -13,3 +13,8 @@ TODO
    - Maybe afterCreate middleware for article/post/whatever-i-called-it
 6. Look at using script component to import css for article ([slug]) page
 7. add functionality for adding tags to articles w/ strapi
+
+
+BEFORE LIVE (or immediately after live)
+1. Make sure "sharing" is fully functional
+2. Fix about page content/image not rendering
