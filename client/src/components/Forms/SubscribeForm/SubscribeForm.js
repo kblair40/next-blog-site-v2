@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Text, Flex, useToast, Heading, Input, Button } from "@chakra-ui/react";
 import axios from "axios";
 
-import { NeverMissAPost } from "src/utils/icons";
 import CustomToast from "src/components/CustomToast";
+import NeverMissAPost from "src/components/NeverMissAPost";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
@@ -129,6 +129,12 @@ const SubscribeForm = ({ ...props }) => {
       px={{ sm: "1rem", lg: "3rem", xl: "8rem" }}
       direction={{ base: "column", md: "row" }}
       position="relative"
+      sx={{
+        "& svg": {
+          // border: "1px solid green",
+          animation: "write 1s ease",
+        },
+      }}
       {...props}
     >
       <NeverMissAPost />
