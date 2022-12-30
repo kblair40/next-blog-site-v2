@@ -1,13 +1,11 @@
 import React from "react";
-import { Flex, Stack, Text } from "@chakra-ui/react";
+import { Flex, Stack, Box } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 
 import PiggyBank from "src/components/PiggyBank";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
-
-// Love, Travel, Style, Guests, Gift Guides
 
 const Posts = ({ articles }) => {
   const { asPath } = useRouter();
@@ -21,15 +19,15 @@ const Posts = ({ articles }) => {
         exit={{ opacity: 0 }}
         layout
       >
-        <ArticleList articles={articles} />
+        <Box position="absolute" top={0} w="100%">
+          <ArticleList articles={articles} />
+        </Box>
       </motion.div>
     </AnimatePresence>
   );
 };
 
 const ArticleList = ({ articles }) => {
-  // const [hasArticles, setHasArticles] = useState(!!articles && !!article.length);
-
   if (!!articles && !!articles.length) {
     return (
       <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
@@ -46,14 +44,6 @@ const ArticleList = ({ articles }) => {
     return (
       <Flex justify="center" px={{ base: "1rem", sm: "2rem" }} pt="4rem">
         <PiggyBank />
-        {/* <Text
-          align="center"
-          fontWeight="600"
-          fontSize="1.25rem"
-          letterSpacing={".5px"}
-        >
-          No Articles Found
-        </Text> */}
       </Flex>
     );
   }
