@@ -42,13 +42,11 @@ const Search = () => {
 
   const fetchResults = async (searchString) => {
     try {
-      // const response = await fetchAPI(
-      //   `/fuzzy-search/search?query=${searchString}&locale=en`
-      // );
-      const response = await fetchAPI(`/fuzzy-search/search`, {
-        query: searchString,
-        locale: "en",
-      });
+      const response = await fetchAPI(`/article/search/${searchString}`);
+      // const response = await fetchAPI(`/fuzzy-search/search`, {
+      //   query: searchString,
+      //   locale: "en",
+      // });
       console.log("\nRESULTS RESPONSE:", response.data);
     } catch (e) {
       console.error("FAILED TO FIND RESULTS:", e);
