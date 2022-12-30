@@ -66,6 +66,7 @@ const Card = ({ article }) => {
       <Box
         h={{ base: "200px", sm: "210px", md: "220px" }} // new
         w={{ base: "220px", sm: "200px", md: "210px" }} // new
+        minW={{ base: "120px", sm: "200px", md: "210px" }} // new
         position="relative"
         overflow="hidden"
       >
@@ -85,12 +86,13 @@ const Card = ({ article }) => {
 
       <Flex
         h="100%"
-        w={{ base: "60%" }}
+        w={{ base: "100%" }}
         direction="column"
         p={{
           base: "20px 12px 17px",
-          sm: "28px 12px 25px",
-          md: "28px 24px 25px",
+          sm: "28px 16px 25px 12px",
+          md: "28px 16px 25px 20px",
+          lg: "28px 24px 25px 20px",
         }}
         overflowY="hidden" // just in case
         bg="white" // new
@@ -121,6 +123,8 @@ const Card = ({ article }) => {
             </Heading>
 
             <Text
+              w="100%"
+              // border="1px solid green"
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
               noOfLines={2}
