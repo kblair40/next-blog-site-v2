@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Divider, Grid, GridItem, Button } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
 import Loading from "src/components/Loading";
@@ -37,6 +37,18 @@ const HomePage = ({ homepage, articles }) => {
 
   return (
     <React.Fragment>
+      <Button
+        position="fixed"
+        bottom=".5rem"
+        right=".5rem"
+        variant="unstlyed"
+        bg="gray.400"
+        boxSize="32px"
+        rounded="full"
+        onClick={() =>
+          setVersion((prev) => (prev === "original" ? "" : "original"))
+        }
+      />
       {version === "original" ? (
         <Box pb="2rem" minH="100vh" maxW="100vw" w="100%">
           <React.Suspense fallback={<div />}>
