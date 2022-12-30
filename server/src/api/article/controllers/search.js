@@ -40,7 +40,8 @@ const controller = createCoreController(
             });
           }
           console.log("\nSEARCHED ARTICLES:", titles, "\n\n");
-          return searchedArticles;
+          // return searchedArticles;
+          return { results: searchedArticles };
 
           return allArticles;
         } catch (err) {
