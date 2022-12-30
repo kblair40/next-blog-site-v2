@@ -20,16 +20,16 @@ const FeaturedResources = () => {
         by Jen Sincero
       </Text>
 
-      {/* <Box position="relative" mt="1rem" w="100%" h="180px">
+      <Box position="relative" mt="1rem" w="100%" h="180px">
         <Image
-          src="https://res.cloudinary.com/erinsblog/image/upload/v1672426352/sincero_f9h2zi.jpg"
+          src="https://res.cloudinary.com/erinsblog/image/upload/v1672433450/You%20Are%20a%20Badass%20Section.jpg"
           alt="img"
-          style={{ objectFit: "contain" }}
+          style={{ objectFit: "cover", borderRadius: "2px" }}
           fill
         />
-      </Box> */}
+      </Box>
 
-      <Center
+      {/* <Center
         mt="1rem"
         w="100%"
         h="188px"
@@ -37,7 +37,7 @@ const FeaturedResources = () => {
         borderColor="gray.200"
       >
         IMAGE HERE
-      </Center>
+      </Center> */}
 
       <Text mt="2rem">
         "Money is just the messenger. It's what you do with it and how you
