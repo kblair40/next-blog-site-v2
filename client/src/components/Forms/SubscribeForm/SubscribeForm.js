@@ -121,8 +121,8 @@ const SubscribeForm = ({ ...props }) => {
       id="subscribe"
       // mt="72px"
       // border="1px solid orange"
-      borderTop="1px solid black"
-      borderBottom="1px solid black"
+      borderTop="1px solid #848484"
+      borderBottom="1px solid #848484"
       w="100%" // newer
       // width={{ // older
       //   base: "calc(100vw - 32px)",
@@ -134,7 +134,7 @@ const SubscribeForm = ({ ...props }) => {
       h="100%" // new
       align={{ base: "center", md: "center" }}
       justify={{ base: "center", md: "space-between" }}
-      // px={{ base: "1rem" }}
+      px={{ sm: "1rem", lg: "3rem", xl: "8rem" }}
       direction={{ base: "column", md: "row" }}
       position="relative"
       {...props}
@@ -151,12 +151,13 @@ const SubscribeForm = ({ ...props }) => {
         Never Miss a New Post.
       </Heading>
 
-      <Flex align="end">
+      <Flex ml={{ md: "1.5rem" }} align="end" w={{ base: "100%", md: "unset" }}>
         <Input
           borderBottom="2px solid"
           borderColor="brand.lightgreen"
           variant="flushed"
-          w={{ base: "max-content", sm: "220px", lg: "260px" }}
+          // w={{ base: "max-content", sm: "220px", lg: "260px" }}
+          w={{ base: "70%", sm: "70%", md: "240px", lg: "260px", xl: "300px" }}
           placeholder="Email*"
           fontSize="15px"
           _placeholder={{
@@ -175,9 +176,11 @@ const SubscribeForm = ({ ...props }) => {
         <Button
           isDisabled={disabled}
           isLoading={loading}
-          w="140px"
+          // w="140px"
+          w="100%"
+          maxW="140px"
           borderRadius="2px"
-          ml="12px"
+          ml={{ base: "12px", sm: "20px" }}
           bg="brand.lightgreen"
           color="white"
           transition="background-color 0.3s"
