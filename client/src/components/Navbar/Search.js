@@ -13,8 +13,11 @@ import {
   Text,
   Box,
   useOutsideClick,
+  Stack,
+  StackDivider,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import { fetchAPI } from "src/utils/api";
 
@@ -97,6 +100,9 @@ const Search = () => {
     <Popover
       autoFocus={false}
       isOpen={showResults}
+      placement="bottom-start"
+      // placement={{ md: "bottom", lg: "bottom-start" }}
+      // matchWidth={true}
       // closeOnBlur={false}
     >
       <PopoverTrigger>
@@ -139,7 +145,7 @@ const Search = () => {
         </InputGroup>
       </PopoverTrigger>
 
-      <PopoverContent ref={popoverContentRef}>
+      <PopoverContent ref={popoverContentRef} rounded="sm">
         {/* <PopoverArrow /> */}
 
         <PopoverBody p={0}>
@@ -152,7 +158,13 @@ const Search = () => {
               No Results
             </Text>
           ) : (
-            <Box w="100%">
+            <Stack
+              spacing={0}
+              divider={
+                <StackDivider borderColor="brand.lightgreen" opacity={0.3} />
+              }
+              w="100%"
+            >
               {results && results.length
                 ? results.map((article, i) => {
                     return (
@@ -164,7 +176,7 @@ const Search = () => {
                     );
                   })
                 : null}
-            </Box>
+            </Stack>
           )}
         </PopoverBody>
       </PopoverContent>
