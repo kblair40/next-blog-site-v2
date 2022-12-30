@@ -40,14 +40,12 @@ const HomePage = ({ homepage, articles }) => {
       minH="100vh"
       maxW="100vw"
       w="100%"
-      // border="1px solid red"
     >
       <React.Suspense fallback={<div />}>
         <SEO seo={homepage?.attributes.seo} />
       </React.Suspense>
 
       <Grid
-        // mt={{ base: "60px", md: "90px" }}
         mb="2rem"
         gridTemplateAreas={{
           base: `
@@ -67,9 +65,9 @@ const HomePage = ({ homepage, articles }) => {
         gridTemplateColumns={{
           base: "auto",
           md: "auto minmax(240px, 300px)",
-          lg: "auto minmax(280px, 340px)",
+          lg: "auto minmax(300px, 350px)",
+          xl: "auto minmax(380px, 430px)",
         }}
-        // gridTemplateColumns={{ base: "auto", md: "auto auto" }}
         w="100%"
         gridTemplateRows={{
           base: "auto auto auto auto 1px auto",

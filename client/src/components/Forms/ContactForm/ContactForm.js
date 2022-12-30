@@ -127,9 +127,10 @@ const ContactForm = () => {
           maxW={{ base: "500px", md: "700px" }}
         >
           <Stack
-            direction={{ base: "column", md: "row" }}
+            // direction={{ base: "column", md: "row" }}
+            direction={{ base: "column", lg: "row" }}
             w="100%"
-            spacing={{ base: "2rem", md: "2rem" }}
+            spacing={{ base: "1.5rem", lg: "2rem" }}
           >
             <Input
               value={formData.name}
