@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { SearchIcon } from "src/utils/icons";
 import {
   Input,
@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import debounce from "lodash.debounce";
 
 import { fetchAPI } from "src/utils/api";
 
@@ -35,18 +36,37 @@ const Search = () => {
     setValue("");
   }, [router.asPath]);
 
+  const searchCallback = async (searchString) => {
+    setSearching(true);
+    setShowResults(true);
+    const results = await fetchResults(searchString);
+
+    if (results) setResults(results);
+    else setResults([]);
+
+    setSearching(false);
+  };
+
+  const debouncedFetch = useCallback(debounce(searchCallback, 300), []);
+
   const fetchResults = async (searchString) => {
+    console.log("\n\nSEARCHING\n\n");
     try {
       const response = await fetchAPI(`/article/search/${searchString}`);
       console.log("\nRESULTS RESPONSE:", response.results);
       console.log("\nRESULTS RESPONSE OBJ:", Object.keys(response));
       if (response && response.results) {
+        return response.results;
         setResults(response.results);
       }
     } catch (e) {
       console.error("FAILED TO FIND RESULTS:", e);
-      setResults([]);
+      return [];
+      // setResults([]);
     }
+    // if (searching) {
+    //   setSearching(false);
+    // }
   };
 
   const handleChange = async (e) => {
@@ -55,12 +75,13 @@ const Search = () => {
     // if (value.length >= 2 && !showResults) {
     if (value.length >= 2) {
       console.log("\nOPENING");
-      setShowResults(true);
 
-      setSearching(true);
+      // setSearching(true);
+      // setShowResults(true);
 
       console.log("SEARCHING", value);
-      await fetchResults(value);
+      await debouncedFetch(value);
+      // await fetchResults(value);
 
       // delete this and replace with real fetch
     } else if (value.length < 2 && showResults) {
@@ -71,7 +92,10 @@ const Search = () => {
         setResults([]);
       }
     }
-    setSearching(false);
+
+    if (searching) {
+      setSearching(false);
+    }
   };
 
   const handleClickResult = (slug) => {
