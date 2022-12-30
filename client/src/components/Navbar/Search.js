@@ -8,8 +8,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   PopoverBody,
-  PopoverArrow,
-  PopoverCloseButton,
   Center,
   Spinner,
   Text,
@@ -27,7 +25,6 @@ const Search = () => {
   const [results, setResults] = useState([]);
 
   const popoverContentRef = useRef();
-  const closeButtonRef = useRef();
 
   const router = useRouter();
   useEffect(() => {
@@ -75,9 +72,7 @@ const Search = () => {
   };
 
   const handleClickResult = (slug) => {
-    console.log("CLOSE:", closeButtonRef.current);
     setShowResults(false);
-    // closeButtonRef.current.click();
     router.push(`/article/${slug}`);
   };
 
@@ -86,9 +81,10 @@ const Search = () => {
     console.log("\nCLICKED ID:", id, "\n");
     if (id !== "search-input") {
       setShowResults(false);
-    } else {
-      setShowResults(true);
     }
+    // else {
+    //   setShowResults(true);
+    // }
   };
 
   useOutsideClick({
@@ -96,8 +92,13 @@ const Search = () => {
     handler: handleOutsideClick,
   });
 
+  // const
   return (
-    <Popover autoFocus={false} isOpen={showResults} closeOnBlur={false}>
+    <Popover
+      autoFocus={false}
+      isOpen={showResults}
+      // closeOnBlur={false}
+    >
       <PopoverTrigger>
         <InputGroup
           // border="1px solid green"
@@ -139,7 +140,6 @@ const Search = () => {
       </PopoverTrigger>
 
       <PopoverContent ref={popoverContentRef}>
-        <PopoverCloseButton ref={closeButtonRef} />
         {/* <PopoverArrow /> */}
 
         <PopoverBody p={0}>
