@@ -19,14 +19,14 @@ import {
 } from "react-share";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
-console.log("\n\nWEBSITE_URL:", WEBSITE_URL);
+// console.log("\n\nWEBSITE_URL:", WEBSITE_URL);
 
 const ShareModal = ({ isOpen, onClose, articleData }) => {
   const handleShareWindowClose = () => {
     // console.log("SHARE WINDOW CLOSED");
   };
 
-  console.log("\n\nSHARE MODAL DATA:", articleData, "\n\n");
+  // console.log("\n\nSHARE MODAL DATA:", articleData, "\n\n");
 
   return (
     <Modal
@@ -37,11 +37,7 @@ const ShareModal = ({ isOpen, onClose, articleData }) => {
       isCentered
     >
       <ModalOverlay />
-      <ModalContent
-        rounded="lg"
-        // bg="brand.creme"
-        //
-      >
+      <ModalContent rounded="lg">
         <ModalCloseButton rounded="full" _hover={{ bg: "brand.creme" }} />
         <ModalHeader fontWeight="600">Share</ModalHeader>
 
