@@ -19,7 +19,7 @@ import {
 } from "react-share";
 
 const WEBSITE_URL = process.env.NEXT_PUBLIC_WEBSITE_URL;
-// console.log("WEBSITE_URL:", WEBSITE_URL);
+console.log("\n\nWEBSITE_URL:", WEBSITE_URL);
 
 const ShareModal = ({ isOpen, onClose, articleData }) => {
   const handleShareWindowClose = () => {
