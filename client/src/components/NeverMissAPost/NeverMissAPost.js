@@ -19,13 +19,15 @@ const NeverMissAPost = () => {
     if (inView) {
       isInView.current = true;
       animateIn();
-    } else {
-      if (addClassRef.current) {
-        clearTimeout(addClassRef.current);
-      }
-      isInView.current = false;
-      removeAnimations();
     }
+    // UNCOMMENT BELOW TO TRIGGER ANIMATION EVERYTIME TEXT ENTERS VIEW
+    // else {
+    //   if (addClassRef.current) {
+    //     clearTimeout(addClassRef.current);
+    //   }
+    //   isInView.current = false;
+    //   removeAnimations();
+    // }
   }, [inView]);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const NeverMissAPost = () => {
   };
 
   useEffect(() => {
-    const options = { threshold: 0.01, rootMargin: "0px" };
+    const options = { threshold: 0, rootMargin: "0px" };
     const observer = new IntersectionObserver(handleObserve, options);
     observer.observe(ref.current);
   }, []);
