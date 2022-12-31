@@ -108,7 +108,7 @@ const SubscribeForm = ({ ...props }) => {
       h="100%" // new
       align={{ base: "center", md: "center" }}
       justify={{ base: "center", md: "space-between" }}
-      px={{ sm: "1rem", lg: "3rem", xl: "8rem" }}
+      px={{ lg: "3rem", xl: "8rem" }}
       direction={{ base: "column", md: "row" }}
       position="relative"
       sx={{
