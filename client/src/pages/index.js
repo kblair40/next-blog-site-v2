@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 
@@ -19,7 +19,7 @@ const Home = ({ homepage, articles }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <Box>
+        <Flex direction="column" align="center">
           {/* <Box border="1px solid blue"> */}
           <HomePage homepage={homepage} articles={articles} />
           {/* </Box> */}
@@ -29,7 +29,7 @@ const Home = ({ homepage, articles }) => {
           <Suspense fallback={<div />}>
             <ShareModal />
           </Suspense>
-        </Box>
+        </Flex>
       </motion.div>
     </AnimatePresence>
   );

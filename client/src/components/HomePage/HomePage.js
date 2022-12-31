@@ -34,7 +34,13 @@ const HomePage = ({ homepage, articles }) => {
   }
 
   return (
-    <Box pb="2rem" minH="100vh" maxW="100vw" w="100%">
+    <Box
+      pb="2rem"
+      minH="100vh"
+      maxW="100vw"
+      w="100%"
+      // border="1px solid blue"
+    >
       <React.Suspense fallback={<div />}>
         <SEO seo={homepage?.attributes.seo} />
       </React.Suspense>
@@ -71,14 +77,19 @@ const HomePage = ({ homepage, articles }) => {
         }}
         rowGap={{ base: "2.5rem", md: "3.5rem" }}
         columnGap={{ md: "2rem", lg: "4rem" }}
-        px={{ base: "1.5rem", sm: "2.5rem", lg: "5rem" }}
+        px={{ base: "1.5rem", sm: "1.5rem", lg: "5rem" }}
         sx={{
           "> *": {
             // border: "1px solid skyblue",
           },
         }}
       >
-        <GridItem area="feat-p" maxW="900px" m="0 auto">
+        <GridItem
+          area="feat-p"
+          maxW="900px"
+          // maxW={{ base: "700px", lg: "900px" }}
+          m="0 auto"
+        >
           <FeaturedPost featuredPost={featuredPost} />
         </GridItem>
 
