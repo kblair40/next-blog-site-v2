@@ -111,7 +111,7 @@ const ContactForm = () => {
         textAlign={{ base: "center" }}
         mb={{ base: "1.5rem" }}
       >
-        Drop Me a Line
+        Drop me a line
       </Text>
 
       <Flex justify="center">
