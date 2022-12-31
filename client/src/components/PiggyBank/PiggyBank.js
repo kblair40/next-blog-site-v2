@@ -1,11 +1,15 @@
 import React from "react";
-import { Heading, Box, Text } from "@chakra-ui/react";
+import { Heading, Box, Text, Center } from "@chakra-ui/react";
 
 const PiggyBank = () => {
   return (
-    <Box>
+    <Center
+      flexDirection="column"
+      h="calc(100vh - 200px)"
+      // border="1px solid black"
+    >
       <Text
-        as={Heading}
+        // as={Heading}
         fontWeight="600"
         textAlign="center"
         color="brand.darkgreen"
@@ -41,7 +45,7 @@ const PiggyBank = () => {
           <div className="legs back"></div>
         </div>
       </Box>
-    </Box>
+    </Center>
   );
 };
 
