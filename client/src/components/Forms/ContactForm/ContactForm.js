@@ -3,7 +3,7 @@ import {
   Input,
   Textarea,
   Button,
-  Heading,
+  // Heading,
   Stack,
   Box,
   Text,
@@ -104,19 +104,15 @@ const ContactForm = () => {
   };
 
   return (
-    <Box
-      w="100%"
-      // border="1px solid blue"
-      // zIndex={1000000000}
-      // bg="white"
-      id="contact"
-    >
-      <Heading
+    <Box w="100%" id="contact">
+      <Text
+        fontSize="32px"
+        fontWeight="700"
         textAlign={{ base: "center" }}
-        mb={{ base: "1.5rem", md: "2rem" }}
+        mb={{ base: "1.5rem" }}
       >
         Drop Me a Line
-      </Heading>
+      </Text>
 
       <Flex justify="center">
         <Stack
