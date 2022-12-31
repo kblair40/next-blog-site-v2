@@ -18,8 +18,21 @@ const Posts = ({ articles }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         layout
+        style={
+          {
+            // border: "1px solid black",
+            // height: "100vh",
+            // minHeight: "calc(100vh - 40px)",
+            // minHeight: "calc(100vh - 80px)"
+            // position: "relative",
+          }
+        }
       >
-        <Box position="absolute" top={0} w="100%">
+        <Box
+          // position="absolute"
+          // top={0}
+          w="100%"
+        >
           <ArticleList articles={articles} />
         </Box>
       </motion.div>
@@ -42,7 +55,13 @@ const ArticleList = ({ articles }) => {
     );
   } else {
     return (
-      <Flex justify="center" px={{ base: "1rem", sm: "2rem" }} pt="4rem">
+      <Flex
+        justify="center"
+        px={{ base: "1rem", sm: "2rem" }}
+        // border="1px solid red"
+        // h="100%"
+        // pt="4rem"
+      >
         <PiggyBank />
       </Flex>
     );
