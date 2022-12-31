@@ -34,12 +34,12 @@ class MyDocument extends Document {
             />
           </noscript>
 
-          <title>Money and Other Things</title>
+          {/* <title>Money and Other Things</title>
           <meta
             name="description"
             content="A blog about money, and other things"
           />
-          <link rel="icon" href="/logo.png" />
+          <link rel="icon" href="/logo.png" /> */}
         </Head>
         <body>
           <Main />

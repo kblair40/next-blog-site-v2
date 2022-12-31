@@ -20,7 +20,14 @@ ReactGA.initialize(TRACKING_ID);
 const MyApp = ({ Component, pageProps }) => {
   return (
     <>
-      <Head></Head>
+      <Head>
+        <title>Money and Other Things</title>
+        <meta
+          name="description"
+          content="A blog about money, and other things"
+        />
+        <link rel="icon" href="/logo.png" />
+      </Head>
       <ChakraProvider theme={theme} resetCSS={true}>
         <Layout>
           <Component {...pageProps} />
