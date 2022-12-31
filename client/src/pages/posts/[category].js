@@ -18,20 +18,12 @@ const Posts = ({ articles }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         layout
-        style={
-          {
-            // border: "1px solid black",
-            // height: "100vh",
-            // minHeight: "calc(100vh - 40px)",
-            // minHeight: "calc(100vh - 80px)"
-            // position: "relative",
-          }
-        }
       >
         <Box
           // position="absolute"
           // top={0}
           w="100%"
+          pb="2rem"
         >
           <ArticleList articles={articles} />
         </Box>
