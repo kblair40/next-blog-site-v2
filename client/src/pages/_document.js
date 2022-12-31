@@ -39,7 +39,7 @@ class MyDocument extends Document {
             name="description"
             content="A blog about money, and other things"
           />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/logo.png" />
         </Head>
         <body>
           <Main />
