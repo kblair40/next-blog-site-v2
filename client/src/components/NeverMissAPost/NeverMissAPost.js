@@ -1,9 +1,32 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Icon } from "@chakra-ui/react";
 
 const NeverMissAPost = () => {
+  const [inView, setInView] = useState(false);
+
   const ref = useRef();
   const paths = useRef();
+  const isInView = useRef(false);
+  const addClassRef = useRef();
+
+  const didMount = useRef(false);
+  useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
+
+    if (inView) {
+      isInView.current = true;
+      animateIn();
+    } else {
+      if (addClassRef.current) {
+        clearTimeout(addClassRef.current);
+      }
+      isInView.current = false;
+      removeAnimations();
+    }
+  }, [inView]);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -12,23 +35,47 @@ const NeverMissAPost = () => {
     animateIn();
   }, []);
 
-  const animateIn = async () => {
-    for (let i = 0; i < paths.current.length; i++) {
+  const handleObserve = (entries) => {
+    const [entry] = entries;
+    console.log("OBSERVE ENTRY:", entry);
+    setInView(entry.isIntersecting);
+  };
+
+  useEffect(() => {
+    const options = { threshold: 0.01, rootMargin: "0px" };
+    const observer = new IntersectionObserver(handleObserve, options);
+    observer.observe(ref.current);
+  }, []);
+
+  const removeAnimations = () => {
+    for (let i = 0; i <= paths.current.length; i++) {
       let path = paths.current[i];
-      await timer(300);
-      path.classList.add("write-logo");
-      console.log("DONE", i);
+      if (path && path.classList.contains("write-logo")) {
+        path.classList.remove("write-logo");
+      }
     }
   };
 
-  const timer = (ms) => {
-    return new Promise((res) => setTimeout(res, ms));
+  const animateIn = async () => {
+    for (let i = 0; i < paths.current.length; i++) {
+      if (!isInView.current) break;
+      let path = paths.current[i];
+      addClassRef.current = setTimeout(() => {
+        if (isInView.current) {
+          path.classList.add("write-logo");
+        }
+      }, i * 100);
+      console.log("i * 100 =", i * 100);
+    }
   };
+
+  // const timer = (ms) => {
+  //   return new Promise((res) => setTimeout(res, ms));
+  // };
 
   const defaultPathStyle = {
     strokeDasharray: 1000,
     strokeDashoffset: 1000,
-    strokeWidth: "1px",
     stroke: "black",
     fill: "black",
     fillOpacity: 0,
@@ -36,6 +83,7 @@ const NeverMissAPost = () => {
 
   return (
     <Icon
+      // border="1px solid black"
       ref={ref}
       width="339"
       height="45"
