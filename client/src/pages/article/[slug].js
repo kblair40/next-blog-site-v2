@@ -92,7 +92,7 @@ const Article = ({ article }) => {
             p={{ base: "12px", sm: "24px", md: "40px", lg: "q0px" }}
           >
             <Flex
-              mb="1rem"
+              mb=".5rem"
               w="100%"
               display="inline-flex"
               fontSize="sm"
@@ -106,13 +106,15 @@ const Article = ({ article }) => {
               </Text>
               <Text display="inline">{`${article.attributes.minutes_to_read} min read`}</Text>
             </Flex>
-            <Heading
-              mb="2rem"
+
+            <Text
+              fontWeight="700"
+              mb="1.5rem"
               textAlign="center"
-              fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+              fontSize={{ base: "3xl", md: "4xl", lg: "42px" }}
             >
               {article.attributes.title}
-            </Heading>
+            </Text>
 
             <Box
               w="100%"
