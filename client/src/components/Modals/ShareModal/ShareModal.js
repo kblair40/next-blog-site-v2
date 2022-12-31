@@ -26,6 +26,8 @@ const ShareModal = ({ isOpen, onClose, articleData }) => {
     // console.log("SHARE WINDOW CLOSED");
   };
 
+  console.log("\n\nSHARE MODAL DATA:", articleData, "\n\n");
+
   return (
     <Modal
       isOpen={isOpen}
