@@ -13,6 +13,7 @@ TODO
    - Maybe afterCreate middleware for article/post/whatever-i-called-it
 6. Look at using script component to import css for article ([slug]) page
 7. add functionality for adding tags to articles w/ strapi
+8. Reconfigure share buttons for new base url
 
 
 BEFORE LIVE (or immediately after live)

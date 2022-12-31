@@ -33,6 +33,13 @@ class MyDocument extends Document {
               href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap"
             />
           </noscript>
+
+          <title>Money and Other Things</title>
+          <meta
+            name="description"
+            content="A blog about money, and other things"
+          />
+          <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
           <Main />
