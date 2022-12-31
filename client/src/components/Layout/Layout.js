@@ -31,9 +31,7 @@ const layout = ({ children, categories }) => {
         </Box>
       </Box>
 
-      <Text fontSize="sm" mt="3rem" mb="1rem" textAlign="center">
-        &copy; 2022 moneyandotherthings.com
-      </Text>
+      <Footer />
     </Flex>
   );
 
@@ -71,6 +69,14 @@ const layout = ({ children, categories }) => {
   //     </Text>
   //   </Box>
   // );
+};
+
+export const Footer = () => {
+  return (
+    <Text fontSize="sm" mt="3rem" mb="1rem" textAlign="center">
+      &copy; 2022 moneyandotherthings.com
+    </Text>
+  );
 };
 
 export default layout;
