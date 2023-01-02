@@ -1,7 +1,6 @@
-import React from "react";
-import { Box } from "@chakra-ui/react";
+import React, { useRef, useState } from "react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import HTMLFlipBook from "react-pageflip";
-import Image from "next/image";
 
 import styles from "./Flipbook.module.css";
 
@@ -21,6 +20,20 @@ const iframeOptions = {
 };
 
 const Flipbook = () => {
+  const [curPage, setCurPage] = useState(0);
+  const bookRef = useRef();
+
+  const handleFlipPage = (e) => {
+    setCurPage(e.data);
+  };
+
+  const handleClickNext = () => {
+    bookRef.current.pageFlip().flipNext();
+  };
+  const handleClickPrev = () => {
+    bookRef.current.pageFlip().flipPrev();
+  };
+
   return (
     <Box
       mt="2rem"
@@ -38,10 +51,12 @@ const Flipbook = () => {
         maxWidth={464}
         minHeight={600}
         maxHeight={600}
-        // showCover={true}
+        showCover={true}
         maxShadowOpacity={0.1}
         mobileScrollSupport={true}
         className={styles.flip_book}
+        ref={(el) => (bookRef.current = el)}
+        onFlip={handleFlipPage}
       >
         <div className={styles.page}>
           <iframe {...iframeOptions} src={PAGES.one}></iframe>
@@ -59,6 +74,15 @@ const Flipbook = () => {
           <iframe {...iframeOptions} src={PAGES.four}></iframe>
         </div>
       </HTMLFlipBook>
+
+      <Flex justify="center" pt="1rem">
+        <Button size="sm" onClick={handleClickPrev}>
+          Prev
+        </Button>
+        <Button size="sm" ml=".5rem" onClick={handleClickNext}>
+          Next
+        </Button>
+      </Flex>
     </Box>
   );
 };
