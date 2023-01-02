@@ -16,27 +16,30 @@ const PAGES = {
 const iframeOptions = {
   height: 600,
   width: 464,
+  // frameBorder: 0,
+  // border: "none",
 };
 
 const Flipbook = () => {
   return (
     <Box
-      // pt="2rem"
-      border="1px solid red"
-      maxW="988px"
+      mt="2rem"
+      // border="1px solid red"
+      // maxW="988px"
+      w="928px"
+      h="600px"
       margin="0 auto"
     >
       <HTMLFlipBook
         width={464}
         height={600}
-        // size="stretch"
-        // minWidth={620.8}
-        // maxWidth={1000}
-        // minHeight={480}
-        // maxHeight={773}
-        autoSize={false}
+        size="stretch"
+        minWidth={464}
+        maxWidth={464}
+        minHeight={600}
+        maxHeight={600}
+        // showCover={true}
         maxShadowOpacity={0.1}
-        showCover={true}
         mobileScrollSupport={true}
         className={styles.flip_book}
       >
