@@ -66,6 +66,10 @@ const Article = ({ article }) => {
     });
   }, []);
 
+  const imgPosV = article?.attributes.image_position_vertical;
+  const imgPosH = article?.attributes.image_position_horizontal;
+  const hasPosition = imgPosV !== undefined && imgPosH !== undefined;
+
   return (
     <AnimatePresence>
       <motion.div
@@ -135,11 +139,9 @@ const Article = ({ article }) => {
                 alt="img"
                 style={{
                   objectFit: "cover",
-                  objectPosition:
-                    article.attributes.image_position &&
-                    imgPosition[article.attributes.image_position]
-                      ? imgPosition[article.attributes.image_position]
-                      : "center center",
+                  objectPosition: hasPosition
+                    ? `${imgPosH}% ${imgPosV}%`
+                    : "center center",
                 }}
               />
             </Box>
@@ -148,7 +150,6 @@ const Article = ({ article }) => {
               w="100%"
               sx={{
                 a: {
-                  // color: "brand.lightgreen",
                   color: "#7D9174",
                 },
               }}
