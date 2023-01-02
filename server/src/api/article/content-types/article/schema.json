@@ -49,20 +49,13 @@
       "target": "api::category.category",
       "inversedBy": "articles"
     },
-    "image_position": {
-      "type": "enumeration",
-      "enum": [
-        "top-left",
-        "top-center",
-        "top-right",
-        "center-left",
-        "center-center",
-        "center-right",
-        "bottom-left",
-        "bottom-center",
-        "bottom-right"
-      ],
-      "default": "center-center"
+    "image_position_horizontal": {
+      "type": "integer",
+      "default": 50
+    },
+    "image_position_vertical": {
+      "type": "integer",
+      "default": 50
     }
   }
 }
