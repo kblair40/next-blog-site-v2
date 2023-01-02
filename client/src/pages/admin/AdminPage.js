@@ -5,7 +5,14 @@ import Flipbook from "src/components/Flipbook";
 
 const AdminPage = () => {
   return (
-    <Box px="1rem">
+    <Box
+      // justify="center"
+      // align="center"
+      px="1rem"
+      h="calc(100vh - 80px)"
+      w="100%"
+      border="1px solid orange"
+    >
       <Flipbook />
     </Box>
   );

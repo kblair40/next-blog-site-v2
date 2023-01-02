@@ -13,24 +13,27 @@ const PAGES = {
   four: "https://res.cloudinary.com/erinsblog/image/upload/v1672684344/pdfs/page_four_ff81ns.pdf#toolbar=0",
 };
 
-// const iframeOptions = {
-//   frame,
-// };
+const iframeOptions = {
+  height: 600,
+  width: 464,
+};
 
 const Flipbook = () => {
   return (
     <Box
       // pt="2rem"
       border="1px solid red"
+      maxW="988px"
+      margin="0 auto"
     >
       <HTMLFlipBook
-        width={567}
-        height={733}
-        size="stretch"
-        minWidth={620.8}
-        maxWidth={1000}
-        minHeight={480}
-        maxHeight={773}
+        width={464}
+        height={600}
+        // size="stretch"
+        // minWidth={620.8}
+        // maxWidth={1000}
+        // minHeight={480}
+        // maxHeight={773}
         autoSize={false}
         maxShadowOpacity={0.1}
         showCover={true}
@@ -38,19 +41,19 @@ const Flipbook = () => {
         className={styles.flip_book}
       >
         <div className={styles.page}>
-          <iframe src={PAGES.one}></iframe>
+          <iframe {...iframeOptions} src={PAGES.one}></iframe>
         </div>
 
         <div className={styles.page}>
-          <iframe src={PAGES.two}></iframe>
+          <iframe {...iframeOptions} src={PAGES.two}></iframe>
         </div>
 
         <div className={styles.page}>
-          <iframe src={PAGES.three}></iframe>
+          <iframe {...iframeOptions} src={PAGES.three}></iframe>
         </div>
 
         <div className={styles.page}>
-          <iframe src={PAGES.four}></iframe>
+          <iframe {...iframeOptions} src={PAGES.four}></iframe>
         </div>
       </HTMLFlipBook>
     </Box>
