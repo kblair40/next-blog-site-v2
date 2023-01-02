@@ -99,7 +99,7 @@ const Article = ({ article }) => {
               align="center"
             >
               <Text display="inline">
-                {dayjs(article.attributes.published_at).format("MMM DD")}
+                {dayjs(article.attributes.publishedAt).format("MMM DD")}
               </Text>
               <Text mx="8px" display="inline" fontSize="6px">
                 &bull;

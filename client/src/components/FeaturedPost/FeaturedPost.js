@@ -57,7 +57,7 @@ const FeaturedPost = ({ featuredPost }) => {
       >
         <Box display="inline" fontSize="xs" mb="1rem">
           <Text display="inline">
-            {dayjs(featuredPost?.createdAt).format("MMM DD, YYYY")}
+            {dayjs(featuredPost?.attributes.createdAt).format("MMM DD, YYYY")}
           </Text>
           <Text display="inline" mx="6px">
             &bull;
