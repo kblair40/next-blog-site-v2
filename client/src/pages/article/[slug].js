@@ -32,6 +32,13 @@ const Article = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [articleData, setArticleData] = useState();
 
+  const imgPosition = {
+    "top-left": "left top",
+    "top-center": "center 30%",
+    "center-center": "center center",
+    "bottom-center": "center bottom",
+  };
+
   useEffect(() => {
     if (article && article.attributes) {
       setArticleData(article.attributes);
@@ -126,7 +133,14 @@ const Article = ({ article }) => {
                 fill
                 src={article.attributes.image_url}
                 alt="img"
-                style={{ objectFit: "cover" }}
+                style={{
+                  objectFit: "cover",
+                  objectPosition:
+                    article.attributes.image_position &&
+                    imgPosition[article.attributes.image_position]
+                      ? imgPosition[article.attributes.image_position]
+                      : "center center",
+                }}
               />
             </Box>
 

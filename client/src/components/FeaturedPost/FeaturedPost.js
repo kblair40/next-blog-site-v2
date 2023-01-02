@@ -1,10 +1,17 @@
 import React from "react";
-import { Box, Text, Flex, Center, Heading } from "@chakra-ui/react";
+import { Box, Text, Flex, Center } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 
 const FeaturedPost = ({ featuredPost }) => {
+  // const imgPosition = {
+  //   "top-left": "left top",
+  //   "top-center": "top center",
+  //   "center-center": "center center",
+  //   "bottom-center": "center bottom",
+  // };
+
   return (
     <Box w="100%" id="feat-p">
       <Box
@@ -13,15 +20,22 @@ const FeaturedPost = ({ featuredPost }) => {
         position="relative"
       >
         <Image
-          priority
-          fill
           alt="post image"
           src={featuredPost?.attributes.image_url}
-          style={{ objectFit: "cover" }}
+          style={{
+            objectFit: "cover",
+            // objectPosition:
+            //   featuredPost.attributes.image_position &&
+            //   imgPosition[featuredPost.attributes.image_position]
+            //     ? imgPosition[featuredPost.attributes.image_position]
+            //     : "center center",
+          }}
           sizes="(min-width: 992px) 900px,
-              (min-width: 768px) 700px,
-              (min-width: 480px) 450px,
-              350px"
+          (min-width: 768px) 700px,
+          (min-width: 480px) 450px,
+          350px"
+          priority
+          fill
         />
 
         <Center
