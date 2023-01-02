@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Box, Flex, Heading, Divider } from "@chakra-ui/react";
+import { Text, Box, Flex, Divider } from "@chakra-ui/react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
@@ -51,9 +51,9 @@ const AboutPage = ({ about }) => {
             </Box>
 
             <Flex w="100%" direction="column" px="32px" pb="50px">
-              <Heading fontSize="4xl" my="50px">
+              <Text fontSize="4xl" my="50px" fontWeight="600">
                 Hey! So Glad You're Here.
-              </Heading>
+              </Text>
 
               <Text>{about?.description}</Text>
             </Flex>
