@@ -52,7 +52,7 @@ const AboutPage = ({ about }) => {
 
             <Flex w="100%" direction="column" px="32px" pb="50px">
               <Text fontSize="4xl" my="50px" fontWeight="600">
-                Hey! So Glad You're Here.
+                {about?.headline || "Hey! So Glad You're Here."}
               </Text>
 
               <Text>{about?.description}</Text>
