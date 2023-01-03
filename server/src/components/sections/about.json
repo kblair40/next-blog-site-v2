@@ -11,6 +11,9 @@
     },
     "image_url": {
       "type": "string"
+    },
+    "headline": {
+      "type": "string"
     }
   }
 }
