@@ -35,10 +35,10 @@ const Posts = ({ articles }) => {
 
 const ArticleList = ({ articles }) => {
   const sortArticles = (a, b) => {
-    console.log("A/B:", { a, b });
+    // console.log("A/B:", { a, b });
     const { createdAt: aCreatedAt } = a.attributes;
     const { createdAt: bCreatedAt } = b.attributes;
-    console.log("CREATED STAMPS:", { aCreatedAt, bCreatedAt });
+    // console.log("CREATED STAMPS:", { aCreatedAt, bCreatedAt });
     return dayjs(aCreatedAt).isBefore(dayjs(bCreatedAt)) ? 1 : -1;
   };
 
