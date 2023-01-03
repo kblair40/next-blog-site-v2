@@ -55,7 +55,7 @@ const AboutPage = ({ about }) => {
                 {about?.headline || "Hey! So Glad You're Here."}
               </Text>
 
-              <Text>{about?.description}</Text>
+              <Text>{about?.description || ""}</Text>
             </Flex>
           </Box>
 
@@ -72,22 +72,42 @@ const AboutPage = ({ about }) => {
 
 export default AboutPage;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const about = await fetchAPI("/about", {
       populate: {
         about_content: { populate: ["image"] },
       },
     });
-    console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
+    console.log("\n\nABOUT RESPONSE:", about, "\n\n");
 
     return {
       props: { about: about?.data?.attributes?.about_content || {} },
     };
   } catch (e) {
-    console.log("ABOUT ERROR:", e);
+    console.log("\n\n\n\n\nABOUT ERROR:", e);
     return {
       props: {},
     };
   }
 }
+
+// export async function getStaticProps() {
+//   try {
+//     const about = await fetchAPI("/about", {
+//       populate: {
+//         about_content: { populate: ["image"] },
+//       },
+//     });
+//     console.log("\n\nABOUT RESPONSE:", about.data, "\n\n");
+
+//     return {
+//       props: { about: about?.data?.attributes?.about_content || {} },
+//     };
+//   } catch (e) {
+//     console.log("ABOUT ERROR:", e);
+//     return {
+//       props: {},
+//     };
+//   }
+// }
