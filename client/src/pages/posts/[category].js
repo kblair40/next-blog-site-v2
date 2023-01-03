@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, Stack, Box } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
 
 import PiggyBank from "src/components/PiggyBank";
 import { fetchAPI } from "src/utils/api";
@@ -33,12 +34,20 @@ const Posts = ({ articles }) => {
 };
 
 const ArticleList = ({ articles }) => {
+  const sortArticles = (a, b) => {
+    console.log("A/B:", { a, b });
+    const { createdAt: aCreatedAt } = a.attributes;
+    const { createdAt: bCreatedAt } = b.attributes;
+    console.log("CREATED STAMPS:", { aCreatedAt, bCreatedAt });
+    return dayjs(aCreatedAt).isBefore(dayjs(bCreatedAt)) ? 1 : -1;
+  };
+
   if (!!articles && !!articles.length) {
     return (
       <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
         <Stack mt="2rem" spacing="1.5rem">
           {articles && articles.length
-            ? articles.map((article, i) => {
+            ? articles.sort(sortArticles).map((article, i) => {
                 return <Card article={article} key={i} />;
               })
             : null}
@@ -47,13 +56,7 @@ const ArticleList = ({ articles }) => {
     );
   } else {
     return (
-      <Flex
-        justify="center"
-        px={{ base: "1rem", sm: "2rem" }}
-        // border="1px solid red"
-        // h="100%"
-        // pt="4rem"
-      >
+      <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
         <PiggyBank />
       </Flex>
     );
