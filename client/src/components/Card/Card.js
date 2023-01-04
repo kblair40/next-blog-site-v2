@@ -19,7 +19,7 @@ const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
 });
 
-const Card = ({ article }) => {
+const Card = ({ article, isPreview }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [articleData, setArticleData] = useState();
 
@@ -108,7 +108,11 @@ const Card = ({ article }) => {
           <Text display="inline">5 Min</Text>
         </Box>
 
-        <Link href={`/article/${article.attributes.slug}`}>
+        <Link
+          href={`/article/${article.attributes.slug}${
+            isPreview ? "/preview" : ""
+          }`}
+        >
           <Flex direction="column" role="group" cursor="pointer">
             <Text
               fontWeight="700"

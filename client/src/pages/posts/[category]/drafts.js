@@ -48,7 +48,7 @@ const ArticleList = ({ articles }) => {
         <Stack mt="2rem" spacing="1.5rem">
           {articles && articles.length
             ? articles.sort(sortArticles).map((article, i) => {
-                return <Card article={article} key={i} />;
+                return <Card article={article} key={i} isPreview={true} />;
               })
             : null}
         </Stack>
