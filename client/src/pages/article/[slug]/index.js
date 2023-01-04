@@ -179,10 +179,11 @@ export async function getServerSideProps({ params }) {
     },
     populate: ["image", "category", "author.picture"],
   });
-  const categoriesRes = await fetchAPI("/categories");
+
+  console.log("\n\narticlesRes:", articlesRes, "\n\n");
 
   return {
-    props: { article: articlesRes?.data[0], categories: categoriesRes },
+    props: { article: articlesRes?.data[0] },
   };
 }
 
