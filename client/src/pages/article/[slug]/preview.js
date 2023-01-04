@@ -1,15 +1,14 @@
 import React, { useEffect, useState, Suspense, useRef } from "react";
 import { Text, Flex, Divider, Box } from "@chakra-ui/react";
 import dayjs from "dayjs";
-import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { render } from "react-dom";
 
-import { ShareIcon, CopyIcon } from "src/utils/icons";
 import { fetchAPI } from "src/utils/api";
 import Loading from "src/components/Loading";
-import { create } from "lodash";
+import ImageCarousel from "src/components/ImageCarousel";
 
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
@@ -30,25 +29,40 @@ const Preview = ({ article }) => {
 
   const textAdded = useRef(false);
   useEffect(() => {
-    let text = document.createElement("h1");
-    text.innerText = "Carousel will go here";
-    let carouselContainer = document.getElementById("imageCarousel");
-    console.log("CAROUSEL CONTAINER:", carouselContainer);
-    console.dir(carouselContainer);
-    if (!carouselContainer) {
-      console.log("\n\nNO CAROUSEL CONTAINER\n\n");
+    let carousel_images = null;
+    if (article && article.attributes) {
+      carousel_images = article.attributes.carousel_image_urls;
+    }
+    if (!carousel_images) {
+      console.log("NO CAROUSEL IMAGES");
       return;
     }
-    carouselContainer.style.display = "flex";
-    carouselContainer.style.justifyContent = "center";
-    carouselContainer.style.paddingTop = "1rem";
-    carouselContainer.style.fontSize = "18px";
-    carouselContainer.style.fontWeight = "600";
+
+    let carouselContainer = document.getElementById("imageCarousel");
+
+    // let text = document.createElement("h1");
+    // text.innerText = "Carousel will go here";
+    // console.log("CAROUSEL CONTAINER:", carouselContainer);
+    // console.dir(carouselContainer);
+    // if (!carouselContainer) {
+    //   console.log("\n\nNO CAROUSEL CONTAINER\n\n");
+    //   return;
+    // }
+    // carouselContainer.style.display = "flex";
+    // carouselContainer.style.justifyContent = "center";
+    // carouselContainer.style.paddingTop = "1rem";
+    // carouselContainer.style.fontSize = "18px";
+    // carouselContainer.style.fontWeight = "600";
+    // const carousel
     if (!textAdded.current) {
-      carouselContainer.appendChild(text);
+      // carouselContainer.appendChild(text);
+      // carouselContainer.appendChild(
+      //   <ImageCarousel imageUrls={carousel_images} />
+      // );
+      render(<ImageCarousel imageUrls={carousel_images} />, carouselContainer);
       textAdded.current = true;
     }
-  }, []);
+  }, [article]);
 
   const seo = {
     metaTitle: article.attributes.title,
