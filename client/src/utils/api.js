@@ -1,5 +1,4 @@
 import qs from "qs";
-
 const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
 const envName = process.env.NODE_ENV;
 // console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
