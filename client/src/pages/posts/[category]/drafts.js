@@ -88,6 +88,10 @@ export async function getStaticProps({ params }) {
       for (let article of articlesRes.data) {
         console.log("\n\nARTICLE:", article.attributes);
       }
+
+      return {
+        props: { articles: articlesRes.data, fallback: "blocking" },
+      };
     }
   } catch (e) {
     console.log("\n\nARTICLES FETCH FAILED:", e);
