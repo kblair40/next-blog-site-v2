@@ -63,7 +63,7 @@ const ArticleList = ({ articles }) => {
   }
 };
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps() {
   // docs on fetching in draft/preview publicationState
   // https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/filtering-locale-publication.html#publication-state
   try {
@@ -100,39 +100,6 @@ export async function getStaticProps({ params }) {
   return {
     props: { articles: [], fallback: "blocking" },
   };
-
-  let articles;
-
-  try {
-    articles = categoriesRes.data[0].attributes.articles.data;
-    console.log("ARTICLE:", categoriesRes.data[0].attributes);
-  } catch (e) {
-    articles = [];
-  }
-
-  return {
-    props: { articles: articles.reverse(), fallback: "blocking" },
-  };
-}
-
-export async function getStaticPaths() {
-  let categoriesRes;
-  try {
-    categoriesRes = await fetchAPI("/categories", { fields: ["slug"] });
-  } catch (e) {
-    console.log("FAILED FETCHING ARTICLES:", e);
-  }
-
-  let paths = [];
-  if (categoriesRes?.data) {
-    paths = categoriesRes.data.map((cat) => ({
-      params: {
-        category: cat.attributes.slug,
-      },
-    }));
-  }
-
-  return { paths, fallback: false };
 }
 
 export default Drafts;
