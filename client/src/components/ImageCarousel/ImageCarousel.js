@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, IconButton } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { wrap } from "popmotion";
+
+import { ChevronDownIcon } from "src/utils/icons";
 
 const variants = {
   enter: (direction) => {
@@ -71,26 +73,34 @@ const ImageCarousel = ({ imageUrls }) => {
         </Box>
       </motion.div>
 
-      <Button
+      <IconButton
+        bg="rgba(255,255,255,0.4)"
         onClick={() => changeSlide(-1)}
         position="absolute"
         top="50%"
         transform="translateY(-50%)"
-        left={0}
-        border="1px solid red"
-      >
-        Prev
-      </Button>
-      <Button
+        left={"4px"}
+        boxSize="32px"
+        display="flex"
+        justifyContent="center"
+        p="8px"
+        icon={<ChevronDownIcon transform="rotate(90deg)" boxSize="24px" />}
+        borderRadius="50%"
+      />
+      <IconButton
+        bg="rgba(255,255,255,0.4)"
         onClick={() => changeSlide(1)}
         position="absolute"
         top="50%"
         transform="translateY(-50%)"
-        right={0}
-        border="1px solid red"
-      >
-        Next
-      </Button>
+        right={"4px"}
+        boxSize="32px"
+        display="flex"
+        justifyContent="center"
+        p="8px"
+        icon={<ChevronDownIcon transform="rotate(-90deg)" boxSize="24px" />}
+        borderRadius="50%"
+      />
     </AnimatePresence>
   );
 };
