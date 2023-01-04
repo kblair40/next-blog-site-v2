@@ -1,16 +1,5 @@
-import React, { useEffect, useState, Suspense } from "react";
-import {
-  Heading,
-  Text,
-  Flex,
-  Divider,
-  HStack,
-  Tooltip,
-  Box,
-  IconButton,
-  useClipboard,
-  useToast,
-} from "@chakra-ui/react";
+import React, { useEffect, useState, Suspense, useRef } from "react";
+import { Text, Flex, Divider, Box } from "@chakra-ui/react";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,6 +9,7 @@ import Image from "next/image";
 import { ShareIcon, CopyIcon } from "src/utils/icons";
 import { fetchAPI } from "src/utils/api";
 import Loading from "src/components/Loading";
+import { create } from "lodash";
 
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
@@ -32,18 +22,33 @@ const Preview = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [articleData, setArticleData] = useState();
 
-  const imgPosition = {
-    "top-left": "left top",
-    "top-center": "center 30%",
-    "center-center": "center center",
-    "bottom-center": "center bottom",
-  };
-
   useEffect(() => {
     if (article && article.attributes) {
       setArticleData(article.attributes);
     }
   }, [article]);
+
+  const textAdded = useRef(false);
+  useEffect(() => {
+    let text = document.createElement("h1");
+    text.innerText = "Carousel will go here";
+    let carouselContainer = document.getElementById("imageCarousel");
+    console.log("CAROUSEL CONTAINER:", carouselContainer);
+    console.dir(carouselContainer);
+    if (!carouselContainer) {
+      console.log("\n\nNO CAROUSEL CONTAINER\n\n");
+      return;
+    }
+    carouselContainer.style.display = "flex";
+    carouselContainer.style.justifyContent = "center";
+    carouselContainer.style.paddingTop = "1rem";
+    carouselContainer.style.fontSize = "18px";
+    carouselContainer.style.fontWeight = "600";
+    if (!textAdded.current) {
+      carouselContainer.appendChild(text);
+      textAdded.current = true;
+    }
+  }, []);
 
   const seo = {
     metaTitle: article.attributes.title,
