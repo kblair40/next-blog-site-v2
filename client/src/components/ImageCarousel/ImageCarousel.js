@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Box, Button, IconButton } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -39,6 +39,14 @@ const ImageCarousel = ({ imageUrls }) => {
     setSlide([slide + newDirection, newDirection]);
   };
 
+  const getArrow = useCallback((dir) => {
+    return (
+      <ChevronDownIcon
+        transform={`rotate(${dir === "left" ? "90deg" : "-90deg"})`}
+      />
+    );
+  }, []);
+
   useEffect(() => {
     if (!imageUrls || typeof imageUrls !== "string") {
       setImages(null);
@@ -53,7 +61,6 @@ const ImageCarousel = ({ imageUrls }) => {
     <AnimatePresence initial={false} custom={direction}>
       <motion.div
         key={slide}
-        src={images[imageIndex]}
         custom={direction}
         variants={variants}
         initial="enter"
@@ -74,31 +81,38 @@ const ImageCarousel = ({ imageUrls }) => {
       </motion.div>
 
       <IconButton
+        // zIndex={10000}
         bg="rgba(255,255,255,0.4)"
+        // bg="brand.darkgreen"
         onClick={() => changeSlide(-1)}
         position="absolute"
         top="50%"
         transform="translateY(-50%)"
-        left={"4px"}
+        left={"-8px"}
         boxSize="32px"
         display="flex"
         justifyContent="center"
         p="8px"
-        icon={<ChevronDownIcon transform="rotate(90deg)" boxSize="24px" />}
-        borderRadius="50%"
+        // icon={<ChevronDownIcon transform="rotate(90deg)" boxSize="24px" />}
+        icon={getArrow("left")}
+        // borderRadius="50%"
+        rounded="full"
       />
       <IconButton
+        // zIndex={10000}
         bg="rgba(255,255,255,0.4)"
+        // bg="brand.darkgreen"
         onClick={() => changeSlide(1)}
         position="absolute"
         top="50%"
         transform="translateY(-50%)"
-        right={"4px"}
+        right={"-8px"}
         boxSize="32px"
         display="flex"
         justifyContent="center"
         p="8px"
-        icon={<ChevronDownIcon transform="rotate(-90deg)" boxSize="24px" />}
+        // icon={<ChevronDownIcon transform="rotate(-90deg)" boxSize="24px" />}
+        icon={getArrow("right")}
         borderRadius="50%"
       />
     </AnimatePresence>

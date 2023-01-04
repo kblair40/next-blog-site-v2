@@ -4,7 +4,8 @@ import dayjs from "dayjs";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { render } from "react-dom";
+// import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import { fetchAPI } from "src/utils/api";
 import Loading from "src/components/Loading";
@@ -40,26 +41,9 @@ const Preview = ({ article }) => {
 
     let carouselContainer = document.getElementById("imageCarousel");
 
-    // let text = document.createElement("h1");
-    // text.innerText = "Carousel will go here";
-    // console.log("CAROUSEL CONTAINER:", carouselContainer);
-    // console.dir(carouselContainer);
-    // if (!carouselContainer) {
-    //   console.log("\n\nNO CAROUSEL CONTAINER\n\n");
-    //   return;
-    // }
-    // carouselContainer.style.display = "flex";
-    // carouselContainer.style.justifyContent = "center";
-    // carouselContainer.style.paddingTop = "1rem";
-    // carouselContainer.style.fontSize = "18px";
-    // carouselContainer.style.fontWeight = "600";
-    // const carousel
     if (!textAdded.current) {
-      // carouselContainer.appendChild(text);
-      // carouselContainer.appendChild(
-      //   <ImageCarousel imageUrls={carousel_images} />
-      // );
-      render(<ImageCarousel imageUrls={carousel_images} />, carouselContainer);
+      let root = createRoot(carouselContainer);
+      root.render(<ImageCarousel imageUrls={carousel_images} />);
       textAdded.current = true;
     }
   }, [article]);
