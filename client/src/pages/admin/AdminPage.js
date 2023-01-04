@@ -11,7 +11,7 @@ const AdminPage = () => {
       // px="1rem"
       h="calc(100vh - 80px)"
       w="100%"
-      border="1px solid orange"
+      // border="1px solid orange"
       pt="1.5rem"
     >
       <Flipbook />
