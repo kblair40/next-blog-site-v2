@@ -111,35 +111,16 @@ const SubscribeForm = ({ ...props }) => {
       px={{ md: ".5rem", lg: "3rem", xl: "8rem" }}
       direction={{ base: "column", md: "row" }}
       position="relative"
-      // border="1px solid red"
       sx={{
         "& svg": {
-          // border: "1px solid green",
           animation: "write 1s ease",
         },
       }}
       {...props}
     >
       <NeverMissAPost />
-      {/* <Heading
-        textAlign={{ base: "left" }}
-        color="text.body"
-        fontSize={{ base: "28px", sm: "36px" }}
-        flex={{ md: 1 }}
-        fontWeight="800"
-        mb={{ base: "1.5rem", md: 0 }}
-        mr={{ md: "1rem" }}
-      >
-        Never Miss a New Post.
-      </Heading> */}
 
-      <Flex
-        // ml={{ md: "1.5rem" }}
-        // border="1px solid red"
-        align="end"
-        justify="end"
-        w={{ base: "100%" }}
-      >
+      <Flex align="end" justify="end" w={{ base: "100%" }}>
         <Input
           borderBottom="2px solid"
           borderColor="brand.lightgreen"
@@ -163,7 +144,6 @@ const SubscribeForm = ({ ...props }) => {
         <Button
           isDisabled={disabled}
           isLoading={loading}
-          // w="140px"
           w="100%"
           maxW="120px"
           borderRadius="2px"
