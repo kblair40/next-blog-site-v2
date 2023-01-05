@@ -7,6 +7,8 @@ import NeverMissAPost from "src/components/NeverMissAPost";
 import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
+const envName = process.env.NODE_ENV;
+console.log("\n\nCURRENT ENVIRONMENT:", envName, "\n\n");
 
 const SubscribeForm = ({ ...props }) => {
   const [email, setEmail] = useState("");
@@ -38,17 +40,31 @@ const SubscribeForm = ({ ...props }) => {
     try {
       const now = new Date().getTime();
 
+      let url =
+        envName === "development"
+          ? "http://localhost:1337/api/subscribers"
+          : "https://money-and-other-things.herokuapp.com/api/subscribers";
+
+      let authHeader =
+        envName === "development"
+          ? {
+              Authorization:
+                "bearer " +
+                " 7529b2cc2c144b1d036a66c7d729f10b12daae64ec3ddcd1f4309b9ab041d38bc85ed236bdb8c168f2be64658ce378c7a533fa9373f20cbb2d67ae34eba2769a108cfac192ee8c65b7d64d8a59b068b5449fd12e5d0dbae3e780385bbad982cbc0008b725d8a8c8f2d7e6a72ea9e534e43d72688364e9e203a71b2d53dc014b9",
+            }
+          : { Authorization: `bearer ${STRAPI_API_TOKEN}` };
+
       const response = await axios({
         method: "post",
         // url: "https://money-and-other-things.herokuapp.com/api/subscribers",
-        url: "http://localhost:1337/api/subscribers",
+        // url: "http://localhost:1337/api/subscribers",
+        url,
         data: {
           // toLowerCase ALWAYS.  Otherwise unsubscribe may not find the email address
           data: { email: email.toLowerCase(), subscribed_timestamp: now },
         },
-        headers: {
-          Authorization: `bearer ${STRAPI_API_TOKEN}`,
-        },
+        // headers: { Authorization: `bearer ${STRAPI_API_TOKEN}` },
+        headers: authHeader,
       });
       // console.log("\nSUBSCRIBE RESPONSE:", response);
 
