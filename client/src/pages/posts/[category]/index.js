@@ -25,7 +25,7 @@ const Posts = ({ articles }) => {
       w="100%"
       // pb="2rem"
       py="2rem"
-      border="1px solid green"
+      // border="1px solid green"
       position="relative"
       h={`calc(100vh - 80px)`}
     >
@@ -73,7 +73,7 @@ const ArticleList = ({ articles, asPath }) => {
           position="absolute"
           justify="center"
           px={{ base: "1rem", sm: "2rem" }}
-          border="1px solid red"
+          // border="1px solid red"
         >
           {!!articles && !!articles.length ? (
             <Stack
