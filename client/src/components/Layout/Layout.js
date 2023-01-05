@@ -44,7 +44,7 @@ export const Footer = () => {
   return (
     <Center minH="71px" h="71px" pt="1rem">
       <Text fontSize="sm" textAlign="center">
-        &copy; 2022 moneyandotherthings.com
+        &copy; {new Date().getFullYear()} moneyandotherthings.com
       </Text>
     </Center>
   );
