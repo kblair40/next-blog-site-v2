@@ -9,8 +9,12 @@ import { createRoot } from "react-dom/client";
 
 import { fetchAPI } from "src/utils/api";
 import Loading from "src/components/Loading";
-import ImageCarousel from "src/components/ImageCarousel";
+// import ImageCarousel from "src/components/ImageCarousel";
 
+const ImageCarousel = dynamic(() => import("src/components/ImageCarousel"), {
+  suspense: true,
+  ssr: false,
+});
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
 });
@@ -43,7 +47,11 @@ const Preview = ({ article }) => {
 
     if (!textAdded.current) {
       let root = createRoot(carouselContainer);
-      root.render(<ImageCarousel imageUrls={carousel_images} />);
+      root.render(
+        <Suspense fallback={<Box h="300px" />}>
+          <ImageCarousel imageUrls={carousel_images} />
+        </Suspense>
+      );
       textAdded.current = true;
     }
   }, [article]);

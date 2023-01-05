@@ -58,32 +58,33 @@ const ImageCarousel = ({ imageUrls }) => {
 
   if (!images || !images.length) return null;
   return (
-    <AnimatePresence initial={false} custom={direction}>
-      <motion.div
-        key={slide}
-        custom={direction}
-        variants={variants}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        transition={{
-          x: {
-            type: "tween",
-            duration: 0.3,
-            ease: "linear",
-          },
-          opacity: { duration: 0.2 },
-        }}
-      >
-        <Box position="absolute" w="100%" h="300px">
-          <Image src={images[imageIndex]} style={{ objectFit: "cover" }} fill />
-        </Box>
-      </motion.div>
-
+    <>
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.div
+          key={slide}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { duration: 0.2 },
+            opacity: { duration: 0.2 },
+          }}
+          layout
+        >
+          <Box position="absolute" w="100%" h="300px">
+            <Image
+              src={images[imageIndex]}
+              style={{ objectFit: "cover" }}
+              fill
+            />
+          </Box>
+        </motion.div>
+      </AnimatePresence>
       <IconButton
-        // zIndex={10000}
-        bg="rgba(255,255,255,0.4)"
-        // bg="brand.darkgreen"
+        id="my-button"
+        bg="rgba(255,255,255,0.3)"
         onClick={() => changeSlide(-1)}
         position="absolute"
         top="50%"
@@ -93,15 +94,12 @@ const ImageCarousel = ({ imageUrls }) => {
         display="flex"
         justifyContent="center"
         p="8px"
-        // icon={<ChevronDownIcon transform="rotate(90deg)" boxSize="24px" />}
         icon={getArrow("left")}
-        // borderRadius="50%"
-        rounded="full"
+        borderRadius="50%"
       />
+
       <IconButton
-        // zIndex={10000}
-        bg="rgba(255,255,255,0.4)"
-        // bg="brand.darkgreen"
+        bg="rgba(255,255,255,0.3)"
         onClick={() => changeSlide(1)}
         position="absolute"
         top="50%"
@@ -111,11 +109,10 @@ const ImageCarousel = ({ imageUrls }) => {
         display="flex"
         justifyContent="center"
         p="8px"
-        // icon={<ChevronDownIcon transform="rotate(-90deg)" boxSize="24px" />}
         icon={getArrow("right")}
         borderRadius="50%"
       />
-    </AnimatePresence>
+    </>
   );
 };
 
