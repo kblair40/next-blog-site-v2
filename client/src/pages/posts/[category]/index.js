@@ -57,7 +57,6 @@ const ArticleList = ({ articles, asPath }) => {
     // console.log("A/B:", { a, b });
     const { createdAt: aCreatedAt } = a.attributes;
     const { createdAt: bCreatedAt } = b.attributes;
-    // console.log("CREATED STAMPS:", { aCreatedAt, bCreatedAt });
     return dayjs(aCreatedAt).isBefore(dayjs(bCreatedAt)) ? 1 : -1;
   };
 
@@ -71,7 +70,6 @@ const ArticleList = ({ articles, asPath }) => {
       >
         <Flex
           w="100%"
-          // h="100%"
           position="absolute"
           justify="center"
           px={{ base: "1rem", sm: "2rem" }}
