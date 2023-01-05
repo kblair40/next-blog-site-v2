@@ -1,14 +1,15 @@
-import { Box } from "@chakra-ui/react";
+// import { Box } from "@chakra-ui/react";
 
-import ImageCarousel from "./ImageCarousel";
+// import ImageCarousel from "./ImageCarousel";
 
-const CarouselWrapper = ({ imageUrls }) => {
-  return (
-    // <Box position="relative" h="500px">
-    <Box position="relative" h="500px">
-      <ImageCarousel imageUrls={imageUrls} />
-    </Box>
-  );
-};
+// const CarouselWrapper = ({ imageUrls }) => {
+//   return (
+//     // <Box position="relative" h="100%" border="1px solid blue">
+//     <ImageCarousel imageUrls={imageUrls} />
+//     // </Box>
+//   );
+// };
 
-export default CarouselWrapper;
+// export default CarouselWrapper;
+
+export { default } from "./ImageCarousel";

@@ -39,6 +39,7 @@ const Preview = ({ article }) => {
     }
 
     let carouselContainer = document.getElementById("imageCarousel");
+    carouselContainer.style.paddingTop = "1rem";
 
     if (!textAdded.current) {
       let root = createRoot(carouselContainer);

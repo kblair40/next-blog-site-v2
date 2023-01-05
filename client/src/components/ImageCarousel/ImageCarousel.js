@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Box, Button, IconButton } from "@chakra-ui/react";
+import { Box, Flex, IconButton } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { wrap } from "popmotion";
@@ -43,6 +43,7 @@ const ImageCarousel = ({ imageUrls }) => {
     return (
       <ChevronDownIcon
         transform={`rotate(${dir === "left" ? "90deg" : "-90deg"})`}
+        boxSize="16px"
       />
     );
   }, []);
@@ -56,27 +57,19 @@ const ImageCarousel = ({ imageUrls }) => {
     }
   }, [imageUrls]);
 
-  // <IconButton
-  //       onClick={() => changeSlide(-1)}
-  //       left={0}
-  //       icon={getArrow("left")}
-  //     />
-
   const sharedIconStyles = {
-    bg: "rgba(255,255,255,0.3)",
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
-    boxSize: "32px",
-    display: "flex",
-    justifyContent: "center",
-    p: "8px",
+    // zIndex: 100000,
+    boxSize: "36px",
     borderRadius: "50%",
+    transition: "background-color 0.2s ease-in-out",
+    bg: "white",
+    _hover: { bg: "#eee" },
+    _active: { bg: "#e4e4e4" },
   };
 
   if (!images || !images.length) return null;
   return (
-    <Box>
+    <Box position="relative" h="500px">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={slide}
@@ -89,31 +82,52 @@ const ImageCarousel = ({ imageUrls }) => {
             x: { duration: 0.2 },
             opacity: { duration: 0.2 },
           }}
-          layout
         >
-          <Box position="absolute" w="100%" h="500px">
+          <Box
+            position="absolute"
+            w="100%"
+            // maxW="600px"
+            // h="auto"
+            // border="1px solid blue"
+          >
             <Image
               src={images[imageIndex]}
-              style={{ objectFit: "cover" }}
-              fill
+              width={700}
+              height={500}
+              style={{
+                objectFit: "contain",
+                width: "100%",
+                // maxWidth: "100%",
+                // maxWidth: "600px",
+                height: "auto",
+                maxHeight: "500px",
+              }}
             />
           </Box>
         </motion.div>
       </AnimatePresence>
 
-      <IconButton
-        left={0}
-        onClick={() => changeSlide(-1)}
-        icon={getArrow("left")}
-        {...sharedIconStyles}
-      />
+      <Flex
+        justify="space-between"
+        position="absolute"
+        w="100%"
+        top="50%"
+        transform="translateY(-50%)"
+      >
+        <IconButton
+          onClick={() => changeSlide(-1)}
+          icon={getArrow("left")}
+          pr="2px"
+          {...sharedIconStyles}
+        />
 
-      <IconButton
-        right={0}
-        onClick={() => changeSlide(1)}
-        icon={getArrow("right")}
-        {...sharedIconStyles}
-      />
+        <IconButton
+          pl="2px"
+          onClick={() => changeSlide(1)}
+          icon={getArrow("right")}
+          {...sharedIconStyles}
+        />
+      </Flex>
     </Box>
   );
 };
