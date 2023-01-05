@@ -67,19 +67,13 @@ const ImageCarousel = ({ imageUrls }) => {
   }, [slide]);
 
   const sharedIconStyles = {
-    // variant: "unstyled",
     boxSize: { base: "32px", md: "40px" },
     size: { base: "sm", sm: "md" },
-    borderRadius: "50%",
     rounded: "full",
     transition: "background-color 0.2s ease-in-out",
     bg: "brand.lightgreen",
     _hover: { bg: "brand.darkgreen" },
     _active: { bg: "brand.darkgreen" },
-    // _active: { bg: "#e4e4e4" },
-    // display: "flex",
-    // justifyContent: "center",
-    // alignItems: "center",
   };
 
   const imageObjectFit = useBreakpointValue(
@@ -91,15 +85,7 @@ const ImageCarousel = ({ imageUrls }) => {
 
   if (!images || !images.length) return null;
   return (
-    <Box
-      position="relative"
-      // h={{ base: "400px", sm: "500px" }}
-      h={imageHeight}
-      // border="1px solid blue"
-      w="100%"
-      maxW="700px"
-      m="0 auto"
-    >
+    <Box position="relative" h={imageHeight} w="100%" maxW="700px" m="0 auto">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={slide}
@@ -114,24 +100,17 @@ const ImageCarousel = ({ imageUrls }) => {
             opacity: { duration: 0.2 },
           }}
         >
-          <Box
-            position="absolute"
-            w="100%"
-            // border="1px solid red"
-            //
-          >
+          <Box position="absolute" w="100%">
             <Image
               src={images[imageIndex]}
               width={700}
               height={parseInt(imageHeight)}
-              // height={500}
               style={{
                 objectFit: imageObjectFit,
                 width: "100%",
                 height: "auto",
                 maxHeight: "500px",
                 minHeight: "400px",
-                // border: "1px solid green",
               }}
               // fill
             />
@@ -143,18 +122,16 @@ const ImageCarousel = ({ imageUrls }) => {
         justify="space-between"
         position="absolute"
         w="100%"
-        top="50%"
+        top={{ base: "calc(50% + 20px)", sm: "50%" }}
         transform="translateY(-50%)"
       >
         <IconButton
           onClick={() => changeSlide(-1)}
           icon={getArrow("left")}
-          // pr="8px"
           {...sharedIconStyles}
         />
 
         <IconButton
-          // pl="2px"
           onClick={() => changeSlide(1)}
           icon={getArrow("right")}
           {...sharedIconStyles}
