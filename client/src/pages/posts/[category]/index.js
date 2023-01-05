@@ -12,28 +12,47 @@ const Posts = ({ articles }) => {
   const { asPath } = useRouter();
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key={asPath}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        layout
-      >
-        <Box
-          // position="absolute"
-          // top={0}
-          w="100%"
-          pb="2rem"
-        >
-          <ArticleList articles={articles} />
-        </Box>
-      </motion.div>
-    </AnimatePresence>
+    // <AnimatePresence>
+    //   <motion.div
+    //     key={asPath}
+    //     initial={{ opacity: 0 }}
+    //     animate={{ opacity: 1 }}
+    //     exit={{ opacity: 0 }}
+    //     layout
+    //   >
+    <Box
+      // pt="2rem"
+      w="100%"
+      // pb="2rem"
+      py="2rem"
+      border="1px solid green"
+      position="relative"
+      h={`calc(100vh - 80px)`}
+    >
+      <ArticleList articles={articles} asPath={asPath} />
+    </Box>
+    //   </motion.div>
+    // </AnimatePresence>
   );
+
+  // return (
+  //   <AnimatePresence>
+  //     <motion.div
+  //       key={asPath}
+  //       initial={{ opacity: 0 }}
+  //       animate={{ opacity: 1 }}
+  //       exit={{ opacity: 0 }}
+  //       layout
+  //     >
+  //       <Box w="100%" pb="2rem">
+  //         <ArticleList articles={articles} />
+  //       </Box>
+  //     </motion.div>
+  //   </AnimatePresence>
+  // );
 };
 
-const ArticleList = ({ articles }) => {
+const ArticleList = ({ articles, asPath }) => {
   const sortArticles = (a, b) => {
     // console.log("A/B:", { a, b });
     const { createdAt: aCreatedAt } = a.attributes;
@@ -42,26 +61,73 @@ const ArticleList = ({ articles }) => {
     return dayjs(aCreatedAt).isBefore(dayjs(bCreatedAt)) ? 1 : -1;
   };
 
-  if (!!articles && !!articles.length) {
-    return (
-      <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
-        <Stack mt="2rem" spacing="1.5rem">
-          {articles && articles.length
-            ? articles.sort(sortArticles).map((article, i) => {
-                return <Card article={article} key={i} />;
-              })
-            : null}
-        </Stack>
-      </Flex>
-    );
-  } else {
-    return (
-      <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
-        <PiggyBank />
-      </Flex>
-    );
-  }
+  return (
+    <AnimatePresence>
+      <motion.div
+        key={asPath}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Flex
+          w="100%"
+          // h="100%"
+          position="absolute"
+          justify="center"
+          px={{ base: "1rem", sm: "2rem" }}
+          border="1px solid red"
+        >
+          {!!articles && !!articles.length ? (
+            <Stack
+              w="100%"
+              // position="absolute"
+              // mt="2rem"
+              spacing="1.5rem"
+            >
+              {articles && articles.length
+                ? articles.sort(sortArticles).map((article, i) => {
+                    return <Card article={article} key={i} />;
+                  })
+                : null}
+            </Stack>
+          ) : (
+            <PiggyBank />
+          )}
+        </Flex>
+      </motion.div>
+    </AnimatePresence>
+  );
 };
+
+// const ArticleList = ({ articles }) => {
+//   const sortArticles = (a, b) => {
+//     // console.log("A/B:", { a, b });
+//     const { createdAt: aCreatedAt } = a.attributes;
+//     const { createdAt: bCreatedAt } = b.attributes;
+//     // console.log("CREATED STAMPS:", { aCreatedAt, bCreatedAt });
+//     return dayjs(aCreatedAt).isBefore(dayjs(bCreatedAt)) ? 1 : -1;
+//   };
+
+//   if (!!articles && !!articles.length) {
+//     return (
+//       <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
+//         <Stack mt="2rem" spacing="1.5rem">
+//           {articles && articles.length
+//             ? articles.sort(sortArticles).map((article, i) => {
+//                 return <Card article={article} key={i} />;
+//               })
+//             : null}
+//         </Stack>
+//       </Flex>
+//     );
+//   } else {
+//     return (
+//       <Flex justify="center" px={{ base: "1rem", sm: "2rem" }}>
+//         <PiggyBank />
+//       </Flex>
+//     );
+//   }
+// };
 
 export async function getStaticProps({ params }) {
   const categoriesRes = await fetchAPI("/categories", {
