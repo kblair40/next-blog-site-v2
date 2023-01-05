@@ -10,9 +10,7 @@ import {
   Collapse,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 
-import Loading from "src/components/Loading";
 import Card from "src/components/Card";
 
 const AdditionalPosts = ({ articles }) => {

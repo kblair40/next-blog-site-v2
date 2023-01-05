@@ -19,7 +19,7 @@ const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
 });
 
-const Card = ({ article, isPreview }) => {
+const Card = ({ article, isPreview, location = "" }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [articleData, setArticleData] = useState();
 
