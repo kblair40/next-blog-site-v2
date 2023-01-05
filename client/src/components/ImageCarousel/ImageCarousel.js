@@ -56,6 +56,24 @@ const ImageCarousel = ({ imageUrls }) => {
     }
   }, [imageUrls]);
 
+  // <IconButton
+  //       onClick={() => changeSlide(-1)}
+  //       left={0}
+  //       icon={getArrow("left")}
+  //     />
+
+  const sharedIconStyles = {
+    bg: "rgba(255,255,255,0.3)",
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    boxSize: "32px",
+    display: "flex",
+    justifyContent: "center",
+    p: "8px",
+    borderRadius: "50%",
+  };
+
   if (!images || !images.length) return null;
   return (
     <>
@@ -82,35 +100,19 @@ const ImageCarousel = ({ imageUrls }) => {
           </Box>
         </motion.div>
       </AnimatePresence>
+
       <IconButton
-        id="my-button"
-        bg="rgba(255,255,255,0.3)"
-        onClick={() => changeSlide(-1)}
-        position="absolute"
-        top="50%"
-        transform="translateY(-50%)"
         left={0}
-        boxSize="32px"
-        display="flex"
-        justifyContent="center"
-        p="8px"
+        onClick={() => changeSlide(-1)}
         icon={getArrow("left")}
-        borderRadius="50%"
+        {...sharedIconStyles}
       />
 
       <IconButton
-        bg="rgba(255,255,255,0.3)"
-        onClick={() => changeSlide(1)}
-        position="absolute"
-        top="50%"
-        transform="translateY(-50%)"
         right={0}
-        boxSize="32px"
-        display="flex"
-        justifyContent="center"
-        p="8px"
+        onClick={() => changeSlide(1)}
         icon={getArrow("right")}
-        borderRadius="50%"
+        {...sharedIconStyles}
       />
     </>
   );
