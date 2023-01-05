@@ -33,7 +33,7 @@ const FeaturedPost = ({ featuredPost }) => {
           alt="post image"
           src={featuredPost?.attributes.image_url}
           placeholder="blue"
-          blurDataURL={rgbDataURL(237, 181, 6)}
+          blurDataURL={rgbDataURL(255, 249, 243)}
           style={{ objectFit: "cover" }}
           sizes="(min-width: 992px) 900px,
           (min-width: 768px) 700px,
