@@ -39,7 +39,7 @@ const NeverMissAPost = () => {
 
   const handleObserve = (entries) => {
     const [entry] = entries;
-    console.log("OBSERVE ENTRY:", entry);
+    // console.log("OBSERVE ENTRY:", entry);
     setInView(entry.isIntersecting);
   };
 
