@@ -40,7 +40,8 @@ const SubscribeForm = ({ ...props }) => {
 
       const response = await axios({
         method: "post",
-        url: "https://money-and-other-things.herokuapp.com/api/subscribers",
+        // url: "https://money-and-other-things.herokuapp.com/api/subscribers",
+        url: "http://localhost:1337/api/subscribers",
         data: {
           // toLowerCase ALWAYS.  Otherwise unsubscribe may not find the email address
           data: { email: email.toLowerCase(), subscribed_timestamp: now },
