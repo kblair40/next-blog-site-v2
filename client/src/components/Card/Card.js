@@ -118,7 +118,7 @@ const Card = ({ article, isPreview, location = "" }) => {
           <Text display="inline" mx="6px">
             &bull;
           </Text>
-          <Text display="inline">5 Min</Text>
+          <Text display="inline">{article.attributes.minutes_to_read} Min</Text>
         </Box>
 
         <Link
