@@ -57,16 +57,16 @@ export async function getStaticProps() {
     }),
   ]);
 
-  if (articles && articles.data) {
-    // TODO: REMOVE THIS.  ONLY MEANT TO SIMULATE HAVING 4 'recent' posts
-    articles.data = [...articles.data, ...articles.data];
-  }
+  // if (articles && articles.data) {
+  //   // TODO: REMOVE THIS.  ONLY MEANT TO SIMULATE HAVING 4 'recent' posts
+  //   articles.data = [...articles.data, ...articles.data];
+  // }
 
   return {
     props: {
       // homepage: homepageRes?.data || null,
       homepage: home?.data || null,
-      articles: articles?.data?.slice(0, 4) || null,
+      articles: articles?.data?.slice(0, 5) || null,
     },
     revalidate: 1,
   };

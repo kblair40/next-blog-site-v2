@@ -84,12 +84,7 @@ const HomePage = ({ homepage, articles }) => {
           },
         }}
       >
-        <GridItem
-          area="feat-p"
-          maxW="900px"
-          // maxW={{ base: "700px", lg: "900px" }}
-          m="0 auto"
-        >
+        <GridItem area="feat-p" maxW="900px" m="0 auto">
           <FeaturedPost featuredPost={featuredPost} />
         </GridItem>
 
