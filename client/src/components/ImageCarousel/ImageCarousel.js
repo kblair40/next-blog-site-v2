@@ -89,7 +89,7 @@ const ImageCarousel = ({ imageUrls }) => {
         position="absolute"
         top="50%"
         transform="translateY(-50%)"
-        left={"-8px"}
+        left={0}
         boxSize="32px"
         display="flex"
         justifyContent="center"
@@ -104,7 +104,7 @@ const ImageCarousel = ({ imageUrls }) => {
         position="absolute"
         top="50%"
         transform="translateY(-50%)"
-        right={"-8px"}
+        right={0}
         boxSize="32px"
         display="flex"
         justifyContent="center"
