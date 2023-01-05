@@ -46,7 +46,9 @@ const ImageCarousel = ({ imageUrls }) => {
     return (
       <ChevronDownIcon
         transform={`rotate(${dir === "left" ? "90deg" : "-90deg"})`}
-        boxSize="18px"
+        boxSize={{ base: "15px", sm: "18px" }}
+        fill="white"
+        offset={dir === "left" ? { right: "2px" } : { left: "2px" }}
       />
     );
   }, []);
@@ -66,30 +68,38 @@ const ImageCarousel = ({ imageUrls }) => {
   }, [slide]);
 
   const sharedIconStyles = {
-    // zIndex: 100000,
-    // boxSize: "32px",
-    // borderRadius: "50%",
+    // variant: "unstyled",
+    boxSize: { base: "32px", md: "40px" },
+    size: { base: "sm", sm: "md" },
+    borderRadius: "50%",
     rounded: "full",
     transition: "background-color 0.2s ease-in-out",
-    bg: "white",
-    _hover: { bg: "gray.50" },
-    _active: { bg: "#e4e4e4" },
+    bg: "brand.lightgreen",
+    _hover: { bg: "brand.darkgreen" },
+    _active: { bg: "brand.darkgreen" },
+    // _active: { bg: "#e4e4e4" },
+    // display: "flex",
+    // justifyContent: "center",
+    // alignItems: "center",
   };
 
   const imageObjectFit = useBreakpointValue(
-    { base: "cover", md: "contain" },
+    { base: "cover", sm: "contain" },
     { fallback: "base", ssr: true }
   );
+
+  const imageHeight = useBreakpointValue({ base: "400px", sm: "500px" });
 
   if (!images || !images.length) return null;
   return (
     <Box
       position="relative"
-      h="500px"
-      // h="fit-content"
-      // h="auto"
-      maxH="max-content"
-      border="1px solid blue"
+      // h={{ base: "400px", sm: "500px" }}
+      h={imageHeight}
+      // border="1px solid blue"
+      w="100%"
+      maxW="700px"
+      m="0 auto"
     >
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
@@ -101,33 +111,28 @@ const ImageCarousel = ({ imageUrls }) => {
           exit="exit"
           transition={{
             x: { duration: 0.2 },
+            y: { duration: 0.2 },
             opacity: { duration: 0.2 },
           }}
         >
           <Box
             position="absolute"
-            // top="50%"
-            // transform="translateY(-50%)"
             w="100%"
-            // maxW="600px"
-            // h="auto"
-            // h="100%"
-            border="1px solid red"
+            // border="1px solid red"
+            //
           >
             <Image
               src={images[imageIndex]}
               width={700}
-              height={500}
+              height={parseInt(imageHeight)}
+              // height={500}
               style={{
-                // objectFit: "contain",
-                objectFit: "cover",
+                objectFit: imageObjectFit,
                 width: "100%",
-                // maxWidth: "100%",
-                // maxWidth: "600px",
                 height: "auto",
-                // height: "100%",
                 maxHeight: "500px",
-                border: "1px solid green",
+                minHeight: "400px",
+                // border: "1px solid green",
               }}
               // fill
             />
@@ -145,12 +150,12 @@ const ImageCarousel = ({ imageUrls }) => {
         <IconButton
           onClick={() => changeSlide(-1)}
           icon={getArrow("left")}
-          pr="2px"
+          // pr="8px"
           {...sharedIconStyles}
         />
 
         <IconButton
-          pl="2px"
+          // pl="2px"
           onClick={() => changeSlide(1)}
           icon={getArrow("right")}
           {...sharedIconStyles}
