@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 import Card from "src/components/Card";
 
-const AdditionalPosts = ({ articles }) => {
+const AdditionalPosts = ({ articles, featuredPost }) => {
   const [expanded, setExpanded] = useState(false);
 
   const router = useRouter();
@@ -22,25 +22,24 @@ const AdditionalPosts = ({ articles }) => {
     router.push("/posts/love");
   };
 
+  let articlesToShow = articles.slice(0, 4);
+  if (featuredPost) {
+    articles = articles.filter((article) => article.id !== featuredPost.id);
+    articlesToShow = articles.slice(0, 4);
+  }
+
   return (
     <Flex
       w="100%"
       maxW="100%"
       direction={{ base: "column", md: "row" }}
-      // mb="2rem"
       justify="space-between"
-      // border="1px solid green"
-      // w="auto"
-      // pb="1rem"
     >
       <Flex
         justify="center"
         w="100%" // new
         maxW="100%" // new
-        // flex={{ md: 1 }} // new removals
-        // py="1rem" // new removals
       >
-        {/* <Box w="100%" maxW={{ md: "700px" }}> */}
         <Box w="100%">
           <Text mb="2rem" fontSize="2xl" letterSpacing={"5px"}>
             RECENT POSTS

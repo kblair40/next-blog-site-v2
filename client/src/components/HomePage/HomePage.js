@@ -102,7 +102,7 @@ const HomePage = ({ homepage, articles }) => {
 
         <GridItem area="recent">
           <React.Suspense fallback={<Loading />}>
-            <AdditionalPosts articles={articles} />
+            <AdditionalPosts articles={articles} featuredPost={featuredPost} />
           </React.Suspense>
         </GridItem>
 

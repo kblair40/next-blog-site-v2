@@ -64,7 +64,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      // homepage: homepageRes?.data || null,
       homepage: home?.data || null,
       articles: articles?.data?.slice(0, 5) || null,
     },
