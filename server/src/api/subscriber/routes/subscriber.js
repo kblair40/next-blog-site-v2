@@ -7,9 +7,9 @@
 const { createCoreRouter } = require("@strapi/strapi").factories;
 
 module.exports = createCoreRouter("api::subscriber.subscriber", {
-  config: {},
-  //   create: {
-  //     auth: false,
-  //   },
-  // },
+  config: {
+    create: {
+      auth: false,
+    },
+  },
 });
