@@ -31,6 +31,7 @@ const AdditionalPosts = ({ articles }) => {
       justify="space-between"
       // border="1px solid green"
       // w="auto"
+      // pb="1rem"
     >
       <Flex
         justify="center"
@@ -52,13 +53,13 @@ const AdditionalPosts = ({ articles }) => {
           ) : (
             <Stack spacing="1.5rem" align="center">
               {articles.slice(0, 2).map((article, i) => {
-                return <Card key={i} article={article} />;
+                return <Card key={i} article={article} location="home" />;
               })}
 
               <Collapse in={expanded}>
                 <Stack spacing="1.5rem" align="center">
                   {articles.slice(2).map((article, i) => {
-                    return <Card key={i} article={article} />;
+                    return <Card key={i} article={article} location="home" />;
                   })}
                 </Stack>
               </Collapse>

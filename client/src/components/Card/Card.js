@@ -89,17 +89,29 @@ const Card = ({ article, isPreview, location = "" }) => {
         h="100%"
         w={{ base: "100%" }}
         direction="column"
-        p={{
-          base: "20px 12px 17px",
-          sm: "28px 16px 25px 12px",
-          md: "28px 16px 25px 20px",
-          lg: "28px 24px 25px 20px",
-        }}
+        p={
+          location !== "home"
+            ? {
+                base: "20px 12px 17px",
+                sm: "28px 16px 25px 12px",
+                md: "28px 16px 25px 20px",
+                lg: "28px 24px 25px 20px",
+              }
+            : {
+                base: "20px 12px 17px",
+                sm: "24px 16px 25px 12px",
+                md: "20px 16px 25px 20px",
+                lg: "28px 24px 25px 20px",
+              }
+        }
         overflowY="hidden" // just in case
         bg="white" // new
-        // border="1px solid red"
       >
-        <Box display="inline" fontSize="xs" mb="1rem">
+        <Box
+          display="inline"
+          fontSize="xs"
+          mb={location !== "home" ? "1rem" : ".5rem"}
+        >
           <Text display="inline" textTransform="uppercase">
             {dayjs(article.attributes.createdAt).format("MMM DD, YYYY")}
           </Text>
@@ -117,7 +129,7 @@ const Card = ({ article, isPreview, location = "" }) => {
           <Flex direction="column" role="group" cursor="pointer">
             <Text
               fontWeight="700"
-              mb="12px"
+              mb={location !== "home" ? "12px" : ".5rem"}
               fontSize={{ base: "22px", sm: "24px", md: "28px" }}
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
