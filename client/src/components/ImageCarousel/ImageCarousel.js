@@ -33,7 +33,6 @@ const variants = {
 // https://www.musebecodes.dev/blog/cloudinaryimagecarousel
 const ImageCarousel = ({ imageUrls }) => {
   const [images, setImages] = useState([]);
-  const [imageEls, setImageEls] = useState();
   const [[slide, direction], setSlide] = useState([0, 0]);
 
   const imageIndex = wrap(0, images.length, slide);
