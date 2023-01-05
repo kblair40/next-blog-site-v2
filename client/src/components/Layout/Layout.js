@@ -6,44 +6,50 @@ import Navbar from "src/components/Navbar";
 
 const layout = ({ children, categories }) => {
   return (
-    <Flex
-      overflowX="hidden"
-      h="100vh"
-      // overflowY="auto"
-      // h="100%"
-      // minH="100vh"
-      // border="1px solid green"
-      id="layout"
-      direction="column"
-      justifyContent="space-between"
-      bg="brand.creme" // new
-      pt="80px"
-    >
-      <Flex direction="column">
-        <Box display={{ base: "none", md: "block" }}>
-          <Navbar categories={categories} />
-        </Box>
+    <Box bg="brand.creme">
+      <Box position="relative" h="80px" display={{ base: "none", md: "block" }}>
+        <Navbar categories={categories} />
+      </Box>
 
-        {/* hides self when md breakpoint is hit */}
-        <Box display={{ base: "block", md: "none" }}>
-          <MobileNav categories={categories} />
-        </Box>
+      {/* hides self when md breakpoint is hit */}
+      <Box position="relative" h="56px" display={{ base: "block", md: "none" }}>
+        <MobileNav categories={categories} />
+      </Box>
 
-        <Box
+      <Flex
+        overflowX="hidden"
+        // overflowY="auto"
+        // h="100%"
+        minH={{ base: "100vh - 56px", md: "100vh - 80px" }}
+        // border="2px solid green"
+        id="layout"
+        direction="column"
+        justifyContent="space-between"
+        bg="brand.creme" // new
+        position="relative"
+      >
+        <Flex
+          direction="column"
+          minH={{ base: "127x", md: "calc(100vh - 151px)" }}
+          border="1px solid red"
           // h="100%"
-          // h="calc(100% - 80px)"
-          position="relative"
-          bg="brand.creme"
-          // border="1px solid red"
-          // h="calc(!00% - 55px)"
-          flex={1}
         >
-          {children}
-        </Box>
-      </Flex>
+          <Box
+            // h="100%"
+            // position="relative"
+            bg="brand.creme"
+            border="1px solid blue"
+            // minH={"calc(100vh - 151px)"}
+            // maxH={"calc(100vh - 151px)"}
+            // flex={1}
+          >
+            {children}
+          </Box>
+        </Flex>
 
-      <Footer />
-    </Flex>
+        <Footer />
+      </Flex>
+    </Box>
   );
 
   // return (

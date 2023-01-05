@@ -12,48 +12,33 @@ const Posts = ({ articles }) => {
   const { asPath } = useRouter();
 
   return (
-    // <AnimatePresence>
-    //   <motion.div
-    //     key={asPath}
-    //     initial={{ opacity: 0 }}
-    //     animate={{ opacity: 1 }}
-    //     exit={{ opacity: 0 }}
-    //     layout
-    //   >
-    <Box
-      // pt="2rem"
-      w="100%"
-      border="1px solid green"
-      // h="100%"
-      // position="relative"
-      // minH="max-content"
-      // h={`calc(100vh - 151px)`} //nav-80px + footer-71px
-      // overflowY="auto"
-    >
-      <ArticleList articles={articles} asPath={asPath} />
-    </Box>
-    //   </motion.div>
-    // </AnimatePresence>
+    <AnimatePresence>
+      <motion.div
+        key={asPath}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+        style={{ paddingTop: "1.5rem" }}
+        layout
+      >
+        <Box
+          w="100%"
+          // h="100%"
+          // border="1px solid green"
+          // p="2rem 0 1rem"
+          // position="absolute"
+          // position="relative"
+          // h="max-content"
+          //
+        >
+          <ArticleList articles={articles} />
+        </Box>
+      </motion.div>
+    </AnimatePresence>
   );
-
-  // return (
-  //   <AnimatePresence>
-  //     <motion.div
-  //       key={asPath}
-  //       initial={{ opacity: 0 }}
-  //       animate={{ opacity: 1 }}
-  //       exit={{ opacity: 0 }}
-  //       layout
-  //     >
-  //       <Box w="100%" pb="2rem">
-  //         <ArticleList articles={articles} />
-  //       </Box>
-  //     </motion.div>
-  //   </AnimatePresence>
-  // );
 };
 
-const ArticleList = ({ articles, asPath }) => {
+const ArticleList = ({ articles }) => {
   const sortArticles = (a, b) => {
     // console.log("A/B:", { a, b });
     const { createdAt: aCreatedAt } = a.attributes;
@@ -62,50 +47,45 @@ const ArticleList = ({ articles, asPath }) => {
   };
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key={asPath}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        style={{
-          // border: "1px solid blue",
-          // height: "100%",
-          position: "relative",
-          // minHeight: "calc(100vh - 151px)",
-          // minHeight: "calc(100vh - 80px)",
-        }}
-      >
-        <Flex
-          h="100%"
+    <Flex
+      w="100%"
+      justify="center"
+      // h="100%"
+      px={{ base: "1rem", sm: "2rem" }}
+      // border="1px solid red"
+      // position="absolute"
+      // top="26px"
+      // border="1px solid blue"
+      // p="2rem 0 1rem"
+      // h={{}}
+    >
+      {!!articles && !!articles.length ? (
+        <Stack
           w="100%"
-          position="absolute"
-          justify="center"
-          px={{ base: "1rem", sm: "2rem" }}
-          border="1px solid red"
-          minHeight="calc(100vh - 151px)"
-          maxH="max-content"
+          // position="absolute"
+          // top="32px"
+          // px={{ base: "1rem", sm: "2rem" }}
+          // mt="2rem"
+          // position="absolute"
+          spacing="1.5rem"
+          // border="1px solid orange"
+          // px=""
+          // p="2rem 0 8rem"
+          // pb="3rem"
         >
-          {!!articles && !!articles.length ? (
-            <Stack
-              w="100%"
-              // position="absolute"
-              // mt="2rem"
-              spacing="1.5rem"
-              border="1px solid orange"
-            >
-              {articles && articles.length
-                ? articles.sort(sortArticles).map((article, i) => {
-                    return <Card article={article} key={i} />;
-                  })
-                : null}
-            </Stack>
-          ) : (
-            <PiggyBank />
-          )}
-        </Flex>
-      </motion.div>
-    </AnimatePresence>
+          {articles && articles.length
+            ? articles
+                .sort(sortArticles)
+                .concat(articles)
+                .map((article, i) => {
+                  return <Card article={article} key={i} />;
+                })
+            : null}
+        </Stack>
+      ) : (
+        <PiggyBank />
+      )}
+    </Flex>
   );
 };
 
