@@ -17,21 +17,39 @@ module.exports = {
     console.log("\nAFTER CREATE EVENT RESULT lifecycle:", result);
     // const email = result.email;
     try {
-      await strapi.plugins["email"].services.email.sendTemplatedEmail(
+      await strapi.plugins["email"].services.email.send(
+        // d-dd3f4379543545cebbd28771344a978a
         {
           to: result.email,
           from: "moneyandotherthings@gmail.com",
+          template_id: "d-dd3f4379543545cebbd28771344a978a",
           // subject: "Thanks for subscribing!",
           // text: "Thanks for subscribing!",
           // html: "Thanks for subscribing!",
-        },
+        }
 
-        emailTemplate
+        // emailTemplate
       );
       console.log("EMAIL SUCCESSFULY SENT!");
     } catch (e) {
       console.log("ERROR SENDING EMAIL:", e);
     }
+    // try {
+    //   await strapi.plugins["email"].services.email.sendTemplatedEmail(
+    //     {
+    //       to: result.email,
+    //       from: "moneyandotherthings@gmail.com",
+    //       // subject: "Thanks for subscribing!",
+    //       // text: "Thanks for subscribing!",
+    //       // html: "Thanks for subscribing!",
+    //     },
+
+    //     emailTemplate
+    //   );
+    //   console.log("EMAIL SUCCESSFULY SENT!");
+    // } catch (e) {
+    //   console.log("ERROR SENDING EMAIL:", e);
+    // }
     // try {
     //   await strapi.plugins["email"].services.email.send({
     //     to: result.email,
