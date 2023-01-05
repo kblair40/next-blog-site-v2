@@ -76,7 +76,7 @@ const ImageCarousel = ({ imageUrls }) => {
 
   if (!images || !images.length) return null;
   return (
-    <>
+    <Box>
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={slide}
@@ -91,7 +91,7 @@ const ImageCarousel = ({ imageUrls }) => {
           }}
           layout
         >
-          <Box position="absolute" w="100%" h="300px">
+          <Box position="absolute" w="100%" h="500px">
             <Image
               src={images[imageIndex]}
               style={{ objectFit: "cover" }}
@@ -114,7 +114,7 @@ const ImageCarousel = ({ imageUrls }) => {
         icon={getArrow("right")}
         {...sharedIconStyles}
       />
-    </>
+    </Box>
   );
 };
 
