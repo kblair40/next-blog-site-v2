@@ -34,7 +34,8 @@ const Card = ({ article, isPreview }) => {
   return (
     <Flex
       w="100%"
-      h={{ base: "200px", sm: "200px", md: "220px" }} // new
+      h={{ base: "200px", sm: "200px", md: "200px" }} // new
+      minH={{ base: "200px", sm: "200px", md: "200px" }} // new
       border="1px solid #979797"
       position="relative"
       bg="white" // new

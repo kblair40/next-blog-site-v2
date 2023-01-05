@@ -23,11 +23,12 @@ const Posts = ({ articles }) => {
     <Box
       // pt="2rem"
       w="100%"
-      // pb="2rem"
-      py="2rem"
-      // border="1px solid green"
-      position="relative"
-      h={`calc(100vh - 80px)`}
+      border="1px solid green"
+      // h="100%"
+      // position="relative"
+      // minH="max-content"
+      // h={`calc(100vh - 151px)`} //nav-80px + footer-71px
+      // overflowY="auto"
     >
       <ArticleList articles={articles} asPath={asPath} />
     </Box>
@@ -67,13 +68,23 @@ const ArticleList = ({ articles, asPath }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        style={{
+          // border: "1px solid blue",
+          // height: "100%",
+          position: "relative",
+          // minHeight: "calc(100vh - 151px)",
+          // minHeight: "calc(100vh - 80px)",
+        }}
       >
         <Flex
+          h="100%"
           w="100%"
           position="absolute"
           justify="center"
           px={{ base: "1rem", sm: "2rem" }}
-          // border="1px solid red"
+          border="1px solid red"
+          minHeight="calc(100vh - 151px)"
+          maxH="max-content"
         >
           {!!articles && !!articles.length ? (
             <Stack
@@ -81,6 +92,7 @@ const ArticleList = ({ articles, asPath }) => {
               // position="absolute"
               // mt="2rem"
               spacing="1.5rem"
+              border="1px solid orange"
             >
               {articles && articles.length
                 ? articles.sort(sortArticles).map((article, i) => {
