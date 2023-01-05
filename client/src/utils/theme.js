@@ -6,7 +6,7 @@ const theme = extendTheme({
       darkgreen: "#53614D",
       lightgreen: "#7D9174",
       // creme: "#fff9f3",
-      creme: "#fff9f3",
+      creme: "#fff9f3", // rgb(255, 249, 243)
     },
     text: {
       body: "#303030",
