@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Box, Flex, IconButton } from "@chakra-ui/react";
+import { Box, Flex, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { wrap } from "popmotion";
@@ -11,18 +11,21 @@ const variants = {
     return {
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
+      y: 0,
     };
   },
   center: {
     zIndex: 1,
     x: 0,
     opacity: 1,
+    y: 0,
   },
   exit: (direction) => {
     return {
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
+      y: 0,
     };
   },
 };
@@ -43,7 +46,7 @@ const ImageCarousel = ({ imageUrls }) => {
     return (
       <ChevronDownIcon
         transform={`rotate(${dir === "left" ? "90deg" : "-90deg"})`}
-        boxSize="16px"
+        boxSize="18px"
       />
     );
   }, []);
@@ -57,19 +60,37 @@ const ImageCarousel = ({ imageUrls }) => {
     }
   }, [imageUrls]);
 
+  useEffect(() => {
+    let currentImage = images[imageIndex];
+    console.log("CURRENT IMAGE:", currentImage);
+  }, [slide]);
+
   const sharedIconStyles = {
     // zIndex: 100000,
-    boxSize: "36px",
-    borderRadius: "50%",
+    // boxSize: "32px",
+    // borderRadius: "50%",
+    rounded: "full",
     transition: "background-color 0.2s ease-in-out",
     bg: "white",
-    _hover: { bg: "#eee" },
+    _hover: { bg: "gray.50" },
     _active: { bg: "#e4e4e4" },
   };
 
+  const imageObjectFit = useBreakpointValue(
+    { base: "cover", md: "contain" },
+    { fallback: "base", ssr: true }
+  );
+
   if (!images || !images.length) return null;
   return (
-    <Box position="relative" h="500px">
+    <Box
+      position="relative"
+      h="500px"
+      // h="fit-content"
+      // h="auto"
+      maxH="max-content"
+      border="1px solid blue"
+    >
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={slide}
@@ -85,23 +106,30 @@ const ImageCarousel = ({ imageUrls }) => {
         >
           <Box
             position="absolute"
+            // top="50%"
+            // transform="translateY(-50%)"
             w="100%"
             // maxW="600px"
             // h="auto"
-            // border="1px solid blue"
+            // h="100%"
+            border="1px solid red"
           >
             <Image
               src={images[imageIndex]}
               width={700}
               height={500}
               style={{
-                objectFit: "contain",
+                // objectFit: "contain",
+                objectFit: "cover",
                 width: "100%",
                 // maxWidth: "100%",
                 // maxWidth: "600px",
                 height: "auto",
+                // height: "100%",
                 maxHeight: "500px",
+                border: "1px solid green",
               }}
+              // fill
             />
           </Box>
         </motion.div>

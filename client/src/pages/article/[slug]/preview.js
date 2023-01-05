@@ -10,6 +10,7 @@ import { createRoot } from "react-dom/client";
 import { fetchAPI } from "src/utils/api";
 import Loading from "src/components/Loading";
 import ImageCarousel from "src/components/ImageCarousel";
+
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
 });
@@ -159,7 +160,9 @@ const Preview = ({ article }) => {
             >
               <Box
                 className="ck-content"
-                dangerouslySetInnerHTML={{ __html: article.attributes.content }}
+                dangerouslySetInnerHTML={{
+                  __html: article.attributes.content,
+                }}
               />
             </Box>
 
