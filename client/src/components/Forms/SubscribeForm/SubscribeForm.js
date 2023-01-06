@@ -8,7 +8,6 @@ import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 const envName = process.env.NODE_ENV;
-console.log("\n\nCURRENT ENVIRONMENT:", envName, "\n\n");
 
 const SubscribeForm = ({ ...props }) => {
   const [email, setEmail] = useState("");
@@ -56,14 +55,11 @@ const SubscribeForm = ({ ...props }) => {
 
       const response = await axios({
         method: "post",
-        // url: "https://money-and-other-things.herokuapp.com/api/subscribers",
-        // url: "http://localhost:1337/api/subscribers",
         url,
         data: {
           // toLowerCase ALWAYS.  Otherwise unsubscribe may not find the email address
           data: { email: email.toLowerCase(), subscribed_timestamp: now },
         },
-        // headers: { Authorization: `bearer ${STRAPI_API_TOKEN}` },
         headers: authHeader,
       });
       // console.log("\nSUBSCRIBE RESPONSE:", response);

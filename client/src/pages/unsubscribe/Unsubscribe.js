@@ -32,7 +32,7 @@ const Unsubscribe = () => {
       const response = await fetchAPI("/subscribers", {
         filters: { email: value.trim().toLowerCase() },
       });
-      console.log("\nSUBSCRIBER RESPONSE:", response.data);
+      // console.log("\nSUBSCRIBER RESPONSE:", response.data);
       if (response && response.data && response.data[0]) {
         foundSubscriberId = response.data[0].id;
       }
@@ -46,14 +46,14 @@ const Unsubscribe = () => {
       return;
     }
 
-    console.log("foundSubscriberId:", foundSubscriberId);
+    // console.log("foundSubscriberId:", foundSubscriberId);
     try {
       const unsubscribeRes = await fetchAPI(
         `/subscribers/${foundSubscriberId}`,
         null,
         { method: "DELETE" }
       );
-      console.log("\n\n\nUNSUBSCRIBE RES:", unsubscribeRes);
+      // console.log("\n\n\nUNSUBSCRIBE RES:", unsubscribeRes);
 
       toast({
         duration: 3000,
