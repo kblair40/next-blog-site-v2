@@ -11,5 +11,8 @@ module.exports = createCoreRouter("api::subscriber.subscriber", {
     create: {
       auth: false,
     },
+    delete: {
+      auth: false,
+    },
   },
 });
