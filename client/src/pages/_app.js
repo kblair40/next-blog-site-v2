@@ -15,7 +15,7 @@ dynamic(() => import("../assets/css/editor.css"));
 console.log("DOCUMENT:", typeof document);
 
 const TRACKING_ID = "UA-250380145-1";
-ReactGA.initialize(TRACKING_ID);
+ReactGA.initialize(TRACKING_ID, { redactEmail: false });
 
 const MyApp = ({ Component, pageProps }) => {
   return (
