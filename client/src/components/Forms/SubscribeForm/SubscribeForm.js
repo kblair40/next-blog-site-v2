@@ -23,7 +23,7 @@ const SubscribeForm = ({ ...props }) => {
     if (!email || email.length <= 4) {
       setError("Email address is required");
       setTimeout(() => {
-        // if no activity, still clear the error after 10 seconds
+        // if no activity, still clear the error after 3 seconds
         setError("");
       }, 3000);
       return;
