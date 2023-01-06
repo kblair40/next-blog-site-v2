@@ -65,6 +65,7 @@ const SubscribeForm = ({ ...props }) => {
       // console.log("\nSUBSCRIBE RESPONSE:", response);
 
       if (response.status === 200) {
+        if (error) setError("");
         toast({
           duration: 3000,
           // isClosable: true,
