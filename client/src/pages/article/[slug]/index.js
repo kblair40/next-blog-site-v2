@@ -1,6 +1,5 @@
 import React, { useEffect, useState, Suspense } from "react";
 import {
-  Heading,
   Text,
   Flex,
   Divider,
