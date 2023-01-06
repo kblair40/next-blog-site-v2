@@ -30,74 +30,85 @@ const Unsubscribe = () => {
     let foundSubscriber = null;
 
     try {
-      const subscribersRes = await fetchAPI("/subscribers", {
-        filters: {
-          email: value.toLowerCase(),
+      const unsubscribeRes = fetchAPI(
+        "/subscribers",
+        {
+          filters: { email: value.trim().toLowerCase() },
         },
-      });
-      if (subscribersRes?.data && subscribersRes.data.length) {
-        foundSubscriber = subscribersRes.data[0];
-        if (foundSubscriber.attributes.active === false) {
-          showErrorToast("already unsubscribed");
-          return;
+        {
+          method: "DELETE",
         }
-        // console.log("\n\nFOUND SUBSCRIBER:", foundSubscriber);
-      } else if (subscribersRes?.data && !subscribersRes.data.length) {
-        showErrorToast("not found");
-
-        return;
-      }
+      );
+      console.log("\nUNSUBSCRIBE RES:", unsubscribeRes);
     } catch (e) {
-      console.log("ERROR: FAILED FETCHING SUBSCRIBERS:", e);
+      // try {
+      //   const subscribersRes = await fetchAPI("/subscribers", {
+      //     filters: {
+      //       email: value.toLowerCase(),
+      //     },
+      //   });
+      //   if (subscribersRes?.data && subscribersRes.data.length) {
+      //     foundSubscriber = subscribersRes.data[0];
+      //     if (foundSubscriber.attributes.active === false) {
+      //       showErrorToast("already unsubscribed");
+      //       return;
+      //     }
+      //     // console.log("\n\nFOUND SUBSCRIBER:", foundSubscriber);
+      //   } else if (subscribersRes?.data && !subscribersRes.data.length) {
+      //     showErrorToast("not found");
+
+      //     return;
+      //   }
+      console.log("ERROR: FAILED DELETING SUBSCRIBER:", e);
       setLoading(false);
       return;
     }
 
-    if (foundSubscriber) {
-      // console.log("YES FOUND SUBSCRIBER:", foundSubscriber);
-      const { id } = foundSubscriber;
-      // console.log("ID:", id);
+    // if (foundSubscriber) {
+    //   // console.log("YES FOUND SUBSCRIBER:", foundSubscriber);
+    //   const { id } = foundSubscriber;
+    //   // console.log("ID:", id);
 
-      const now = new Date().getTime();
-      try {
-        const unsubscribeRes = await fetchAPI(
-          `/subscribers/${id}`,
-          {},
-          {
-            method: "PUT",
-            body: JSON.stringify({
-              data: { active: false, unsubscribed_timestamp: now },
-            }),
-          }
-        );
+    //   const now = new Date().getTime();
+    //   try {
+    //     const unsubscribeRes = await fetchAPI(
+    //       `/subscribers/${id}`,
+    //       {},
+    //       {
+    //         method: "PUT",
+    //         body: JSON.stringify({
+    //           data: { active: false, unsubscribed_timestamp: now },
+    //         }),
+    //       }
+    //     );
 
-        if (
-          unsubscribeRes?.data?.attributes &&
-          unsubscribeRes.data.attributes.active === false
-        ) {
-          // unsubscribe was successful
-          toast({
-            duration: 3000,
-            render: () => (
-              <CustomToast
-                description="Sorry to see you go!"
-                msg={`Unsubscribed ${value}`}
-                status="success"
-              />
-            ),
-          });
-        }
-      } catch (e) {
-        console.log("\n\nFAILED TO UNSUBSCRIBE:", e, "\n\n");
-        setValidEmail(value);
-        // The entered email address is valid and was found, but for some unknown reason the PUT request failed.
-        // In this case, show the default general error message.
-        // The mailto link can use the value of validEmail to pre-populate subject line
-        showErrorToast();
-      }
-    } else {
-      showErrorToast("not found");
-    }
+    //     if (
+    //       unsubscribeRes?.data?.attributes &&
+    //       unsubscribeRes.data.attributes.active === false
+    //     ) {
+    //       // unsubscribe was successful
+    //       toast({
+    //         duration: 3000,
+    //         render: () => (
+    //           <CustomToast
+    //             description="Sorry to see you go!"
+    //             msg={`Unsubscribed ${value}`}
+    //             status="success"
+    //           />
+    //         ),
+    //       });
+    //     }
+    //   } catch (e) {
+    //     console.log("\n\nFAILED TO UNSUBSCRIBE:", e, "\n\n");
+    //     setValidEmail(value);
+    //     // The entered email address is valid and was found, but for some unknown reason the PUT request failed.
+    //     // In this case, show the default general error message.
+    //     // The mailto link can use the value of validEmail to pre-populate subject line
+    //     showErrorToast();
+    //   }
+    // } else {
+    //   showErrorToast("not found");
+    // }
 
     setLoading(false);
     setValue("");
