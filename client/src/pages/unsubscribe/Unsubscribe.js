@@ -27,60 +27,50 @@ const Unsubscribe = () => {
   const handleSubmit = async () => {
     setLoading(true);
 
-    let foundSubscriber = null;
+    let foundSubscriberId = null;
 
     try {
-      const unsubscribeRes = fetchAPI(
-        "/subscribers",
-        {
-          filters: { email: value.trim().toLowerCase() },
-        },
-        {
-          method: "DELETE",
-        }
-      );
-      console.log("\nUNSUBSCRIBE RES:", unsubscribeRes);
+      const response = await fetchAPI("/subscribers", {
+        filters: { email: value.trim().toLowerCase() },
+      });
+      console.log("\nSUBSCRIBER RESPONSE:", response.data);
+      if (response && response.data && response.data[0]) {
+        foundSubscriberId = response.data[0].id;
+      }
     } catch (e) {
-      // try {
-      //   const subscribersRes = await fetchAPI("/subscribers", {
-      //     filters: {
-      //       email: value.toLowerCase(),
-      //     },
-      //   });
-      //   if (subscribersRes?.data && subscribersRes.data.length) {
-      //     foundSubscriber = subscribersRes.data[0];
-      //     if (foundSubscriber.attributes.active === false) {
-      //       showErrorToast("already unsubscribed");
-      //       return;
-      //     }
-      //     // console.log("\n\nFOUND SUBSCRIBER:", foundSubscriber);
-      //   } else if (subscribersRes?.data && !subscribersRes.data.length) {
-      //     showErrorToast("not found");
+      console.log("\nFAILED TO FIND SUBSCRIBER:", e, "\n");
+    }
 
-      //     return;
-      //   }
+    if (!foundSubscriberId) {
+      // No subscriber found - show error toast and return
+      showErrorToast("not found");
+      return;
+    }
+
+    console.log("foundSubscriberId:", foundSubscriberId);
+    try {
+      const unsubscribeRes = await fetchAPI(
+        `/subscribers/${foundSubscriberId}`,
+        null,
+        { method: "DELETE" }
+      );
+      console.log("\n\n\nUNSUBSCRIBE RES:", unsubscribeRes);
+
+      toast({
+        duration: 3000,
+        render: () => (
+          <CustomToast
+            description="Sorry to see you go!"
+            msg={`Unsubscribed ${value}`}
+            status="success"
+          />
+        ),
+      });
+    } catch (e) {
       console.log("ERROR: FAILED DELETING SUBSCRIBER:", e);
       setLoading(false);
       return;
     }
-
-    // if (foundSubscriber) {
-    //   // console.log("YES FOUND SUBSCRIBER:", foundSubscriber);
-    //   const { id } = foundSubscriber;
-    //   // console.log("ID:", id);
-
-    //   const now = new Date().getTime();
-    //   try {
-    //     const unsubscribeRes = await fetchAPI(
-    //       `/subscribers/${id}`,
-    //       {},
-    //       {
-    //         method: "PUT",
-    //         body: JSON.stringify({
-    //           data: { active: false, unsubscribed_timestamp: now },
-    //         }),
-    //       }
-    //     );
 
     //     if (
     //       unsubscribeRes?.data?.attributes &&
@@ -123,7 +113,7 @@ const Unsubscribe = () => {
     } else if (msg && msg === "not found") {
       msg = "Could not find a subscriber with that email address";
       description =
-        "Please use the 'Send email' link above to send us an email with the email address you would like unsubscribed in the subject line";
+        "Please use the 'Send email' button above to send us an email with the email address you would like unsubscribed in the subject line";
     }
 
     toast({
