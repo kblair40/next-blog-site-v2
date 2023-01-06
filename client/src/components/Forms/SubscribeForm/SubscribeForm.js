@@ -75,6 +75,8 @@ const SubscribeForm = ({ ...props }) => {
           ),
         });
 
+        eventLogger("successful subscribe", email);
+
         setEmail("");
         setDisabled(true);
         setTimeout(() => {
@@ -84,6 +86,7 @@ const SubscribeForm = ({ ...props }) => {
         }, 10000);
       }
     } catch (e) {
+      eventLogger("unsuccessful subscribe", email);
       const error = e.response?.data?.error;
       // console.log("FAILED ADDING NEW SUBSCRIBER:", error ? error.message : e);
       if (error && error.message) {
