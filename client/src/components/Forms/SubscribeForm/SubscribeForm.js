@@ -68,8 +68,6 @@ const SubscribeForm = ({ ...props }) => {
         if (error) setError("");
         toast({
           duration: 3000,
-          // isClosable: true,
-          // 300 x 48 for chakra version
           render: () => (
             <CustomToast msg="Thanks for subscribing!" status="success" />
           ),
@@ -119,20 +117,16 @@ const SubscribeForm = ({ ...props }) => {
   return (
     <Flex
       id="subscribe"
-      borderTop="1px solid #848484"
-      borderBottom="1px solid #848484"
+      borderTop="1px solid"
+      borderBottom="1px solid"
+      borderColor="#848484"
       w="100%"
-      h="100%" // new
+      h="100%"
       align={{ base: "center", md: "center" }}
       justify={{ base: "center", md: "space-between" }}
-      px={{ md: ".5rem", lg: "3rem", xl: "8rem" }}
+      px={{ md: ".5rem", lg: "2rem", xl: "8rem" }}
       direction={{ base: "column", md: "row" }}
       position="relative"
-      sx={{
-        "& svg": {
-          animation: "write 1s ease",
-        },
-      }}
       {...props}
     >
       <NeverMissAPost />

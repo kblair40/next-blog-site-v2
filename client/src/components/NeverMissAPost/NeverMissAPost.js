@@ -71,10 +71,6 @@ const NeverMissAPost = () => {
     }
   };
 
-  // const timer = (ms) => {
-  //   return new Promise((res) => setTimeout(res, ms));
-  // };
-
   const defaultPathStyle = {
     strokeDasharray: 1000,
     strokeDashoffset: 1000,
@@ -83,11 +79,9 @@ const NeverMissAPost = () => {
     fillOpacity: 0,
   };
 
-  // {...defaultPathStyle}
-
   return (
     <Icon
-      // border="1px solid blue"
+      // border="1px solid green"
       ref={ref}
       width="405px"
       height="50px"
@@ -99,7 +93,7 @@ const NeverMissAPost = () => {
         base: "scale(0.8)",
         sm: "scale(1)",
         md: "scale(0.8)",
-        lg: "scale(1.1)",
+        lg: "scale(0.9)",
       }}
       transformOrigin={{ base: "center", md: "center left" }}
     >
