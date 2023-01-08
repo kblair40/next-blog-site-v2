@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, Suspense } from "react";
+import { createRoot } from "react-dom/client";
 import {
   Text,
   Flex,
