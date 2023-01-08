@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-// import { render } from "react-dom";
 import { createRoot } from "react-dom/client";
 
 import { fetchAPI } from "src/utils/api";

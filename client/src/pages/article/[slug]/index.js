@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import {
   Text,
   Flex,
@@ -19,6 +19,7 @@ import Image from "next/image";
 import { ShareIcon, CopyIcon } from "src/utils/icons";
 import { fetchAPI } from "src/utils/api";
 import Loading from "src/components/Loading";
+import ImageCarousel from "src/components/ImageCarousel";
 
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
@@ -41,6 +42,27 @@ const Article = ({ article }) => {
   useEffect(() => {
     if (article && article.attributes) {
       setArticleData(article.attributes);
+    }
+  }, [article]);
+
+  const textAdded = useRef(false);
+  useEffect(() => {
+    let carousel_images = null;
+    if (article && article.attributes) {
+      carousel_images = article.attributes.carousel_image_urls;
+    }
+    if (!carousel_images) {
+      console.log("NO CAROUSEL IMAGES");
+      return;
+    }
+
+    let carouselContainer = document.getElementById("imageCarousel");
+    carouselContainer.style.paddingTop = "1rem";
+
+    if (!textAdded.current) {
+      let root = createRoot(carouselContainer);
+      root.render(<ImageCarousel imageUrls={carousel_images} />);
+      textAdded.current = true;
     }
   }, [article]);
 
