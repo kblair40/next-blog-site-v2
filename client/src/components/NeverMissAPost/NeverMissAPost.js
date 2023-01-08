@@ -49,14 +49,14 @@ const NeverMissAPost = () => {
     observer.observe(ref.current);
   }, []);
 
-  const removeAnimations = () => {
-    for (let i = 0; i <= paths.current.length; i++) {
-      let path = paths.current[i];
-      if (path && path.classList.contains("write-logo")) {
-        path.classList.remove("write-logo");
-      }
-    }
-  };
+  // const removeAnimations = () => {
+  //   for (let i = 0; i <= paths.current.length; i++) {
+  //     let path = paths.current[i];
+  //     if (path && path.classList.contains("write-logo")) {
+  //       path.classList.remove("write-logo");
+  //     }
+  //   }
+  // };
 
   const animateIn = async () => {
     for (let i = 0; i < paths.current.length; i++) {
