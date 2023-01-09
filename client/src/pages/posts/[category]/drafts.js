@@ -20,12 +20,7 @@ const Drafts = ({ articles }) => {
         exit={{ opacity: 0 }}
         layout
       >
-        <Box
-          // position="absolute"
-          // top={0}
-          w="100%"
-          pb="2rem"
-        >
+        <Box w="100%" pb="2rem">
           <ArticleList articles={articles} />
         </Box>
       </motion.div>
@@ -35,10 +30,8 @@ const Drafts = ({ articles }) => {
 
 const ArticleList = ({ articles }) => {
   const sortArticles = (a, b) => {
-    // console.log("A/B:", { a, b });
     const { createdAt: aCreatedAt } = a.attributes;
     const { createdAt: bCreatedAt } = b.attributes;
-    // console.log("CREATED STAMPS:", { aCreatedAt, bCreatedAt });
     return dayjs(aCreatedAt).isBefore(dayjs(bCreatedAt)) ? 1 : -1;
   };
 
@@ -67,7 +60,7 @@ export async function getServerSideProps() {
   // docs on fetching in draft/preview publicationState
   // https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/filtering-locale-publication.html#publication-state
   try {
-    // ONLY FETCHES NON-PUBLISHED ARTICLES
+    // ONLY FETCHES ARTICLES IN DRAFT MODE
     const articlesRes = await fetchAPI(
       "/articles",
       {
