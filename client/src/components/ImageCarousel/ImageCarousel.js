@@ -30,7 +30,6 @@ const variants = {
   },
 };
 
-// https://www.musebecodes.dev/blog/cloudinaryimagecarousel
 const ImageCarousel = ({ imageUrls }) => {
   const [images, setImages] = useState([]);
   const [[slide, direction], setSlide] = useState([0, 0]);
