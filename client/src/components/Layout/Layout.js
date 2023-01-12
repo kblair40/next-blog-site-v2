@@ -6,7 +6,7 @@ import Navbar from "src/components/Navbar";
 
 const layout = ({ children, categories }) => {
   return (
-    <Box bg="brand.creme">
+    <Box bg="brand.creme" minH="100vh">
       <Box position="relative" h="80px" display={{ base: "none", md: "block" }}>
         <Navbar categories={categories} />
       </Box>
@@ -28,8 +28,9 @@ const layout = ({ children, categories }) => {
       >
         <Flex
           direction="column"
-          minH={{ base: "127x", md: "calc(100vh - 151px)" }}
+          minH={{ base: "calc(100vh - 127px)", md: "calc(100vh - 151px)" }}
           bg="brand.creme"
+          flex={1}
         >
           <Box>{children}</Box>
         </Flex>
