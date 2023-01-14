@@ -6,12 +6,11 @@ import dynamic from "next/dynamic";
 import FeaturedPost from "src/components/FeaturedPost";
 import AdditionalPosts from "./AdditionalPosts";
 import ContactForm from "src/components/Forms/ContactForm";
-import SEO from "src/components/SEO";
+// import SEO from "src/components/SEO";
 // import FeaturedResources from "src/components/FeaturedResources";
 // import SubscribeForm from "src/components/Forms/SubscribeForm";
 
 const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
-  loading: "Loading...",
   ssr: false,
 });
 
@@ -21,7 +20,6 @@ const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
 const SubscribeForm = dynamic(
   () => import("src/components/Forms/SubscribeForm"),
   {
-    loading: "Loading...",
     ssr: false,
   }
 );
@@ -31,7 +29,6 @@ const SubscribeForm = dynamic(
 const FeaturedResources = dynamic(
   () => import("src/components/FeaturedResources"),
   {
-    loading: "Loading...",
     ssr: false,
   }
 );
@@ -50,9 +47,7 @@ const HomePage = ({ homepage, articles }) => {
       w="100%"
       // border="1px solid blue"
     >
-      {/* <React.Suspense fallback={<div />}> */}
-      <SEO seo={homepage?.attributes.seo} />
-      {/* </React.Suspense> */}
+      {/* <SEO seo={homepage?.attributes.seo} /> */}
 
       <Grid
         mt={{ base: "60px", md: "90px" }}
@@ -98,21 +93,15 @@ const HomePage = ({ homepage, articles }) => {
         </GridItem>
 
         <GridItem area="sub">
-          {/* <React.Suspense fallback={<Loading />}> */}
           <SubscribeForm py={{ base: "2rem", md: "3rem" }} />
-          {/* </React.Suspense> */}
         </GridItem>
 
         <GridItem area="feat-r">
-          {/* <React.Suspense fallback={<div />}> */}
           <FeaturedResources />
-          {/* </React.Suspense> */}
         </GridItem>
 
         <GridItem area="recent">
-          {/* <React.Suspense fallback={<Loading />}> */}
           <AdditionalPosts articles={articles} featuredPost={featuredPost} />
-          {/* </React.Suspense> */}
         </GridItem>
 
         <GridItem area="div">
@@ -120,9 +109,7 @@ const HomePage = ({ homepage, articles }) => {
         </GridItem>
 
         <GridItem area="contact">
-          {/* <React.Suspense fallback={<Loading />}> */}
           <ContactForm />
-          {/* </React.Suspense> */}
         </GridItem>
       </Grid>
     </Box>
