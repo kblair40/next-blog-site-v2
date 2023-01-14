@@ -1,5 +1,5 @@
-import { Suspense } from "react";
-import { Box, Flex } from "@chakra-ui/react";
+// import { Suspense } from "react";
+import { Flex } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 
@@ -7,7 +7,8 @@ import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
 
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
-  suspense: true,
+  // suspense: true,
+  ssr: false,
 });
 
 const Home = ({ homepage, articles }) => {
@@ -26,9 +27,9 @@ const Home = ({ homepage, articles }) => {
 
           {/* <ShareModal /> */}
 
-          <Suspense fallback={<div />}>
-            <ShareModal />
-          </Suspense>
+          {/* <Suspense fallback={<div />}> */}
+          <ShareModal />
+          {/* </Suspense> */}
         </Flex>
       </motion.div>
     </AnimatePresence>
@@ -56,11 +57,6 @@ export async function getStaticProps() {
       sort: "createdAt:desc",
     }),
   ]);
-
-  // if (articles && articles.data) {
-  //   // TODO: REMOVE THIS.  ONLY MEANT TO SIMULATE HAVING 4 'recent' posts
-  //   articles.data = [...articles.data, ...articles.data];
-  // }
 
   return {
     props: {
