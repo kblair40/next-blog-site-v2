@@ -47,7 +47,7 @@ const DraftsPage = () => {
   return (
     <Box w="100%" pb="2rem">
       {loading ? (
-        <Center>
+        <Center h="300px">
           <Spinner />
         </Center>
       ) : (
