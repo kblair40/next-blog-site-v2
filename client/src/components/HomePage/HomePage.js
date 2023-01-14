@@ -32,6 +32,7 @@ const FeaturedResources = dynamic(
   () => import("src/components/FeaturedResources"),
   {
     loading: "Loading...",
+    ssr: false,
   }
 );
 
