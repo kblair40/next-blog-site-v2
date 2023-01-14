@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Box, Flex, Stack, Button, Text } from "@chakra-ui/react";
+import { Flex, Stack, Button, Text } from "@chakra-ui/react";
 
 const Links = () => {
   return (
@@ -24,6 +24,8 @@ const ButtonLink = ({ to, label }) => {
         display={"flex"}
         justifyContent="center"
         alignItems="center"
+        border="1px solid #ccc"
+        _hover={{ bg: "white" }}
       >
         <Text>{label}</Text>
       </Button>
