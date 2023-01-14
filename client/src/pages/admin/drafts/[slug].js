@@ -60,7 +60,7 @@ const DraftPostPage = () => {
       };
 
   return (
-    <ValidateAdmin>
+    <ValidateAdmin style={{ pt: "2rem" }}>
       <AnimatePresence>
         <motion.div
           key="article"

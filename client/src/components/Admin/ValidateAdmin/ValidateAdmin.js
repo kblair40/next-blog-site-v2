@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { Flex, Text, Input, Button, Center, Spinner } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Input,
+  Button,
+  Center,
+  Spinner,
+  Box,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import useIsAdmin from "src/hooks/useIsAdmin";
 
 const password = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
 
-const ValidateAdmin = ({ children }) => {
+const ValidateAdmin = ({ children, style = {} }) => {
   const [passwordValue, setPasswordValue] = useState("");
 
   const router = useRouter();
@@ -21,13 +29,13 @@ const ValidateAdmin = ({ children }) => {
   };
 
   return (
-    <React.Fragment>
+    <Box w="100%">
       {loading ? (
         <Center h="200px">
           <Spinner />
         </Center>
       ) : !isAdmin ? (
-        <Flex px="2rem" direction="column" align="center">
+        <Flex px="2rem" direction="column" align="center" {...style}>
           <Text textAlign="center" mb="1rem">
             It looks like you shouldn't be here. Enter the password below for
             access.
@@ -55,7 +63,7 @@ const ValidateAdmin = ({ children }) => {
       ) : (
         children
       )}
-    </React.Fragment>
+    </Box>
   );
 };
 

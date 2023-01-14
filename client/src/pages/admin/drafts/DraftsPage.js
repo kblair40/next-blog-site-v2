@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import PiggyBank from "src/components/PiggyBank";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
+import ValidateAdmin from "src/components/Admin/ValidateAdmin";
 
 const DraftsPage = () => {
   const [loading, setLoading] = useState(true);
@@ -46,13 +47,15 @@ const DraftsPage = () => {
 
   return (
     <Box w="100%" pb="2rem">
-      {loading ? (
-        <Center h="300px">
-          <Spinner />
-        </Center>
-      ) : (
-        <ArticleList articles={articles} />
-      )}
+      <ValidateAdmin style={{ pt: "2rem" }}>
+        {loading ? (
+          <Center h="300px">
+            <Spinner />
+          </Center>
+        ) : (
+          <ArticleList articles={articles} />
+        )}
+      </ValidateAdmin>
     </Box>
   );
 };
