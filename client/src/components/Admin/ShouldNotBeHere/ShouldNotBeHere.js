@@ -8,6 +8,7 @@ import {
   Center,
   Spinner,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 import useIsAdmin from "src/hooks/useIsAdmin";
 
@@ -16,25 +17,24 @@ const password = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
 const ShouldNotBeHere = ({ children }) => {
   const [passwordValue, setPasswordValue] = useState("");
 
-  console.log("PASSWORD:", password);
+  const router = useRouter();
 
   const { isAdmin, loading } = useIsAdmin();
 
   const handleSubmit = () => {
-    console.log(
-      "passwordvalue:",
-      passwordValue,
-      typeof passwordValue,
-      typeof password
-    );
     if (passwordValue === password) {
       localStorage.setItem("isAdmin", true);
+      router.reload(window.location.pathname);
     }
   };
 
   return (
     <React.Fragment>
-      {!isAdmin ? (
+      {loading ? (
+        <Center h="200px">
+          <Spinner />
+        </Center>
+      ) : !isAdmin ? (
         <Flex px="2rem" direction="column" align="center">
           <Text textAlign="center" mb="1rem">
             It looks like you shouldn't be here. Enter the password below for
@@ -49,7 +49,13 @@ const ShouldNotBeHere = ({ children }) => {
               value={passwordValue}
             />
 
-            <Button ml="1rem" size="sm" onClick={handleSubmit}>
+            <Button
+              minW="max-content"
+              ml="1rem"
+              size="sm"
+              onClick={handleSubmit}
+              isDisabled={typeof window === "undefined"}
+            >
               Submit
             </Button>
           </Flex>
