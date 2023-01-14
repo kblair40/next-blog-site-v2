@@ -104,6 +104,7 @@ const ImageCarousel = ({ imageUrls }) => {
               src={images[imageIndex]}
               width={700}
               height={parseInt(imageHeight)}
+              alt="img"
               style={{
                 objectFit: imageObjectFit,
                 width: "100%",
