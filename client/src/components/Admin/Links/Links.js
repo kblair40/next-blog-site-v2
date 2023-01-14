@@ -2,22 +2,21 @@ import React from "react";
 import Link from "next/link";
 import { Flex, Stack, Button, Text } from "@chakra-ui/react";
 
-import ShouldNotBeHere from "src/components/Admin/ShouldNotBeHere";
+import ValidateAdmin from "src/components/Admin/ValidateAdmin";
 
 const Links = () => {
   return (
-    <ShouldNotBeHere>
+    <ValidateAdmin>
       <Flex justify="center">
         <Stack w={{ base: "300px", sm: "400px" }}>
           <ButtonLink to="/admin/drafts" label="Drafts" />
           <ButtonLink to="/admin/flipbook" label="Flipbook Sandbox" />
         </Stack>
       </Flex>
-    </ShouldNotBeHere>
+    </ValidateAdmin>
   );
 };
 
-// export default withContext(Links);
 export default Links;
 
 const ButtonLink = ({ to, label }) => {

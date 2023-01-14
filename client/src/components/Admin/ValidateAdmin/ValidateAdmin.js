@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Flex,
-  Text,
-  Input,
-  Button,
-  Center,
-  Spinner,
-} from "@chakra-ui/react";
+import { Flex, Text, Input, Button, Center, Spinner } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import useIsAdmin from "src/hooks/useIsAdmin";
 
 const password = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
 
-const ShouldNotBeHere = ({ children }) => {
+const ValidateAdmin = ({ children }) => {
   const [passwordValue, setPasswordValue] = useState("");
 
   const router = useRouter();
@@ -67,4 +59,4 @@ const ShouldNotBeHere = ({ children }) => {
   );
 };
 
-export default ShouldNotBeHere;
+export default ValidateAdmin;
