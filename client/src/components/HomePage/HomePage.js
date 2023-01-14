@@ -4,28 +4,34 @@ import dynamic from "next/dynamic";
 
 import Loading from "src/components/Loading";
 import FeaturedPost from "src/components/FeaturedPost";
+import ContactForm from "src/components/Forms/ContactForm";
+import SEO from "src/components/SEO";
+import FeaturedResources from "src/components/FeaturedResources";
+import SubscribeForm from "src/components/Forms/SubscribeForm";
+import AdditionalPosts from "./AdditionalPosts";
 
-const SEO = dynamic(() => import("src/components/SEO"), {
-  suspense: true,
-});
-const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
-  suspense: true,
-});
-const SubscribeForm = dynamic(
-  () => import("src/components/Forms/SubscribeForm"),
-  {
-    suspense: true,
-  }
-);
-const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
-  suspense: true,
-});
-const FeaturedResources = dynamic(
-  () => import("src/components/FeaturedResources"),
-  {
-    suspense: true,
-  }
-);
+// const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
+//   suspense: true,
+// });
+
+// const SEO = dynamic(() => import("src/components/SEO"), {
+//   suspense: true,
+// });
+// const SubscribeForm = dynamic(
+//   () => import("src/components/Forms/SubscribeForm"),
+//   {
+//     suspense: true,
+//   }
+// );
+// const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
+//   suspense: true,
+// });
+// const FeaturedResources = dynamic(
+//   () => import("src/components/FeaturedResources"),
+//   {
+//     suspense: true,
+//   }
+// );
 
 const HomePage = ({ homepage, articles }) => {
   let featuredPost;
@@ -41,9 +47,9 @@ const HomePage = ({ homepage, articles }) => {
       w="100%"
       // border="1px solid blue"
     >
-      <React.Suspense fallback={<div />}>
-        <SEO seo={homepage?.attributes.seo} />
-      </React.Suspense>
+      {/* <React.Suspense fallback={<div />}> */}
+      <SEO seo={homepage?.attributes.seo} />
+      {/* </React.Suspense> */}
 
       <Grid
         mt={{ base: "60px", md: "90px" }}
@@ -89,21 +95,21 @@ const HomePage = ({ homepage, articles }) => {
         </GridItem>
 
         <GridItem area="sub">
-          <React.Suspense fallback={<Loading />}>
-            <SubscribeForm py={{ base: "2rem", md: "3rem" }} />
-          </React.Suspense>
+          {/* <React.Suspense fallback={<Loading />}> */}
+          <SubscribeForm py={{ base: "2rem", md: "3rem" }} />
+          {/* </React.Suspense> */}
         </GridItem>
 
         <GridItem area="feat-r">
-          <React.Suspense fallback={<div />}>
-            <FeaturedResources />
-          </React.Suspense>
+          {/* <React.Suspense fallback={<div />}> */}
+          <FeaturedResources />
+          {/* </React.Suspense> */}
         </GridItem>
 
         <GridItem area="recent">
-          <React.Suspense fallback={<Loading />}>
-            <AdditionalPosts articles={articles} featuredPost={featuredPost} />
-          </React.Suspense>
+          {/* <React.Suspense fallback={<Loading />}> */}
+          <AdditionalPosts articles={articles} featuredPost={featuredPost} />
+          {/* </React.Suspense> */}
         </GridItem>
 
         <GridItem area="div">
@@ -111,9 +117,9 @@ const HomePage = ({ homepage, articles }) => {
         </GridItem>
 
         <GridItem area="contact">
-          <React.Suspense fallback={<Loading />}>
-            <ContactForm />
-          </React.Suspense>
+          {/* <React.Suspense fallback={<Loading />}> */}
+          <ContactForm />
+          {/* </React.Suspense> */}
         </GridItem>
       </Grid>
     </Box>
