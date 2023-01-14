@@ -4,34 +4,34 @@ import dynamic from "next/dynamic";
 
 import Loading from "src/components/Loading";
 import FeaturedPost from "src/components/FeaturedPost";
-import ContactForm from "src/components/Forms/ContactForm";
-import SEO from "src/components/SEO";
-import FeaturedResources from "src/components/FeaturedResources";
-import SubscribeForm from "src/components/Forms/SubscribeForm";
-import AdditionalPosts from "./AdditionalPosts";
+// import ContactForm from "src/components/Forms/ContactForm";
+// import SEO from "src/components/SEO";
+// import FeaturedResources from "src/components/FeaturedResources";
+// import SubscribeForm from "src/components/Forms/SubscribeForm";
+// import AdditionalPosts from "./AdditionalPosts";
 
-// const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
-//   suspense: true,
-// });
+const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
+  loading: "Loading...",
+});
 
-// const SEO = dynamic(() => import("src/components/SEO"), {
-//   suspense: true,
-// });
-// const SubscribeForm = dynamic(
-//   () => import("src/components/Forms/SubscribeForm"),
-//   {
-//     suspense: true,
-//   }
-// );
-// const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
-//   suspense: true,
-// });
-// const FeaturedResources = dynamic(
-//   () => import("src/components/FeaturedResources"),
-//   {
-//     suspense: true,
-//   }
-// );
+const SEO = dynamic(() => import("src/components/SEO"), {
+  loading: "Loading...",
+});
+const SubscribeForm = dynamic(
+  () => import("src/components/Forms/SubscribeForm"),
+  {
+    loading: "Loading...",
+  }
+);
+const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
+  loading: "Loading...",
+});
+const FeaturedResources = dynamic(
+  () => import("src/components/FeaturedResources"),
+  {
+    loading: "Loading...",
+  }
+);
 
 const HomePage = ({ homepage, articles }) => {
   let featuredPost;
