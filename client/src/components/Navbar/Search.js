@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { SearchIcon } from "src/utils/icons";
 import {
   Input,
   InputGroup,
@@ -20,6 +19,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import debounce from "lodash.debounce";
 
+import { SearchIcon } from "src/utils/icons";
 import { fetchAPI } from "src/utils/api";
 
 const Search = () => {

@@ -1,17 +1,10 @@
 import React from "react";
-import {
-  Box,
-  HStack,
-  useTheme,
-  useBreakpointValue,
-  // Flex,
-  // Heading,
-} from "@chakra-ui/react";
+import { Box, HStack, useTheme, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
-import NavLinks from "./NavLinks";
 import Search from "./Search";
 import {
   FacebookIcon,
@@ -19,6 +12,10 @@ import {
   PinterestIcon,
   InstagramIcon,
 } from "src/utils/icons";
+// import NavLinks from "./NavLinks";
+const NavLinks = dynamic(() => import("./NavLinks"), {
+  ssr: false,
+});
 
 const Navbar = () => {
   const theme = useTheme();
@@ -44,9 +41,9 @@ const Navbar = () => {
         height: "80px",
         width: "100vw",
         transition: "box-shadow 0.5s",
-        // boxShadow: isIntersecting ? theme.shadows.md : "none",
         boxShadow: theme.shadows.md,
         padding: padding,
+        // boxShadow: isIntersecting ? theme.shadows.md : "none",
         // border: "1px solid green",
       }}
     >
