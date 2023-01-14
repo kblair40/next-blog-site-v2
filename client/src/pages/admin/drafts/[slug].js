@@ -8,8 +8,6 @@ import { useRouter } from "next/router";
 
 import { fetchAPI } from "src/utils/api";
 import Loading from "src/components/Loading";
-import ImageCarousel from "src/components/ImageCarousel";
-import ValidateAdmin from "src/components/Admin/ValidateAdmin";
 
 const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
   suspense: true,
@@ -17,6 +15,15 @@ const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
 const Seo = dynamic(() => import("src/components/SEO"), {
   suspense: true,
 });
+const ImageCarousel = dynamic(() => import("src/components/ImageCarousel"), {
+  suspense: true,
+});
+const ValidateAdmin = dynamic(
+  () => import("src/components/Admin/ValidateAdmin"),
+  {
+    suspense: true,
+  }
+);
 
 const DraftPostPage = () => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
