@@ -10,7 +10,7 @@ const AdminProvider = ({ children }) => {
 
   useEffect(() => {
     const isAdmin = localStorage.getItem("isAdmin");
-    setIsAdmin(isAdmin && isAdmin === "yes");
+    setIsAdmin(isAdmin ? isAdmin === "yes" : false);
   }, [asPath]);
 
   return (
