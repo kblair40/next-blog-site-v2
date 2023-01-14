@@ -3,8 +3,8 @@ const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
 const envName = process.env.NODE_ENV;
 // console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
 
-console.log("ENV NAME:", envName);
-console.log("API URL:", process.env.NEXT_PUBLIC_STRAPI_API_URL);
+// console.log("ENV NAME:", envName);
+// console.log("API URL:", process.env.NEXT_PUBLIC_STRAPI_API_URL);
 
 /**
  * Get full Strapi URL from path
