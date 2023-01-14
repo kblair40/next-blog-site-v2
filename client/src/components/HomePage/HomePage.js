@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 // import Loading from "src/components/Loading";
 import FeaturedPost from "src/components/FeaturedPost";
 import AdditionalPosts from "./AdditionalPosts";
-import ContactForm from "src/components/Forms/ContactForm";
+// import ContactForm from "src/components/Forms/ContactForm";
 // import SEO from "src/components/SEO";
 // import FeaturedResources from "src/components/FeaturedResources";
 // import SubscribeForm from "src/components/Forms/SubscribeForm";
