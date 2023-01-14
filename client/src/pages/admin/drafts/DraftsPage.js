@@ -6,11 +6,9 @@ import PiggyBank from "src/components/PiggyBank";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
 
-// const DraftsPage = ({ articles }) => {
 const DraftsPage = () => {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState();
-  console.log("ARTICLES:", articles);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -34,17 +32,27 @@ const DraftsPage = () => {
         if (articlesRes && articlesRes.data) {
           console.log("Setting articles to:", articlesRes.data);
           setArticles(articlesRes.data);
+        } else {
+          setArticles([]);
         }
       } catch (e) {
         console.log("\n\nARTICLES FETCH FAILED:", e);
       }
+      setLoading(false);
     };
+
     fetchPosts();
   }, []);
 
   return (
     <Box w="100%" pb="2rem">
-      <ArticleList articles={articles} />
+      {loading ? (
+        <Center>
+          <Spinner />
+        </Center>
+      ) : (
+        <ArticleList articles={articles} />
+      )}
     </Box>
   );
 };
