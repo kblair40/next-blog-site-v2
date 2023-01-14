@@ -1,7 +1,6 @@
 import qs from "qs";
 const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN || "";
 const envName = process.env.NODE_ENV;
-// console.log("\n\n\n\nTOKEN:", token, "\n\n\n\n");
 
 // console.log("ENV NAME:", envName);
 // console.log("API URL:", process.env.NEXT_PUBLIC_STRAPI_API_URL);
@@ -11,13 +10,14 @@ const envName = process.env.NODE_ENV;
  * @param {string} path Path of the URL
  * @returns {string} Full Strapi URL
  */
+const LIVE_URL = "https://money-and-other-things.herokuapp.com";
 // const BASE_URL =
 //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
 export function getStrapiURL(path = "") {
   let baseUrl =
     process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
-  // let baseUrl = "http://localhost:1337";
   return `${baseUrl}${path}`;
+  // return `${LIVE_URL}${path}`;
   // return `${
   //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
   // }${path}`;
