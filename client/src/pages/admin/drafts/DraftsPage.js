@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Flex, Stack, Box, Center, Spinner } from "@chakra-ui/react";
 import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 
-import PiggyBank from "src/components/PiggyBank";
 import { fetchAPI } from "src/utils/api";
-import Card from "src/components/Card";
-import ValidateAdmin from "src/components/Admin/ValidateAdmin";
+
+const PiggyBank = dynamic(() => import("src/components/PiggyBank"), {
+  ssr: false,
+});
+const Card = dynamic(() => import("src/components/Card"), {
+  ssr: false,
+});
+const ValidateAdmin = dynamic(
+  () => import("src/components/Admin/ValidateAdmin"),
+  {
+    ssr: false,
+  }
+);
 
 const DraftsPage = () => {
   const [loading, setLoading] = useState(true);
