@@ -1,30 +1,51 @@
-import React from "react";
-import { Flex, Stack, Box } from "@chakra-ui/react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { Flex, Stack, Box, Center, Spinner } from "@chakra-ui/react";
 import dayjs from "dayjs";
 
 import PiggyBank from "src/components/PiggyBank";
 import { fetchAPI } from "src/utils/api";
 import Card from "src/components/Card";
 
-const DraftsPage = ({ articles }) => {
-  const { asPath } = useRouter();
+// const DraftsPage = ({ articles }) => {
+const DraftsPage = () => {
+  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState();
+  console.log("ARTICLES:", articles);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        // ONLY FETCHES ARTICLES IN DRAFT MODE
+        const articlesRes = await fetchAPI(
+          "/articles",
+          {
+            publicationState: "preview",
+            filters: {
+              publishedAt: {
+                $null: true,
+              },
+            },
+          },
+          {
+            populate: "*",
+          }
+        );
+
+        if (articlesRes && articlesRes.data) {
+          console.log("Setting articles to:", articlesRes.data);
+          setArticles(articlesRes.data);
+        }
+      } catch (e) {
+        console.log("\n\nARTICLES FETCH FAILED:", e);
+      }
+    };
+    fetchPosts();
+  }, []);
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key={asPath}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        layout
-      >
-        <Box w="100%" pb="2rem">
-          <ArticleList articles={articles} />
-        </Box>
-      </motion.div>
-    </AnimatePresence>
+    <Box w="100%" pb="2rem">
+      <ArticleList articles={articles} />
+    </Box>
   );
 };
 
@@ -57,42 +78,3 @@ const ArticleList = ({ articles }) => {
     );
   }
 };
-
-export async function getServerSideProps() {
-  // docs on fetching in draft/preview publicationState
-  // https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/filtering-locale-publication.html#publication-state
-  try {
-    // ONLY FETCHES ARTICLES IN DRAFT MODE
-    const articlesRes = await fetchAPI(
-      "/articles",
-      {
-        publicationState: "preview",
-        filters: {
-          publishedAt: {
-            $null: true,
-          },
-        },
-      },
-      {
-        populate: "*",
-      }
-    );
-
-    console.log("articlesRes:", articlesRes);
-    if (articlesRes && articlesRes.data && true) {
-      for (let article of articlesRes.data) {
-        console.log("\n\nARTICLE:", article.attributes);
-      }
-
-      return {
-        props: { articles: articlesRes.data, fallback: "blocking" },
-      };
-    }
-  } catch (e) {
-    console.log("\n\nARTICLES FETCH FAILED:", e);
-  }
-
-  return {
-    props: { articles: [], fallback: "blocking" },
-  };
-}

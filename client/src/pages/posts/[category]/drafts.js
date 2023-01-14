@@ -56,43 +56,43 @@ const ArticleList = ({ articles }) => {
   }
 };
 
-export async function getServerSideProps() {
-  // docs on fetching in draft/preview publicationState
-  // https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/filtering-locale-publication.html#publication-state
-  try {
-    // ONLY FETCHES ARTICLES IN DRAFT MODE
-    const articlesRes = await fetchAPI(
-      "/articles",
-      {
-        publicationState: "preview",
-        filters: {
-          publishedAt: {
-            $null: true,
-          },
-        },
-      },
-      {
-        populate: "*",
-      }
-    );
+// export async function getServerSideProps() {
+//   // docs on fetching in draft/preview publicationState
+//   // https://docs.strapi.io/developer-docs/latest/developer-resources/database-apis-reference/rest/filtering-locale-publication.html#publication-state
+//   try {
+//     // ONLY FETCHES ARTICLES IN DRAFT MODE
+//     const articlesRes = await fetchAPI(
+//       "/articles",
+//       {
+//         publicationState: "preview",
+//         filters: {
+//           publishedAt: {
+//             $null: true,
+//           },
+//         },
+//       },
+//       {
+//         populate: "*",
+//       }
+//     );
 
-    console.log("articlesRes:", articlesRes);
-    if (articlesRes && articlesRes.data && true) {
-      for (let article of articlesRes.data) {
-        console.log("\n\nARTICLE:", article.attributes);
-      }
+//     // console.log("articlesRes:", articlesRes);
+//     if (articlesRes && articlesRes.data && true) {
+//       // for (let article of articlesRes.data) {
+//       //   console.log("\n\nARTICLE:", article.attributes);
+//       // }
 
-      return {
-        props: { articles: articlesRes.data, fallback: "blocking" },
-      };
-    }
-  } catch (e) {
-    console.log("\n\nARTICLES FETCH FAILED:", e);
-  }
+//       return {
+//         props: { articles: articlesRes.data, fallback: "blocking" },
+//       };
+//     }
+//   } catch (e) {
+//     console.log("\n\nARTICLES FETCH FAILED:", e);
+//   }
 
-  return {
-    props: { articles: [], fallback: "blocking" },
-  };
-}
+//   return {
+//     props: { articles: [], fallback: "blocking" },
+//   };
+// }
 
 export default Drafts;
