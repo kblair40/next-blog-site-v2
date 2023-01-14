@@ -1,7 +1,10 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
 
-import Links from "src/components/Admin/Links";
+const Links = dynamic(() => import("src/components/Admin/Links"), {
+  ssr: false,
+});
 
 const AdminPage = () => {
   return (
