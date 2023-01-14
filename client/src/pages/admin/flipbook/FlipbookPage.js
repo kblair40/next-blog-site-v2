@@ -1,8 +1,16 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
 
-import Flipbook from "src/components/Flipbook";
-import ValidateAdmin from "src/components/Admin/ValidateAdmin";
+const Flipbook = dynamic(() => import("src/components/Flipbook"), {
+  ssr: false,
+});
+const ValidateAdmin = dynamic(
+  () => import("src/components/Admin/ValidateAdmin"),
+  {
+    ssr: false,
+  }
+);
 
 const FlipbookPage = () => {
   return (
