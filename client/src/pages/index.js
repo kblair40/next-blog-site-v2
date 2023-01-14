@@ -37,14 +37,6 @@ const Home = ({ homepage, articles }) => {
 };
 
 export async function getStaticProps() {
-  // const homepageRes = await fetchAPI("/homepage", {
-  //   populate: {
-  //     featured_post: {
-  //       populate: { article: "*" },
-  //     },
-  //   },
-  // });
-
   let [home, articles] = await Promise.all([
     fetchAPI("/homepage", {
       populate: {
@@ -57,6 +49,8 @@ export async function getStaticProps() {
       sort: "createdAt:desc",
     }),
   ]);
+
+  // console.log("ARTICLES RES:", articles);
 
   return {
     props: {
