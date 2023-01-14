@@ -122,9 +122,11 @@ const Card = ({ article, isPreview, location = "" }) => {
         </Box>
 
         <Link
-          href={`/article/${article.attributes.slug}${
-            isPreview ? "/preview" : ""
-          }`}
+          href={
+            isPreview
+              ? `/admin/drafts/${article.attributes.slug}`
+              : `/article/${article.attributes.slug}`
+          }
         >
           <Flex direction="column" role="group" cursor="pointer">
             <Text
