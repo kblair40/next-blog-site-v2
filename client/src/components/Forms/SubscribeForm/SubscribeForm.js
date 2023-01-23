@@ -71,8 +71,7 @@ const SubscribeForm = ({ ...props }) => {
           ),
         });
 
-        // eventLogger("successful subscribe", email);
-        event({ action: "sign_up" });
+        event({ action: "sign_up", params: { email } });
 
         setEmail("");
         setDisabled(true);
@@ -83,7 +82,7 @@ const SubscribeForm = ({ ...props }) => {
         }, 10000);
       }
     } catch (e) {
-      // eventLogger("unsuccessful subscribe", email);
+      eventLogger({ action: "failed subscribe", params: { email } });
       const error = e.response?.data?.error;
       // console.log("FAILED ADDING NEW SUBSCRIBER:", error ? error.message : e);
       if (error && error.message) {
@@ -145,7 +144,7 @@ const SubscribeForm = ({ ...props }) => {
           }}
           pl="4px"
           _focusVisible={{ borderColor: "brand.lightgreen" }}
-          // onFocus={() => eventLogger("click subscribe input")}
+          onFocus={() => event({ action: "click subscribe input" })}
           value={email}
           onChange={handleChangeEmail}
           onKeyDown={handleKeyDown}
