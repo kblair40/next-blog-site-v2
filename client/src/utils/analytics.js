@@ -1,8 +1,10 @@
-import ReactGA from "react-ga";
+export const pageview = (url) => {
+  window.gtag("config", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+    page_path: url,
+  });
+};
 
-const TRACKING_ID = "UA-250380145-1";
-ReactGA.initialize(TRACKING_ID, { redactEmail: false });
-
-export const initGA = (trackingID) => {
-  ReactGA.initialize(trackingID);
+// log specific events happening.
+export const event = ({ action, params }) => {
+  window.gtag("event", action, params);
 };
