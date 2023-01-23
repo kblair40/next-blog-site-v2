@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
-import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
+// import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 import { fetchAPI } from "src/utils/api";
 import CustomToast from "src/components/CustomToast";
 
@@ -22,7 +22,7 @@ const Unsubscribe = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const eventLogger = useAnalyticsEventTracker();
+  // const eventLogger = useAnalyticsEventTracker();
 
   const toast = useToast();
 
@@ -44,7 +44,7 @@ const Unsubscribe = () => {
     }
 
     if (!foundSubscriberId) {
-      eventLogger("failed unsubscribe", value);
+      // eventLogger("failed unsubscribe", value);
       // No subscriber found - show error toast and return
       showErrorToast("not found");
       return;
@@ -57,7 +57,7 @@ const Unsubscribe = () => {
         method: "DELETE",
       });
       // console.log("\n\n\nUNSUBSCRIBE RES:", unsubscribeRes);
-      eventLogger("successful unsubscribe", value);
+      // eventLogger("successful unsubscribe", value);
 
       toast({
         duration: 3000,

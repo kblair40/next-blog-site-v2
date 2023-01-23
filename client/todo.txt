@@ -13,5 +13,7 @@ TODO
 7. Figure out how to fetch author info for each post
 
 
+
 BEFORE LIVE (or immediately after live)
 1. Fix about page content/image not rendering
+2. Prevent console.logs in prod

@@ -4,7 +4,7 @@ import axios from "axios";
 
 import CustomToast from "src/components/CustomToast";
 import NeverMissAPost from "src/components/NeverMissAPost";
-import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
+import { event } from "src/utils/analytics";
 
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 const envName = process.env.NODE_ENV;
@@ -16,8 +16,6 @@ const SubscribeForm = ({ ...props }) => {
   const [disabled, setDisabled] = useState(false);
 
   const toast = useToast();
-
-  const eventLogger = useAnalyticsEventTracker();
 
   const handleSubscribe = async () => {
     if (!email || email.length <= 4) {
@@ -73,7 +71,8 @@ const SubscribeForm = ({ ...props }) => {
           ),
         });
 
-        eventLogger("successful subscribe", email);
+        // eventLogger("successful subscribe", email);
+        event({ action: "sign_up" });
 
         setEmail("");
         setDisabled(true);
@@ -84,7 +83,7 @@ const SubscribeForm = ({ ...props }) => {
         }, 10000);
       }
     } catch (e) {
-      eventLogger("unsuccessful subscribe", email);
+      // eventLogger("unsuccessful subscribe", email);
       const error = e.response?.data?.error;
       // console.log("FAILED ADDING NEW SUBSCRIBER:", error ? error.message : e);
       if (error && error.message) {
@@ -146,7 +145,7 @@ const SubscribeForm = ({ ...props }) => {
           }}
           pl="4px"
           _focusVisible={{ borderColor: "brand.lightgreen" }}
-          onFocus={() => eventLogger("click subscribe input")}
+          // onFocus={() => eventLogger("click subscribe input")}
           value={email}
           onChange={handleChangeEmail}
           onKeyDown={handleKeyDown}

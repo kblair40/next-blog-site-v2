@@ -1,27 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import Script from "next/script";
-// import ReactGA from "react-ga";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
 import theme from "src/utils/theme";
 import Layout from "src/components/Layout";
+import * as ga from "src/utils/analytics";
+
 import "../assets/css/style.css";
 import "src/styles/piggy.css";
-// import { Event, initGA, PageView } from "src/components/Analytics";
-// import { PageView } from "src/components/Analytics/Analytics";
 
 dynamic(() => import("../assets/css/editor.css"));
 
-// const TRACKING_ID = "UA-250380145-1";
-// ReactGA.initialize(TRACKING_ID, { redactEmail: false });
-
 const MyApp = ({ Component, pageProps }) => {
-  // useEffect(() => {
-  //   initGA();
-  //   PageView();
-  // }, []);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      ga.pageview(url);
+    };
+    //When the component is mounted, subscribe to router changes
+    //and log those page views
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    // If the component is unmounted, unsubscribe
+    // from the event with the `off` method
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <>
