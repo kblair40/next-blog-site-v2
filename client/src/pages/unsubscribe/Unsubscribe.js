@@ -15,15 +15,12 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { event } from "src/utils/analytics";
-// import useAnalyticsEventTracker from "src/hooks/useAnalyticsEventTracker";
 import { fetchAPI } from "src/utils/api";
 import CustomToast from "src/components/CustomToast";
 
 const Unsubscribe = () => {
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
-
-  // const eventLogger = useAnalyticsEventTracker();
 
   const toast = useToast();
 
@@ -45,8 +42,13 @@ const Unsubscribe = () => {
     }
 
     if (!foundSubscriberId) {
-      // eventLogger("failed unsubscribe", value);
-      event({ action: "failed unsubscribe", params: { email: value } });
+      event({
+        action: "failed unsubscribe",
+        params: {
+          event_category: "subscription",
+          event_label: value.trim().toLowerCase(),
+        },
+      });
       // No subscriber found - show error toast and return
       showErrorToast("not found");
       return;
@@ -58,9 +60,13 @@ const Unsubscribe = () => {
       await fetchAPI(`/subscribers/${foundSubscriberId}`, null, {
         method: "DELETE",
       });
-      // console.log("\n\n\nUNSUBSCRIBE RES:", unsubscribeRes);
-      // eventLogger("successful unsubscribe", value);
-      event({ action: "successful unsubscribe", params: { email: value } });
+      event({
+        action: "unsubscribe",
+        params: {
+          event_category: "subscription",
+          event_label: value.trim().toLowerCase(),
+        },
+      });
 
       toast({
         duration: 3000,

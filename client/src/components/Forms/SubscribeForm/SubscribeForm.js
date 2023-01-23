@@ -7,7 +7,7 @@ import NeverMissAPost from "src/components/NeverMissAPost";
 import { event } from "src/utils/analytics";
 
 const STRAPI_API_TOKEN = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-const envName = process.env.NODE_ENV;
+const ENV_NAME = process.env.NODE_ENV;
 
 const SubscribeForm = ({ ...props }) => {
   const [email, setEmail] = useState("");
@@ -38,12 +38,12 @@ const SubscribeForm = ({ ...props }) => {
       const now = new Date().getTime();
 
       let url =
-        envName === "development"
+        ENV_NAME === "development"
           ? "http://localhost:1337/api/subscribers"
           : "https://money-and-other-things.herokuapp.com/api/subscribers";
 
       let authHeader =
-        envName === "development"
+        ENV_NAME === "development"
           ? {
               Authorization:
                 "bearer " +
@@ -71,7 +71,13 @@ const SubscribeForm = ({ ...props }) => {
           ),
         });
 
-        event({ action: "sign_up", params: { email } });
+        event({
+          action: "subscribe",
+          params: {
+            event_category: "subscription",
+            event_label: email,
+          },
+        });
 
         setEmail("");
         setDisabled(true);
@@ -82,7 +88,13 @@ const SubscribeForm = ({ ...props }) => {
         }, 10000);
       }
     } catch (e) {
-      eventLogger({ action: "failed subscribe", params: { email } });
+      event({
+        action: "failed subscribe",
+        params: {
+          event_category: "subscription",
+          event_label: email,
+        },
+      });
       const error = e.response?.data?.error;
       // console.log("FAILED ADDING NEW SUBSCRIBER:", error ? error.message : e);
       if (error && error.message) {
@@ -144,7 +156,14 @@ const SubscribeForm = ({ ...props }) => {
           }}
           pl="4px"
           _focusVisible={{ borderColor: "brand.lightgreen" }}
-          onFocus={() => event({ action: "click subscribe input" })}
+          onFocus={() =>
+            event({
+              action: "click subscribe input",
+              params: {
+                event_category: "subscription",
+              },
+            })
+          }
           value={email}
           onChange={handleChangeEmail}
           onKeyDown={handleKeyDown}

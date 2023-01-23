@@ -1,3 +1,6 @@
+// Event Docs
+// https://developers.google.com/analytics/devguides/collection/gtagjs/events#default_google_analytics_events
+
 export const pageview = (url) => {
   window.gtag("config", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
     page_path: url,
