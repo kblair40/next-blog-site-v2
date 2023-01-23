@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Text, Flex, Center } from "@chakra-ui/react";
 
 import MobileNav from "src/components/Navbar/MobileNav";
 import Navbar from "src/components/Navbar";
+import { Event, initGA, PageView } from "src/components/Analytics";
 
 const layout = ({ children, categories }) => {
+  useEffect(() => {
+    initGA();
+    PageView();
+  }, []);
+
   return (
     <Box bg="brand.creme" minH="100vh">
       <Box position="relative" h="80px" display={{ base: "none", md: "block" }}>
