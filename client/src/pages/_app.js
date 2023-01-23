@@ -26,7 +26,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Script
-        async
+        strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-R824V7XKR1"
       />
       <Script

@@ -6,10 +6,10 @@ import Navbar from "src/components/Navbar";
 import { Event, initGA, PageView } from "src/components/Analytics";
 
 const layout = ({ children, categories }) => {
-  useEffect(() => {
-    initGA();
-    PageView();
-  }, []);
+  // useEffect(() => {
+  //   initGA();
+  //   PageView();
+  // }, []);
 
   return (
     <Box bg="brand.creme" minH="100vh">
