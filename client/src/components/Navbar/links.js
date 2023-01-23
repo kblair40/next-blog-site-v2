@@ -1,25 +1,5 @@
 export const navLinks = [
-  // {
-  //   label: "Home",
-  //   to: "/",
-  // },
-  // {
-  //   label: "Talk Money, Honey",
-  //   to: "/posts/money",
-  // },
-  // {
-  //   label: "Life",
-  //   to: "/posts/life",
-  // },
-  // {
-  //   label: "About",
-  //   to: "/about",
-  // },
-  // {
-  //   label: "Contact",
-  //   to: "/contact",
-  // },
-  // Love, Travel, Style, Guests, Gift Guides
+  // Love, Travel, Style, Guests
   {
     label: "Home",
     to: "/",
@@ -40,10 +20,10 @@ export const navLinks = [
     label: "Guests",
     to: "/posts/guests",
   },
-  {
-    label: "Gift Guides",
-    to: "/posts/gift-guides",
-  },
+  // {
+  //   label: "Gift Guides",
+  //   to: "/posts/gift-guides",
+  // },
   {
     label: "About",
     to: "/about",
