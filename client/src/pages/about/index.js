@@ -50,8 +50,8 @@ const AboutPage = ({ about }) => {
               />
             </Box>
 
-            <Flex w="100%" direction="column" px="32px" pb="50px">
-              <Text fontSize="4xl" my="50px" fontWeight="600">
+            <Flex w="100%" direction="column" px="1rem" pb="50px">
+              <Text fontSize="3xl" my="24px" fontWeight="600">
                 {about?.headline || "Hey! So Glad You're Here."}
               </Text>
 

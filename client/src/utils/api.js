@@ -14,8 +14,8 @@ const LIVE_URL = "https://money-and-other-things.herokuapp.com";
 // const BASE_URL =
 //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
 export function getStrapiURL(path = "") {
-  let baseUrl =
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+  // let baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
+  let baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || LIVE_URL;
   return `${baseUrl}${path}`;
   // return `${LIVE_URL}${path}`;
   // return `${
