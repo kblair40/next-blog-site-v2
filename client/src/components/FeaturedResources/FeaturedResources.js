@@ -14,11 +14,11 @@ const FeaturedResources = () => {
         letterSpacing="6.5px"
         textTransform="uppercase"
       >
-        The Psychology of Money by Morgan Housel
+        The Psychology of Money
       </Text>
 
       <Text mt="4px" fontSize="sm" textAlign="center" letterSpacing="6.5px">
-        by Jen Sincero
+        by Morgan Housel
       </Text>
 
       <Box position="relative" mt="1rem" w="100%" h="180px">
