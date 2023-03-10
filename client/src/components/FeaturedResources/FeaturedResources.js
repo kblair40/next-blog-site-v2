@@ -12,8 +12,9 @@ const FeaturedResources = () => {
         fontSize="sm"
         textAlign="center"
         letterSpacing="6.5px"
+        textTransform="uppercase"
       >
-        YOU ARE A BADASS AT MAKING MONEY
+        The Psychology of Money by Morgan Housel
       </Text>
 
       <Text mt="4px" fontSize="sm" textAlign="center" letterSpacing="6.5px">
@@ -40,11 +41,10 @@ const FeaturedResources = () => {
       </Center> */}
 
       <Text mt="2rem">
-        "Money is just the messenger. It's what you do with it and how you
-        think, feel, and speak about it that give it a personality."
+        "Using your money to buy time and options has a lifestyle benefit few luxury goods can compete with.”
       </Text>
 
-      <Button
+      {/* <Button
         mt="1.5rem"
         variant="ghost"
         fontSize="md"
@@ -59,7 +59,7 @@ const FeaturedResources = () => {
         color="text.body"
       >
         Read More
-      </Button>
+      </Button> */}
     </Box>
   );
 };
