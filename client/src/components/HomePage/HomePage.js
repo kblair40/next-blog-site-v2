@@ -2,30 +2,20 @@ import React from "react";
 import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
-// import Loading from "src/components/Loading";
 import FeaturedPost from "src/components/FeaturedPost";
 import AdditionalPosts from "./AdditionalPosts";
-// import ContactForm from "src/components/Forms/ContactForm";
-// import SEO from "src/components/SEO";
-// import FeaturedResources from "src/components/FeaturedResources";
-// import SubscribeForm from "src/components/Forms/SubscribeForm";
 
 const ContactForm = dynamic(() => import("src/components/Forms/ContactForm"), {
   ssr: false,
 });
 
-// const SEO = dynamic(() => import("src/components/SEO"), {
-//   loading: "Loading...",
-// });
 const SubscribeForm = dynamic(
   () => import("src/components/Forms/SubscribeForm"),
   {
     ssr: false,
   }
 );
-// const AdditionalPosts = dynamic(() => import("./AdditionalPosts"), {
-//   loading: "Loading...",
-// });
+
 const FeaturedResources = dynamic(
   () => import("src/components/FeaturedResources"),
   {
