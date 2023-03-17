@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
@@ -24,6 +24,20 @@ const FeaturedResources = dynamic(
 );
 
 const HomePage = ({ homepage, articles }) => {
+  const [featuredPosts, setFeaturedPosts] = useState();
+
+  useEffect(() => {
+    if (
+      homepage &&
+      homepage.attributes &&
+      homepage.attributes.featured_post?.article
+    ) {
+      const featured_post = homepage.attributes.featured_post.article.data;
+
+      setFeaturedPosts([featured_post, featured_post, featured_post]);
+    }
+  }, [homepage]);
+
   let featuredPost;
   if (homepage && homepage.attributes?.featured_post) {
     featuredPost = homepage.attributes.featured_post.article.data;
