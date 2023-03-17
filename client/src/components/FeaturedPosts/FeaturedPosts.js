@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+// import { motion } from "framer-motion";
 
 import FeaturedPost from "src/components/FeaturedPost";
 
@@ -32,7 +33,18 @@ const FeaturedPosts = ({ posts }) => {
     return <Box h="872px" w="394px" border="2px solid green" />;
   }
 
-  return <FeaturedPost featuredPost={posts[slideIdx]} slideNum={slideIdx} />;
+  return (
+    // <motion.div
+    //   animate={{
+    //     // x: 0,
+    //     transitionEnd: {
+    //       display: "none",
+    //     },
+    //   }}
+    // >
+      <FeaturedPost featuredPost={posts[slideIdx]} slideNum={slideIdx} />
+    // </motion.div>
+  );
 };
 
 export default FeaturedPosts;
