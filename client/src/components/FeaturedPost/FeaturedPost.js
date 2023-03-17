@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import dayjs from "dayjs";
 
-const FeaturedPost = ({ featuredPost }) => {
+const FeaturedPost = ({ featuredPost, slideNum }) => {
   console.log("FEATURED POST:", featuredPost);
   const keyStr =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -29,6 +29,7 @@ const FeaturedPost = ({ featuredPost }) => {
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
+        <Text position="absolute" top='1rem' left='1rem' zIndex={100000000}>{slideNum}</Text>
         <Image
           alt="post image"
           src={featuredPost?.attributes.image_url}

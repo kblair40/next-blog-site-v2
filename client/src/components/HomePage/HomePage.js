@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
+import FeaturedPosts from "src/components/FeaturedPosts";
 import FeaturedPost from "src/components/FeaturedPost";
 import AdditionalPosts from "./AdditionalPosts";
 
@@ -93,7 +94,8 @@ const HomePage = ({ homepage, articles }) => {
         }}
       >
         <GridItem area="feat-p" maxW="900px" m="0 auto">
-          <FeaturedPost featuredPost={featuredPost} />
+          <FeaturedPosts posts={featuredPosts} />
+          {/* <FeaturedPost featuredPost={featuredPost} /> */}
         </GridItem>
 
         <GridItem area="sub">
