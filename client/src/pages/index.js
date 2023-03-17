@@ -1,7 +1,7 @@
-// import { Suspense } from "react";
 import { Flex } from "@chakra-ui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
+
 
 import HomePage from "src/components/HomePage";
 import { fetchAPI } from "src/utils/api";
@@ -50,7 +50,7 @@ export async function getStaticProps() {
     }),
   ]);
 
-  // console.log("ARTICLES RES:", articles);
+  console.log("\n\n\n\n\n\n\n\n\n\n\n\nARTICLES RES:", articles);
 
   return {
     props: {
