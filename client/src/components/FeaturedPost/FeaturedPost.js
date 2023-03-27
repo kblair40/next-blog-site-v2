@@ -29,7 +29,9 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
-        <Text position="absolute" top='1rem' left='1rem' zIndex={100000000}>{slideNum}</Text>
+        <Text position="absolute" top="1rem" left="1rem" zIndex={100000000}>
+          {slideNum}
+        </Text>
         <Image
           alt="post image"
           src={featuredPost?.attributes.image_url}
@@ -43,27 +45,6 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
           priority
           fill
         />
-
-        <Center
-          px={{ base: "1.5rem", md: ".75rem" }}
-          h={{ base: "42px", sm: "52px", md: "62px" }}
-          position="absolute"
-          transform="translateY(-50%)"
-          top={0}
-          left={0}
-          border="5px solid"
-          borderColor="brand.darkgreen"
-          bg="white"
-        >
-          <Text
-            fontWeight="500"
-            color="brand.darkgreen"
-            fontSize={{ base: "lg", sm: "xl", md: "2xl" }}
-            letterSpacing={{ base: "3.5px", sm: "6px", md: "8px" }}
-          >
-            FEATURED POST
-          </Text>
-        </Center>
       </Box>
 
       <Flex
