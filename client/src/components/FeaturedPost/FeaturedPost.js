@@ -29,9 +29,9 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
-        <Text position="absolute" top="1rem" left="1rem" zIndex={100000000}>
+        {/* <Text position="absolute" top="1rem" left="1rem" zIndex={100000000}>
           {slideNum}
-        </Text>
+        </Text> */}
         <Image
           alt="post image"
           src={featuredPost?.attributes.image_url}
@@ -51,7 +51,7 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
         w={{ base: "100%" }}
         direction="column"
         p="28px 24px 25px"
-        border="1px solid black"
+        // border="1px solid black"
         borderTop="none"
         boxSizing="border-box"
         bg="white" // new
