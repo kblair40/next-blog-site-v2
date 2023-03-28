@@ -50,7 +50,7 @@ const HomePage = ({ homepage, articles }) => {
       minH="100vh"
       maxW="100vw"
       w="100%"
-      // border="1px solid blue"
+    // border="1px solid blue"
     >
       {/* <SEO seo={homepage?.attributes.seo} /> */}
 
@@ -93,9 +93,9 @@ const HomePage = ({ homepage, articles }) => {
           },
         }}
       >
-        <GridItem area="feat-p" maxW="900px" m="0 auto">
+        {/* <GridItem area="feat-p" maxW="900px" m="0 auto"> */}
+        <GridItem area="feat-p" maxW="900px">
           <FeaturedPosts posts={featuredPosts} />
-          {/* <FeaturedPost featuredPost={featuredPost} /> */}
         </GridItem>
 
         <GridItem area="sub">

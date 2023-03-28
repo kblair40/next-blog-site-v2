@@ -28,9 +28,6 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
         position="relative"
       >
-        {/* <Text position="absolute" top="1rem" left="1rem" zIndex={100000000}>
-          {slideNum}
-        </Text> */}
         <Image
           alt="post image"
           src={featuredPost?.attributes.image_url}
@@ -49,7 +46,7 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
       <Flex
         w={{ base: "100%" }}
         direction="column"
-        p="28px 24px 25px"
+        p={{ base: "20px 16px 15px", sm: "28px 24px 25px" }}
         // border="1px solid black"
         borderTop="none"
         boxSizing="border-box"
@@ -77,9 +74,10 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
               fontWeight="700"
               mb="12px"
               // fontSize="30px"
-              fontSize={{ base: "24px", sm: "30px" }}
+              fontSize={{ base: "22px", sm: "26px", md: "30px" }}
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
+              noOfLines={2}
             >
               {featuredPost?.attributes.title}
             </Text>
