@@ -1,18 +1,18 @@
 {
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^1.1.2",
-    "@strapi/plugin-graphql": "^4.0.0",
-    "@strapi/plugin-i18n": "4.5.3",
-    "@strapi/plugin-users-permissions": "4.5.3",
-    "@strapi/provider-email-sendgrid": "^4.5.3",
-    "@strapi/strapi": "4.5.3",
+    "@strapi/plugin-graphql": "^4.7.0",
+    "@strapi/plugin-i18n": "4.7.0",
+    "@strapi/plugin-users-permissions": "4.7.0",
+    "@strapi/provider-email-sendgrid": "^4.7.0",
+    "@strapi/strapi": "4.7.0",
     "better-sqlite3": "7.4.6",
     "fuse.js": "^6.6.2",
     "lodash.set": "^4.3.2",
     "mime-types": "^2.1.27",
     "pg": "^8.8.0",
     "pg-connection-string": "^2.5.0",
-    "strapi-plugin-fuzzy-search": "^1.10.2"
+    "strapi-plugin-fuzzy-search": "^1.11.0-beta.1"
   },
   "name": "server",
   "private": true,
