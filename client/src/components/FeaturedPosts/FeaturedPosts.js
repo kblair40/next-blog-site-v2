@@ -27,7 +27,7 @@ const FeaturedPosts = ({ posts }) => {
     <Box>
       {/* <Box position="relative" shadow="sm" w="100vw" maxW="100vw" border='1px solid red'> */}
       <Box position="relative" shadow="sm"
-        w={{ base: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
+        w={{ base: "calc(100vw - 3rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
       >
         <Center
           px={{ base: "1.5rem", md: ".75rem" }}

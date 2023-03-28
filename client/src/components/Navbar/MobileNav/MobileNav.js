@@ -77,13 +77,14 @@ const MobileNav = () => {
           minW="32px"
           justify="center"
           align="center"
+          right={{ sm: "1rem", md: 0 }}
         >
           <HamburgerButton onClick={toggleDrawer} />
         </Flex>
       </Flex>
 
       <NavDrawer isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </React.Fragment>
+    </React.Fragment >
   );
 };
 
