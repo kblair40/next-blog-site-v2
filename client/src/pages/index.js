@@ -43,7 +43,7 @@ export async function getStaticProps() {
         featured_post: {
           populate: { article: "*" },
         },
-        featured_post: {
+        featured_posts: {
           populate: { articles: "* " }
         }
       },
