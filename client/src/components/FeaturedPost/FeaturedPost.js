@@ -77,7 +77,8 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
             <Text
               fontWeight="700"
               mb="12px"
-              fontSize="30px"
+              // fontSize="30px"
+              fontSize={{base: "24px", sm: "30px"}}
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
             >
