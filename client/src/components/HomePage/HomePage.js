@@ -31,13 +31,27 @@ const HomePage = ({ homepage, articles }) => {
     if (
       homepage &&
       homepage.attributes &&
-      homepage.attributes.featured_post?.article
+      homepage.attributes.featured_posts?.articles
     ) {
-      const featured_post = homepage.attributes.featured_post.article.data;
+      // const featured_post = homepage.attributes.featured_post.article.data;
 
-      setFeaturedPosts([featured_post, featured_post, featured_post]);
+      let featuredPosts = homepage.attributes.featured_posts.articles.data.map(post => post)
+      console.log('\n\nFEATURED POSTS:', featuredPosts, '\n')
+      setFeaturedPosts(featuredPosts)
+      // setFeaturedPosts([featured_post, featured_post, featured_post]);
     }
   }, [homepage]);
+  // useEffect(() => {
+  //   if (
+  //     homepage &&
+  //     homepage.attributes &&
+  //     homepage.attributes.featured_post?.article
+  //   ) {
+  //     const featured_post = homepage.attributes.featured_post.article.data;
+
+  //     setFeaturedPosts([featured_post, featured_post, featured_post]);
+  //   }
+  // }, [homepage]);
 
   // let featuredPost;
   // if (homepage && homepage.attributes?.featured_post) {
