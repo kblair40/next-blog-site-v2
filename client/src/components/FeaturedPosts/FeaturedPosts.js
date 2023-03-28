@@ -18,9 +18,9 @@ const FeaturedPosts = ({ posts }) => {
     cursor: "pointer",
     boxSize: "36px",
     rounded: "full",
-    opacity: 0.7,
+    opacity: 0.75,
     transition: "opacity 0.3s",
-    _hover: { opacity: 1 },
+    _hover: { opacity: 0.9 },
   };
 
   return (
