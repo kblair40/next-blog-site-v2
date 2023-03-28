@@ -54,8 +54,8 @@ const Navbar = () => {
         justifyContent="space-between"
         w="100%"
         alignItems="center"
-        border="1px solid green"
-        pr={{ base: '1rem', md: 0 }}
+        // border="1px solid green"
+        pr={{ base: '1rem', lg: 0 }}
       >
         <Link href="/">
           {/* <MoneyLogo /> */}
