@@ -19,11 +19,10 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
   };
 
   const rgbDataURL = (r, g, b) =>
-    `data:image/gif;base64,R0lGODlhAQABAPAA${
-      triplet(0, r, g) + triplet(b, 255, 255)
+    `data:image/gif;base64,R0lGODlhAQABAPAA${triplet(0, r, g) + triplet(b, 255, 255)
     }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
   return (
-    <Box w="100%" id="feat-p">
+    <Box w="100%">
       <Box
         width="100%"
         height={{ base: "191px", sm: "236px", md: "394px", lg: "506px" }}
@@ -78,7 +77,7 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
               fontWeight="700"
               mb="12px"
               // fontSize="30px"
-              fontSize={{base: "24px", sm: "30px"}}
+              fontSize={{ base: "24px", sm: "30px" }}
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
             >
