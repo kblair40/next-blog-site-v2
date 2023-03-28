@@ -12,8 +12,12 @@ const FeaturedPosts = ({ posts }) => {
   const arrowProps = {
     bg: "white",
     position: "absolute",
-    top: "220px",
-    zIndex: 50,
+    display: {base: 'none', sm: 'flex'},
+    // top: "240px",
+    top: "calc(50% - 96px)",
+    // top: { base: "calc(50% - 91px)", sm: "calc(50% - 96px)" },
+    transform: "translateY(-50%)",
+    // zIndex: 500000,
     cursor: "pointer",
     boxSize: "36px",
     rounded: "full",
@@ -46,6 +50,7 @@ const FeaturedPosts = ({ posts }) => {
         </Text>
       </Center>
 
+      {/* <Box border="2px solid green"> */}
       <Carousel
         loop={true}
         interval={8000}
@@ -79,6 +84,7 @@ const FeaturedPosts = ({ posts }) => {
           return <FeaturedPost key={i} featuredPost={post} slideNum={i} />;
         })}
       </Carousel>
+      {/* </Box> */}
     </Box>
   );
 };
