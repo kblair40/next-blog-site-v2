@@ -39,10 +39,10 @@ const HomePage = ({ homepage, articles }) => {
     }
   }, [homepage]);
 
-  let featuredPost;
-  if (homepage && homepage.attributes?.featured_post) {
-    featuredPost = homepage.attributes.featured_post.article.data;
-  }
+  // let featuredPost;
+  // if (homepage && homepage.attributes?.featured_post) {
+  //   featuredPost = homepage.attributes.featured_post.article.data;
+  // }
 
   return (
     <Box
@@ -94,8 +94,16 @@ const HomePage = ({ homepage, articles }) => {
         }}
       >
         {/* <GridItem area="feat-p" maxW="900px" m="0 auto"> */}
-        <GridItem area="feat-p" maxW="900px">
+        <GridItem
+          area="feat-p"
+          maxW="1100px"
+          m="0 auto"
+          position="relative"
+          w={{ base: "calc(100vw - 3rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
+        >
+          {/* {featuredPosts && ( */}
           <FeaturedPosts posts={featuredPosts} />
+          {/* )} */}
         </GridItem>
 
         <GridItem area="sub">
@@ -107,7 +115,9 @@ const HomePage = ({ homepage, articles }) => {
         </GridItem>
 
         <GridItem area="recent">
-          <AdditionalPosts articles={articles} featuredPost={featuredPost} />
+          <AdditionalPosts articles={articles}
+          // featuredPost={featuredPost} 
+          />
         </GridItem>
 
         <GridItem area="div">
