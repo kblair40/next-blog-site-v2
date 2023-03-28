@@ -47,7 +47,7 @@ const FeaturedPosts = ({ posts }) => {
             fontSize={{ base: "lg", sm: "xl", md: "2xl" }}
             letterSpacing={{ base: "3.5px", sm: "6px", md: "8px" }}
           >
-            FEATURED POST
+            FEATURED POSTS
           </Text>
         </Center>
 
