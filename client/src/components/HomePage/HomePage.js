@@ -33,30 +33,11 @@ const HomePage = ({ homepage, articles }) => {
       homepage.attributes &&
       homepage.attributes.featured_posts?.articles
     ) {
-      // const featured_post = homepage.attributes.featured_post.article.data;
-
       let featuredPosts = homepage.attributes.featured_posts.articles.data.map(post => post)
       console.log('\n\nFEATURED POSTS:', featuredPosts, '\n')
       setFeaturedPosts(featuredPosts)
-      // setFeaturedPosts([featured_post, featured_post, featured_post]);
     }
   }, [homepage]);
-  // useEffect(() => {
-  //   if (
-  //     homepage &&
-  //     homepage.attributes &&
-  //     homepage.attributes.featured_post?.article
-  //   ) {
-  //     const featured_post = homepage.attributes.featured_post.article.data;
-
-  //     setFeaturedPosts([featured_post, featured_post, featured_post]);
-  //   }
-  // }, [homepage]);
-
-  // let featuredPost;
-  // if (homepage && homepage.attributes?.featured_post) {
-  //   featuredPost = homepage.attributes.featured_post.article.data;
-  // }
 
   return (
     <Box
@@ -113,11 +94,12 @@ const HomePage = ({ homepage, articles }) => {
           maxW="1100px"
           m="0 auto"
           position="relative"
-          w={{ base: "calc(100vw - 3rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
+          // base was "calc(100vw - 3rem)"
+          w={{ base: "calc(100vw - 6rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
         >
-          {/* {featuredPosts && ( */}
-          <FeaturedPosts posts={featuredPosts} />
-          {/* )} */}
+          {featuredPosts && (
+            <FeaturedPosts posts={featuredPosts} />
+          )}
         </GridItem>
 
         <GridItem area="sub">
