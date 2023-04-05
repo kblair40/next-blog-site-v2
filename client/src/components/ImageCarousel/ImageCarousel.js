@@ -60,10 +60,6 @@ const ImageCarousel = ({ imageUrls }) => {
     }
   }, [imageUrls]);
 
-  useEffect(() => {
-    let currentImage = images[imageIndex];
-    // console.log("CURRENT IMAGE:", currentImage);
-  }, [slide]);
 
   const sharedIconStyles = {
     boxSize: { base: "32px", md: "40px" },
@@ -75,16 +71,23 @@ const ImageCarousel = ({ imageUrls }) => {
     _active: { bg: "brand.darkgreen" },
   };
 
-  const imageObjectFit = useBreakpointValue(
-    { base: "cover", sm: "contain" },
-    { fallback: "base", ssr: true }
-  );
+  // const imageObjectFit = useBreakpointValue(
+  //   { base: "cover", sm: "contain" },
+  //   { fallback: "base", ssr: true }
+  // );
 
-  const imageHeight = useBreakpointValue({ base: "400px", sm: "500px" });
+  // const imageWidth = useBreakpointValue({ base: 400, sm: 700 })
+  const imageHeight = useBreakpointValue({ base: "350px", sm: "500px" });
 
   if (!images || !images.length) return null;
   return (
-    <Box position="relative" h={imageHeight} w="100%" maxW="700px" m="0 auto">
+    <Box
+      position="relative"
+      h={imageHeight}
+      w="100%"
+      maxW={{ base: "400px", sm: "700px" }}
+      m="0 auto"
+    >
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={slide}
@@ -98,21 +101,19 @@ const ImageCarousel = ({ imageUrls }) => {
             y: { duration: 0.2 },
             opacity: { duration: 0.2 },
           }}
+          style={{ position: "absolute", width: '100%', height: '100%' }}
         >
-          <Box position="absolute" w="100%">
+          <Box position="relative" w="100%" maxH="100%" h={{ base: '100%' }}>
             <Image
               src={images[imageIndex]}
-              width={700}
-              height={parseInt(imageHeight)}
               alt="img"
               style={{
-                objectFit: imageObjectFit,
-                width: "100%",
-                height: "auto",
-                maxHeight: "500px",
-                minHeight: "400px",
+                // objectFit: imageObjectFit,
+                objectFit: 'contain',
+                maxWidth: '100%',
+                maxHeight: '100%',
               }}
-              // fill
+              fill
             />
           </Box>
         </motion.div>
@@ -124,6 +125,7 @@ const ImageCarousel = ({ imageUrls }) => {
         w="100%"
         top={{ base: "calc(50% + 20px)", sm: "50%" }}
         transform="translateY(-50%)"
+        zIndex={100000}
       >
         <IconButton
           onClick={() => changeSlide(-1)}
