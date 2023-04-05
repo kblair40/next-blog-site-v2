@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 import { Box, Center, Text } from "@chakra-ui/react";
 import Carousel from "framer-motion-carousel";
 
@@ -8,6 +9,12 @@ const FeaturedPosts = ({ posts }) => {
   if (!posts || !posts.length) {
     return <Box h="872px" w="394px" border="2px solid green" />;
   }
+
+  const carouselRef = useRef();
+
+  useEffect(() => {
+    console.log('CAROUSEL:', carouselRef.current);
+  }, [carouselRef.current])
 
   const arrowProps = {
     bg: "white",
@@ -27,7 +34,7 @@ const FeaturedPosts = ({ posts }) => {
     <Box>
       {/* <Box position="relative" shadow="sm" w="100vw" maxW="100vw" border='1px solid red'> */}
       <Box position="relative" shadow="sm"
-        // w={{ base: "calc(100vw - 3rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
+      // w={{ base: "calc(100vw - 3rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
       >
         <Center
           // px={{ base: "1.5rem", md: ".75rem" }} // original 4/5/23
@@ -54,6 +61,7 @@ const FeaturedPosts = ({ posts }) => {
 
         <Box>
           <Carousel
+            ref={carouselRef}
             loop={true}
             interval={5000}
             renderDots={() => null}

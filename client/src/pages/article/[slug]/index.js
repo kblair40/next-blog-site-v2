@@ -82,7 +82,7 @@ const Article = ({ article }) => {
     links.forEach((link) => (link.target = "_blank"));
 
     const innerSpans = document.querySelectorAll("a span");
-    console.log("INNER SPANS:", innerSpans);
+    // console.log("INNER SPANS:", innerSpans);
     innerSpans.forEach((innerSpan) => {
       innerSpan.style.color = "#53614D";
     });
