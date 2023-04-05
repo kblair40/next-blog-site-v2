@@ -94,8 +94,7 @@ const HomePage = ({ homepage, articles }) => {
           maxW="1100px"
           m="0 auto"
           position="relative"
-          // base was "calc(100vw - 3rem)"
-          w={{ base: "calc(100vw - 6rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
+          w={{ base: "calc(100vw - 3rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
         >
           {featuredPosts && (
             <FeaturedPosts posts={featuredPosts} />

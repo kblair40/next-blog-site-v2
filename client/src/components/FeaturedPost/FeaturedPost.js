@@ -48,10 +48,12 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
         w={{ base: "100%" }}
         direction="column"
         p={{ base: "20px 16px 15px", sm: "28px 24px 25px" }}
-        // border="1px solid black"
+        // border="3px solid black"
         borderTop="none"
         boxSizing="border-box"
         bg="white" // new
+        // h="100%"
+        h={{ base: "200px", sm: '210px', md: '225px' }}
       >
         <Box display="inline" fontSize="xs" mb="1rem">
           <Text display="inline">
@@ -79,6 +81,7 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
               _groupHover={{ color: "brand.lightgreen" }}
               transition="color 0.3s"
               noOfLines={2}
+              lineHeight={1.3}
             >
               {featuredPost?.attributes.title}
             </Text>

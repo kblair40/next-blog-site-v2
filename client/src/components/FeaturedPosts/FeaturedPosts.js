@@ -30,8 +30,7 @@ const FeaturedPosts = ({ posts }) => {
       // w={{ base: "calc(100vw - 3rem)", sm: "calc(100vw - 4rem)", lg: "calc(100vw - 11rem)" }}
       >
         <Center
-          // px={{ base: "1.5rem", md: ".75rem" }} // original 4/5/23
-          px={{ base: "1rem", md: ".75rem" }}
+          px={{ base: "1.5rem", md: ".75rem" }}
           h={{ base: "42px", sm: "52px", md: "62px" }}
           position="absolute"
           transform="translateY(-50%)"
