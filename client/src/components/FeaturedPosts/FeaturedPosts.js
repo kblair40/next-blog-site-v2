@@ -55,7 +55,7 @@ const FeaturedPosts = ({ posts }) => {
         <Box>
           <Carousel
             loop={true}
-            interval={8000}
+            interval={5000}
             renderDots={() => null}
             renderArrowLeft={({ handlePrev }) => {
               return (
