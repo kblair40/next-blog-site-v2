@@ -62,7 +62,7 @@ const ImageCarousel = ({ imageUrls }) => {
 
   useEffect(() => {
     let currentImage = images[imageIndex];
-    console.log("CURRENT IMAGE:", currentImage);
+    // console.log("CURRENT IMAGE:", currentImage);
   }, [slide]);
 
   const sharedIconStyles = {

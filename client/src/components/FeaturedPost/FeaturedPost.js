@@ -5,7 +5,7 @@ import Link from "next/link";
 import dayjs from "dayjs";
 
 const FeaturedPost = ({ featuredPost, slideNum }) => {
-  console.log("FEATURED POST:", featuredPost);
+  // console.log("FEATURED POST:", featuredPost);
   const keyStr =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 

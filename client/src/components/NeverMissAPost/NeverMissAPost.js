@@ -67,7 +67,7 @@ const NeverMissAPost = () => {
           path.classList.add("write-logo");
         }
       }, i * 100);
-      console.log("i * 100 =", i * 100);
+      // console.log("i * 100 =", i * 100);
     }
   };
 
