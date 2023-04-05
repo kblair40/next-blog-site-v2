@@ -32,6 +32,7 @@ const FeaturedPost = ({ featuredPost, slideNum }) => {
           alt="post image"
           src={featuredPost?.attributes.image_url}
           placeholder="blue"
+          draggable={false} // NEW
           blurDataURL={rgbDataURL(255, 249, 243)}
           style={{ objectFit: "cover" }}
           sizes="(min-width: 992px) 900px,
