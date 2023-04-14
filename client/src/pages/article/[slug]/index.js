@@ -16,8 +16,8 @@ import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Head from 'next/head';
 
+import SEO from 'src/components/SEO';
 import { ShareIcon, CopyIcon } from 'src/utils/icons';
 import { fetchAPI } from 'src/utils/api';
 import Loading from 'src/components/Loading';
@@ -93,9 +93,7 @@ const Article = ({ article }) => {
 
   return (
     <>
-      <Head>
-        <title key='main-layout'>{article.attributes.title}</title>
-      </Head>
+      <SEO seo={{ metaTitle: article.attributes.title }} />
       <AnimatePresence>
         <motion.div
           key='article'

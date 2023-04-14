@@ -1,8 +1,8 @@
 import { Flex } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
+import SEO from 'src/components/SEO';
 import HomePage from 'src/components/HomePage';
 import { fetchAPI } from 'src/utils/api';
 
@@ -14,9 +14,7 @@ const ShareModal = dynamic(() => import('src/components/Modals/ShareModal'), {
 const Home = ({ homepage, articles }) => {
   return (
     <>
-      <Head>
-        <title key='main-layout'>Money and Other Things</title>
-      </Head>
+      <SEO seo={{ metaTitle: 'Money and Other Things' }} />
       <AnimatePresence>
         <motion.div
           key='home'
