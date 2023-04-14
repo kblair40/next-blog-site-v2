@@ -17,6 +17,8 @@ dynamic(() => import('../assets/css/editor.css'));
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
 
+  // const getLayout = Component.getLayout || ((page) => page)
+
   useEffect(() => {
     const handleRouteChange = (url) => {
       ga.pageview(url);
