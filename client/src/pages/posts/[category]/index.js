@@ -1,27 +1,30 @@
-import React from "react";
-import { Flex, Stack, Box } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { useRouter } from "next/router";
-import dayjs from "dayjs";
+import React from 'react';
+import { Flex, Stack, Box } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+import dayjs from 'dayjs';
 
-import PiggyBank from "src/components/PiggyBank";
-import { fetchAPI } from "src/utils/api";
-import Card from "src/components/Card";
+import SEO from 'src/components/SEO';
+import PiggyBank from 'src/components/PiggyBank';
+import { fetchAPI } from 'src/utils/api';
+import Card from 'src/components/Card';
 
 const Posts = ({ articles }) => {
   const { asPath } = useRouter();
+  let category = asPath.split('/')[2];
+  category = category[0].toUpperCase() + category.slice(1);
+  console.log('Category:', category);
 
   return (
-    <motion.div
-      key={asPath}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      layout
-    >
-      <Box w="100%" pt="1.5rem">
-        <ArticleList articles={articles} />
-      </Box>
-    </motion.div>
+    <>
+      {/* <SEO seo={{ metaTitle: `${category}-MAOT` }} /> */}
+      <SEO seo={{ metaTitle: category }} />
+      <motion.div key={asPath} initial={{ opacity: 0 }} animate={{ opacity: 1 }} layout>
+        <Box w='100%' pt='1.5rem'>
+          <ArticleList articles={articles} />
+        </Box>
+      </motion.div>
+    </>
   );
 };
 
@@ -34,9 +37,9 @@ const ArticleList = ({ articles }) => {
   };
 
   return (
-    <Flex w="100%" justify="center" px={{ base: "1rem", sm: "2rem" }}>
+    <Flex w='100%' justify='center' px={{ base: '1rem', sm: '2rem' }}>
       {!!articles && !!articles.length ? (
-        <Stack w="100%" spacing="1.5rem">
+        <Stack w='100%' spacing='1.5rem'>
           {articles && articles.length
             ? articles.sort(sortArticles).map((article, i) => {
                 return <Card article={article} key={i} />;
@@ -51,12 +54,12 @@ const ArticleList = ({ articles }) => {
 };
 
 export async function getStaticProps({ params }) {
-  const categoriesRes = await fetchAPI("/categories", {
+  const categoriesRes = await fetchAPI('/categories', {
     filters: {
       name: params.category,
     },
     populate: {
-      articles: { populate: "*" },
+      articles: { populate: '*' },
     },
   });
   // console.log("categoriesRes:", categoriesRes);
@@ -65,7 +68,7 @@ export async function getStaticProps({ params }) {
 
   try {
     articles = categoriesRes.data[0].attributes.articles.data;
-    console.log("ARTICLE:", categoriesRes.data[0].attributes);
+    console.log('ARTICLE:', categoriesRes.data[0].attributes);
   } catch (e) {
     articles = [];
   }
@@ -79,9 +82,9 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   let categoriesRes;
   try {
-    categoriesRes = await fetchAPI("/categories", { fields: ["slug"] });
+    categoriesRes = await fetchAPI('/categories', { fields: ['slug'] });
   } catch (e) {
-    console.log("FAILED FETCHING ARTICLES:", e);
+    console.log('FAILED FETCHING ARTICLES:', e);
   }
 
   let paths = [];
