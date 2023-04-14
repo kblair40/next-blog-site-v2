@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef, Suspense } from "react";
-import { createRoot } from "react-dom/client";
+import React, { useEffect, useState, useRef, Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
 import {
   Text,
   Flex,
@@ -10,22 +10,23 @@ import {
   IconButton,
   useClipboard,
   useToast,
-} from "@chakra-ui/react";
-import dayjs from "dayjs";
-import { useRouter } from "next/router";
-import { motion, AnimatePresence } from "framer-motion";
-import dynamic from "next/dynamic";
-import Image from "next/image";
+} from '@chakra-ui/react';
+import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
+import { motion, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Head from 'next/head';
 
-import { ShareIcon, CopyIcon } from "src/utils/icons";
-import { fetchAPI } from "src/utils/api";
-import Loading from "src/components/Loading";
-import ImageCarousel from "src/components/ImageCarousel";
+import { ShareIcon, CopyIcon } from 'src/utils/icons';
+import { fetchAPI } from 'src/utils/api';
+import Loading from 'src/components/Loading';
+import ImageCarousel from 'src/components/ImageCarousel';
 
-const ShareModal = dynamic(() => import("src/components/Modals/ShareModal"), {
+const ShareModal = dynamic(() => import('src/components/Modals/ShareModal'), {
   suspense: true,
 });
-const Seo = dynamic(() => import("src/components/SEO"), {
+const Seo = dynamic(() => import('src/components/SEO'), {
   suspense: true,
 });
 
@@ -34,10 +35,10 @@ const Article = ({ article }) => {
   const [articleData, setArticleData] = useState();
 
   const imgPosition = {
-    "top-left": "left top",
-    "top-center": "center 30%",
-    "center-center": "center center",
-    "bottom-center": "center bottom",
+    'top-left': 'left top',
+    'top-center': 'center 30%',
+    'center-center': 'center center',
+    'bottom-center': 'center bottom',
   };
 
   useEffect(() => {
@@ -53,12 +54,12 @@ const Article = ({ article }) => {
       carousel_images = article.attributes.carousel_image_urls;
     }
     if (!carousel_images) {
-      console.log("NO CAROUSEL IMAGES");
+      console.log('NO CAROUSEL IMAGES');
       return;
     }
 
-    let carouselContainer = document.getElementById("imageCarousel");
-    carouselContainer.style.paddingTop = "1rem";
+    let carouselContainer = document.getElementById('imageCarousel');
+    carouselContainer.style.paddingTop = '1rem';
 
     if (!textAdded.current) {
       let root = createRoot(carouselContainer);
@@ -76,15 +77,13 @@ const Article = ({ article }) => {
 
   useEffect(() => {
     // adds target=_blank to all links in blog post so they open in new tab
-    let links = Array.from(
-      document.querySelector(".ck-content").getElementsByTagName("a")
-    );
-    links.forEach((link) => (link.target = "_blank"));
+    let links = Array.from(document.querySelector('.ck-content').getElementsByTagName('a'));
+    links.forEach((link) => (link.target = '_blank'));
 
-    const innerSpans = document.querySelectorAll("a span");
+    const innerSpans = document.querySelectorAll('a span');
     // console.log("INNER SPANS:", innerSpans);
     innerSpans.forEach((innerSpan) => {
-      innerSpan.style.color = "#53614D";
+      innerSpan.style.color = '#53614D';
     });
   }, []);
 
@@ -93,116 +92,108 @@ const Article = ({ article }) => {
   const hasPosition = imgPosV !== undefined && imgPosH !== undefined;
 
   return (
-    <AnimatePresence>
-      <motion.div
-        key="article"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-      >
-        <Suspense fallback={<Loading />}>
-          <ShareModal
-            isOpen={shareModalOpen}
-            onClose={() => setShareModalOpen(false)}
-            articleData={articleData}
-          />
-        </Suspense>
-
-        <Suspense fallback={<div />}>
-          <Seo seo={seo} />
-        </Suspense>
-
-        <Flex
-          mt="24px"
-          w="100%"
-          justify="center"
-          px={{ base: "1rem", sm: "2rem", md: "4rem" }}
+    <>
+      <Head>
+        <title key='main-layout'>{article.attributes.title}</title>
+      </Head>
+      <AnimatePresence>
+        <motion.div
+          key='article'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
-          <Flex
-            direction="column"
-            w="100%"
-            maxW={{ lg: "1000px" }}
-            p={{ base: "12px", sm: "24px", md: "40px", lg: "q0px" }}
-          >
+          <Suspense fallback={<Loading />}>
+            <ShareModal
+              isOpen={shareModalOpen}
+              onClose={() => setShareModalOpen(false)}
+              articleData={articleData}
+            />
+          </Suspense>
+
+          <Suspense fallback={<div />}>
+            <Seo seo={seo} />
+          </Suspense>
+
+          <Flex mt='24px' w='100%' justify='center' px={{ base: '1rem', sm: '2rem', md: '4rem' }}>
             <Flex
-              mb=".5rem"
-              w="100%"
-              display="inline-flex"
-              fontSize="sm"
-              align="center"
+              direction='column'
+              w='100%'
+              maxW={{ lg: '1000px' }}
+              p={{ base: '12px', sm: '24px', md: '40px', lg: 'q0px' }}
             >
-              <Text display="inline">
-                {dayjs(article.attributes.publishedAt).format("MMM DD")}
+              <Flex mb='.5rem' w='100%' display='inline-flex' fontSize='sm' align='center'>
+                <Text display='inline'>
+                  {dayjs(article.attributes.publishedAt).format('MMM DD')}
+                </Text>
+                <Text mx='8px' display='inline' fontSize='6px'>
+                  &bull;
+                </Text>
+                <Text display='inline'>{`${article.attributes.minutes_to_read} min read`}</Text>
+              </Flex>
+
+              <Text
+                fontWeight='700'
+                mb='1.5rem'
+                textAlign='center'
+                fontSize={{ base: '3xl', md: '4xl', lg: '42px' }}
+              >
+                {article.attributes.title}
               </Text>
-              <Text mx="8px" display="inline" fontSize="6px">
-                &bull;
-              </Text>
-              <Text display="inline">{`${article.attributes.minutes_to_read} min read`}</Text>
-            </Flex>
 
-            <Text
-              fontWeight="700"
-              mb="1.5rem"
-              textAlign="center"
-              fontSize={{ base: "3xl", md: "4xl", lg: "42px" }}
-            >
-              {article.attributes.title}
-            </Text>
-
-            <Box
-              w="100%"
-              h={{ base: "280px", sm: "320px", md: "380px" }}
-              position="relative"
-              mb="2rem"
-            >
-              <Image
-                fill
-                src={article.attributes.image_url}
-                alt="img"
-                style={{
-                  objectFit: "cover",
-                  objectPosition: hasPosition
-                    ? `${imgPosH}% ${imgPosV}%`
-                    : "center center",
-                }}
-              />
-            </Box>
-
-            <Box
-              w="100%"
-              sx={{
-                a: {
-                  color: "#7D9174",
-                },
-              }}
-            >
               <Box
-                className="ck-content"
-                dangerouslySetInnerHTML={{ __html: article.attributes.content }}
-              />
-            </Box>
+                w='100%'
+                h={{ base: '280px', sm: '320px', md: '380px' }}
+                position='relative'
+                mb='2rem'
+              >
+                <Image
+                  fill
+                  src={article.attributes.image_url}
+                  alt='img'
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: hasPosition ? `${imgPosH}% ${imgPosV}%` : 'center center',
+                  }}
+                />
+              </Box>
 
-            <Divider borderColor="black" opacity={0.2} mt="2.5rem" />
+              <Box
+                w='100%'
+                sx={{
+                  a: {
+                    color: '#7D9174',
+                  },
+                }}
+              >
+                <Box
+                  className='ck-content'
+                  dangerouslySetInnerHTML={{ __html: article.attributes.content }}
+                />
+              </Box>
 
-            <Box w="100%" mt="1rem">
-              <ShareLinks onClickShare={() => setShareModalOpen(true)} />
-            </Box>
+              <Divider borderColor='black' opacity={0.2} mt='2.5rem' />
+
+              <Box w='100%' mt='1rem'>
+                <ShareLinks onClickShare={() => setShareModalOpen(true)} />
+              </Box>
+            </Flex>
           </Flex>
-        </Flex>
-      </motion.div>
-    </AnimatePresence>
+        </motion.div>
+      </AnimatePresence>
+    </>
   );
 };
 
 export async function getServerSideProps({ params }) {
-  const articlesRes = await fetchAPI("/articles", {
+  const articlesRes = await fetchAPI('/articles', {
     filters: {
       slug: params.slug,
     },
-    populate: ["image", "category", "author.picture"],
+    populate: ['image', 'category', 'author.picture'],
   });
 
-  console.log("\n\narticlesRes:", articlesRes, "\n\n");
+  console.log('\n\narticlesRes:', articlesRes, '\n\n');
 
   return {
     props: { article: articlesRes?.data[0] },
@@ -212,29 +203,27 @@ export async function getServerSideProps({ params }) {
 export default Article;
 
 const ShareLinks = ({ onClickShare }) => {
-  const boxSize = "16px";
+  const boxSize = '16px';
   const iconButtonProps = {
-    size: "sm",
-    rounded: "full",
-    border: "1px solid transparent",
-    bg: "brand.creme",
-    transition: "border-color 0.3s",
+    size: 'sm',
+    rounded: 'full',
+    border: '1px solid transparent',
+    bg: 'brand.creme',
+    transition: 'border-color 0.3s',
     _hover: {
       // bg: "gray.50"
-      borderColor: "brand.lightgreen",
+      borderColor: 'brand.lightgreen',
     },
     _active: {
       // bg: "gray.100"
-      borderColor: "brand.darkgreen",
+      borderColor: 'brand.darkgreen',
     },
   };
 
   const router = useRouter();
   // console.log("\n\nROUTER:", router.asPath, "\n\n");
 
-  const { onCopy } = useClipboard(
-    "https://www.moneyandotherthings.com" + router.asPath
-  );
+  const { onCopy } = useClipboard('https://www.moneyandotherthings.com' + router.asPath);
   const toast = useToast();
 
   const handleClickCopy = () => {
@@ -242,16 +231,16 @@ const ShareLinks = ({ onClickShare }) => {
     toast({
       duration: 2000,
       render: () => (
-        <Flex w="100%" justify="center">
+        <Flex w='100%' justify='center'>
           <Flex
-            maxW="max-content"
-            justify="center"
-            align="center"
-            p="8px 1rem"
-            bg="brand.lightgreen"
-            rounded="md"
+            maxW='max-content'
+            justify='center'
+            align='center'
+            p='8px 1rem'
+            bg='brand.lightgreen'
+            rounded='md'
           >
-            <Text fontSize="xl" fontWeight="600" color="white">
+            <Text fontSize='xl' fontWeight='600' color='white'>
               Copied!
             </Text>
           </Flex>
@@ -261,8 +250,8 @@ const ShareLinks = ({ onClickShare }) => {
   };
 
   return (
-    <HStack spacing="1.5rem">
-      <Tooltip label="Share Post">
+    <HStack spacing='1.5rem'>
+      <Tooltip label='Share Post'>
         <IconButton
           {...iconButtonProps}
           icon={<ShareIcon boxSize={boxSize} />}
@@ -270,7 +259,7 @@ const ShareLinks = ({ onClickShare }) => {
         />
       </Tooltip>
 
-      <Tooltip label="Copy link to this post">
+      <Tooltip label='Copy link to this post'>
         <IconButton
           {...iconButtonProps}
           icon={<CopyIcon boxSize={boxSize} />}
