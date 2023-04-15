@@ -7,6 +7,8 @@ import {
   HStack,
   Tooltip,
   Box,
+  Center,
+  Spinner,
   IconButton,
   useClipboard,
   useToast,
@@ -34,6 +36,8 @@ const Article = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
   const [articleData, setArticleData] = useState();
 
+  const router = useRouter();
+
   const imgPosition = {
     'top-left': 'left top',
     'top-center': 'center 30%',
@@ -59,6 +63,7 @@ const Article = ({ article }) => {
     }
 
     let carouselContainer = document.getElementById('imageCarousel');
+    if (!carouselContainer) return;
     carouselContainer.style.paddingTop = '1rem';
 
     if (!textAdded.current) {
@@ -77,6 +82,7 @@ const Article = ({ article }) => {
 
   useEffect(() => {
     // adds target=_blank to all links in blog post so they open in new tab
+    if (!document.querySelector('.ck-content')) return;
     let links = Array.from(document.querySelector('.ck-content').getElementsByTagName('a'));
     links.forEach((link) => (link.target = '_blank'));
 
@@ -90,6 +96,14 @@ const Article = ({ article }) => {
   const imgPosV = article?.attributes.image_position_vertical;
   const imgPosH = article?.attributes.image_position_horizontal;
   const hasPosition = imgPosV !== undefined && imgPosH !== undefined;
+
+  if (router.isFallback) {
+    return (
+      <Center h='calc(100vh - 140px)'>
+        <Spinner />
+      </Center>
+    );
+  }
 
   return (
     <>
@@ -195,9 +209,10 @@ export async function getStaticPaths() {
   }
   // console.log('All Post Paths:', paths);
 
+  // https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-false
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
