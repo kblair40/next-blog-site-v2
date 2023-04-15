@@ -183,7 +183,25 @@ const Article = ({ article }) => {
   );
 };
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
+  // const paths = getAllPostIds();
+  // const articlesRes = await fetchAPI('/articles');
+  // console.log('\n\narticlesRes-paths:', articlesRes, '\n\n');
+
+  let paths = [];
+  const res = await fetchAPI('/articles');
+  for (let article of res.data) {
+    paths.push({ params: { slug: article.attributes.slug } });
+  }
+  // console.log('All Post Paths:', paths);
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
   const articlesRes = await fetchAPI('/articles', {
     filters: {
       slug: params.slug,
@@ -191,12 +209,27 @@ export async function getServerSideProps({ params }) {
     populate: ['image', 'category', 'author.picture'],
   });
 
-  console.log('\n\narticlesRes:', articlesRes, '\n\n');
+  // console.log('\n\narticlesRes:', articlesRes, '\n\n');
 
   return {
     props: { article: articlesRes?.data[0] },
   };
 }
+
+// export async function getServerSideProps({ params }) {
+//   const articlesRes = await fetchAPI('/articles', {
+//     filters: {
+//       slug: params.slug,
+//     },
+//     populate: ['image', 'category', 'author.picture'],
+//   });
+
+//   console.log('\n\narticlesRes:', articlesRes, '\n\n');
+
+//   return {
+//     props: { article: articlesRes?.data[0] },
+//   };
+// }
 
 export default Article;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Flex, Stack, Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -14,6 +14,23 @@ const Posts = ({ articles }) => {
   let category = asPath.split('/')[2];
   category = category[0].toUpperCase() + category.slice(1);
   console.log('Category:', category);
+
+  // useEffect(() => {
+  //   const fetchArticles = async () => {
+  //     let paths = [];
+  //     try {
+  //       const res = await fetchAPI('/articles');
+  //       console.log('ALL ARTICLES:', res);
+  //       for (let article of res.data) {
+  //         paths.push({ slug: article.attributes.slug });
+  //       }
+  //       console.log('PATHS:', paths);
+  //     } catch (e) {
+  //       console.error('Failed fetching articles:', e);
+  //     }
+  //   };
+  //   fetchArticles();
+  // }, []);
 
   return (
     <>
