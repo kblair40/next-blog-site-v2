@@ -12,10 +12,15 @@ const envName = process.env.NODE_ENV;
  */
 const LIVE_URL = 'https://money-and-other-things.herokuapp.com';
 const BASE_URL =
-  process.env.NEXT_PUBLIC_NODE_ENV === 'development'
+  process.env.NEXT_PUBLIC_NODE_ENV !== 'development'
     ? 'http://localhost:1337'
     : // ? "127.0.0.1:1337"
       LIVE_URL;
+// const BASE_URL =
+//   process.env.NEXT_PUBLIC_NODE_ENV === 'development'
+//     ? 'http://localhost:1337'
+//     : // ? "127.0.0.1:1337"
+//       LIVE_URL;
 // const BASE_URL =
 //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
 export function getStrapiURL(path = '') {
@@ -62,7 +67,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   // });
   const requestUrl = `${getStrapiURL(`/api${path}${queryString ? `?${queryString}` : ''}`)}`;
 
-  // console.log('\nREQUEST URL:', requestUrl, '\n\n');
+  console.log('\n\nREQUEST URL:', requestUrl, '\n\n');
 
   try {
     // Trigger API call

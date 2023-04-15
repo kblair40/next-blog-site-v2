@@ -212,7 +212,7 @@ export async function getStaticPaths() {
   // https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-false
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
   };
 }
 
