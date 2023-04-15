@@ -67,7 +67,7 @@ export async function getStaticProps({ params }) {
   let articles;
   try {
     articles = categoriesRes.data[0].attributes.articles.data;
-    console.log('ARTICLE:', categoriesRes.data[0].attributes);
+    // console.log('ARTICLE:', categoriesRes.data[0].attributes);
   } catch (e) {
     articles = [];
   }
