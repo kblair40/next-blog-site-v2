@@ -171,14 +171,7 @@ const Article = ({ article }) => {
                 />
               </Box>
 
-              <Box
-                w='100%'
-                sx={{
-                  a: {
-                    color: '#7D9174',
-                  },
-                }}
-              >
+              <Box w='100%' sx={{ a: { color: '#7D9174' } }}>
                 <Box
                   className='ck-content'
                   dangerouslySetInnerHTML={{ __html: article.attributes.content }}
