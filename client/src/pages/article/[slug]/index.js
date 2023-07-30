@@ -119,13 +119,7 @@ const Article = ({ article }) => {
             />
           </Suspense>
 
-          <Flex
-            border='2px solid red'
-            mt='24px'
-            w='100%'
-            justify='center'
-            px={{ base: '1rem', sm: '2rem', md: '4rem' }}
-          >
+          <Flex mt='24px' w='100%' justify='center' px={{ base: '1rem', sm: '2rem', md: '4rem' }}>
             <Flex
               direction='column'
               w='100%'
