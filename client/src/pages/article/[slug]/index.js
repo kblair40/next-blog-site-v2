@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   Text,
+  Heading,
   Flex,
   Divider,
   HStack,
@@ -141,14 +142,17 @@ const Article = ({ article }) => {
                 <Text display='inline'>{`${article.attributes.minutes_to_read} min read`}</Text>
               </Flex>
 
-              <Text
+              <Heading
+                as='h1'
+                fontFamily='Avenir'
                 fontWeight='700'
                 mb='1.5rem'
+                lineHeight={1.4}
                 textAlign='center'
                 fontSize={{ base: '3xl', md: '4xl', lg: '42px' }}
               >
                 {article.attributes.title}
-              </Text>
+              </Heading>
 
               <Box
                 w='100%'

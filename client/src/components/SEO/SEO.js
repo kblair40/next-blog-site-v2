@@ -13,6 +13,7 @@ const Seo = ({ seo }) => {
           <meta name='twitter:title' content={fullSeo.metaTitle} />
         </>
       )}
+
       {fullSeo.metaDescription && (
         <>
           <meta name='description' content={fullSeo.metaDescription} />
@@ -20,6 +21,7 @@ const Seo = ({ seo }) => {
           <meta name='twitter:description' content={fullSeo.metaDescription} />
         </>
       )}
+
       {fullSeo.shareImage && (
         <>
           <meta property='og:image' content={fullSeo.shareImage} />
@@ -27,7 +29,9 @@ const Seo = ({ seo }) => {
           <meta name='image' content={fullSeo.shareImage} />
         </>
       )}
+
       {fullSeo.article && <meta property='og:type' content='article' />}
+
       <meta name='twitter:card' content='summary_large_image' />
     </Head>
   );
