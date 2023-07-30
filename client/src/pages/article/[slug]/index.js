@@ -38,13 +38,6 @@ const Article = ({ article }) => {
 
   const router = useRouter();
 
-  const imgPosition = {
-    'top-left': 'left top',
-    'top-center': 'center 30%',
-    'center-center': 'center center',
-    'bottom-center': 'center bottom',
-  };
-
   useEffect(() => {
     if (article && article.attributes) {
       setArticleData(article.attributes);
@@ -127,7 +120,13 @@ const Article = ({ article }) => {
             <Seo seo={seo} />
           </Suspense>
 
-          <Flex mt='24px' w='100%' justify='center' px={{ base: '1rem', sm: '2rem', md: '4rem' }}>
+          <Flex
+            border='2px solid red'
+            mt='24px'
+            w='100%'
+            justify='center'
+            px={{ base: '1rem', sm: '2rem', md: '4rem' }}
+          >
             <Flex
               direction='column'
               w='100%'
