@@ -28,9 +28,6 @@ import ImageCarousel from 'src/components/ImageCarousel';
 const ShareModal = dynamic(() => import('src/components/Modals/ShareModal'), {
   suspense: true,
 });
-const Seo = dynamic(() => import('src/components/SEO'), {
-  suspense: true,
-});
 
 const Article = ({ article }) => {
   const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -68,10 +65,15 @@ const Article = ({ article }) => {
 
   const seo = {
     metaTitle: article.attributes.title,
-    metaDescription: article.attributes.description,
-    shareImage: article.attributes.image,
+    metaDescription: article.attributes.preview_text,
+    shareImage: article.attributes.image_url,
     article: true,
   };
+
+  useEffect(() => {
+    console.log('article:', article);
+    console.log('\nSEO:', seo);
+  }, [seo]);
 
   useEffect(() => {
     // adds target=_blank to all links in blog post so they open in new tab
@@ -114,10 +116,6 @@ const Article = ({ article }) => {
               onClose={() => setShareModalOpen(false)}
               articleData={articleData}
             />
-          </Suspense>
-
-          <Suspense fallback={<div />}>
-            <Seo seo={seo} />
           </Suspense>
 
           <Flex
