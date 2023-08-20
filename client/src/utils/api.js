@@ -5,11 +5,7 @@ const envName = process.env.NODE_ENV;
 // console.log("ENV NAME:", envName);
 // console.log("API URL:", process.env.NEXT_PUBLIC_STRAPI_API_URL);
 
-/**
- * Get full Strapi URL from path
- * @param {string} path Path of the URL
- * @returns {string} Full Strapi URL
- */
+// Get full Strapi URL from path
 const LIVE_URL = "https://money-and-other-things.herokuapp.com";
 // const BASE_URL =
 //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
@@ -17,28 +13,12 @@ export function getStrapiURL(path = "") {
   // let baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337";
   let baseUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || LIVE_URL;
   return `${baseUrl}${path}`;
-  // return `${LIVE_URL}${path}`;
-  // return `${
-  //   process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337"
-  // }${path}`;
 }
 
-/**
- * Helper to make GET requests to Strapi API endpoints
- * @param {string} path Path of the API route
- * @param {Object} urlParamsObject URL params object, will be stringified
- * @param {Object} options Options passed to fetch
- * @returns Parsed API call response
- */
+// Helper to make GET requests to Strapi API endpoints
 export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
-  let headers = {
-    "Content-Type": "application/json",
-  };
-  // headers["Authorization"] = "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
-  //  PUT BELOW 'IF' CHECK BACK - DELETE LINE ABOVE
+  let headers = { "Content-Type": "application/json" };
   if (token && envName !== "development") {
-    console.log("YES TOKEN");
-    // headers["Authorization"] = `bearer ${token}`; // old
     headers["Authorization"] = `bearer ${token}`; // new
   } else {
     headers["Authorization"] =
@@ -46,17 +26,11 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
   }
 
   // Merge default and user options
-  const mergedOptions = {
-    headers,
-    ...options,
-  };
+  const mergedOptions = { headers, ...options };
 
   // Build request URL
   const queryString = qs.stringify(urlParamsObject);
-  console.log("\n\n\n\nQUERY DATA:", {
-    queryString,
-    path,
-  });
+  console.log("\nQUERY DATA:", { queryString, path });
   const requestUrl = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`;
